@@ -15,6 +15,7 @@ class CreateRestaurantsTable extends Migration
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable(); // id tabella relazionata
             $table->string('name', 100);
             $table->string('slug', 150)->unique();
             $table->string('address', 80);
@@ -23,6 +24,8 @@ class CreateRestaurantsTable extends Migration
             $table->text('info')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
+            // assegnazione foregn key 
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

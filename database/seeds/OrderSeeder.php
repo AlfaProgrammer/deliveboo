@@ -1,6 +1,7 @@
 <?php
 
 use App\Order;
+use App\Plate;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 // use Illuminate\Support\Str;
@@ -14,6 +15,10 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+
+        $plates = Plate::all();
+        $plate_ids = $plates->pluck('id')->all();
+
         for ($i=0; $i < 20; $i++) { 
             
             $newOrder = new Order();
@@ -27,8 +32,12 @@ class OrderSeeder extends Seeder
             $newOrder->city = $faker->city;
             $newOrder->cap = $faker->randomNumber(5, true);
             $newOrder->total_price = $faker->randomFloat(2, 5, 150);
+
+            $randomPlate = $faker->randomElements($plate_ids, 2);
                         
             $newOrder->save();
+
+            $newOrder->plates()->attach($randomPlate);
         }
     }
 }

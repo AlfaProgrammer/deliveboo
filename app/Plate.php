@@ -14,4 +14,8 @@ class Plate extends Model
         return $this->belongsToMany('App\Allergen');
     }
 
+    public function orders(){
+        return $this->belongsToMany('App\Orders');
+    }
+
 }

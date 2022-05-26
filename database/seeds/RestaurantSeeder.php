@@ -1,6 +1,7 @@
 <?php
 
 use App\Restaurant;
+use App\Category;
 use App\User;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -18,6 +19,9 @@ class RestaurantSeeder extends Seeder
 
         $users = User::all();
         $user_ids = $users->pluck('id')->all();
+
+        $categories = Category::all();
+        $category_ids = $categories->pluck('id')->all();
         
         $restaurants = [
             [
@@ -94,8 +98,12 @@ class RestaurantSeeder extends Seeder
             $restaurant->city = $faker->city;
             $restaurant->image = $res['image'];
 
-            $restaurant->save();
+            // Creiamo categoria random
+            $randomCategory = $faker->randomElements($category_ids, 2);
+
+            $restaurant->save();         
             
+            $restaurant->categories()->attach($randomCategory);
 
             $counter++;
         }

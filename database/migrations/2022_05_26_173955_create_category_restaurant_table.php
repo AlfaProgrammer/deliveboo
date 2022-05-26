@@ -22,8 +22,7 @@ class CreateCategoryRestaurantTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
             $table->primary(['restaurant_id', 'category_id']);
-
-            $table->timestamps();
+            
         });
     }
 

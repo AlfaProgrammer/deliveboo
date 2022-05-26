@@ -1,6 +1,7 @@
 <?php
 
 use App\Plate;
+use App\Restaurant;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -14,6 +15,9 @@ class PlateSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        $restaurants = Restaurant::all();
+        $rest_ids = $restaurants->pluck('id')->all();
+        
         $plates = [
             [
                 "name" => "CheeseBurger",
@@ -68,10 +72,14 @@ class PlateSeeder extends Seeder
                 "image" => ""
             ],
         ];
+        
+        
 
         foreach ($plates as $plate) {
 
             $newPlate = new Plate();
+
+            $newPlate->restaurant_id = $faker->randomElement($rest_ids);
             
             $newPlate->name = $plate["name"];
             $newPlate->slug = Str::slug($plate["name"]);

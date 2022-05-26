@@ -9,4 +9,9 @@ class Plate extends Model
     public function restaurant(){
         return $this->belongsTo('App\Restaurant');
     }
+
+    public function allergens(){
+        return $this->belongsToMany('App\Allergen');
+    }
+
 }

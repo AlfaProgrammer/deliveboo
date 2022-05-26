@@ -1,6 +1,7 @@
 <?php
 
 use App\Plate;
+use App\Allergen;
 use App\Restaurant;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
@@ -17,6 +18,9 @@ class PlateSeeder extends Seeder
     {
         $restaurants = Restaurant::all();
         $rest_ids = $restaurants->pluck('id')->all();
+
+        $allergens = Allergen::all();
+        $allergen_ids = $allergens->pluck('id')->all();
         
         $plates = [
             [
@@ -87,8 +91,12 @@ class PlateSeeder extends Seeder
             $newPlate->image = $plate["image"];
             $newPlate->price = $faker->randomFloat(2, 5, 150);
             $newPlate->available = $faker->boolean();
+
+            $randomAllergen = $faker->randomElements($allergen_ids, 3);
             
             $newPlate->save();
+
+            $newPlate->allergens()->attach($randomAllergen);
         }
     }
 }

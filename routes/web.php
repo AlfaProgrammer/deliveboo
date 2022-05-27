@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+<<<<<<< HEAD
 Route::middleware('auth')
         ->prefix('admin')   
         ->namespace('Admin')
@@ -29,3 +30,6 @@ Route::middleware('auth')
             Route::get('/home', 'HomeController@index')->name('home');
 
         });
+=======
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> AndreaB

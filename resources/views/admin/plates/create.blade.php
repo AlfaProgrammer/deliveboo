@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
 
     <div class="container">
 
@@ -52,9 +45,9 @@
             <div class="select-wrapper my-3">
                 <label for="available">Disponibile</label>
                 <select id="available">
-                  <option selected="" value="">Scegli un'opzione</option>
-                  <option value="1">Disponibile</option>
-                  <option value="0">Non disponibile</option>
+                <option selected="" value="">Scegli un'opzione</option>
+                <option value="1">Disponibile</option>
+                <option value="0">Non disponibile</option>
                 </select>
             </div>
 
@@ -63,6 +56,5 @@
         </form>
         
     </div>
-
-</body>
-</html>
+    
+@endsection    

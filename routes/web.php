@@ -25,7 +25,7 @@ Route::middleware('auth')
         ->name('admin.')
         ->group(function (){
             
-            Route::resource('plate', 'PlateController');
+            Route::resource('plates', 'PlateController');
             Route::get('/home', 'HomeController@index')->name('home');
 
         });

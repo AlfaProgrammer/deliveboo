@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model
 {
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     public function categories(){
-        return $this->belongsToMany('App\Category');
+        return $this->belongsToMany(Category::class);
     }
 
     public function plates(){
-        return $this->hasMany("App\Plate");
+        return $this->hasMany(Plate::class);
     }
 }

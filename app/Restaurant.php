@@ -17,4 +17,10 @@ class Restaurant extends Model
     public function plates(){
         return $this->hasMany(Plate::class);
     }
+
+    // public static function getRestaurantId(){
+    //     $user_id = Auth::id();
+    //     return $this->where('user_id', $user_id);
+    // }
+
 }

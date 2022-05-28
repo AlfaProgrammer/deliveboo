@@ -44,7 +44,7 @@
 
             <div class="select-wrapper my-3">
                 <label for="available">Disponibile</label>
-                <select id="available">
+                <select id="available" name="available">
                 <option selected="" value="">Scegli un'opzione</option>
                 <option value="1">Disponibile</option>
                 <option value="0">Non disponibile</option>

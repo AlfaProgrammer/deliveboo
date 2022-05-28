@@ -49,9 +49,43 @@ class PlateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Restaurant $restaurant)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'image' => 'nullable|url|string|max:255',
+            'description' => 'nullable|string',
+            'price' => "required|numeric|min:0.00|max:999.99",
+            'available' => 'required|boolean'
+        ]);
+
+        $data = $request->all();
+
+        
+
+
+        $slug = Plate::getUniqueSlug( $data['name']);
+
+        // $plate = Plate::all()->find(1);
+
+        // dd($plate->restaurant->id);
+
+        $plate = New Plate();
+
+        $plate->restaurant_id = $restaurant->id;
+
+        $plate->fill($data);
+
+        $plate->slug = $slug;
+
+        $plate->restaurant_id = $restaurant;
+
+        $plate->save();
+
+        // dd($data);
+
+
+        return redirect()->route('admin.plates.index'); 
     }
 
     /**

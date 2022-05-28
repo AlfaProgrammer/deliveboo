@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    @foreach ($plates as $plate)
-        <div>{{$plate['name']}}</div>
 
-        <div>- {{$plate->restaurant->name}}</div>
-    @endforeach
+@extends('layouts.app')
+
+@section('content')
+
+    <div class="container">
+
+        @foreach ($plates as $plate)
+            <div>{{$plate['name']}}</div>
     
-</body>
-</html>
+            <div>- {{$plate->restaurant->name}}</div>
+        @endforeach
+
+        <div>
+            
+            <a href="{{ route('admin.plates.create') }}" class="btn btn-primary">Crea nuovo piatto</a>
+
+        </div>
+
+    </div>
+        
+@endsection

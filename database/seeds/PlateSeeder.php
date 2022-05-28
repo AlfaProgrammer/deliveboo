@@ -140,6 +140,70 @@ class PlateSeeder extends Seeder
                 "image" => ""
             ],
             [
+                "name" => "Nigiri maguro",
+                "image" => ""
+            ],
+            [
+                "name" => "Uramaky spicy tonno",
+                "image" => ""
+            ],
+            [
+                "name" => "Tartare salmone",
+                "image" => ""
+            ],
+            [
+                "name" => "Tartare tonno",
+                "image" => ""
+            ],
+            [
+                "name" => "Hamburger bacon",
+                "image" => ""
+            ],
+            [
+                "name" => "Hamburger classico",
+                "image" => ""
+            ],
+            [
+                "name" => "Polpette al sugo",
+                "image" => ""
+            ],
+            [
+                "name" => "Vitello tonnato",
+                "image" => ""
+            ],
+            [
+                "name" => "Scaloppina al limone",
+                "image" => ""
+            ],
+            [
+                "name" => "Pollo al limone",
+                "image" => ""
+            ],
+            [
+                "name" => "BBQ wings",
+                "image" => ""
+            ],
+            [
+                "name" => "Tiramisu",
+                "image" => ""
+            ],
+            [
+                "name" => "Gelato cioccolato",
+                "image" => ""
+            ],
+            [
+                "name" => "Creme caramel",
+                "image" => ""
+            ],
+            [
+                "name" => "Panna cotta",
+                "image" => ""
+            ],
+            [
+                "name" => "Cheesecake",
+                "image" => ""
+            ],
+            [
                 "name" => "",
                 "image" => ""
             ],

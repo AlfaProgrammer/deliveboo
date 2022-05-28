@@ -71,20 +71,17 @@ class PlateController extends Controller
 
         $slug = Plate::getUniqueSlug( $data['name']);
 
-        // $plate = Plate::all()->find(1);
-
-        // dd($plate->restaurant->id);
-
         $plate = New Plate();
 
         $plate->fill($data);
+
+        $plate->restaurant_id = Restaurant::getRestaurantId();
 
         $plate->slug = $slug;
 
         $plate->save();
 
-        // dd($data);
-
+        // dd($plate);
 
         return redirect()->route('admin.plates.index'); 
     }

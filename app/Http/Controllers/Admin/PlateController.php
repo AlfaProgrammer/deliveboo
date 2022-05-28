@@ -49,8 +49,9 @@ class PlateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Restaurant $restaurant)
+    public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string|max:50',
             'image' => 'nullable|url|string|max:255',
@@ -72,13 +73,9 @@ class PlateController extends Controller
 
         $plate = New Plate();
 
-        $plate->restaurant_id = $restaurant->id;
-
         $plate->fill($data);
 
         $plate->slug = $slug;
-
-        $plate->restaurant_id = $restaurant;
 
         $plate->save();
 

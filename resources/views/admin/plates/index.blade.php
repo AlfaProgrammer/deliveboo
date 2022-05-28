@@ -6,7 +6,12 @@
     <div class="container">
 
         @foreach ($plates as $plate)
-            <div>{{$plate['name']}}</div>
+            <div>
+                {{$plate['name']}}
+                <button>
+                    <a href="{{ route('admin.plates.edit',$plate) }}">Modifica</a>
+                </button>
+            </div>
     
             <div>- {{$plate->restaurant->name}}</div>
         @endforeach

@@ -67,8 +67,6 @@ class PlateController extends Controller
         $data = $request->all();
 
         
-
-
         $slug = Plate::getUniqueSlug( $data['name']);
 
         $plate = New Plate();
@@ -103,9 +101,9 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Plate $plate)
     {
-        //
+        return view('admin.plates.edit',compact('plate')); 
     }
 
     /**
@@ -115,9 +113,30 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Plate $plate)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'image' => 'nullable|url|string|max:255',
+            'description' => 'nullable|string',
+            'price' => "required|numeric|min:0.00|max:999.99",
+            'available' => 'required|boolean'
+        ]);
+
+        $data = $request->all();
+
+        if($plate->name != $data['name']){
+
+            $slug = Plate::getUniqueSlug( $data['name']);
+            $data['slug'] = $slug;
+        } 
+        
+        $plate->update($data);
+
+        // dd($plate);
+
+        return redirect()->route('admin.plates.index');
+
     }
 
     /**

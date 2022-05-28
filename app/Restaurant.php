@@ -28,7 +28,5 @@ class Restaurant extends Model
         $restaurant_id = $restaurant['id'];
 
         return $restaurant_id;
-
-
     }
 }

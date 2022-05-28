@@ -75,6 +75,74 @@ class PlateSeeder extends Seeder
                 "name" => "Cous Cous",
                 "image" => ""
             ],
+            [
+                "name" => "Napoli",
+                "image" => ""
+            ],
+            [
+                "name" => "Capricciosa",
+                "image" => ""
+            ],
+            [
+                "name" => "Diavola",
+                "image" => ""
+            ],
+            [
+                "name" => "Patate",
+                "image" => ""
+            ],
+            [
+                "name" => "Boscaiola",
+                "image" => ""
+            ],
+            [
+                "name" => "Pasta aglio olio peperoncino",
+                "image" => ""
+            ],
+            [
+                "name" => "Gricia",
+                "image" => ""
+            ],
+            [
+                "name" => "Pasta alla puttanesca",
+                "image" => ""
+            ],
+            [
+                "name" => "Orecchiette cime di rapa",
+                "image" => ""
+            ],
+            [
+                "name" => "Pasta al pesto",
+                "image" => ""
+            ],
+            [
+                "name" => "Pasta al ragu",
+                "image" => ""
+            ],
+            [
+                "name" => "Involtini thai",
+                "image" => ""
+            ],
+            [
+                "name" => "Involtini di gamberi",
+                "image" => ""
+            ],
+            [
+                "name" => "Ravioli alla griglia",
+                "image" => ""
+            ],
+            [
+                "name" => "Ravioli di manzo",
+                "image" => ""
+            ],
+            [
+                "name" => "Sashimi misto",
+                "image" => ""
+            ],
+            [
+                "name" => "",
+                "image" => ""
+            ],
         ];
         
         

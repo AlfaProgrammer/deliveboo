@@ -193,4 +193,76 @@ return [
         "name" => "Falafel",
         "image" => ""
     ],
+    [
+        "name" => "Suppli",
+        "image" => ""
+    ],
+    [
+        "name" => "Patatine fritte",
+        "image" => ""
+    ],
+    [
+       "name" => "Crocchette patate",
+        "image" => ""
+    ],
+    [
+        "name" => "Olive ascolane",
+        "image" => ""
+    ],
+    [
+        "name" => "Filetto baccala",
+        "image" => ""
+    ],
+    [
+        "name" => "Caffe",
+        "image" => ""
+    ],
+    [
+        "name" => "Caffelatte",
+        "image" => ""
+    ],
+    [
+        "name" => "Cappuccino",
+        "image" => ""
+    ],
+    [
+        "name" => "Caffe corretto",
+        "image" => ""
+    ],
+    [
+        "name" => "Brioche",
+        "image" => ""
+    ],
+    [
+        "name" => "Cornetto nutella",
+        "image" => ""
+    ],
+    [
+        "name" => "Cornetto crema",
+        "image" => ""
+    ],
+    [
+        "name" => "Cornetto marmellata",
+        "image" => ""
+    ],
+    [
+        "name" => "Crostata Nutella",
+        "image" => ""
+    ],
+    [
+        "name" => "Crostata more",
+        "image" => ""
+    ],
+    [
+        "name" => "Muffin",
+        "image" => ""
+    ],
+    [
+        "name" => "Muffin cioccolato",
+        "image" => ""
+    ],
+    [
+        "name" => "Ciambella",
+        "image" => ""
+    ],
 ];

@@ -7,10 +7,7 @@
 
         @foreach ($plates as $plate)
             <div>
-                {{$plate['name']}}
-                <button>
-                    <a href="{{ route('admin.plates.edit',$plate) }}">Modifica</a>
-                </button>
+                <a href="{{route('admin.plates.show', $plate)}}">{{$plate['name']}}</a>
             </div>
     
             <div>- {{$plate->restaurant->name}}</div>

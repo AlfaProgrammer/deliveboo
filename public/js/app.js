@@ -49931,13 +49931,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
->>>>>>> 3f47550d0f5f90ff4dc19ec2487081abf900b777
 
 
 /***/ })

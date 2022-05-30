@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Plate;
 use App\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 
 class PlateController extends Controller
@@ -17,16 +18,6 @@ class PlateController extends Controller
      */
     public function index()
     {
-        /* $user_id = Auth::id();
-        $res_id = 0;
-
-        $restaurants = Restaurant::where('user_id', $user_id)->get();
-
-        foreach ($restaurants as $restaurant){
-
-            $res_id = $restaurant['id'];
-
-        }; */
 
         $res_id = Restaurant::getRestaurantId();
 
@@ -90,9 +81,9 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Plate $plate)
     {
-        //
+        return view('admin.plates.show', compact('plate'));
     }
 
     /**
@@ -145,8 +136,10 @@ class PlateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Plate $plate)
     {
-        //
+        $plate->delete();
+
+        return redirect()->route('admin.plates.index');
     }
 }

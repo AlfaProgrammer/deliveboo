@@ -21,7 +21,6 @@ class PlateController extends Controller
 
         $res_id = Restaurant::getRestaurantId();
 
-
         $plates = Plate::with('restaurant')->where('restaurant_id', $res_id)->get();
 
 

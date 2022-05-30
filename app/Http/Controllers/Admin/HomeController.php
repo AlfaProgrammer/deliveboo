@@ -25,29 +25,13 @@ class HomeController extends Controller
 
         $user_id = Auth::id();
 
-        /* $restaurants = Restaurant::select('user_id')->get(); */
+        $restaurant_exists = Restaurant::where('user_id', $user_id)->exists();
 
-        $restaurants = Restaurant::all();
-        /* $funzione = DB::table('users')->whereExists(function($query){
-            $query->select(DB::raw(1))->from('restaurants')->whereColumn('restaurants.user_id', Auth::id());
-        })->get(); */
-
-        $prova = Restaurant::where('user_id', $user_id)->exists();
-
-        if ($prova) {
-            dd($prova);
+        if ($restaurant_exists) {
+            dd($restaurant_exists);
         }else {
-            dd($prova);
+            dd($restaurant_exists);
         }
-
-
-
-        /* if ( ) {
-            dd('Ciao');
-        } */
-
-        /* $user_restaurant = Restaurant:: */
-        /* $res_id = Restaurant::getRestaurantId(); */
 
         return view('admin.noRestaurant.index', /* compact('res_id') */);
     }

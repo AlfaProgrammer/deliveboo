@@ -2,23 +2,22 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <div class="container">
-
-        @foreach ($plates as $plate)
-            <div>
-                <a href="{{route('admin.plates.show', $plate)}}">{{$plate['name']}}</a>
-            </div>
-    
-            <div>- {{$plate->restaurant->name}}</div>
-        @endforeach
-
-        <div>
+    <div class="container" >
+        @if ($plates)
+            @foreach ($plates as $plate)
+                <div>
+                    <a href="{{route('admin.plates.show', $plate)}}">{{$plate['name']}}</a>
+                </div>
             
-            <a href="{{ route('admin.plates.create') }}" class="btn btn-primary">Crea nuovo piatto</a>
+                <div>- {{$plate->restaurant->name}}</div>
+            @endforeach
 
-        </div>
+            <div>
+                
+                <a href="{{ route('admin.plates.create') }}" class="btn btn-primary">Crea nuovo piatto</a>
 
+            </div>
+        @endif
     </div>
         
 @endsection

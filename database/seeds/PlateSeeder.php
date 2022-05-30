@@ -21,63 +21,8 @@ class PlateSeeder extends Seeder
 
         $allergens = Allergen::all();
         $allergen_ids = $allergens->pluck('id')->all();
-        
-        $plates = [
-            [
-                "name" => "CheeseBurger",
-                "image" => ""
-            ],
-            [
-                "name" => "Pizza Margherita",
-                "image" => ""
-            ],
-            [
-                "name" => "Krubby Patty",
-                "image" => ""
-            ],
-            [
-                "name" => "Ravioli di Medusa",
-                "image" => ""
-            ],
-            [
-                "name" => "Gran Crispy",
-                "image" => ""
-            ],
-            [
-                "name" => "Double Chicken",
-                "image" => ""
-            ],
-            [
-                "name" => "Tagliata di manzo",
-                "image" => ""
-            ],
-            [
-                "name" => "Bistecca Fiorentina",
-                "image" => ""
-            ],
-            [
-                "name" => "Carbonara",
-                "image" => ""
-            ],
-            [
-                "name" => "Risotto alla Milanese",
-                "image" => ""
-            ],
-            [
-                "name" => "Amatriciana",
-                "image" => ""
-            ],
-            [
-                "name" => "Sushi",
-                "image" => ""
-            ],
-            [
-                "name" => "Cous Cous",
-                "image" => ""
-            ],
-        ];
-        
-        
+
+        $plates = config('plates');
 
         foreach ($plates as $plate) {
 

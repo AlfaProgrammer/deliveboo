@@ -5,8 +5,14 @@
     @if($restaurant)
     
         <div class="container">
+
             <h2>DashBoard</h2>
-            <p>Questa è la tua dashboard</p>
+            <p>Cioa {{$user->name}}</p>
+            <p>
+                Questa è la tua dashboard. Da qui puoi visualizzare la preview del tuo ristorante e
+                accedere al menu dello stesso cliccando sull apposito tasto.
+            </p>
+
             <h3><a href="{{route('admin.plates.index')}}">{{ $user->company_name}}</a></h3>
             <p class="description">
                 {{$restaurant->info ? $restaurant->info : 'Nessuna descrizione'}}

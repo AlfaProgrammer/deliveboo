@@ -7,6 +7,17 @@ use Illuminate\Support\Facades\Auth;
 
 class Restaurant extends Model
 {
+
+    protected $fillable = [
+        'name',
+        'image',
+        'slug',
+        'address',
+        'cap',
+        'city',
+        'info',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

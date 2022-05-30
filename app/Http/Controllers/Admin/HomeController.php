@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Restaurant;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Restaurant $restaurant)
+    public function index(Restaurant $restaurant, User $user)
     {
 
         $user_id = Auth::id();
@@ -28,11 +29,17 @@ class HomeController extends Controller
         $restaurant_exists = Restaurant::where('user_id', $user_id)->exists();
 
         if ($restaurant_exists) {
-            dd($restaurant_exists);
+
+            $restaurant = Restaurant::with(['user'])->where('user_id', $user_id)->first();
+            // dd($restaurant);
+
+            return view('admin.noRestaurant.index', compact('restaurant_exists', 'restaurant'));
+
         }else {
-            dd($restaurant_exists);
+            
+            return view('admin.noRestaurant.index', compact('restaurant_exists'));
         }
 
-        return view('admin.noRestaurant.index', /* compact('res_id') */);
+        
     }
 }

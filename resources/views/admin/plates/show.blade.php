@@ -14,19 +14,26 @@
         <p>{{$plate['description']}}</p>
 
 
-        <span>{{$plate['price']}}</span>
-        <span>{{$plate->available ? 'Disponibile' : 'Non Disponibile'}}</span>
+        <span>Prezzp: {{$plate['price']}} euro</span>
+        {{-- <span>{{$plate->available ? 'Disponibile' : 'Non Disponibile'}}</span> --}}
 
-        <form action="{{route('admin.plates.destroy', $plate)}}" method="post">
-            @csrf
-            @method('delete')
-            <button type="submit" class="btn btn-danger">
-                Elimina
-            </button>
-        </form>
-
-        <button>
-            <a href="{{ route('admin.plates.edit',$plate) }}">Modifica</a>
-        </button>
+        @if($plate->available)
+            <span class="text-success">Disponibile</span>            
+        @else
+        <span class="text-danger">Non Disponibile</span>
+        @endif
+        
+        <div class="d-flex align-items-center">
+            <form action="{{route('admin.plates.destroy', $plate)}}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-danger mr-2">
+                    Elimina
+                </button>
+            </form>
+            
+            <a type="button" href="{{ route('admin.plates.edit',$plate) }}" class="btn btn-warning my-3">Modifica</a>
+        </div>
+        
     </div>
 @endsection

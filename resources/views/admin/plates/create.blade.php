@@ -19,7 +19,7 @@
 
             <div class="form-group">
                 <label for="image">Immagine</label>
-                <input class="form-control form-control-lg @error('image') is-invalid @enderror" type="text" image="image" placeholder="url immagine piatto" value="{{old('image')}}">
+                <input class="form-control form-control-lg @error('image') is-invalid @enderror" type="text" name="image" placeholder="url immagine piatto" value="{{old('image')}}">
                 @error('image')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror

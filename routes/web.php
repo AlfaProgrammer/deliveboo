@@ -27,5 +27,8 @@ Route::middleware('auth')
             
             Route::resource('plates', 'PlateController');
             Route::get('/home', 'HomeController@index')->name('home');
+            Route::resource('restaurants', 'RestaurantController')->only([
+                'create', 'store'
+            ]);
 
         });

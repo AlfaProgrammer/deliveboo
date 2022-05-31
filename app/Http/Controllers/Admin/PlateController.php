@@ -18,16 +18,16 @@ class PlateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Plate $plate)
     {
         $user = Auth::user();
 
-        $res_id = Restaurant::getRestaurantId();
+        $restaurant = $user->restaurant;
+        $plates = $restaurant->plates;
+        $allergens = $plates->allergens;
+        dd($allergens);
 
-        $plates = Plate::with(['restaurant', 'allergens'])->where('restaurant_id', $res_id)->get();
-
-
-        return view('admin.plates.index', compact('plates', 'user'));
+        return view('admin.plates.index', compact('plates', 'user', 'allergens'));
     }
 
     /**
@@ -100,6 +100,10 @@ class PlateController extends Controller
     public function show(Plate $plate)
     {
         
+        // controllo se viene modificato url id piatto
+        if(Plate::validationUrlIdPlate($plate->restaurant_id)) {
+            return back();
+        };
 
         return view('admin.plates.show', compact('plate'));
     }
@@ -115,6 +119,13 @@ class PlateController extends Controller
         $allergens = Allergen::all();
 
         return view('admin.plates.edit',compact('plate', 'allergens')); 
+
+        // controllo se viene modificato url id piatto
+        if(Plate::validationUrlIdPlate($plate->restaurant_id)) {
+            return back();
+        };
+
+        return view('admin.plates.edit',compact('plate')); 
     }
 
     /**

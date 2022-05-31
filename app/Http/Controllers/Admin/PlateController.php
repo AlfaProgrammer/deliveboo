@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Allergen;
 use App\Http\Controllers\Controller;
 use App\Plate;
 use App\Restaurant;
@@ -22,7 +23,7 @@ class PlateController extends Controller
 
         $res_id = Restaurant::getRestaurantId();
 
-        $plates = Plate::with('restaurant')->where('restaurant_id', $res_id)->get();
+        $plates = Plate::with(['restaurant', 'allergens'])->where('restaurant_id', $res_id)->get();
 
 
         return view('admin.plates.index', compact('plates', 'user'));
@@ -35,7 +36,9 @@ class PlateController extends Controller
      */
     public function create()
     {
-        return view('admin.plates.create');
+        $allergens = Allergen::all();
+
+        return view('admin.plates.create', compact('allergens'));
     }
 
     /**
@@ -52,7 +55,8 @@ class PlateController extends Controller
             'image' => 'nullable|url|string|max:255',
             'description' => 'nullable|string',
             'price' => "required|numeric|min:0.00|max:999.99",
-            'available' => 'required|boolean'
+            'available' => 'required|boolean',
+            'allergens' => 'exists:allergens,id',
         ]);
 
         $data = $request->all();
@@ -70,6 +74,12 @@ class PlateController extends Controller
 
         $plate->save();
 
+        if (array_key_exists('allergens', $data)) {
+            $plate->allergens()->attach($data['allergens']);
+        } else {
+            $plate->allergens()->attach([]);
+        }
+
         // dd($plate);
 
         return redirect()->route('admin.plates.index'); 
@@ -83,6 +93,8 @@ class PlateController extends Controller
      */
     public function show(Plate $plate)
     {
+        
+
         return view('admin.plates.show', compact('plate'));
     }
 
@@ -94,7 +106,9 @@ class PlateController extends Controller
      */
     public function edit(Plate $plate)
     {
-        return view('admin.plates.edit',compact('plate')); 
+        $allergens = Allergen::all();
+
+        return view('admin.plates.edit',compact('plate', 'allergens')); 
     }
 
     /**
@@ -111,7 +125,8 @@ class PlateController extends Controller
             'image' => 'nullable|url|string|max:255',
             'description' => 'nullable|string',
             'price' => "required|numeric|min:0.00|max:999.99",
-            'available' => 'required|boolean'
+            'available' => 'required|boolean',
+            'allergens' => 'exists:allergens,id',
         ]);
 
         $data = $request->all();
@@ -121,6 +136,12 @@ class PlateController extends Controller
             $slug = Plate::getUniqueSlug( $data['name']);
             $data['slug'] = $slug;
         } 
+
+        if (array_key_exists('allergens', $data)) {
+            $plate->allergens()->sync($data['allergens']);
+        } else {
+            $plate->allergens()->sync([]);
+        }
         
         $plate->update($data);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Restaurant;
@@ -30,8 +31,7 @@ class HomeController extends Controller
 
         if ($restaurant_exists) {
 
-            $restaurant = Restaurant::with(['user'])->where('user_id', $user_id)->first();
-            // dd($restaurant);
+            $restaurant = Restaurant::with(['user', 'categories'])->where('user_id', $user_id)->first();
 
             return view('admin.noRestaurant.index', compact('restaurant_exists', 'restaurant'));
 

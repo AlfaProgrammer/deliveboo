@@ -26,6 +26,16 @@
             <div class="invalid-feedback">{{$message}}</div>
             @enderror
         </div>
+
+        @foreach ($allergens as $allergen)  
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" {{$plate->allergens->contains($allergen) ? 'checked' : ''}} type="checkbox" name="allergens[]" id="allergens-{{$allergen->id}}" value="{{$allergen->id}}">
+                <label class="form-check-label" for="inlineCheckbox1">{{$allergen->name}}</label>
+            </div>
+        @endforeach
+        @error('allergens')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
         
         <div class="form-group">
             <label for="description">Descrizione</label>

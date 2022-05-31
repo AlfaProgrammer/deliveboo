@@ -22,6 +22,16 @@
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div>
+
+            @foreach ($categories as $category)  
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="categories[]" id="categories-{{$category->id}}" value="{{$category->id}}">
+                    <label class="form-check-label" for="inlineCheckbox1">{{$category->name}}</label>
+                </div>
+                @error('categories')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            @endforeach
             
             <div class="form-group">
                 <label for="info">Descrizione</label>

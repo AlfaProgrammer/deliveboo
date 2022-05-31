@@ -9,7 +9,7 @@
             
             <div class="form-group">
                 <label for="name">Nome</label>
-                <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" name="name" placeholder="Inserisci il nome del piatto" value="{{old('name')}}">
+                <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" name="name" placeholder="Inserisci il nome del ristorante" value="{{old('name')}}">
                 @error('name')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
@@ -42,7 +42,7 @@
             
             <div class="form-group">
                 <label for="info">Descrizione</label>
-                <textarea class="form-control" id="FormControlTextarea1" name="info" rows="3" placeholder="Inserisci il contenuto del post">{{old('info')}}</textarea>
+                <textarea class="form-control" id="FormControlTextarea1" name="info" rows="3" placeholder="Inserisci Descrizione">{{old('info')}}</textarea>
                 @error('info')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror

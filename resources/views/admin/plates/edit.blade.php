@@ -47,7 +47,7 @@
         
         <div class="form-group">
             <label for="description">Descrizione</label>
-            <textarea class="form-control" id="FormControlTextarea1" name="description" rows="3" placeholder="Inserisci il contenuto del post">{{old('description') ? old('description') : $plate->description }}
+            <textarea class="form-control" id="FormControlTextarea1" name="description" rows="3" placeholder="Inserisci descrizione piatto">{{old('description') ? old('description') : $plate->description }}
             </textarea>
             @error('description')
             <div class="invalid-feedback">{{$message}}</div>

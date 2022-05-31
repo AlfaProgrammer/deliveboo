@@ -25,20 +25,31 @@ class HomeController extends Controller
     public function index(Restaurant $restaurant, User $user)
     {
 
-        $user_id = Auth::id();
+        // Questa funzionalità si potra utilizzare similmente quando inseriremo foreign-key di restaurant in users table
+        // $restaurant_exists = Restaurant::where('user_id', $user_id)->exists();
 
-        $restaurant_exists = Restaurant::where('user_id', $user_id)->exists();
+        $user = Auth::user();
+        $restaurant = $user->restaurant;
+        return  view('admin.noRestaurant.index', compact('restaurant', 'user') );
+        
 
-        if ($restaurant_exists) {
+        
 
+<<<<<<< HEAD
             $restaurant = Restaurant::with(['user', 'categories'])->where('user_id', $user_id)->first();
+=======
+        // if ($restaurant_exists) {
+>>>>>>> 1a04e2e8221bdd920c010d5a9a0c9da03f4b18b9
 
-            return view('admin.noRestaurant.index', compact('restaurant_exists', 'restaurant'));
+        //     $restaurant = Restaurant::with(['user'])->where('user_id', $user_id)->first();
+        //     // dd($restaurant);
 
-        }else {
+        //     return view('admin.noRestaurant.index', compact('restaurant_exists', 'restaurant'));
+
+        // }else {
             
-            return view('admin.noRestaurant.index', compact('restaurant_exists'));
-        }
+        //     return view('admin.noRestaurant.index', compact('restaurant_exists'));
+        // }
 
         
     }

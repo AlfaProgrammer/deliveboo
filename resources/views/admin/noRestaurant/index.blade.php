@@ -14,9 +14,13 @@
 
             <h3><a href="{{route('admin.plates.index')}}">{{ $user->company_name}}</a></h3>
 
-            @foreach ($restaurant->categories as $category)
-                <span class="badge rounded-pill bg-success mb-2">{{$category->name}}</span>
-            @endforeach
+            @if($restaurant->categories)
+
+                @foreach ($restaurant->categories as $category)
+                    <span class="badge rounded-pill bg-success mb-2">{{$category->name}}</span>
+                @endforeach
+
+            @endif
 
             <p class="description">
                 {{$restaurant->info ? $restaurant->info : 'Nessuna descrizione'}}

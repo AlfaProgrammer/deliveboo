@@ -6,13 +6,10 @@
         <h1>{{$plate['name']}}</h1>
         <h3>{{$plate['slug']}}</h3>
 
-
-        {{-- <div>
+        <div>
             Immagine
-            @if($plate->image)
-            <img src="{{ asset('storage/'.$plate->image) }}" height="50" alt="">
-            @endif
-        </div> --}}
+            <img src="{{ $plate->image ?: '' }}" height="50" alt="">
+        </div>
         
         @foreach ($plate->allergens as $allergen)
             <span class="badge rounded-pill bg-success mb-2">{{$allergen->name}}</span>

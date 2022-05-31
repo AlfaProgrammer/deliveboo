@@ -23,7 +23,6 @@
                 @enderror
             </div>
 
-<<<<<<< HEAD
             @foreach ($categories as $category)  
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" name="categories[]" id="categories-{{$category->id}}" value="{{$category->id}}">
@@ -33,7 +32,6 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             @endforeach
-=======
             {{-- <div class="form-group">
                 <label for="image">Immagine</label>
                 <input class="form-control form-control-lg @error('image') is-invalid @enderror" type="text" name="image" placeholder="url immagine piatto" value="{{old('image')}}">
@@ -41,7 +39,6 @@
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div> --}}
->>>>>>> 1a04e2e8221bdd920c010d5a9a0c9da03f4b18b9
             
             <div class="form-group">
                 <label for="info">Descrizione</label>

@@ -16,14 +16,12 @@ class PlateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Plate $plate)
     {
         $user = Auth::user();
 
-        $res_id = Restaurant::getRestaurantId();
-
-        $plates = Plate::with('restaurant')->where('restaurant_id', $res_id)->get();
-
+        $restaurant = $user->restaurant;
+        $plates = $restaurant->plates;
 
         return view('admin.plates.index', compact('plates', 'user'));
     }

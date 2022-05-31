@@ -30,12 +30,14 @@ class HomeController extends Controller
 
         $user = Auth::user();
         $restaurant = $user->restaurant;
-        $categories = $restaurant->categories;
-        return  view('admin.noRestaurant.index', compact('restaurant', 'user', 'categories') );
         
+        if($restaurant) {
+            $categories = $restaurant->categories;
+            return  view('admin.noRestaurant.index', compact('restaurant', 'user', 'categories') );
+        }
 
+        return view('admin.noRestaurant.index', compact('restaurant', 'user'));
         
-
             /* $restaurant = Restaurant::with(['user', 'categories'])->where('user_id', $user_id)->first(); */
         // if ($restaurant_exists) {
 

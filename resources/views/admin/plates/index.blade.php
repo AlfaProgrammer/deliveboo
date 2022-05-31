@@ -8,7 +8,7 @@
         <img src="{{ $user->restaurant->image }}" alt="">
             @foreach ($plates as $plate)
                 <div>
-                    <img src="{{ $plate->image ?: '' }}" style="width: 150px">
+                    <img src="{{ $plate->image ?: '' }}" style="width: 100px">
                     <a href="{{route('admin.plates.show', $plate)}}">{{$plate['name']}}</a>
                 </div>
 

@@ -50,7 +50,7 @@ class RestaurantController extends Controller
 
         if(array_key_exists('image', $data)) {
             $image_path = Storage::put('uploads', $data['image']);
-            $data['image'] = $image_path;
+            $data['image'] = url('storage/' . $image_path);
         }
 
         

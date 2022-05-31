@@ -143,16 +143,15 @@ class PlateController extends Controller
             $data['slug'] = $slug;
         } 
 
-<<<<<<< HEAD
         if (array_key_exists('allergens', $data)) {
             $plate->allergens()->sync($data['allergens']);
         } else {
             $plate->allergens()->sync([]);
-=======
+        }
+        
         if(array_key_exists('image', $data)) {
             $image_path = Storage::put('uploads', $data['image']);
             $data['image'] = $image_path;
->>>>>>> 1a04e2e8221bdd920c010d5a9a0c9da03f4b18b9
         }
         
         $plate->update($data);

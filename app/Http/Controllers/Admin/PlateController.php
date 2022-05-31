@@ -93,6 +93,8 @@ class PlateController extends Controller
      */
     public function show(Plate $plate)
     {
+        
+
         return view('admin.plates.show', compact('plate'));
     }
 
@@ -104,7 +106,9 @@ class PlateController extends Controller
      */
     public function edit(Plate $plate)
     {
-        return view('admin.plates.edit',compact('plate')); 
+        $allergens = Allergen::all();
+
+        return view('admin.plates.edit',compact('plate', 'allergens')); 
     }
 
     /**
@@ -121,7 +125,8 @@ class PlateController extends Controller
             'image' => 'nullable|url|string|max:255',
             'description' => 'nullable|string',
             'price' => "required|numeric|min:0.00|max:999.99",
-            'available' => 'required|boolean'
+            'available' => 'required|boolean',
+            'allergens' => 'exists:allergens,id',
         ]);
 
         $data = $request->all();
@@ -131,6 +136,12 @@ class PlateController extends Controller
             $slug = Plate::getUniqueSlug( $data['name']);
             $data['slug'] = $slug;
         } 
+
+        if (array_key_exists('allergens', $data)) {
+            $plate->allergens()->sync($data['allergens']);
+        } else {
+            $plate->allergens()->sync([]);
+        }
         
         $plate->update($data);
 

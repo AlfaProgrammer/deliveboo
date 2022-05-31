@@ -11,6 +11,10 @@
             <img src="{{$plate['image']}}" alt="">
         </div>
         
+        @foreach ($plate->allergens as $allergen)
+            <span class="badge rounded-pill bg-success mb-2">{{$allergen->name}}</span>
+        @endforeach
+
         <p>{{$plate['description']}}</p>
 
 

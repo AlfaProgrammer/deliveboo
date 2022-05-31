@@ -5,6 +5,7 @@
     <div class="container" >
         @if ($plates)
         <h3>{{$user->restaurant->name}}</h3>
+        <img src="{{ $user->restaurant->image }}" alt="">
             @foreach ($plates as $plate)
                 <div>
                     <a href="{{route('admin.plates.show', $plate)}}">{{$plate['name']}}</a>

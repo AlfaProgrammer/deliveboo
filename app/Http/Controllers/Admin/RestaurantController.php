@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Restaurant;
 use App\Plate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 
 class RestaurantController extends Controller
@@ -34,7 +35,7 @@ class RestaurantController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:50',
-            'image' => 'nullable|url|string|max:255',
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png|max:2048',
             'info' => 'nullable|string',
             'cap' => "required|min:5|max:5",
             'address' => 'required|string|max:80',
@@ -42,6 +43,11 @@ class RestaurantController extends Controller
         ]);
 
         $data = $request->all();
+
+        if(array_key_exists('image', $data)) {
+            $image_path = Storage::put('uploads', $data['image']);
+            $data['image'] = $image_path;
+        }
 
         
         $slug = Plate::getUniqueSlug( $data['name']);

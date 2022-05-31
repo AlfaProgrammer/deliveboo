@@ -8,6 +8,7 @@ use App\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PlateController extends Controller
 {
@@ -49,13 +50,18 @@ class PlateController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:50',
-            'image' => 'nullable|url|string|max:255',
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png|max:2048',
             'description' => 'nullable|string',
             'price' => "required|numeric|min:0.00|max:999.99",
             'available' => 'required|boolean'
         ]);
 
         $data = $request->all();
+
+        if(array_key_exists('image', $data)) {
+            $image_path = Storage::put('uploads', $data['image']);
+            $data['image'] = $image_path;
+        }
 
         
         $slug = Plate::getUniqueSlug( $data['name']);
@@ -108,7 +114,7 @@ class PlateController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:50',
-            'image' => 'nullable|url|string|max:255',
+            'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png|max:2048',
             'description' => 'nullable|string',
             'price' => "required|numeric|min:0.00|max:999.99",
             'available' => 'required|boolean'
@@ -121,6 +127,11 @@ class PlateController extends Controller
             $slug = Plate::getUniqueSlug( $data['name']);
             $data['slug'] = $slug;
         } 
+
+        if(array_key_exists('image', $data)) {
+            $image_path = Storage::put('uploads', $data['image']);
+            $data['image'] = $image_path;
+        }
         
         $plate->update($data);
 

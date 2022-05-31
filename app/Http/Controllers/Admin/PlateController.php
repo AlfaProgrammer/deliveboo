@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Allergen;
 use App\Http\Controllers\Controller;
 use App\Plate;
 use App\Restaurant;
@@ -35,7 +36,9 @@ class PlateController extends Controller
      */
     public function create()
     {
-        return view('admin.plates.create');
+        $allegens = Allergen::all();
+
+        return view('admin.plates.create', compact('allergens'));
     }
 
     /**

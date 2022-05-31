@@ -9,8 +9,11 @@
                 <div>
                     <a href="{{route('admin.plates.show', $plate)}}">{{$plate['name']}}</a>
                 </div>
-            
-                
+
+                @foreach ($plate->allergens as $allergen)
+                    <span class="badge rounded-pill bg-success mb-2">{{$allergen->name}}</span>
+                @endforeach
+
             @endforeach
 
             <div>

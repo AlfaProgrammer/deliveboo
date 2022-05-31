@@ -17,6 +17,14 @@
             <p class="description">
                 {{$restaurant->info ? $restaurant->info : 'Nessuna descrizione'}}
             </p>
+
+            {{-- <div>
+                Immagine
+                @if($restaurant->image)
+                <img src="{{ asset('storage/'.$restaurant->image) }}" height="50" alt="">
+                @endif
+            </div> --}}
+
             <a href="{{route('admin.plates.index')}}" type="button" class="btn btn-primary">Visualizza Piatti</a>
         </div>        
 

@@ -6,10 +6,13 @@
         <h1>{{$plate['name']}}</h1>
         <h3>{{$plate['slug']}}</h3>
 
-        <div>
+
+        {{-- <div>
             Immagine
-            <img src="{{$plate['image']}}" alt="">
-        </div>
+            @if($plate->image)
+            <img src="{{ asset('storage/'.$plate->image) }}" height="50" alt="">
+            @endif
+        </div> --}}
         
         <p>{{$plate['description']}}</p>
 

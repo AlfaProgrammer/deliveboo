@@ -6,7 +6,7 @@
 
     <h1>Modifica il tuo piatto</h1>
     
-    <form action="{{ route('admin.plates.update',$plate) }}" method="POST">
+    <form action="{{ route('admin.plates.update',$plate) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         @method('PUT')
@@ -19,9 +19,17 @@
             @enderror
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="image">Immagine</label>
             <input class="form-control form-control-lg @error('image') is-invalid @enderror" type="text" name="image" placeholder="url immagine piatto" value="{{old('image') ? old('image') : $plate->image}}">
+            @error('image')
+            <div class="invalid-feedback">{{$message}}</div>
+            @enderror
+        </div> --}}
+
+        <div class="form-group">
+            <label for="image">Immagine</label>
+            <input accept=".jpg,.png" class="form-control form-control-lg @error('image') is-invalid @enderror" type="file" name="image" value="{{old('image')}}">
             @error('image')
             <div class="invalid-feedback">{{$message}}</div>
             @enderror
@@ -29,8 +37,7 @@
         
         <div class="form-group">
             <label for="description">Descrizione</label>
-            <textarea class="form-control" id="FormControlTextarea1" name="description" rows="3" placeholder="Inserisci il contenuto del post">
-                {{old('description') ? old('description') : $plate->description }}
+            <textarea class="form-control" id="FormControlTextarea1" name="description" rows="3" placeholder="Inserisci il contenuto del post">{{old('description') ? old('description') : $plate->description }}
             </textarea>
             @error('description')
             <div class="invalid-feedback">{{$message}}</div>

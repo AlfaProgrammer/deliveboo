@@ -23,7 +23,7 @@ class PlateController extends Controller
 
         $res_id = Restaurant::getRestaurantId();
 
-        $plates = Plate::with('restaurant')->where('restaurant_id', $res_id)->get();
+        $plates = Plate::with(['restaurant', 'allergens'])->where('restaurant_id', $res_id)->get();
 
 
         return view('admin.plates.index', compact('plates', 'user'));
@@ -36,7 +36,7 @@ class PlateController extends Controller
      */
     public function create()
     {
-        $allegens = Allergen::all();
+        $allergens = Allergen::all();
 
         return view('admin.plates.create', compact('allergens'));
     }
@@ -55,7 +55,8 @@ class PlateController extends Controller
             'image' => 'nullable|url|string|max:255',
             'description' => 'nullable|string',
             'price' => "required|numeric|min:0.00|max:999.99",
-            'available' => 'required|boolean'
+            'available' => 'required|boolean',
+            'allergens' => 'exists:allergens,id',
         ]);
 
         $data = $request->all();
@@ -72,6 +73,12 @@ class PlateController extends Controller
         $plate->slug = $slug;
 
         $plate->save();
+
+        if (array_key_exists('allergens', $data)) {
+            $plate->allergens()->attach($data['allergens']);
+        } else {
+            $plate->allergens()->attach([]);
+        }
 
         // dd($plate);
 

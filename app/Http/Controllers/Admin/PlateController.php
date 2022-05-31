@@ -81,6 +81,14 @@ class PlateController extends Controller
      */
     public function show(Plate $plate)
     {
+        $user = Auth::user();
+        $restaurant = $user->restaurant;
+        //dd($restaurant->id);
+
+        if($restaurant->id != $plate->restaurant_id) {
+            return back();
+        }
+
         return view('admin.plates.show', compact('plate'));
     }
 

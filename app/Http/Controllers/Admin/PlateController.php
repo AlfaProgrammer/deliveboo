@@ -81,13 +81,10 @@ class PlateController extends Controller
      */
     public function show(Plate $plate)
     {
-        $user = Auth::user();
-        $restaurant = $user->restaurant;
-        //dd($restaurant->id);
-
-        if($restaurant->id != $plate->restaurant_id) {
+        // controllo se viene modificato url id piatto
+        if(Plate::validationUrlIdPlate($plate->restaurant_id)) {
             return back();
-        }
+        };
 
         return view('admin.plates.show', compact('plate'));
     }
@@ -100,6 +97,12 @@ class PlateController extends Controller
      */
     public function edit(Plate $plate)
     {
+
+        // controllo se viene modificato url id piatto
+        if(Plate::validationUrlIdPlate($plate->restaurant_id)) {
+            return back();
+        };
+
         return view('admin.plates.edit',compact('plate')); 
     }
 

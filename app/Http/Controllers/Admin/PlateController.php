@@ -24,10 +24,9 @@ class PlateController extends Controller
 
         $restaurant = $user->restaurant;
         $plates = $restaurant->plates;
-        $allergens = $plates->allergens;
-        dd($allergens);
+        $plates->load('allergens');
 
-        return view('admin.plates.index', compact('plates', 'user', 'allergens'));
+        return view('admin.plates.index', compact('plates', 'user'));
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use illuminate\Support\Str;
 
 class Restaurant extends Model
 {
@@ -39,5 +40,31 @@ class Restaurant extends Model
         $restaurant_id = $restaurant['id'];
 
         return $restaurant_id;
+    }
+
+    /* 
+     * static function for unique slug in create restaurant form
+    */
+     
+    public static function getUniqueSlug($name) {
+
+        // creazione slug 
+
+        $slug = Str::slug($name);
+        $slugBase = $slug;
+        $counter = 1;
+
+        $restaurant_present = Restaurant::where('slug', $slug)->first();
+
+        // controllo slug esiste
+
+        while ($restaurant_present) {
+
+            $slug = $slugBase . '-' . $counter;
+            $counter++;
+            $restaurant_present = Restaurant::where('slug', $slug)->first();
+        };
+
+        return $slug;
     }
 }

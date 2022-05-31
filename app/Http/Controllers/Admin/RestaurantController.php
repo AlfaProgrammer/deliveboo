@@ -44,7 +44,7 @@ class RestaurantController extends Controller
         $data = $request->all();
 
         
-        $slug = Plate::getUniqueSlug( $data['name']);
+        $slug = Restaurant::getUniqueSlug( $data['name']);
 
         $restaurant = new Restaurant();
 

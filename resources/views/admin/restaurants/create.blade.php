@@ -9,7 +9,7 @@
             
             <div class="form-group">
                 <label for="name">Nome</label>
-                <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" name="name" placeholder="Inserisci il nome del piatto" value="{{old('name')}}">
+                <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" name="name" placeholder="Inserisci il nome del ristorante" value="{{old('name')}}">
                 @error('name')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
@@ -23,6 +23,15 @@
                 @enderror
             </div>
 
+            @foreach ($categories as $category)  
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="categories[]" id="categories-{{$category->id}}" value="{{$category->id}}">
+                    <label class="form-check-label" for="inlineCheckbox1">{{$category->name}}</label>
+                </div>
+                @error('categories')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            @endforeach
             {{-- <div class="form-group">
                 <label for="image">Immagine</label>
                 <input class="form-control form-control-lg @error('image') is-invalid @enderror" type="text" name="image" placeholder="url immagine piatto" value="{{old('image')}}">
@@ -33,7 +42,7 @@
             
             <div class="form-group">
                 <label for="info">Descrizione</label>
-                <textarea class="form-control" id="FormControlTextarea1" name="info" rows="3" placeholder="Inserisci il contenuto del post">{{old('info')}}</textarea>
+                <textarea class="form-control" id="FormControlTextarea1" name="info" rows="3" placeholder="Inserisci Descrizione">{{old('info')}}</textarea>
                 @error('info')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror

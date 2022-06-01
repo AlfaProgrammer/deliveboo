@@ -6,7 +6,6 @@
     
         <div class="container">
 
-            <h2>DashBoard</h2>
             <p>Cioa {{$user->name}}</p>
             <p>
                 Questa è la tua dashboard. Da qui puoi visualizzare la preview del tuo ristorante e
@@ -14,17 +13,19 @@
             </p>
 
             <h3><a href="{{route('admin.plates.index')}}">{{ $user->company_name}}</a></h3>
+
+            @if($restaurant->categories)
+
+                @foreach ($restaurant->categories as $category)
+                    <span class="badge rounded-pill bg-success mb-2">{{$category->name}}</span>
+                @endforeach
+
+            @endif
+
             <p class="description">
                 {{$restaurant->info ? $restaurant->info : 'Nessuna descrizione'}}
             </p>
-
-            {{-- <div>
-                Immagine
-                @if($restaurant->image)
-                <img src="{{ asset('storage/'.$restaurant->image) }}" height="50" alt="">
-                @endif
-            </div> --}}
-
+            
             <a href="{{route('admin.plates.index')}}" type="button" class="btn btn-primary">Visualizza Piatti</a>
         </div>        
 

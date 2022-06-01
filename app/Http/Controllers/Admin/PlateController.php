@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Allergen;
 use App\Http\Controllers\Controller;
 use App\Plate;
 use App\Restaurant;
@@ -17,14 +18,13 @@ class PlateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Plate $plate)
     {
         $user = Auth::user();
 
-        $res_id = Restaurant::getRestaurantId();
-
-        $plates = Plate::with('restaurant')->where('restaurant_id', $res_id)->get();
-
+        $restaurant = $user->restaurant;
+        $plates = $restaurant->plates;
+        $plates->load('allergens');
 
         return view('admin.plates.index', compact('plates', 'user'));
     }
@@ -36,7 +36,9 @@ class PlateController extends Controller
      */
     public function create()
     {
-        return view('admin.plates.create');
+        $allergens = Allergen::all();
+
+        return view('admin.plates.create', compact('allergens'));
     }
 
     /**
@@ -53,14 +55,15 @@ class PlateController extends Controller
             'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png|max:2048',
             'description' => 'nullable|string',
             'price' => "required|numeric|min:0.00|max:999.99",
-            'available' => 'required|boolean'
+            'available' => 'required|boolean',
+            'allergens' => 'exists:allergens,id',
         ]);
 
         $data = $request->all();
 
         if(array_key_exists('image', $data)) {
             $image_path = Storage::put('uploads', $data['image']);
-            $data['image'] = $image_path;
+            $data['image'] = url('storage/' . $image_path);
         }
 
         
@@ -76,6 +79,12 @@ class PlateController extends Controller
 
         $plate->save();
 
+        if (array_key_exists('allergens', $data)) {
+            $plate->allergens()->attach($data['allergens']);
+        } else {
+            $plate->allergens()->attach([]);
+        }
+
         // dd($plate);
 
         return redirect()->route('admin.plates.index'); 
@@ -89,6 +98,12 @@ class PlateController extends Controller
      */
     public function show(Plate $plate)
     {
+        
+        // controllo se viene modificato url id piatto
+        if(Plate::validationUrlIdPlate($plate->restaurant_id)) {
+            return back();
+        };
+
         return view('admin.plates.show', compact('plate'));
     }
 
@@ -100,7 +115,14 @@ class PlateController extends Controller
      */
     public function edit(Plate $plate)
     {
-        return view('admin.plates.edit',compact('plate')); 
+        $allergens = Allergen::all();
+
+        // controllo se viene modificato url id piatto
+        if(Plate::validationUrlIdPlate($plate->restaurant_id)) {
+            return back();
+        };
+
+        return view('admin.plates.edit',compact('plate', 'allergens')); 
     }
 
     /**
@@ -117,7 +139,8 @@ class PlateController extends Controller
             'image' => 'nullable|file|image|mimetypes:image/jpeg,image/png|max:2048',
             'description' => 'nullable|string',
             'price' => "required|numeric|min:0.00|max:999.99",
-            'available' => 'required|boolean'
+            'available' => 'required|boolean',
+            'allergens' => 'exists:allergens,id',
         ]);
 
         $data = $request->all();
@@ -128,9 +151,16 @@ class PlateController extends Controller
             $data['slug'] = $slug;
         } 
 
+        if (array_key_exists('allergens', $data)) {
+            $plate->allergens()->sync($data['allergens']);
+        } else {
+            $plate->allergens()->sync([]);
+        }
+        
         if(array_key_exists('image', $data)) {
             $image_path = Storage::put('uploads', $data['image']);
-            $data['image'] = $image_path;
+            $data['image'] = url('storage/' . $image_path);
+            //dd($data);
         }
         
         $plate->update($data);

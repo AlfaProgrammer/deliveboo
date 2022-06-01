@@ -5,6 +5,7 @@ namespace App;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Plate extends Model
 {
@@ -47,6 +48,18 @@ class Plate extends Model
         return $slug;
     }
 
+    // funzione per impedire la modifica dell'id del piatto tramite url
 
+    public static function validationUrlIdPlate($restId) {
+
+        $user = Auth::user();
+        $restaurant = $user->restaurant;
+        //dd($user);
+
+        if($restaurant->id != $restId) {
+            return true;
+        }
+
+    }
 
 }

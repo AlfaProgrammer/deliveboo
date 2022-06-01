@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Restaurant;
@@ -21,7 +22,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        return view('admin.restaurants.create');
+        $categories = Category::all();
+
+        return view('admin.restaurants.create', compact('categories'));
     }
 
     /**
@@ -39,18 +42,19 @@ class RestaurantController extends Controller
             'info' => 'nullable|string',
             'cap' => "required|min:5|max:5",
             'address' => 'required|string|max:80',
-            'city' => 'required|max:30'
+            'city' => 'required|max:30',
+            'categories' => 'exists:categories,id',
         ]);
 
         $data = $request->all();
 
         if(array_key_exists('image', $data)) {
             $image_path = Storage::put('uploads', $data['image']);
-            $data['image'] = $image_path;
+            $data['image'] = url('storage/' . $image_path);
         }
 
         
-        $slug = Plate::getUniqueSlug( $data['name']);
+        $slug = Restaurant::getUniqueSlug( $data['name']);
 
         $restaurant = new Restaurant();
 
@@ -62,6 +66,11 @@ class RestaurantController extends Controller
 
         $restaurant->save();
 
+        if (array_key_exists('categories', $data)) {
+            $restaurant->categories()->attach($data['categories']);
+        } else {
+            $restaurant->categories()->attach([]);
+        }
 
         return redirect()->route('admin.home'); 
     }

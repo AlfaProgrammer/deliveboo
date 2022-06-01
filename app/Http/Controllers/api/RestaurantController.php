@@ -33,9 +33,20 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $restaurant = Restaurant::with(['categories', 'plates'])
+            ->where('slug', $slug)
+            ->first();
+
+            return response()
+            ->json(
+                [
+                    'restaurant' => $restaurant,
+                    'success' => true,
+                ],
+            ); 
+        dd($restaurant);
     }
 
 }

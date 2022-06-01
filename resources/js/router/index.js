@@ -8,13 +8,19 @@ Vue.use(VueRouter);
 
 // qui andranno i componenti
 import Index from '../pages/plates/Index.vue';
+import show from '../pages/plates/show.vue'
 
 // costante dove andranno le rotte
 const routes = [
     {
         path: '/',
-        name: 'plates.index',
+        name: 'restaurant.index',
         component: Index,
+    },
+    {
+        path: '/restaurant/:slug',
+        name: 'restaurant.show',
+        component: show,
     },
 ];
 

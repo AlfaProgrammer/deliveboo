@@ -8,6 +8,12 @@ export default {
     
 }
 </script>
-<style lang="">
-    
+<style lang="scss">
+    img{
+        width: 100%;
+    }
+    body{
+        background: #fff;
+        color: #000;
+    }
 </style>

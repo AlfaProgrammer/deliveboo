@@ -42,7 +42,7 @@ class RestaurantSeeder extends Seeder
             ],
             [
                 "name" => " Ostrica Ubriaca ",
-                "image" => "https://static.wikia.nocookie.net/familyguyfanon/images/5/59/The_Drunken_Clam.png/revision/latest?cb=20180405020510"
+                "image" => "https://images-ext-1.discordapp.net/external/W8eteklXI4opzd66qaFZejLzY4PnBFtUV-z_uwxYuoA/https/upload.wikimedia.org/wikipedia/it/thumb/a/ac/Drunken_Clam.jpg/440px-Drunken_Clam.jpg"
             ],
             [
                 "name" => " MOE's",
@@ -50,7 +50,7 @@ class RestaurantSeeder extends Seeder
             ],
             [
                 "name" => " Panucci Pizza ",
-                "image" => "https://static.wikia.nocookie.net/enfuturama/images/b/be/Jurassic_Bark_%28Main_Episode%29_-_475.png/revision/latest?cb=20211004104015"
+                "image" => "http://theinfosphere.org/images/0/0b/Panucci%27s_Pizza.jpg"
             ],
             [
                 "name" => " Los Pollos Hermanos ",
@@ -58,7 +58,7 @@ class RestaurantSeeder extends Seeder
             ],
             [
                 "name" => " Krusty Burger's ",
-                "image" => "https://static.wikia.nocookie.net/simpsons/images/7/70/800px-Krusty_Burger.png/revision/latest?cb=20170101221203"
+                "image" => "https://comicvine.gamespot.com/a/uploads/original/1/13181/1561757-krusty_burger.jpg"
             ],
             [
                 "name" => " Krusty crab ",
@@ -66,7 +66,7 @@ class RestaurantSeeder extends Seeder
             ],
             [
                 "name" => " Arnold's",
-                "image" => "https://static.wikia.nocookie.net/happydays/images/b/b8/Arnold%27s.png/revision/latest?cb=20141202065444"
+                "image" => "https://routesixteesix.com/wp-content/uploads/2020/02/Arnolds-s-Restaurant.png"
             ],        
             [
                 "name" => " Maclaren's Pub ",

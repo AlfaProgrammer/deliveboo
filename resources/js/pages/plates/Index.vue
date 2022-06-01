@@ -38,7 +38,6 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
 <style lang="scss" scoped>
     .card-wrapper{
         display: flex;
@@ -62,8 +61,5 @@ export default {
             }
         }
     }
-=======
-<style lang="scss">
     
->>>>>>> andrea-r-6
 </style>

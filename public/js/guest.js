@@ -1918,6 +1918,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
 //
 //
 //
@@ -1963,6 +1964,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+=======
+>>>>>>> andrea-r-6
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2051,6 +2054,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
@@ -37279,6 +37283,8 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 
+=======
+>>>>>>> andrea-r-6
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -38331,6 +38337,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+<<<<<<< HEAD
   return _c(
     "div",
     { staticClass: "card p-5 rounded-lg" },
@@ -38438,8 +38445,20 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [_vm._v("Ciao")])
+=======
+  return _vm._m(0)
+>>>>>>> andrea-r-6
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("main", {}, [
+      _c("div", { staticClass: "container" }, [_vm._v("\n        ciao\n    ")]),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -53813,6 +53832,7 @@ module.exports = g;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/webpack/buildin/module.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
@@ -53960,6 +53980,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+=======
+>>>>>>> andrea-r-6
 /***/ "./resources/js/guest.js":
 /*!*******************************!*\
   !*** ./resources/js/guest.js ***!
@@ -53976,9 +53998,10 @@ __webpack_require__.r(__webpack_exports__);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
+//require('./bootstrap');
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -54183,7 +54206,10 @@ __webpack_require__.r(__webpack_exports__);
  // dire a vue di usare vue-router
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // qui andranno i componenti
+<<<<<<< HEAD
 
+=======
+>>>>>>> andrea-r-6
 
  // costante dove andranno le rotte
 
@@ -54299,7 +54325,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

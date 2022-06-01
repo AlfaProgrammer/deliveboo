@@ -19,3 +19,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Questo  è il messaggio per provare il migrazione branch
+
+Route::namespace('api')
+    ->name('api.')
+    ->group(function(){
+        Route::resource('plates', 'PlateController')
+        ->only('index', 'show');
+    });
+
+Route::namespace('api')
+    ->name('api.')
+    ->group(function(){
+        Route::resource('restaurants', 'RestaurantController')
+        ->only('index', 'show');
+    });

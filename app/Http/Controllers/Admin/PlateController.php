@@ -117,14 +117,12 @@ class PlateController extends Controller
     {
         $allergens = Allergen::all();
 
-        return view('admin.plates.edit',compact('plate', 'allergens')); 
-
         // controllo se viene modificato url id piatto
         if(Plate::validationUrlIdPlate($plate->restaurant_id)) {
             return back();
         };
 
-        return view('admin.plates.edit',compact('plate')); 
+        return view('admin.plates.edit',compact('plate', 'allergens')); 
     }
 
     /**

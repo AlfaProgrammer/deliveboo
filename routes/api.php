@@ -23,5 +23,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('api')
     ->name('api.')
     ->group(function(){
-        Route::resource('plates', 'PlateController');
+        Route::resource('plates', 'PlateController')
+        ->only('index', 'show');
+    });
+
+Route::namespace('api')
+    ->name('api.')
+    ->group(function(){
+        Route::resource('restaurant', 'RestaurantController')
+        ->only('index', 'show');
     });

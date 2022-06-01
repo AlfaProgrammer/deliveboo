@@ -12,7 +12,7 @@ import Index from '../pages/plates/Index.vue';
 // costante dove andranno le rotte
 const routes = [
     {
-        path: '/plates',
+        path: '/',
         name: 'plates.index',
         component: Index,
     },

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PlateController extends Controller
+class RestaurantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class PlateController extends Controller
      */
     public function index()
     {
-        // return response()->json([
-        //     ''
-        // ])
+        //
     }
 
     /**

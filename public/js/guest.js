@@ -53114,7 +53114,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
  // costante dove andranno le rotte
 
 var routes = [{
-  path: '/plates',
+  path: '/',
   name: 'plates.index',
   component: _pages_plates_Index_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }]; // istanziare vue router

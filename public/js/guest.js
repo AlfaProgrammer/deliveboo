@@ -1913,7 +1913,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      restaurants: []
+    };
+  },
+  methods: {
+    fetchRestaurant: function fetchRestaurant() {
+      var _this = this;
+
+      axios.get('/api/restaurants').then(function (res) {
+        var restaurants = res.data.restaurants;
+        _this.restaurants = restaurants;
+        console.log(_this.restaurants);
+      });
+    }
+  },
+  beforeMount: function beforeMount() {
+    this.fetchRestaurant();
+  }
+});
 
 /***/ }),
 

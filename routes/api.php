@@ -30,6 +30,6 @@ Route::namespace('api')
 Route::namespace('api')
     ->name('api.')
     ->group(function(){
-        Route::resource('restaurant', 'RestaurantController')
+        Route::resource('restaurants', 'RestaurantController')
         ->only('index', 'show');
     });

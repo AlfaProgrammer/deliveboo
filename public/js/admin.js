@@ -47849,27 +47849,15 @@ try {
 
 /***/ }),
 
-/***/ "./resources/sass/front.scss":
-/*!***********************************!*\
-  !*** ./resources/sass/front.scss ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!*******************************************************************************************!*\
-  !*** multi ./resources/js/admin.js ./resources/sass/app.scss ./resources/sass/front.scss ***!
-  \*******************************************************************************************/
+/*!***************************************************************!*\
+  !*** multi ./resources/js/admin.js ./resources/sass/app.scss ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\admin.js */"./resources/js/admin.js");
-__webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\sass\front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\admin.js */"./resources/js/admin.js");
+module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

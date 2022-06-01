@@ -7,12 +7,12 @@
         <h3>{{$plate['slug']}}</h3>
 
 
-        {{-- <div>
+        <div>
             Immagine
             @if($plate->image)
             <img src="{{ asset('storage/'.$plate->image) }}" height="50" alt="">
             @endif
-        </div> --}}
+        </div>
         
         <p>{{$plate['description']}}</p>
 

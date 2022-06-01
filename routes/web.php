@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guest.index');
 });
 
 Auth::routes();
@@ -32,3 +32,7 @@ Route::middleware('auth')
             ]);
 
         });
+
+Route::fallback(function() {
+    return view('guest.index');
+});

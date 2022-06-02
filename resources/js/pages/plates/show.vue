@@ -16,7 +16,7 @@
             <h1>Piatti</h1>
             <div class="my-32 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
 
-                <div class="p-3 flex dimerda" v-for="plate in restaurant.plates" :key="plate.id">
+                <div class="p-3 flex" v-for="plate in restaurant.plates" :key="plate.id">
                     <div class="basis-2/3">
                         <p>{{plate.name}}</p>
                         <div><span>{{plate.price}}</span>   <span :class="plate.available ? 'bg-green-600' : 'bg-red-500' ">{{plate.available ? 'Disponibile' : 'Non disponibile'}}</span></div>  
@@ -62,6 +62,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-    
+<style>
+
 </style>

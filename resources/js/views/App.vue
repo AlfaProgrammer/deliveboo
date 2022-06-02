@@ -11,6 +11,7 @@ export default {
 <style lang="scss">
     img{
         width: 100%;
+        display: block;
     }
     body{
         background: #fff;

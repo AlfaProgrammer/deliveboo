@@ -35,18 +35,21 @@ class RestaurantController extends Controller
      */
     public function show($slug)
     {
-        $restaurant = Restaurant::with(['categories', 'plates'])
+        $restaurant = Restaurant::with(['categories'])
             ->where('slug', $slug)
             ->first();
+
+        $plates = $restaurant->plates()->where('available', 1)->get();
 
             return response()
             ->json(
                 [
                     'restaurant' => $restaurant,
+                    'plates' => $plates,
                     'success' => true,
                 ],
             ); 
-        dd($restaurant);
+        //dd($restaurant);
     }
 
 }

@@ -1,6 +1,8 @@
 <template lang="">
     <main class="container">
-        <div class="card-wrapper">
+        <h1 class="text-center text-6xl font-bold mb-10">Deliveboo</h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:cols-3 lg:grid-cols-4 gap-6">
             <RestaurantCard
                 v-for="restaurant in restaurants"
                 :key="restaurant.id"
@@ -39,27 +41,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .card-wrapper{
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        justify-content: center;
-        flex-wrap: wrap;
-
-        .card{
-            width: 300px;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-
-            .categories-wrapper{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-        }
-    }
     
 </style>

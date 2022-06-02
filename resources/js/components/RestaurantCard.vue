@@ -1,22 +1,25 @@
 <template>
-    <div class="card p-5 rounded-lg">
-        <img :src="restaurant.image" alt="">
-        <h3>{{restaurant.name}}</h3>
-        <p>{{restaurant.city}}</p>
-    
-        <div class="categories-wrapper">
-            <span class="rounded-full bg-sky-500"
-            v-for="category in restaurant.categories"
-            :key="category.id">
-    
-                {{category.name}}
-                
-            </span>
-        </div>
-        <router-link :to="{name: 'restaurant.show', params: {slug:restaurant.slug}}" >Esplora</router-link>
+    <div class="rounded overflow-hidden bg-stone-100 border border-stone-200 shadow-lg shadow-stone-400 hover:cursor-pointer">
+        <router-link :to="{name: 'restaurant.show', params: {slug:restaurant.slug}}" >
+
+            <figure class="mb-3">
+                <img :src="restaurant.image" class="object-cover object-center">
+            </figure>
+            <div class="px-2 mb-2">
+                <h3>{{restaurant.name}}</h3>
+            </div>
+            <div class="flex items-center gap-2 px-2 mb-2">
+                <span class="rounded-full bg-sky-500 px-3"
+                v-for="category in restaurant.categories"
+                :key="category.id">
+        
+                    {{category.name}}
+                    
+                </span>
+            </div>
+
+        </router-link>
     </div> 
-            
-    
 </template>
 
 <script>
@@ -29,6 +32,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+    img {
+        aspect-ratio: 16/9;
+    }
 
 </style>

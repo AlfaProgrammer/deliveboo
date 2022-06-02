@@ -12,9 +12,14 @@
                     <img :src="restaurant.image" class="restaurant-cover">
                 </figure>
                 <div class="grow">
-                    <h1 class="font-bold text-4xl">{{restaurant.name}}</h1>
-                    <span v-for="category in restaurant.categories" :key="category.id" class="rounded-full bg-sky-500">{{category.name}}</span>
-                    <div>{{restaurant.city}}, {{restaurant.address}}</div>
+                    <h1 class="font-bold text-4xl mb-3">{{restaurant.name}}</h1>
+                    <span v-for="category in restaurant.categories" :key="category.id" 
+                    class="rounded-full bg-sky-500 mb-2 flex items-center gap-2 px-2">
+                        {{category.name}}
+                    </span>
+                    <div>
+                        {{restaurant.city}}, {{restaurant.address}}
+                    </div>
                 </div>
             </div>
 

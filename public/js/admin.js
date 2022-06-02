@@ -47790,7 +47790,34 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 var app = new Vue({
   el: '#app'
-});
+}); // // Register Form Validations 
+// // const inputFields = document.getElementsByTagName('input');
+// const password1 = document.getElementById('password');
+// const password2 = document.getElementById('password-confirm');
+// const form = document.getElementById('register-form');
+// const errorMessage = document.getElementById('errorMessage');
+// const submitButton = document.getElementById('register-submit-button');
+// function validateForm(){
+//     let isValid = form.checkValidity();
+//     let err;
+//     if(isValid){
+//         return isValid
+//     }
+//     // check password match
+//     if( password1.value === password2.value ){
+//         err = 'La verifica della password non corrisponde'
+//         return err
+//     }
+// }
+// submitButton.addEventListener('click', validateBeforeSubmit(e) )
+// function validateBeforeSubmit(e){
+//     e.preventDefault();
+//     if( validateForm() ){
+//         form.submit();
+//     }else{
+//         errorMessage.textContent = validateForm();
+//     }
+// }
 
 /***/ }),
 
@@ -47867,9 +47894,9 @@ try {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\admin.js */"./resources/js/admin.js");
-__webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\sass\front.scss */"./resources/sass/front.scss");
+__webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\admin.js */"./resources/js/admin.js");
+__webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\sass\front.scss */"./resources/sass/front.scss");
 
 
 /***/ })

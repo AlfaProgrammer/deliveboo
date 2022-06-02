@@ -2032,10 +2032,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       restaurant: null,
+      plates: null,
       slug: this.$route.params.slug,
       loading: false
     };
@@ -2046,10 +2049,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/restaurants/".concat(this.slug)).then(function (res) {
         /* this.restaurant = res.data */
-        var restaurant = res.data.restaurant;
+        var _res$data = res.data,
+            restaurant = _res$data.restaurant,
+            plates = _res$data.plates;
         _this.restaurant = restaurant;
-        console.log(_this.restaurant);
+        _this.plates = plates;
         _this.loading = true;
+        console.log(res.data);
       });
       /* .catch(err => {
           this.router.push('/404');
@@ -3363,15 +3369,18 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _vm.loading
     ? _c("div", { staticClass: "container" }, [
-        _c("header", { staticClass: "flex" }, [
-          _c("div", [
-            _c("img", { attrs: { src: _vm.restaurant.image, alt: "" } }),
+        _c("section", { staticClass: "flex" }, [
+          _c("figure", { staticClass: "max-w-sm" }, [
+            _c("img", { attrs: { src: _vm.restaurant.image } }),
           ]),
           _vm._v(" "),
           _c(
             "div",
+            { staticClass: "grow" },
             [
-              _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
+              _c("h1", { staticClass: "font-bold text-4xl" }, [
+                _vm._v(_vm._s(_vm.restaurant.name)),
+              ]),
               _vm._v(" "),
               _vm._l(_vm.restaurant.categories, function (category) {
                 return _c(
@@ -3393,40 +3402,24 @@ var render = function () {
           ),
         ]),
         _vm._v(" "),
-        _c("main", [
+        _c("section", [
           _c("h1", [_vm._v("Piatti")]),
           _vm._v(" "),
           _c(
             "div",
             {
               staticClass:
-                "my-32 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10",
+                "grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10",
             },
-            _vm._l(_vm.restaurant.plates, function (plate) {
-              return _c("div", { key: plate.id, staticClass: "p-3 flex" }, [
-                _c("div", { staticClass: "basis-2/3" }, [
+            _vm._l(_vm.plates, function (plate) {
+              return _c("div", { key: plate.id }, [
+                _c("div", {}, [
                   _c("p", [_vm._v(_vm._s(plate.name))]),
                   _vm._v(" "),
-                  _c("div", [
-                    _c("span", [_vm._v(_vm._s(plate.price))]),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        class: plate.available ? "bg-green-600" : "bg-red-500",
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(
-                            plate.available ? "Disponibile" : "Non disponibile"
-                          )
-                        ),
-                      ]
-                    ),
-                  ]),
+                  _c("div", [_c("span", [_vm._v(_vm._s(plate.price))])]),
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "basis-1/3 border border-gray-300" }, [
+                _c("div", {}, [
                   _c("img", { attrs: { src: plate.image, alt: "" } }),
                 ]),
               ])
@@ -19220,7 +19213,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\developer\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

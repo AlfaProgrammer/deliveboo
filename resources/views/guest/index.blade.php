@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{{ asset('css/front.css') }}">
     </head>
     <body>
-        <div class="bg-red-600">
+        <div class="bg-red-600 mb-6">
             @if (Route::has('login'))
                 <div class="">
                     @auth

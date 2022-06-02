@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Plate;
 use App\Restaurant;
 use Illuminate\Http\Request;
 
@@ -35,14 +36,19 @@ class RestaurantController extends Controller
      */
     public function show($slug)
     {
-        $restaurant = Restaurant::with(['categories', 'plates'])
+        $restaurant = Restaurant::with(['categories',])
             ->where('slug', $slug)
             ->first();
+
+        $res_id = $restaurant->id;
+
+        $plates = Plate::where('available', 1)->where('restaurant_id', $res_id)->get();
 
             return response()
             ->json(
                 [
                     'restaurant' => $restaurant,
+                    'plates' => $plates,
                     'success' => true,
                 ],
             ); 

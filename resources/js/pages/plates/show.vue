@@ -13,16 +13,19 @@
         </header>
 
         <main>
-            <h1>Piatti</h1>
+            <h1 class="">Piatti</h1>
             <div class="my-32 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
 
-                <div class="p-3 flex" v-for="plate in restaurant.plates" :key="plate.id">
-                    <div class="basis-2/3">
-                        <p>{{plate.name}}</p>
-                        <div><span>{{plate.price}}</span>   <span :class="plate.available ? 'bg-green-600' : 'bg-red-500' ">{{plate.available ? 'Disponibile' : 'Non disponibile'}}</span></div>  
-                    </div>
-                    <div class="basis-1/3 border border-gray-300">
-                        <img :src="plate.image" alt="">
+                <div class="p-3 flex" v-for="plate in plates"  :key="plate.id">
+                    <div class="p-3 flex" v-if="plate.available">
+
+                        <div class="basis-2/3">
+                            <p>{{plate.name}}</p>
+                            <div><span>{{plate.price}}</span></div>  
+                        </div>
+                        <div class="basis-1/3 border border-gray-300">
+                            <img :src="plate.image" alt="">
+                        </div>
                     </div>
                 </div>
 
@@ -37,6 +40,7 @@ export default {
     data(){
         return {
             restaurant: null,
+            plates: null,
             slug: this.$route.params.slug,
             loading: false,
         }
@@ -46,8 +50,9 @@ export default {
             axios.get(`/api/restaurants/${this.slug}`)
                 .then(res => {
                     /* this.restaurant = res.data */
-                    const {restaurant} = res.data;
+                    const {restaurant, plates} = res.data;
                     this.restaurant = restaurant;
+                    this.plates = plates;
                     console.log(this.restaurant);
                     this.loading = true;
                 })

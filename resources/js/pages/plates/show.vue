@@ -4,9 +4,12 @@
         <div>
             <img :src="restaurant.image" alt="">
         </div>
-        <div>
+        <div class="bg-sky-500">
             <h1>{{restaurant.name}}</h1>
             <span></span>
+        </div>
+        <div class="grid grid-cols-4 gap-3">
+            <div v-for="n in 5" :key="n" class="font-bold">{{ n }}</div>
         </div>
     </div>
 

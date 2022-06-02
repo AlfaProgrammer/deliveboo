@@ -5,7 +5,7 @@
         <p>{{restaurant.city}}</p>
     
         <div class="categories-wrapper">
-            <span class=""
+            <span class="rounded-full bg-sky-500"
             v-for="category in restaurant.categories"
             :key="category.id">
     

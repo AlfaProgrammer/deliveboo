@@ -1,13 +1,33 @@
 <template>
 
-    <div class="container d-flex" v-if="loading">
-        <div>
-            <img :src="restaurant.image" alt="">
-        </div>
-        <div>
-            <h1>{{restaurant.name}}</h1>
-            <span></span>
-        </div>
+    <div class="container" v-if="loading">
+        <header class="flex">
+            <div>
+                <img :src="restaurant.image" alt="">
+            </div>
+            <div>
+                <h1>{{restaurant.name}}</h1>
+                <span v-for="category in restaurant.categories" :key="category.id" class="rounded-full bg-sky-500">{{category.name}}</span>
+                <div>{{restaurant.city}}, {{restaurant.address}}</div>
+            </div>
+        </header>
+
+        <main>
+            <h1>Piatti</h1>
+            <div class="my-32 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+
+                <div class="p-3 flex" v-for="plate in restaurant.plates" :key="plate.id">
+                    <div class="basis-2/3">
+                        <p>{{plate.name}}</p>
+                        <div><span>{{plate.price}}</span>   <span :class="plate.available ? 'bg-green-600' : 'bg-red-500' ">{{plate.available ? 'Disponibile' : 'Non disponibile'}}</span></div>  
+                    </div>
+                    <div class="basis-1/3 border border-gray-300">
+                        <img :src="plate.image" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </main>
     </div>
 
 </template>

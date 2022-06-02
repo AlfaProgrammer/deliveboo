@@ -2012,6 +2012,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3252,13 +3272,17 @@ var render = function () {
         "div",
         { staticClass: "categories-wrapper" },
         _vm._l(_vm.restaurant.categories, function (category) {
-          return _c("span", { key: category.id }, [
-            _vm._v(
-              "\n\n            " +
-                _vm._s(category.name) +
-                "\n            \n        "
-            ),
-          ])
+          return _c(
+            "span",
+            { key: category.id, staticClass: "rounded-full bg-sky-500" },
+            [
+              _vm._v(
+                "\n\n            " +
+                  _vm._s(category.name) +
+                  "\n            \n        "
+              ),
+            ]
+          )
         }),
         0
       ),
@@ -3338,15 +3362,77 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.loading
-    ? _c("div", { staticClass: "container d-flex" }, [
-        _c("div", [
-          _c("img", { attrs: { src: _vm.restaurant.image, alt: "" } }),
+    ? _c("div", { staticClass: "container" }, [
+        _c("header", { staticClass: "flex" }, [
+          _c("div", [
+            _c("img", { attrs: { src: _vm.restaurant.image, alt: "" } }),
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            [
+              _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
+              _vm._v(" "),
+              _vm._l(_vm.restaurant.categories, function (category) {
+                return _c(
+                  "span",
+                  { key: category.id, staticClass: "rounded-full bg-sky-500" },
+                  [_vm._v(_vm._s(category.name))]
+                )
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  _vm._s(_vm.restaurant.city) +
+                    ", " +
+                    _vm._s(_vm.restaurant.address)
+                ),
+              ]),
+            ],
+            2
+          ),
         ]),
         _vm._v(" "),
-        _c("div", [
-          _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
+        _c("main", [
+          _c("h1", [_vm._v("Piatti")]),
           _vm._v(" "),
-          _c("span"),
+          _c(
+            "div",
+            {
+              staticClass:
+                "my-32 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10",
+            },
+            _vm._l(_vm.restaurant.plates, function (plate) {
+              return _c("div", { key: plate.id, staticClass: "p-3 flex" }, [
+                _c("div", { staticClass: "basis-2/3" }, [
+                  _c("p", [_vm._v(_vm._s(plate.name))]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("span", [_vm._v(_vm._s(plate.price))]),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        class: plate.available ? "bg-green-600" : "bg-red-500",
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            plate.available ? "Disponibile" : "Non disponibile"
+                          )
+                        ),
+                      ]
+                    ),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "basis-1/3 border border-gray-300" }, [
+                  _c("img", { attrs: { src: plate.image, alt: "" } }),
+                ]),
+              ])
+            }),
+            0
+          ),
         ]),
       ])
     : _vm._e()

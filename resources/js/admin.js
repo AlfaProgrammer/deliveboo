@@ -31,3 +31,39 @@ window.Vue = require('vue');
 const app = new Vue({
     el: '#app',
 });
+
+
+// // Register Form Validations 
+// // const inputFields = document.getElementsByTagName('input');
+// const password1 = document.getElementById('password');
+// const password2 = document.getElementById('password-confirm');
+// const form = document.getElementById('register-form');
+// const errorMessage = document.getElementById('errorMessage');
+// const submitButton = document.getElementById('register-submit-button');
+
+// function validateForm(){
+//     let isValid = form.checkValidity();
+//     let err;
+//     if(isValid){
+//         return isValid
+//     }
+//     // check password match
+//     if( password1.value === password2.value ){
+//         err = 'La verifica della password non corrisponde'
+//         return err
+//     }
+
+// }
+
+// submitButton.addEventListener('click', validateBeforeSubmit(e) )
+
+// function validateBeforeSubmit(e){
+//     e.preventDefault();
+
+//     if( validateForm() ){
+//         form.submit();
+//     }else{
+//         errorMessage.textContent = validateForm();
+//     }
+// }
+

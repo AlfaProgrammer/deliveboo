@@ -1,6 +1,6 @@
 <template lang="">
     <main class="container">
-        <h1 class="text-center text-6xl font-bold mb-10">Deliveboo</h1>
+        <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:cols-3 lg:grid-cols-4 gap-6">
             <RestaurantCard

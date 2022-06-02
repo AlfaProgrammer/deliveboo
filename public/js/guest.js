@@ -1929,9 +1929,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'RestaurantCard',
   props: {
@@ -2003,6 +2000,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -3366,13 +3367,14 @@ var render = function () {
                 "span",
                 {
                   key: category.id,
-                  staticClass: "rounded-full bg-sky-500 px-3",
+                  staticClass:
+                    "rounded-full bg-deliveroo px-3 text-white font-bold",
                 },
                 [
                   _vm._v(
-                    "\n    \n                " +
+                    "\n                " +
                       _vm._s(category.name) +
-                      "\n                \n            "
+                      "\n            "
                   ),
                 ]
               )
@@ -3408,9 +3410,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", { staticClass: "container" }, [
-    _c("h1", { staticClass: "text-center text-6xl font-bold mb-10" }, [
-      _vm._v("Deliveboo"),
-    ]),
+    _c(
+      "h1",
+      { staticClass: "text-center text-6xl font-bold mb-10 text-deliveroo" },
+      [_vm._v("Deliveboo")]
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -3459,8 +3463,12 @@ var render = function () {
             [
               _c(
                 "router-link",
-                { attrs: { to: { name: "restaurant.index" } } },
-                [_vm._v("Ristoranti")]
+                {
+                  staticClass:
+                    "text-stone-700 border border-deliveroo hover:text-white hover:bg-deliveroo px-2 py-1 rounded",
+                  attrs: { to: { name: "restaurant.index" } },
+                },
+                [_vm._v("\n                Ristoranti\n            ")]
               ),
             ],
             1
@@ -3478,44 +3486,44 @@ var render = function () {
               ]
             ),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "grow" },
-              [
-                _c("h1", { staticClass: "font-bold text-4xl mb-3" }, [
-                  _vm._v(_vm._s(_vm.restaurant.name)),
-                ]),
-                _vm._v(" "),
+            _c("div", { staticClass: "grow" }, [
+              _c("h1", { staticClass: "font-bold text-4xl mb-3" }, [
+                _vm._v(_vm._s(_vm.restaurant.name)),
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex items-center gap-2" },
                 _vm._l(_vm.restaurant.categories, function (category) {
                   return _c(
                     "span",
                     {
                       key: category.id,
                       staticClass:
-                        "rounded-full bg-sky-500 mb-2 flex items-center gap-2 px-2",
+                        "rounded-full bg-deliveroo mb-2 px-2 text-white font-bold",
                     },
                     [
                       _vm._v(
-                        "\n                    " +
+                        "\n                        " +
                           _vm._s(category.name) +
-                          "\n                "
+                          "\n                    "
                       ),
                     ]
                   )
                 }),
-                _vm._v(" "),
-                _c("div", [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.restaurant.city) +
-                      ", " +
-                      _vm._s(_vm.restaurant.address) +
-                      "\n                "
-                  ),
-                ]),
-              ],
-              2
-            ),
+                0
+              ),
+              _vm._v(" "),
+              _c("div", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.restaurant.city) +
+                    " - " +
+                    _vm._s(_vm.restaurant.address) +
+                    "\n                "
+                ),
+              ]),
+            ]),
           ]),
           _vm._v(" "),
           _c("div", [

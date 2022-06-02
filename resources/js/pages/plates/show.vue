@@ -4,7 +4,9 @@
         <div class="container" v-if="loading">
 
             <nav class="mb-6 font-bold">
-                <router-link :to="{name: 'restaurant.index'}">Ristoranti</router-link>
+                <router-link :to="{name: 'restaurant.index'}" class="text-stone-700 border border-deliveroo hover:text-white hover:bg-deliveroo px-2 py-1 rounded">
+                    Ristoranti
+                </router-link>
             </nav>
 
             <div class="flex gap-3 mb-5">
@@ -13,12 +15,14 @@
                 </figure>
                 <div class="grow">
                     <h1 class="font-bold text-4xl mb-3">{{restaurant.name}}</h1>
-                    <span v-for="category in restaurant.categories" :key="category.id" 
-                    class="rounded-full bg-sky-500 mb-2 flex items-center gap-2 px-2">
-                        {{category.name}}
-                    </span>
+                    <div class="flex items-center gap-2">
+                        <span v-for="category in restaurant.categories" :key="category.id" 
+                        class="rounded-full bg-deliveroo mb-2 px-2 text-white font-bold">
+                            {{category.name}}
+                        </span>
+                    </div>
                     <div>
-                        {{restaurant.city}}, {{restaurant.address}}
+                        {{restaurant.city}} - {{restaurant.address}}
                     </div>
                 </div>
             </div>

@@ -9,12 +9,9 @@
                 <h3>{{restaurant.name}}</h3>
             </div>
             <div class="flex items-center gap-2 px-2 mb-2">
-                <span class="rounded-full bg-sky-500 px-3"
-                v-for="category in restaurant.categories"
-                :key="category.id">
-        
+                <span class="rounded-full bg-deliveroo px-3 text-white font-bold"
+                v-for="category in restaurant.categories" :key="category.id">
                     {{category.name}}
-                    
                 </span>
             </div>
 

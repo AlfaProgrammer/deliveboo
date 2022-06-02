@@ -24,6 +24,9 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
+      colors: {
+        'deliveroo': '#00CCBC',
+      },
       container: {
         center: true,
       }

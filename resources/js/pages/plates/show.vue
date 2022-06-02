@@ -1,37 +1,38 @@
 <template>
+    <section class="">
 
-    <div class="container" v-if="loading">
-        <section class="flex">
-            <figure class="max-w-sm">
-                <img :src="restaurant.image">
-            </figure>
-            <div class="grow">
-                <h1 class="font-bold text-4xl">{{restaurant.name}}</h1>
-                <span v-for="category in restaurant.categories" :key="category.id" class="rounded-full bg-sky-500">{{category.name}}</span>
-                <div>{{restaurant.city}}, {{restaurant.address}}</div>
+        <div class="container" v-if="loading">
+            <div class="flex gap-3 mb-5">
+                <figure class="max-w-lg rounded-lg overflow-hidden">
+                    <img :src="restaurant.image" class="restaurant-cover">
+                </figure>
+                <div class="grow">
+                    <h1 class="font-bold text-4xl">{{restaurant.name}}</h1>
+                    <span v-for="category in restaurant.categories" :key="category.id" class="rounded-full bg-sky-500">{{category.name}}</span>
+                    <div>{{restaurant.city}}, {{restaurant.address}}</div>
+                </div>
             </div>
-        </section>
 
-        <section>
-            <h1>Piatti</h1>
-            <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            <div>
+                <h1 class="font-bold text-xl mb-5">Piatti</h1>
+                <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
 
-                <div class="" v-for="plate in plates" :key="plate.id">
-                    <div class="">
-                        <p>{{plate.name}}</p>
-                        <div>
-                            <span>{{plate.price}}</span>
-                        </div>  
-                    </div>
-                    <div class="">
-                        <img :src="plate.image" alt="">
+                    <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 hover:scale-110 hover:cursor-pointer" 
+                    v-for="plate in plates" :key="plate.id">
+                        <div class="grow">
+                            <p class="font-bold mb-3">{{plate.name}}</p>
+                            <div>
+                                <span>{{plate.price}} €</span>
+                            </div>  
+                        </div>
+                        <figure class="max-w-[80px] rounded-sm">
+                            <img class="object-cover" :src="plate.image">
+                        </figure>
                     </div>
                 </div>
-
-            </div>
-        </section>
+        </div>
     </div>
-
+    </section>
 </template>
 
 <script>
@@ -66,6 +67,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+    img {
+        aspect-ratio: 1;
+    }
+
+    .restaurant-cover {
+        aspect-ratio: 16/9;
+    }
 
 </style>

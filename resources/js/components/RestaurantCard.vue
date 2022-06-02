@@ -5,7 +5,7 @@
         <p>{{restaurant.city}}</p>
     
         <div class="categories-wrapper">
-            <span class="badge badge-pill badge-success m"
+            <span class=""
             v-for="category in restaurant.categories"
             :key="category.id">
     

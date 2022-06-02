@@ -1,5 +1,15 @@
 <template>
-    <div>Ciao</div>
+
+    <div class="container d-flex" v-if="loading">
+        <div>
+            <img :src="restaurant.image" alt="">
+        </div>
+        <div>
+            <h1>{{restaurant.name}}</h1>
+            <span></span>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -8,7 +18,7 @@ export default {
         return {
             restaurant: null,
             slug: this.$route.params.slug,
-            loading: true,
+            loading: false,
         }
     },
     methods: {
@@ -19,14 +29,14 @@ export default {
                     const {restaurant} = res.data;
                     this.restaurant = restaurant;
                     console.log(this.restaurant);
-                    this.loading = false;
+                    this.loading = true;
                 })
                 /* .catch(err => {
                     this.router.push('/404');
                 }) */
         }
     },
-    mounted() {
+    beforeMount() {
         this.fetchRestaurant()
     }
 }

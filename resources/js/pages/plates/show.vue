@@ -2,6 +2,11 @@
     <section class="">
 
         <div class="container" v-if="loading">
+
+            <nav class="mb-6 font-bold">
+                <router-link :to="{name: 'restaurant.index'}">Ristoranti</router-link>
+            </nav>
+
             <div class="flex gap-3 mb-5">
                 <figure class="max-w-lg rounded-lg overflow-hidden">
                     <img :src="restaurant.image" class="restaurant-cover">
@@ -15,8 +20,8 @@
 
             <div>
                 <h1 class="font-bold text-xl mb-5">Piatti</h1>
-                <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
 
+                <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
                     <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 hover:scale-110 hover:cursor-pointer" 
                     v-for="plate in plates" :key="plate.id">
                         <div class="grow">
@@ -30,8 +35,8 @@
                         </figure>
                     </div>
                 </div>
+            </div>
         </div>
-    </div>
     </section>
 </template>
 

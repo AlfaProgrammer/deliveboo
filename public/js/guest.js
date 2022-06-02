@@ -2035,6 +2035,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3420,6 +3425,19 @@ var render = function () {
   return _c("section", {}, [
     _vm.loading
       ? _c("div", { staticClass: "container" }, [
+          _c(
+            "nav",
+            { staticClass: "mb-6 font-bold" },
+            [
+              _c(
+                "router-link",
+                { attrs: { to: { name: "restaurant.index" } } },
+                [_vm._v("Ristoranti")]
+              ),
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c("div", { staticClass: "flex gap-3 mb-5" }, [
             _c(
               "figure",

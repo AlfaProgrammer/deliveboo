@@ -75,6 +75,8 @@ export default {
         check(event) {
             if(event.target.checked) {
                 this.fetchFilters(this.checkedCategories)
+            } else if(this.checkedCategories == '') {
+                this.fetchRestaurants();
             } else {
                 this.fetchFilters(this.checkedCategories);
             }

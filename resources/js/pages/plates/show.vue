@@ -30,7 +30,7 @@
             <div>
                 <h1 class="font-bold text-xl mb-5">Piatti</h1>
 
-                <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                <div class="grid gap-10 plate-container">
                     <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 hover:scale-110 hover:cursor-pointer" 
                     v-for="plate in plates" :key="plate.id">
                         <div class="grow">
@@ -90,6 +90,10 @@ export default {
 
     .restaurant-cover {
         aspect-ratio: 16/9;
+    }
+
+    .plate-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 
 </style>

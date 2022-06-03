@@ -2,7 +2,7 @@
     <main class="container">
         <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:cols-3 lg:grid-cols-4 gap-6">
+        <div class="grid restaurant-wrap gap-6">
             <RestaurantCard
                 v-for="restaurant in restaurants"
                 :key="restaurant.id"
@@ -41,5 +41,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    .restaurant-wrap {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
     
 </style>

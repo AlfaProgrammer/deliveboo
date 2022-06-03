@@ -4,8 +4,9 @@
 
         <nav class="flex flex-wrap items-center gap-3 mb-5">
             <ol class="contents">
-                <li>
-                    <a href="">Home</a>
+                <li @click="fetchRestaurants()"
+                :class="[active == false ? 'border-b-2' : '', 'border-deliveroo', 'py-1 px-2']">
+                    Home
                 </li>
                 <li v-for="category in categories " :key="category.id"
                 @click="fetchFilters(category.id)"
@@ -14,6 +15,15 @@
                 </li>
             </ol>
         </nav>
+
+        <div>
+            <ul>
+                <li v-for="category in categories" ::key="category.id">
+                    <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
+                    <label :for="category.name">{{ category.name }}</label>
+                </li>
+            </ul>
+        </div>
 
         <div class="grid restaurant-wrap gap-6">
             <RestaurantCard
@@ -34,6 +44,8 @@ export default {
         return {
             restaurants: [],
             categories: [],
+            active: false,
+            checkedCategories: [],
         }
     },
     components: {
@@ -60,10 +72,17 @@ export default {
                 this.restaurants = restaurant;
                 //console.log(restaurant);
             })
+        },
+        check(event) {
+           this.checkedCategories.forEach(category => {
+               const catId = category;
+               this.fetchFilters(catId);
+               console.log(catId);
+           })
         }
     },
     beforeMount() {
-        this.fetchRestaurants()
+        this.fetchRestaurants();
     }
 }
 </script>

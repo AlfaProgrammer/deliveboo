@@ -1,38 +1,52 @@
 <template>
+    <section class="">
 
-    <div class="container" v-if="loading">
-        <header class="flex">
-            <div>
-                <img :src="restaurant.image" alt="">
-            </div>
-            <div>
-                <h1>{{restaurant.name}}</h1>
-                <span v-for="category in restaurant.categories" :key="category.id" class="rounded-full bg-sky-500">{{category.name}}</span>
-                <div>{{restaurant.city}}, {{restaurant.address}}</div>
-            </div>
-        </header>
+        <div class="container" v-if="loading">
 
-        <main>
-            <h1 class="">Piatti</h1>
-            <div class="my-32 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+            <nav class="mb-6 font-bold">
+                <router-link :to="{name: 'restaurant.index'}" class="text-stone-700 border border-deliveroo hover:text-white hover:bg-deliveroo px-2 py-1 rounded">
+                    Ristoranti
+                </router-link>
+            </nav>
 
-                <div class="p-3 flex" v-for="plate in plates"  :key="plate.id">
-                    <div class="p-3 flex" v-if="plate.available">
-
-                        <div class="basis-2/3">
-                            <p>{{plate.name}}</p>
-                            <div><span>{{plate.price}}</span></div>  
-                        </div>
-                        <div class="basis-1/3 border border-gray-300">
-                            <img :src="plate.image" alt="">
-                        </div>
+            <div class="flex gap-3 mb-5">
+                <figure class="max-w-lg rounded-lg overflow-hidden">
+                    <img :src="restaurant.image" class="restaurant-cover">
+                </figure>
+                <div class="grow">
+                    <h1 class="font-bold text-4xl mb-3">{{restaurant.name}}</h1>
+                    <div class="flex items-center gap-2">
+                        <span v-for="category in restaurant.categories" :key="category.id" 
+                        class="rounded-full bg-deliveroo mb-2 px-2 text-white font-bold">
+                            {{category.name}}
+                        </span>
+                    </div>
+                    <div>
+                        {{restaurant.city}} - {{restaurant.address}}
                     </div>
                 </div>
-
             </div>
-        </main>
-    </div>
 
+            <div>
+                <h1 class="font-bold text-xl mb-5">Piatti</h1>
+
+                <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+                    <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 hover:scale-110 hover:cursor-pointer" 
+                    v-for="plate in plates" :key="plate.id">
+                        <div class="grow">
+                            <p class="font-bold mb-3">{{plate.name}}</p>
+                            <div>
+                                <span>{{plate.price}} €</span>
+                            </div>  
+                        </div>
+                        <figure class="max-w-[80px] rounded-sm">
+                            <img class="object-cover" :src="plate.image">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -55,6 +69,7 @@ export default {
                     this.plates = plates;
                     console.log(this.restaurant);
                     this.loading = true;
+                    console.log(res.data);
                 })
                 /* .catch(err => {
                     this.router.push('/404');
@@ -67,6 +82,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+    img {
+        aspect-ratio: 1;
+    }
+
+    .restaurant-cover {
+        aspect-ratio: 16/9;
+    }
 
 </style>

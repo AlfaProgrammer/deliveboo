@@ -10015,3 +10015,18 @@ h3 {
     border-color: #dee2e6;
   }
 }
+input:valid {
+  border: 1px solid green;
+}
+
+input:invalid {
+  border: 1px solid red;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: unset !important;
+  outline: none !important;
+  box-shadow: none !important;
+}

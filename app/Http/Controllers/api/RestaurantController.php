@@ -52,7 +52,7 @@ class RestaurantController extends Controller
                     'success' => true,
                 ],
             ); 
-        dd($restaurant);
+        //dd($restaurant);
     }
 
 }

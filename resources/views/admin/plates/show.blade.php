@@ -18,7 +18,7 @@
         <p>{{$plate['description']}}</p>
 
 
-        <span>Prezzp: {{$plate['price']}} euro</span>
+        <span>Prezzo: {{$plate['price']}} euro</span>
         {{-- <span>{{$plate->available ? 'Disponibile' : 'Non Disponibile'}}</span> --}}
 
         @if($plate->available)

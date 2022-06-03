@@ -10,6 +10,15 @@
 
         <div v-if="loading">
             <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
+
+            <div>
+                <ul>
+                    <li v-for="category in categories" ::key="category.id">
+                        <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
+                        <label :for="category.name">{{ category.name }}</label>
+                    </li>
+                </ul>
+            </div>
     
             <div class="grid restaurant-wrap gap-6">
                 <RestaurantCard
@@ -18,21 +27,6 @@
                     :restaurant="restaurant"
                 />
             </div>
-        <div>
-            <ul>
-                <li v-for="category in categories" ::key="category.id">
-                    <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
-                    <label :for="category.name">{{ category.name }}</label>
-                </li>
-            </ul>
-        </div>
-
-        <div class="grid restaurant-wrap gap-6">
-            <RestaurantCard
-                v-for="restaurant in restaurants"
-                :key="restaurant.id"
-                :restaurant="restaurant"    
-            />
         </div>
 
     </main>

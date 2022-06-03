@@ -18,5 +18,8 @@ export default {
         color: #000;
     }
 
+    .container-loader{
+        height: calc(100vh - 86px);
+    }
     
 </style>

@@ -1,6 +1,10 @@
 <template>
     <section class="">
 
+        <div class="container-loader flex justify-center items-center" v-if="!loading">
+            <CssLoaders/>
+        </div>
+
         <div class="container" v-if="loading">
 
             <nav class="mb-6 font-bold">
@@ -50,6 +54,8 @@
 </template>
 
 <script>
+import CssLoaders from '../../components/CssLoaders.vue';
+
 export default {
     data(){
         return {
@@ -58,6 +64,9 @@ export default {
             slug: this.$route.params.slug,
             loading: false,
         }
+    },
+    components: {
+        CssLoaders,
     },
     methods: {
         fetchRestaurant() {

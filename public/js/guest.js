@@ -3521,7 +3521,7 @@ var render = function () {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "flex gap-3 mb-5" }, [
+          _c("div", { staticClass: "flex flex-wrap gap-3 mb-5" }, [
             _c(
               "figure",
               { staticClass: "max-w-lg rounded-lg overflow-hidden" },

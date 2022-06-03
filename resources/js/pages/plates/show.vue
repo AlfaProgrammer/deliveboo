@@ -9,7 +9,7 @@
                 </router-link>
             </nav>
 
-            <div class="flex gap-3 mb-5">
+            <div class="flex flex-wrap gap-3 mb-5">
                 <figure class="max-w-lg rounded-lg overflow-hidden">
                     <img :src="restaurant.image" class="restaurant-cover">
                 </figure>

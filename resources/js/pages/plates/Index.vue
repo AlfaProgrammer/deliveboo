@@ -68,17 +68,16 @@ export default {
             })
             .then(res => {
                 const {restaurant} = res.data
-                this.restaurants = null;
                 this.restaurants = restaurant;
                 //console.log(restaurant);
-            })
+            });
         },
         check(event) {
-           this.checkedCategories.forEach(category => {
-               const catId = category;
-               this.fetchFilters(catId);
-               console.log(catId);
-           })
+            if(event.target.checked) {
+                this.fetchFilters(this.checkedCategories)
+            } else {
+                this.fetchFilters(this.checkedCategories);
+            }
         }
     },
     beforeMount() {

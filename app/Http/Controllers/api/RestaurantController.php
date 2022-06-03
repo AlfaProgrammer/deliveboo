@@ -17,12 +17,14 @@ class RestaurantController extends Controller
      */
     public function index(Request $request)
     {
+        //dd($request);
         $parameters = $request->query('category');
 
         if($parameters) {
+           
             $restaurants = Restaurant::with(['categories'])
                 ->whereHas('categories', function ($q) use ($parameters) {
-                    $q->where('category_restaurant.category_id', $parameters);
+                    $q->whereIn('category_restaurant.category_id', $parameters);
                 })->get();
 
             return response()

@@ -2,20 +2,6 @@
     <main class="container">
         <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
-        <nav class="flex flex-wrap items-center gap-3 mb-5">
-            <ol class="contents">
-                <li @click="fetchRestaurants()"
-                :class="[active == false ? 'border-b-2' : '', 'border-deliveroo', 'py-1 px-2']">
-                    Home
-                </li>
-                <li v-for="category in categories " :key="category.id"
-                @click="fetchFilters(category.id)"
-                class="whitespace-nowrap">
-                    {{ category.name }}
-                </li>
-            </ol>
-        </nav>
-
         <div>
             <ul>
                 <li v-for="category in categories" ::key="category.id">

@@ -59,5 +59,11 @@ export default {
     .restaurant-wrap {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
+
+    .restaurant-card:hover{
+        transform: scale(1.1);
+        transition: 0.3s;
+    }
+    
     
 </style>

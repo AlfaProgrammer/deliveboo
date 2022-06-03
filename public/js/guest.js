@@ -2179,7 +2179,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".restaurant-wrap[data-v-58798229] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}", ""]);
+exports.push([module.i, ".restaurant-wrap[data-v-58798229] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.restaurant-card[data-v-58798229]:hover {\n  transform: scale(1.1);\n  transition: 0.3s;\n}", ""]);
 
 // exports
 
@@ -3512,7 +3512,7 @@ var render = function () {
     "div",
     {
       staticClass:
-        "rounded overflow-hidden bg-stone-100 border border-stone-200 shadow-lg shadow-stone-400 hover:cursor-pointer",
+        "rounded overflow-hidden bg-stone-100 border border-stone-200 shadow-lg shadow-stone-400 hover:cursor-pointer restaurant-card",
     },
     [
       _c(

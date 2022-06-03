@@ -16,12 +16,12 @@
             @if (Route::has('login'))
                 <div class="font-bold text-white text-lg">
                     @auth
-                        <a class="bg-deliveroo px-3 py-2" href="{{ route('admin.plates.index') }}">Home</a>
+                        <a class="bg-deliveroo px-3 py-2 hover:bg-[#440063]" href="{{ route('admin.plates.index') }}">Home</a>
                     @else
-                        <a class="text-deliveroo px-3 py-2" href="{{ route('login') }}">Login</a>
+                        <a class="text-deliveroo px-3 py-2 hover:text-[#440063]" href="{{ route('login') }}">Login</a>
 
                         @if (Route::has('register'))
-                            <a class="bg-deliveroo px-3 py-1 rounded" href="{{ route('register') }}">Register</a>
+                            <a class="bg-deliveroo px-3 py-1 rounded hover:bg-[#440063]" href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
                 </div>

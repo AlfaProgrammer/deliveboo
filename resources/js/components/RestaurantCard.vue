@@ -1,5 +1,5 @@
 <template>
-    <div class="rounded overflow-hidden bg-stone-100 border border-stone-200 shadow-lg shadow-stone-400 hover:cursor-pointer">
+    <div class="rounded overflow-hidden bg-stone-100 border border-stone-200 shadow-lg shadow-stone-400 hover:cursor-pointer restaurant-card">
         <router-link :to="{name: 'restaurant.show', params: {slug:restaurant.slug}}" >
 
             <figure class="mb-3">

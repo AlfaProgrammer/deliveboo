@@ -2003,21 +2003,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       restaurants: [],
-<<<<<<< HEAD
-      loading: false
-=======
-      categories: []
->>>>>>> andrea-r-9
+      loading: false,
+      categories: [],
+      active: false,
+      checkedCategories: []
     };
   },
   components: {
@@ -2033,9 +2028,7 @@ __webpack_require__.r(__webpack_exports__);
             restaurants = _res$data.restaurants,
             categories = _res$data.categories;
         _this.restaurants = restaurants;
-<<<<<<< HEAD
         _this.loading = true;
-=======
         _this.categories = categories;
       });
     },
@@ -2048,10 +2041,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (res) {
         var restaurant = res.data.restaurant;
-        _this2.restaurants = null;
         _this2.restaurants = restaurant; //console.log(restaurant);
->>>>>>> andrea-r-9
       });
+    },
+    check: function check(event) {
+      if (event.target.checked) {
+        this.fetchFilters(this.checkedCategories);
+      } else if (this.checkedCategories == '') {
+        this.fetchRestaurants();
+      } else {
+        this.fetchFilters(this.checkedCategories);
+      }
     }
   },
   beforeMount: function beforeMount() {
@@ -2215,11 +2215,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
 exports.push([module.i, ".restaurant-wrap[data-v-58798229] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.restaurant-card[data-v-58798229]:hover {\n  transform: scale(1.1);\n  transition: 0.3s;\n}", ""]);
-=======
-exports.push([module.i, ".restaurant-wrap[data-v-58798229] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}", ""]);
->>>>>>> andrea-r-9
 
 // exports
 
@@ -2238,11 +2234,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-<<<<<<< HEAD
 exports.push([module.i, "img[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  cursor: pointer;\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: 0.2s;\n}", ""]);
-=======
-exports.push([module.i, "img[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}", ""]);
->>>>>>> andrea-r-9
 
 // exports
 
@@ -3641,50 +3633,6 @@ var render = function () {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("nav", { staticClass: "flex flex-wrap items-center gap-3 mb-5" }, [
-      _c(
-        "ol",
-        { staticClass: "contents" },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _vm._l(_vm.categories, function (category) {
-            return _c(
-              "li",
-              {
-                key: category.id,
-                staticClass: "whitespace-nowrap",
-                on: {
-                  click: function ($event) {
-                    return _vm.fetchFilters(category.id)
-                  },
-                },
-              },
-              [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(category.name) +
-                    "\n            "
-                ),
-              ]
-            )
-          }),
-        ],
-        2
-      ),
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "grid restaurant-wrap gap-6" },
-      _vm._l(_vm.restaurants, function (restaurant) {
-        return _c("RestaurantCard", {
-          key: restaurant.id,
-          attrs: { restaurant: restaurant },
-        })
-      }),
-      1
-    ),
     _vm.loading
       ? _c("div", [
           _c(
@@ -3695,6 +3643,65 @@ var render = function () {
             },
             [_vm._v("Deliveboo")]
           ),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "ul",
+              _vm._l(_vm.categories, function (category) {
+                return _c("li", { attrs: { ":key": category.id } }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.checkedCategories,
+                        expression: "checkedCategories",
+                      },
+                    ],
+                    attrs: { type: "checkbox", id: category.name },
+                    domProps: {
+                      value: category.id,
+                      checked: Array.isArray(_vm.checkedCategories)
+                        ? _vm._i(_vm.checkedCategories, category.id) > -1
+                        : _vm.checkedCategories,
+                    },
+                    on: {
+                      change: [
+                        function ($event) {
+                          var $$a = _vm.checkedCategories,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = category.id,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                (_vm.checkedCategories = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.checkedCategories = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
+                          } else {
+                            _vm.checkedCategories = $$c
+                          }
+                        },
+                        function ($event) {
+                          return _vm.check($event)
+                        },
+                      ],
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: category.name } }, [
+                    _vm._v(_vm._s(category.name)),
+                  ]),
+                ])
+              }),
+              0
+            ),
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -3711,14 +3718,7 @@ var render = function () {
       : _vm._e(),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [_c("a", { attrs: { href: "" } }, [_vm._v("Home")])])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -19784,7 +19784,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

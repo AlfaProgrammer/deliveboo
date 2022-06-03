@@ -35,7 +35,7 @@
                 <h1 class="font-bold text-xl mb-5">Piatti</h1>
 
                 <div class="grid gap-10 plate-container">
-                    <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 hover:scale-110 hover:cursor-pointer" 
+                    <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 plate-card border-2 border-transparent" 
                     v-for="plate in plates" :key="plate.id">
                         <div class="grow">
                             <p class="font-bold mb-3">{{plate.name}}</p>
@@ -103,6 +103,13 @@ export default {
 
     .plate-container {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .plate-card:hover{
+        cursor: pointer;
+        border-color:#440063;
+        transform: scale(1.1);
+        transition: 0.2s;
     }
 
 </style>

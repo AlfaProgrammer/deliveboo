@@ -2198,7 +2198,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "img[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}", ""]);
+exports.push([module.i, "img[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  cursor: pointer;\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: 0.2s;\n}", ""]);
 
 // exports
 
@@ -3740,7 +3740,7 @@ var render = function () {
                   {
                     key: plate.id,
                     staticClass:
-                      "flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 hover:scale-110 hover:cursor-pointer",
+                      "flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 plate-card border-2 border-transparent",
                   },
                   [
                     _c("div", { staticClass: "grow" }, [

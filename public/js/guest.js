@@ -1994,13 +1994,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       restaurants: [],
-      loading: false
+      loading: false,
+      categories: [],
+      active: false,
+      checkedCategories: []
     };
   },
   components: {
@@ -2012,10 +2024,34 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/api/restaurants').then(function (res) {
-        var restaurants = res.data.restaurants;
+        var _res$data = res.data,
+            restaurants = _res$data.restaurants,
+            categories = _res$data.categories;
         _this.restaurants = restaurants;
         _this.loading = true;
+        _this.categories = categories;
       });
+    },
+    fetchFilters: function fetchFilters(category) {
+      var _this2 = this;
+
+      axios.get('/api/restaurants', {
+        params: {
+          category: category
+        }
+      }).then(function (res) {
+        var restaurant = res.data.restaurant;
+        _this2.restaurants = restaurant; //console.log(restaurant);
+      });
+    },
+    check: function check(event) {
+      if (event.target.checked) {
+        this.fetchFilters(this.checkedCategories);
+      } else if (this.checkedCategories == '') {
+        this.fetchRestaurants();
+      } else {
+        this.fetchFilters(this.checkedCategories);
+      }
     }
   },
   beforeMount: function beforeMount() {
@@ -3607,6 +3643,65 @@ var render = function () {
             },
             [_vm._v("Deliveboo")]
           ),
+          _vm._v(" "),
+          _c("div", [
+            _c(
+              "ul",
+              _vm._l(_vm.categories, function (category) {
+                return _c("li", { attrs: { ":key": category.id } }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.checkedCategories,
+                        expression: "checkedCategories",
+                      },
+                    ],
+                    attrs: { type: "checkbox", id: category.name },
+                    domProps: {
+                      value: category.id,
+                      checked: Array.isArray(_vm.checkedCategories)
+                        ? _vm._i(_vm.checkedCategories, category.id) > -1
+                        : _vm.checkedCategories,
+                    },
+                    on: {
+                      change: [
+                        function ($event) {
+                          var $$a = _vm.checkedCategories,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = category.id,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                (_vm.checkedCategories = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.checkedCategories = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
+                          } else {
+                            _vm.checkedCategories = $$c
+                          }
+                        },
+                        function ($event) {
+                          return _vm.check($event)
+                        },
+                      ],
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("label", { attrs: { for: category.name } }, [
+                    _vm._v(_vm._s(category.name)),
+                  ]),
+                ])
+              }),
+              0
+            ),
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -19689,7 +19784,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

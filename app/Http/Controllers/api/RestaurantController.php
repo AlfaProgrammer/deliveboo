@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Plate;
 use App\Restaurant;
@@ -14,15 +15,38 @@ class RestaurantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        //dd($request);
+        $parameters = $request->query('category');
+
+        if($parameters) {
+           
+            $restaurants = Restaurant::with(['categories'])
+                ->whereHas('categories', function ($q) use ($parameters) {
+                    $q->whereIn('category_restaurant.category_id', $parameters);
+                })->get();
+
+            return response()
+                ->json(
+                    [
+                        'restaurant' => $restaurants,
+                        'succes' => true,
+                    ]
+                );
+        }
+        //dump($parameters);
+
         $restaurants = Restaurant::with(['categories', 'plates'])
             ->get();
+
+        $categories = Category::all();
 
         return response()
             ->json(
                 [
                     'restaurants' => $restaurants,
+                    'categories' => $categories,
                     'success' => true,
                 ],
             );
@@ -40,9 +64,8 @@ class RestaurantController extends Controller
             ->where('slug', $slug)
             ->first();
 
-        $res_id = $restaurant->id;
-
-        $plates = Plate::where('available', 1)->where('restaurant_id', $res_id)->get();
+        $plates = $restaurant->plates()
+            ->where('available', 1)->get();
 
             return response()
             ->json(
@@ -52,7 +75,6 @@ class RestaurantController extends Controller
                     'success' => true,
                 ],
             ); 
-        //dd($restaurant);
     }
 
 }

@@ -40,7 +40,7 @@
                         <div class="grow">
                             <p class="font-bold mb-3">{{plate.name}}</p>
                             <div>
-                                <span>{{plate.price}} €</span>
+                                <span>{{formatCurrency(plate.price)}}</span>
                             </div>  
                         </div>
                         <figure class="max-w-[80px] rounded-sm">
@@ -69,6 +69,12 @@ export default {
         CssLoaders,
     },
     methods: {
+
+        formatCurrency( price ){
+            // price = (price / 100);
+            return (price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR'}))
+        },
+
         fetchRestaurant() {
             axios.get(`/api/restaurants/${this.slug}`)
                 .then(res => {

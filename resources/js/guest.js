@@ -34,9 +34,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  import '../sass/front.scss';
  import App from './views/App.vue';
  import router from './router';
+ import {store} from './store/store';
  
  const app = new Vue({
+     store,
+     router,
      el: '#app',
-     render: h=>h(App),
-     router
+     render: h=>h(App)
  });
+
+//  app.use(store)

@@ -11,15 +11,22 @@
         <div v-if="loading">
             <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
-            <div>
+        <div class="drop-down-menu mb-10">
+            <button @click="setActive()" 
+            :class="active ? 'bg-viola text-white' : 'text-deliveroo'"
+            class="font-bold py-1 px-3 mb-3 border-2 border-viola rounded">
+                Categorie
+            </button>
+            <div :class="['menu-item', active ? 'block' : 'hidden', 'bg-bgcheck/50', 'rounded-2xl']">
                 <ul class="ks-cboxtags text-stone-500">
-                    <li v-for="category in categories" ::key="category.id">
+                    <li v-for="category in categories" :key="category.id">
                         <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
                         <label :for="category.name">{{ category.name }}</label>
                     </li>
                 </ul>
             </div>
-    
+        </div>
+
             <div class="grid restaurant-wrap gap-6">
                 <RestaurantCard
                     v-for="restaurant in restaurants"
@@ -43,6 +50,7 @@ export default {
             loading: false,
             categories: [],
             checkedCategories: [],
+            active: false,
         }
     },
     components: {
@@ -79,6 +87,9 @@ export default {
             } else {
                 this.fetchFilters(this.checkedCategories);
             }
+        },
+        setActive() {
+            this.active = !this.active;
         }
     },
     beforeMount() {
@@ -99,6 +110,20 @@ export default {
     }
 
     //** Checkboxstyle **/
+
+    .drop-down-menu button {
+        transition: all .3s ease-in-out;
+    }
+
+    .drop-down-menu div {
+        animation: opacity .5s linear;
+    }
+
+    @keyframes opacity {
+        0% {opacity: 0;}
+        50% {opacity: 0.5;}
+        100% {opacity: 1;}
+    }
 
     ul.ks-cboxtags {
         list-style: none;

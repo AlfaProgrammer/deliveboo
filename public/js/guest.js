@@ -2003,6 +2003,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2011,7 +2018,8 @@ __webpack_require__.r(__webpack_exports__);
       restaurants: [],
       loading: false,
       categories: [],
-      checkedCategories: []
+      checkedCategories: [],
+      active: false
     };
   },
   components: {
@@ -2051,6 +2059,9 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.fetchFilters(this.checkedCategories);
       }
+    },
+    setActive: function setActive() {
+      this.active = !this.active;
     }
   },
   beforeMount: function beforeMount() {
@@ -2214,7 +2225,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "@charset \"UTF-8\";\n.restaurant-wrap[data-v-58798229] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.restaurant-card[data-v-58798229]:hover {\n  transform: scale(1.1);\n  transition: 0.3s;\n}\nul.ks-cboxtags[data-v-58798229] {\n  list-style: none;\n  padding: 20px;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 5px;\n}\nul.ks-cboxtags li label[data-v-58798229] {\n  display: flex;\n  align-items: center;\n  background-color: rgba(255, 255, 255, 0.9);\n  border: 2px solid rgba(139, 139, 139, 0.3);\n  border-radius: 25px;\n  white-space: nowrap;\n  margin: 3px 0px;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  transition: all 0.2s;\n  padding: 8px 12px;\n  cursor: pointer;\n}\nul.ks-cboxtags li label[data-v-58798229]::before {\n  font-style: normal;\n  font-variant: normal;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  font-weight: 900;\n  font-size: 12px;\n  padding: 2px 6px 2px 2px;\n  content: \"\\292B\";\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label[data-v-58798229]::before {\n  content: \"\\2713\";\n  transform: rotate(-360deg);\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label[data-v-58798229] {\n  border: 2px solid #440063;\n  background-color: #00CCBC;\n  color: #fff;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li input[type=checkbox][data-v-58798229] {\n  display: absolute;\n  position: absolute;\n  opacity: 0;\n}\nul.ks-cboxtags li input[type=checkbox]:focus + label[data-v-58798229] {\n  border: 2px solid rgba(68, 0, 99, 0.6);\n}", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\n.restaurant-wrap[data-v-58798229] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.restaurant-card[data-v-58798229]:hover {\n  transform: scale(1.1);\n  transition: 0.3s;\n}\n.drop-down-menu button[data-v-58798229] {\n  transition: all 0.3s ease-in-out;\n}\n.drop-down-menu div[data-v-58798229] {\n  -webkit-animation: opacity-data-v-58798229 0.5s linear;\n          animation: opacity-data-v-58798229 0.5s linear;\n}\n@-webkit-keyframes opacity-data-v-58798229 {\n0% {\n    opacity: 0;\n}\n50% {\n    opacity: 0.5;\n}\n100% {\n    opacity: 1;\n}\n}\n@keyframes opacity-data-v-58798229 {\n0% {\n    opacity: 0;\n}\n50% {\n    opacity: 0.5;\n}\n100% {\n    opacity: 1;\n}\n}\nul.ks-cboxtags[data-v-58798229] {\n  list-style: none;\n  padding: 20px;\n  display: flex;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 5px;\n}\nul.ks-cboxtags li label[data-v-58798229] {\n  display: flex;\n  align-items: center;\n  background-color: rgba(255, 255, 255, 0.9);\n  border: 2px solid rgba(139, 139, 139, 0.3);\n  border-radius: 25px;\n  white-space: nowrap;\n  margin: 3px 0px;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  transition: all 0.2s;\n  padding: 8px 12px;\n  cursor: pointer;\n}\nul.ks-cboxtags li label[data-v-58798229]::before {\n  font-style: normal;\n  font-variant: normal;\n  text-rendering: auto;\n  -webkit-font-smoothing: antialiased;\n  font-weight: 900;\n  font-size: 12px;\n  padding: 2px 6px 2px 2px;\n  content: \"\\292B\";\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label[data-v-58798229]::before {\n  content: \"\\2713\";\n  transform: rotate(-360deg);\n  transition: transform 0.3s ease-in-out;\n}\nul.ks-cboxtags li input[type=checkbox]:checked + label[data-v-58798229] {\n  border: 2px solid #440063;\n  background-color: #00CCBC;\n  color: #fff;\n  transition: all 0.2s;\n}\nul.ks-cboxtags li input[type=checkbox][data-v-58798229] {\n  display: absolute;\n  position: absolute;\n  opacity: 0;\n}\nul.ks-cboxtags li input[type=checkbox]:focus + label[data-v-58798229] {\n  border: 2px solid rgba(68, 0, 99, 0.6);\n}", ""]);
 
 // exports
 
@@ -3643,63 +3654,91 @@ var render = function () {
             [_vm._v("Deliveboo")]
           ),
           _vm._v(" "),
-          _c("div", [
+          _c("div", { staticClass: "drop-down-menu mb-10" }, [
             _c(
-              "ul",
-              { staticClass: "ks-cboxtags text-stone-500" },
-              _vm._l(_vm.categories, function (category) {
-                return _c("li", { attrs: { ":key": category.id } }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.checkedCategories,
-                        expression: "checkedCategories",
-                      },
-                    ],
-                    attrs: { type: "checkbox", id: category.name },
-                    domProps: {
-                      value: category.id,
-                      checked: Array.isArray(_vm.checkedCategories)
-                        ? _vm._i(_vm.checkedCategories, category.id) > -1
-                        : _vm.checkedCategories,
-                    },
-                    on: {
-                      change: [
-                        function ($event) {
-                          var $$a = _vm.checkedCategories,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = category.id,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                (_vm.checkedCategories = $$a.concat([$$v]))
-                            } else {
-                              $$i > -1 &&
-                                (_vm.checkedCategories = $$a
-                                  .slice(0, $$i)
-                                  .concat($$a.slice($$i + 1)))
-                            }
-                          } else {
-                            _vm.checkedCategories = $$c
-                          }
+              "button",
+              {
+                staticClass:
+                  "font-bold py-1 px-3 mb-3 border-2 border-viola rounded",
+                class: _vm.active ? "bg-viola text-white" : "text-deliveroo",
+                on: {
+                  click: function ($event) {
+                    return _vm.setActive()
+                  },
+                },
+              },
+              [_vm._v("\n            Categorie\n        ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                class: [
+                  "menu-item",
+                  _vm.active ? "block" : "hidden",
+                  "bg-bgcheck/50",
+                  "rounded-2xl",
+                ],
+              },
+              [
+                _c(
+                  "ul",
+                  { staticClass: "ks-cboxtags text-stone-500" },
+                  _vm._l(_vm.categories, function (category) {
+                    return _c("li", { key: category.id }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.checkedCategories,
+                            expression: "checkedCategories",
+                          },
+                        ],
+                        attrs: { type: "checkbox", id: category.name },
+                        domProps: {
+                          value: category.id,
+                          checked: Array.isArray(_vm.checkedCategories)
+                            ? _vm._i(_vm.checkedCategories, category.id) > -1
+                            : _vm.checkedCategories,
                         },
-                        function ($event) {
-                          return _vm.check($event)
+                        on: {
+                          change: [
+                            function ($event) {
+                              var $$a = _vm.checkedCategories,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = category.id,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    (_vm.checkedCategories = $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    (_vm.checkedCategories = $$a
+                                      .slice(0, $$i)
+                                      .concat($$a.slice($$i + 1)))
+                                }
+                              } else {
+                                _vm.checkedCategories = $$c
+                              }
+                            },
+                            function ($event) {
+                              return _vm.check($event)
+                            },
+                          ],
                         },
-                      ],
-                    },
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: category.name } }, [
+                        _vm._v(_vm._s(category.name)),
+                      ]),
+                    ])
                   }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: category.name } }, [
-                    _vm._v(_vm._s(category.name)),
-                  ]),
-                ])
-              }),
-              0
+                  0
+                ),
+              ]
             ),
           ]),
           _vm._v(" "),

@@ -16,7 +16,7 @@
             @if (Route::has('login'))
                 <div class="font-bold text-white text-lg">
                     @auth
-                        <a class="bg-deliveroo px-3 py-2 hover:bg-[#440063]" href="{{ route('admin.plates.index') }}">Home</a>
+                        <a class="bg-deliveroo px-3 py-1 hover:bg-[#440063]" href="{{ route('admin.plates.index') }}">Home</a>
                     @else
                         <a class="text-deliveroo px-3 py-2 hover:text-[#440063]" href="{{ route('login') }}">Login</a>
 

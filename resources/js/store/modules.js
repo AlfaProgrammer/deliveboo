@@ -15,7 +15,7 @@ export const cartModule = {
         }
     },
     actions: {
-        fetchRestaurant( store, payload ) {
+        fetchPlates( store, payload ) {
 
             // console.log(payload.slug)
             

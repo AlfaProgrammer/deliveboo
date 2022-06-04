@@ -3,7 +3,7 @@
       <p>carrello</p>
       <p v-for="(item, index) in cart" :key="index"> {{ item }} </p>
       <p>{{slug}}</p>
-      <button @click="fetchRestaurant()"> Cliccami </button>
+      <button @click="fetchPlates()"> Cliccami </button>
   </div>
 </template>
 
@@ -19,9 +19,9 @@ export default {
 
     },
     methods:{
-        fetchRestaurant(){
+        fetchPlates(){
             this.$store.dispatch({
-                type: 'cartModule/fetchRestaurant',
+                type: 'cartModule/fetchPlates',
                 slug: this.slug
             })
         }

@@ -12,7 +12,7 @@
             <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
             <div>
-                <ul>
+                <ul class="ks-cboxtags text-stone-500">
                     <li v-for="category in categories" ::key="category.id">
                         <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
                         <label :for="category.name">{{ category.name }}</label>
@@ -42,7 +42,6 @@ export default {
             restaurants: [],
             loading: false,
             categories: [],
-            active: false,
             checkedCategories: [],
         }
     },
@@ -98,6 +97,72 @@ export default {
         transform: scale(1.1);
         transition: 0.3s;
     }
-    
+
+    //** Checkboxstyle **/
+
+    ul.ks-cboxtags {
+        list-style: none;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    ul.ks-cboxtags li label {
+        display: flex;
+        align-items: center;
+        background-color: rgba(255, 255, 255, .9);
+        border: 2px solid rgba(139, 139, 139, .3);
+        border-radius: 25px;
+        white-space: nowrap;
+        margin: 3px 0px;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        transition: all .2s;
+    }
+
+    ul.ks-cboxtags li label {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+    ul.ks-cboxtags li label::before {
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 900;
+        font-size: 12px;
+        padding: 2px 6px 2px 2px;
+        content: "\292B";
+        transition: transform .3s ease-in-out;
+    }
+
+    ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
+        content: "\2713";
+        transform: rotate(-360deg);
+        transition: transform .3s ease-in-out;
+    }
+
+    ul.ks-cboxtags li input[type="checkbox"]:checked + label {
+        border: 2px solid #440063;
+        background-color: #00CCBC;
+        color: #fff;
+        transition: all .2s;
+    }
+
+    ul.ks-cboxtags li input[type="checkbox"] {
+        display: absolute;
+    }
+
+    ul.ks-cboxtags li input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    ul.ks-cboxtags li input[type="checkbox"]:focus + label {
+        border: 2px solid rgba(68, 0, 99, 0.6);
+    }
     
 </style>

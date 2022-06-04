@@ -26,6 +26,7 @@ module.exports = {
     extend: {
       colors: {
         'deliveroo': '#00CCBC',
+        'viola': '#440063',
       },
       container: {
         center: true,

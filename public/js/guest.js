@@ -3597,17 +3597,6 @@ var render = function () {
         )
       : _vm._e(),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "grid restaurant-wrap gap-6" },
-      _vm._l(_vm.restaurants, function (restaurant) {
-        return _c("RestaurantCard", {
-          key: restaurant.id,
-          attrs: { restaurant: restaurant },
-        })
-      }),
-      1
-    ),
     _vm.loading
       ? _c("div", [
           _c(

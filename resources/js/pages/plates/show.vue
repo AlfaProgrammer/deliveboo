@@ -13,6 +13,7 @@
                 </router-link>
             </nav>
 
+            <!-- Info ristorante  -->
             <div class="flex flex-wrap gap-3 mb-5">
                 <figure class="max-w-lg rounded-lg overflow-hidden">
                     <img :src="restaurant.image" class="restaurant-cover">
@@ -31,6 +32,7 @@
                 </div>
             </div>
 
+            <!-- Qui vengono stampati i piatti  -->
             <div>
                 <h1 class="font-bold text-xl mb-5">Piatti</h1>
 
@@ -49,12 +51,16 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Carrello  -->
+            <AppCart :slug="slug"></AppCart>
         </div>
     </section>
 </template>
 
 <script>
 import CssLoaders from '../../components/CssLoaders.vue';
+import AppCart from '../../components/AppCart.vue';
 
 export default {
     data(){
@@ -67,12 +73,13 @@ export default {
     },
     components: {
         CssLoaders,
+        AppCart,
     },
     methods: {
 
         formatCurrency( price ){
             // price = (price / 100);
-            return (price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR'}))
+            return (price.toLocaleString('it-IT', { style: 'currency', currency: 'EUR'}))
         },
 
         fetchRestaurant() {

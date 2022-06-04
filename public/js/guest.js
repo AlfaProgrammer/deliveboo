@@ -2003,6 +2003,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2011,7 +2014,8 @@ __webpack_require__.r(__webpack_exports__);
       restaurants: [],
       loading: false,
       categories: [],
-      checkedCategories: []
+      checkedCategories: [],
+      active: false
     };
   },
   components: {
@@ -2051,6 +2055,9 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.fetchFilters(this.checkedCategories);
       }
+    },
+    setActive: function setActive() {
+      this.active = !this.active;
     }
   },
   beforeMount: function beforeMount() {
@@ -3643,63 +3650,81 @@ var render = function () {
             [_vm._v("Deliveboo")]
           ),
           _vm._v(" "),
-          _c("div", [
+          _c("div", { staticClass: "drop-down-menu" }, [
             _c(
-              "ul",
-              { staticClass: "ks-cboxtags text-stone-500" },
-              _vm._l(_vm.categories, function (category) {
-                return _c("li", { attrs: { ":key": category.id } }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.checkedCategories,
-                        expression: "checkedCategories",
-                      },
-                    ],
-                    attrs: { type: "checkbox", id: category.name },
-                    domProps: {
-                      value: category.id,
-                      checked: Array.isArray(_vm.checkedCategories)
-                        ? _vm._i(_vm.checkedCategories, category.id) > -1
-                        : _vm.checkedCategories,
-                    },
-                    on: {
-                      change: [
-                        function ($event) {
-                          var $$a = _vm.checkedCategories,
-                            $$el = $event.target,
-                            $$c = $$el.checked ? true : false
-                          if (Array.isArray($$a)) {
-                            var $$v = category.id,
-                              $$i = _vm._i($$a, $$v)
-                            if ($$el.checked) {
-                              $$i < 0 &&
-                                (_vm.checkedCategories = $$a.concat([$$v]))
-                            } else {
-                              $$i > -1 &&
-                                (_vm.checkedCategories = $$a
-                                  .slice(0, $$i)
-                                  .concat($$a.slice($$i + 1)))
-                            }
-                          } else {
-                            _vm.checkedCategories = $$c
-                          }
+              "button",
+              {
+                on: {
+                  click: function ($event) {
+                    return _vm.setActive()
+                  },
+                },
+              },
+              [_vm._v("Filtro categorie")]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { class: ["menu-item", _vm.active ? "block" : "hidden"] },
+              [
+                _c(
+                  "ul",
+                  { staticClass: "ks-cboxtags text-stone-500" },
+                  _vm._l(_vm.categories, function (category) {
+                    return _c("li", { attrs: { ":key": category.id } }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.checkedCategories,
+                            expression: "checkedCategories",
+                          },
+                        ],
+                        attrs: { type: "checkbox", id: category.name },
+                        domProps: {
+                          value: category.id,
+                          checked: Array.isArray(_vm.checkedCategories)
+                            ? _vm._i(_vm.checkedCategories, category.id) > -1
+                            : _vm.checkedCategories,
                         },
-                        function ($event) {
-                          return _vm.check($event)
+                        on: {
+                          change: [
+                            function ($event) {
+                              var $$a = _vm.checkedCategories,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? true : false
+                              if (Array.isArray($$a)) {
+                                var $$v = category.id,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    (_vm.checkedCategories = $$a.concat([$$v]))
+                                } else {
+                                  $$i > -1 &&
+                                    (_vm.checkedCategories = $$a
+                                      .slice(0, $$i)
+                                      .concat($$a.slice($$i + 1)))
+                                }
+                              } else {
+                                _vm.checkedCategories = $$c
+                              }
+                            },
+                            function ($event) {
+                              return _vm.check($event)
+                            },
+                          ],
                         },
-                      ],
-                    },
+                      }),
+                      _vm._v(" "),
+                      _c("label", { attrs: { for: category.name } }, [
+                        _vm._v(_vm._s(category.name)),
+                      ]),
+                    ])
                   }),
-                  _vm._v(" "),
-                  _c("label", { attrs: { for: category.name } }, [
-                    _vm._v(_vm._s(category.name)),
-                  ]),
-                ])
-              }),
-              0
+                  0
+                ),
+              ]
             ),
           ]),
           _vm._v(" "),

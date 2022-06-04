@@ -11,7 +11,11 @@
         <div v-if="loading">
             <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
-            <div>
+        <div class="drop-down-menu">
+            <button @click="setActive()" class="">
+                Filtro categorie
+            </button>
+            <div :class="['menu-item', active ? 'block' : 'hidden']">
                 <ul class="ks-cboxtags text-stone-500">
                     <li v-for="category in categories" ::key="category.id">
                         <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
@@ -19,7 +23,8 @@
                     </li>
                 </ul>
             </div>
-    
+        </div>
+
             <div class="grid restaurant-wrap gap-6">
                 <RestaurantCard
                     v-for="restaurant in restaurants"
@@ -43,6 +48,7 @@ export default {
             loading: false,
             categories: [],
             checkedCategories: [],
+            active: false,
         }
     },
     components: {
@@ -79,6 +85,9 @@ export default {
             } else {
                 this.fetchFilters(this.checkedCategories);
             }
+        },
+        setActive() {
+            this.active = !this.active;
         }
     },
     beforeMount() {

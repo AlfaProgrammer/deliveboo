@@ -104,9 +104,13 @@ export default {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 
+    .restaurant-card{
+        transition: transform 350ms;
+    }
+
     .restaurant-card:hover{
         transform: scale(1.1);
-        transition: 0.3s;
+        transition: transform 150ms;
     }
 
     //** Checkboxstyle **/
@@ -117,6 +121,17 @@ export default {
 
     .drop-down-menu div {
         animation: opacity .5s linear;
+        box-shadow: 0px 15px 10px -10px rgba(127, 127, 127, 0.6);
+
+    }
+
+    .drop-down-menu li {
+        transition: transform 250ms;
+    }
+
+    .drop-down-menu li:hover {
+        transition: transform 250ms;
+        transform: translateY(-6px);
     }
 
     @keyframes opacity {

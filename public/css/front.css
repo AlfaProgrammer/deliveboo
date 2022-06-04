@@ -534,6 +534,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-full {
   border-radius: 9999px;
 }
+.rounded-2xl {
+  border-radius: 1rem;
+}
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -550,6 +553,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-border-opacity: 1;
   border-color: rgb(231 229 228 / var(--tw-border-opacity));
 }
+.border-viola {
+  --tw-border-opacity: 1;
+  border-color: rgb(68 0 99 / var(--tw-border-opacity));
+}
 .border-deliveroo {
   --tw-border-opacity: 1;
   border-color: rgb(0 204 188 / var(--tw-border-opacity));
@@ -564,6 +571,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-deliveroo {
   --tw-bg-opacity: 1;
   background-color: rgb(0 204 188 / var(--tw-bg-opacity));
+}
+.bg-viola {
+  --tw-bg-opacity: 1;
+  background-color: rgb(68 0 99 / var(--tw-bg-opacity));
+}
+.bg-bgcheck\/50 {
+  background-color: rgb(209 255 119 / 0.5);
 }
 .object-cover {
   -o-object-fit: cover;
@@ -633,6 +647,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-stone-700 {
   --tw-text-opacity: 1;
   color: rgb(68 64 60 / var(--tw-text-opacity));
+}
+.opacity-0 {
+  opacity: 0;
 }
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

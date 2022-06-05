@@ -28,27 +28,31 @@
                 {{-- ----------------------- --}}
                 {{-- CARDS --}}
 
-                <div class="row">
+                <div class="container-fluid">
 
-                    <div class="row mb-5">
+                    <div class="row mb-5 mx-3">
 
                     @foreach ($plates as $plate)
 
-                        <div class="card col-3">
+                        <div class="card-wrapper col-6 col-md-4 col-lg-3 py-3 ">
 
-                            <img class="card-img-top" src="{{ $plate->image ?: '' }}" style="width: 100%">
-
-                            <div class="card-body d-flex flex-column">
-                                <a href="{{route('admin.plates.show', $plate)}}">{{$plate['name']}}</a>
-                                <div>
-                                    @foreach ($plate->allergens as $allergen)
-                                    <span class="badge rounded-pill bg-success mb-2">{{$allergen->name}}</span>
-                                    @endforeach
+                            <div class="card" >
+    
+                                <img class="card-img-top" src="{{ $plate->image ?: '' }}">
+    
+                                <div class="card-body d-flex flex-column" >
+                                    <a href="{{route('admin.plates.show', $plate)}}" class="title">{{$plate['name']}}</a>
+                                    <div class="badge-wrapper">
+                                        @foreach ($plate->allergens as $allergen)
+                                        <span class="badge rounded-pill mb-2">{{$allergen->name}}</span>
+                                        @endforeach
+                                    </div>
+    
                                 </div>
-
+    
                             </div>
-
                         </div>
+
 
                     @endforeach
 

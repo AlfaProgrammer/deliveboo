@@ -6,7 +6,7 @@
     
         <div class="container">
 
-            <p>Cioa {{$user->name}}</p>
+            <p>Ciao {{$user->name}}</p>
             <p>
                 Questa è la tua dashboard. Da qui puoi visualizzare la preview del tuo ristorante e
                 accedere al menu dello stesso cliccando sull apposito tasto.

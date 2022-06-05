@@ -118,11 +118,15 @@ export default {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 
+    .plate-card{
+        transition: transform 350ms;
+    }
+
     .plate-card:hover{
         cursor: pointer;
         border-color:#440063;
         transform: scale(1.1);
-        transition: 0.2s;
+        transition: transform 150ms;
     }
 
 </style>

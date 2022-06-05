@@ -17,6 +17,7 @@ export const store = new Vuex.Store({
     
     state: {
         restaurants:[],
+        orders: [],
 
     },
     mutations: {},

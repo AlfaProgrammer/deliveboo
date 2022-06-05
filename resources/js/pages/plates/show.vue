@@ -42,18 +42,30 @@
                         <div class="grow">
                             <p class="font-bold mb-3">{{plate.name}}</p>
                             <div>
-                                <span>{{formatCurrency(plate.price)}}</span>
+                                <p class="mb-[10px]">{{formatCurrency(plate.price)}}</p>
+                                <button 
+                                    class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"
+                                    @click="addToCart(plate)"
+                                >
+                                    Add to Cart
+                                </button>
                             </div>  
                         </div>
                         <figure class="max-w-[80px] rounded-sm">
                             <img class="object-cover" :src="plate.image">
                         </figure>
+
                     </div>
                 </div>
             </div>
             
             <!-- Carrello  -->
-            <AppCart :slug="slug"></AppCart>
+            <AppCart 
+                :plates="plates"
+                :formatCurrency="formatCurrency"
+            />
+
+
         </div>
     </section>
 </template>
@@ -77,6 +89,13 @@ export default {
     },
     methods: {
 
+        addToCart( plate ){
+            this.$store.dispatch({
+                type: 'cartModule/addToStorageCart',
+                plate: plate
+            })
+        },
+
         formatCurrency( price ){
             // price = (price / 100);
             return (price.toLocaleString('it-IT', { style: 'currency', currency: 'EUR'}))
@@ -89,9 +108,9 @@ export default {
                     const {restaurant, plates} = res.data;
                     this.restaurant = restaurant;
                     this.plates = plates;
-                    console.log(this.restaurant);
+                    // console.log(this.restaurant);
                     this.loading = true;
-                    console.log(res.data);
+                    // console.log(res.data);
                 })
                 /* .catch(err => {
                     this.router.push('/404');
@@ -123,7 +142,7 @@ export default {
     }
 
     .plate-card:hover{
-        cursor: pointer;
+        // cursor: pointer;
         border-color:#440063;
         transform: scale(1.1);
         transition: transform 150ms;

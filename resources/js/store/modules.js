@@ -12,8 +12,6 @@ export const cartModule = {
     },
     mutations: {
 
-        removeFromCart(){},
-
         updateCart( state ){
 
                 //svuoto prima il mio carrello
@@ -27,9 +25,11 @@ export const cartModule = {
                 });
 
                 state.cart = storageCartItems
-                // console.log('storageCartItems', storageCartItems)
-            
-        }
+                // console.log('storageCartItems', storageCartItems)            
+        },
+
+       
+
     },
     actions: {
         // aggiunta al carrello che viene invocato in show
@@ -41,8 +41,26 @@ export const cartModule = {
             storageCart.push(payload.plate)
             localStorage.cart = JSON.stringify(storageCart)
 
-            console.log(`STORAGE CART ${localStorage.cart}`)
+            // console.log(`STORAGE CART ${localStorage.cart}`)
 
+            commit('updateCart')
+        },
+
+        // removeFromCartStorage({commit}, payload){
+        //     commit('removeFromCartStorage', payload.plate)
+        // },
+        removeFromCartStorage({commit}, payload ){
+            //recupero gli item in storage
+            let  storageCart = JSON.parse( localStorage.getItem('cart') );
+            //cerco coincidenza con il plate per poterlo cancellare 
+            storageCart.forEach( (item, index) => {
+                if( item.id === payload.plate.id ){
+                    storageCart.splice(index, 1) // cancello il plate con id corrispondente
+                }
+            });
+            //aggiorno il local sotrage con il nuovo array senza l'elemento cancellato
+            localStorage.cart = JSON.stringify( storageCart )
+            //faccio un update del mio array che andrà a prendere i dati attuali del local storage
             commit('updateCart')
         },
 

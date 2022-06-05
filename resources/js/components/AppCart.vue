@@ -23,8 +23,10 @@
                         </div>
 
                         <div id="quantity">
-                            Quantità
+                            <p>Quantità</p>
+                            <button @click="removeFromCart(plate)">Remove</button>
                         </div>
+
                     </li>
                 </ul> 
           </div>
@@ -51,8 +53,14 @@ export default {
         ...mapActions('cartModule', [
             // 'fillCartFromStorage',
             'createCartStorage',
-            'updateCart'
+            'updateCart',
         ]),
+        removeFromCart(plate){
+            this.$store.dispatch({
+                type: 'cartModule/removeFromCartStorage',
+                plate: plate
+            })
+        }
        
     },
 

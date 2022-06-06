@@ -9,9 +9,9 @@
         <div v-if="loading">
             <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
-            <div class="back-img">
-                ciao
-            </div>
+            <!-- <div class="back-img">
+                prova sfondo colorato
+            </div> -->
 
             <div class="drop-down-menu mb-10">
                 <button @click="setActive()" 
@@ -41,6 +41,9 @@
     </main>
     
 </template>
+
+// -----------------------------------------------------------------
+// JS
 
 <script>
 import RestaurantCard from '../../components/RestaurantCard.vue';
@@ -101,11 +104,14 @@ export default {
 }
 </script>
 
+// -----------------------------------------------------------------
+// CSS
+
 <style lang="scss" scoped>
 
-    .back-img {
-        background: linear-gradient(177deg, rgb(0, 204, 188) 50%, rgb(208, 235, 153) 50%);
-    }
+    // .back-img {
+    //     background: linear-gradient(177deg, rgb(0, 204, 188) 50%, rgb(208, 235, 153) 50%);
+    // }
 
     .restaurant-wrap {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

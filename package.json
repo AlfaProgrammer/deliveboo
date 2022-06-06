@@ -29,6 +29,7 @@
         "vuex": "^3.6.2"
     },
     "dependencies": {
+        "braintree-web-drop-in": "^1.33.2",
         "vue-braintree": "^2.1.0"
     }
 }

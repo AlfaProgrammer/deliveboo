@@ -2054,7 +2054,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2063,9 +2062,29 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     fetchToken: function fetchToken() {
+      var _this = this;
+
       axios.get('/api/payments').then(function (res) {
         var token = res.data.token;
+        _this.token = token;
         console.log(token);
+      });
+    },
+    dropIn: function dropIn() {
+      var dropIn = __webpack_require__(/*! braintree-web-drop-in */ "./node_modules/braintree-web-drop-in/dist/browser/dropin.js");
+
+      dropIn.create({
+        authorization: this.token,
+        container: '#dropIn',
+        locale: 'it_IT'
+      }, function (createErr, instance) {
+        if (createErr) {
+          // An error in the create call is likely due to
+          // incorrect configuration values or network issues.
+          // An appropriate error will be shown in the UI.
+          console.error(createErr);
+          return;
+        }
       });
     }
   },
@@ -28606,11 +28625,13 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [_c("v-braintree", { attrs: { autorization: _vm.token } })],
-    1
-  )
+  return _c("div", [
+    this.token
+      ? _c("div", { attrs: { id: "dropIn" } }, [_vm._v(_vm._s(_vm.dropIn()))])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("button", [_vm._v("Invia")]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

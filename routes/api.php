@@ -24,7 +24,7 @@ Route::namespace('api')
     ->name('api.')
     ->group(function(){
         Route::resource('plates', 'PlateController')
-        ->only('index', 'show');
+        ->only('store');
     });
 
 Route::namespace('api')

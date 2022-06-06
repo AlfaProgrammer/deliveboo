@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <div id="dropIn" v-if="this.token">{{ dropIn() }}</div>
-        <button>Invia</button>
+        <button @click="confirmCta(inst)">Invia</button>
 
     </div>
 </template>
@@ -10,6 +10,7 @@ export default {
     data() {
         return {
             token: '',
+            inst: null,
         }
     },
     methods: {
@@ -27,7 +28,7 @@ export default {
                 authorization: this.token,
                 container: '#dropIn',
                 locale: 'it_IT',
-            }, function(createErr, instance){
+            }, (createErr, instance) => {
                  if (createErr) {
                     // An error in the create call is likely due to
                     // incorrect configuration values or network issues.
@@ -35,8 +36,22 @@ export default {
                     console.error(createErr);
                     return;
                 }
+                this.inst = instance;
+                console.log(instance);
             });
-        }
+        },
+        confirmCta(instance) {
+            instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+                if (requestPaymentMethodErr) {
+                    // No payment method is available.
+                    // An appropriate error will be shown in the UI.
+                    console.error(requestPaymentMethodErr);
+                    return;
+                }
+
+                console.log(payload.nonce);
+            }
+        )},
     },
     created() {
         this.fetchToken();  

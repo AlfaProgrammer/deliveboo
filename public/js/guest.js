@@ -2057,7 +2057,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      token: ''
+      token: '',
+      inst: null
     };
   },
   methods: {
@@ -2071,6 +2072,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     dropIn: function dropIn() {
+      var _this2 = this;
+
       var dropIn = __webpack_require__(/*! braintree-web-drop-in */ "./node_modules/braintree-web-drop-in/dist/browser/dropin.js");
 
       dropIn.create({
@@ -2085,6 +2088,21 @@ __webpack_require__.r(__webpack_exports__);
           console.error(createErr);
           return;
         }
+
+        _this2.inst = instance;
+        console.log(instance);
+      });
+    },
+    confirmCta: function confirmCta(instance) {
+      instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+        if (requestPaymentMethodErr) {
+          // No payment method is available.
+          // An appropriate error will be shown in the UI.
+          console.error(requestPaymentMethodErr);
+          return;
+        }
+
+        console.log(payload.nonce);
       });
     }
   },
@@ -28630,7 +28648,17 @@ var render = function () {
       ? _c("div", { attrs: { id: "dropIn" } }, [_vm._v(_vm._s(_vm.dropIn()))])
       : _vm._e(),
     _vm._v(" "),
-    _c("button", [_vm._v("Invia")]),
+    _c(
+      "button",
+      {
+        on: {
+          click: function ($event) {
+            return _vm.confirmCta(_vm.inst)
+          },
+        },
+      },
+      [_vm._v("Invia")]
+    ),
   ])
 }
 var staticRenderFns = []

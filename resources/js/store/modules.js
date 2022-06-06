@@ -12,20 +12,9 @@ export const cartModule = {
     },
     mutations: {
 
-        updateCart( state ){
-
-                //svuoto prima il mio carrello
-                state.cart = []
-                // mi prento tuttti gli item in storage cart 
+        updateCart( state ){                
                 let storageCartItems = JSON.parse(localStorage.getItem("cart"))
-                // li inserisco nel mio carrello
-                storageCartItems.forEach(item => {
-                    state.cart.push(item)
-                    console.log('push')
-                });
-
                 state.cart = storageCartItems
-                // console.log('storageCartItems', storageCartItems)            
         },
 
        

@@ -23,7 +23,7 @@ class Plate extends Model
     }
 
     public function orders(){
-        return $this->belongsToMany(Orders::class);
+        return $this->belongsToMany(Order::class)->withPivot('quantity');
     }
 
     public static function getUniqueSlug($title) {

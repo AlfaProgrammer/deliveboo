@@ -4,6 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Plate;
+use App\Order;
 
 class PlateController extends Controller
 {
@@ -12,11 +14,32 @@ class PlateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        // return response()->json([
-        //     ''
-        // ])
+
+        dd($request);
+
+        $plates = Plate::with('orders')->get();
+        
+        foreach ($plates as $plate) {
+
+            foreach ($plate->orders as $order) {
+                # code...
+               $quantity = $order->pivot;
+
+               dd($quantity);
+            }
+
+            // dd($plate);
+
+        }
+        // $quantity = $plates->pivot->quantity;
+        // $plates->load('orders');
+
+        return response()->json([
+            'plates'=> $plates,
+            // 'quantity'=>$quantity
+        ]);
     }
 
     /**

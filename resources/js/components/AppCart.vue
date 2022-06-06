@@ -7,6 +7,10 @@
               <p>Non ci sono articoli nel tuo carrello</p> 
           </div>
           <div v-else>
+                <div class="totalPrice">
+                    <p>{{formatCurrency(cartTotal)}}</p>
+                </div>
+
                 <ul v-for="(plate, index) in cart" :key="index">
                     <li class="flex justify-between items-center p-[20px] shadow-lg border-red">
                         <div class="cart-item-wrapper flex gap-[20px]">
@@ -17,7 +21,7 @@
 
                             <div class="item-info">
                                 <h3>{{ plate.name }}</h3>
-                                <p>{{formatCurrency(plate.price)}}</p>
+                                <p>Tatale Carrello: {{formatCurrency(plate.price)}}</p>
                             </div>
 
                         </div>
@@ -29,8 +33,7 @@
 
                     </li>
                 </ul> 
-          </div>
-        <!-- <button @click="addToCart(plate)">GEt Storage Items</button> -->
+        </div>
       </div>
 
   </div>
@@ -46,7 +49,7 @@ export default {
     ],
     computed: {
         // fatto minding del path al modulo cartModule per recuperare l'árray cart
-        ...mapState('cartModule', ['cart']),
+        ...mapState('cartModule', ['cart', 'cartTotal']),
 
     },
     methods:{

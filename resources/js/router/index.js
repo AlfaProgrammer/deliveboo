@@ -8,7 +8,8 @@ Vue.use(VueRouter);
 
 // qui andranno i componenti
 import Index from '../pages/plates/Index.vue';
-import show from '../pages/plates/show.vue'
+import show from '../pages/plates/show.vue';
+import payments from '../pages/payments/Payment.vue';
 
 // costante dove andranno le rotte
 const routes = [
@@ -22,6 +23,11 @@ const routes = [
         name: 'restaurant.show',
         component: show,
     },
+    {
+        path: '/payments',
+        name: 'payments.index',
+        component: payments
+    }
 ];
 
 // istanziare vue router

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 
+
 class RestaurantController extends Controller
 {
 
@@ -23,7 +24,7 @@ class RestaurantController extends Controller
     public function create()
     {
         $categories = Category::all();
-
+        
         return view('admin.restaurants.create', compact('categories'));
     }
 
@@ -71,6 +72,8 @@ class RestaurantController extends Controller
         } else {
             $restaurant->categories()->attach([]);
         }
+
+        
 
         return redirect()->route('admin.home'); 
     }

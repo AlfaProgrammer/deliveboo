@@ -21306,8 +21306,21 @@ var cartModule = {
   },
   mutations: {
     updateCart: function updateCart(state) {
+<<<<<<< HEAD
       var storageCartItems = JSON.parse(localStorage.getItem("cart"));
       state.cart = storageCartItems;
+=======
+      //svuoto prima il mio carrello
+      state.cart = []; // mi prento tuttti gli item in storage cart 
+
+      var storageCartItems = JSON.parse(localStorage.getItem("cart")); // li inserisco nel mio carrello
+
+      storageCartItems.forEach(function (item) {
+        state.cart.push(item);
+        console.log('push');
+      });
+      state.cart = storageCartItems; // console.log('storageCartItems', storageCartItems)            
+>>>>>>> Andrea-B.-Mail
     }
   },
   actions: {

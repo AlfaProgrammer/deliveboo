@@ -6,10 +6,13 @@ use App\Allergen;
 use App\Http\Controllers\Controller;
 use App\Plate;
 use App\Restaurant;
+use App\Mail\SendDeletePlateMail;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+
 
 class PlateController extends Controller
 {
@@ -179,7 +182,15 @@ class PlateController extends Controller
      */
     public function destroy(Plate $plate)
     {
+        $user = Auth::user(); 
+
+        $email = $user->email;
+
+        Mail::to($email)->send( new SendDeletePlateMail($plate) );
+
         $plate->delete();
+
+        
 
         return redirect()->route('admin.plates.index');
     }

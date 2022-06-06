@@ -1,7 +1,5 @@
 <template lang="">
 
-    
-
     <main class="container">
 
         <div class="container-loader flex justify-center items-center" v-if="!loading">
@@ -11,21 +9,25 @@
         <div v-if="loading">
             <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
-        <div class="drop-down-menu mb-10">
-            <button @click="setActive()" 
-            :class="active ? 'bg-viola text-white' : 'text-deliveroo'"
-            class="font-bold py-1 px-3 mb-3 border-2 border-viola rounded">
-                Categorie
-            </button>
-            <div :class="['menu-item', active ? 'block' : 'hidden', 'bg-bgcheck/50', 'rounded-2xl']">
-                <ul class="ks-cboxtags text-stone-500">
-                    <li v-for="category in categories" :key="category.id">
-                        <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
-                        <label :for="category.name">{{ category.name }}</label>
-                    </li>
-                </ul>
+            <div class="back-img">
+                ciao
             </div>
-        </div>
+
+            <div class="drop-down-menu mb-10">
+                <button @click="setActive()" 
+                :class="active ? 'bg-viola text-white' : 'text-deliveroo'"
+                class="font-bold py-1 px-3 mb-3 border-2 border-viola rounded">
+                    Categorie
+                </button>
+                <div :class="['menu-item', active ? 'block' : 'hidden', 'bg-bgcheck/50', 'rounded-2xl']">
+                    <ul class="ks-cboxtags text-stone-500">
+                        <li v-for="category in categories" :key="category.id">
+                            <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
+                            <label :for="category.name">{{ category.name }}</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
             <div class="grid restaurant-wrap gap-6">
                 <RestaurantCard
@@ -37,6 +39,7 @@
         </div>
 
     </main>
+    
 </template>
 
 <script>
@@ -99,6 +102,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+    .back-img {
+        background: linear-gradient(177deg, rgb(0, 204, 188) 50%, rgb(208, 235, 153) 50%);
+    }
 
     .restaurant-wrap {
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

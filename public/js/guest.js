@@ -1924,17 +1924,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['slug' // ho bisogno dello slug da passare alla chiamata in store.js 
-  ],
+  props: [// 'slug',  // ho bisogno dello slug da passare alla chiamata in store.js 
+  // 'plates'
+  'formatCurrency'],
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('cartModule', ['cart'])),
-  methods: {
-    fetchPlates: function fetchPlates() {
+  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('cartModule', [// 'fillCartFromStorage',
+  'createCartStorage', 'updateCart'])), {}, {
+    removeFromCart: function removeFromCart(plate) {
       this.$store.dispatch({
-        type: 'cartModule/fetchPlates',
-        slug: this.slug
+        type: 'cartModule/removeFromCartStorage',
+        plate: plate
       });
+    }
+  }),
+  beforeMount: function beforeMount() {
+    if (!localStorage.cart) {
+      this.createCartStorage();
+    } else {
+      this.updateCart();
     }
   }
 });
@@ -2184,6 +2222,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2200,6 +2250,12 @@ __webpack_require__.r(__webpack_exports__);
     AppCart: _components_AppCart_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   methods: {
+    addToCart: function addToCart(plate) {
+      this.$store.dispatch({
+        type: 'cartModule/addToStorageCart',
+        plate: plate
+      });
+    },
     formatCurrency: function formatCurrency(price) {
       // price = (price / 100);
       return price.toLocaleString('it-IT', {
@@ -2216,10 +2272,9 @@ __webpack_require__.r(__webpack_exports__);
             restaurant = _res$data.restaurant,
             plates = _res$data.plates;
         _this.restaurant = restaurant;
-        _this.plates = plates;
-        console.log(_this.restaurant);
-        _this.loading = true;
-        console.log(res.data);
+        _this.plates = plates; // console.log(this.restaurant);
+
+        _this.loading = true; // console.log(res.data);
       });
       /* .catch(err => {
           this.router.push('/404');
@@ -2301,7 +2356,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "img[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56] {\n  transition: transform 350ms;\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  cursor: pointer;\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: transform 150ms;\n}", ""]);
+exports.push([module.i, "img[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56] {\n  transition: transform 350ms;\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: transform 150ms;\n}", ""]);
 
 // exports
 
@@ -3575,31 +3630,73 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("p", [_vm._v("carrello")]),
-      _vm._v(" "),
-      _vm._l(_vm.cart, function (item, index) {
-        return _c("p", { key: index }, [_vm._v(" " + _vm._s(item) + " ")])
-      }),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.slug))]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function ($event) {
-              return _vm.fetchPlates()
-            },
-          },
-        },
-        [_vm._v(" Cliccami ")]
-      ),
-    ],
-    2
-  )
+  return _c("div", [
+    _c("h1", { staticClass: "font-bold text-xl mb-5" }, [_vm._v("Carrello")]),
+    _vm._v(" "),
+    _c("div", [
+      _vm.cart.length < 1
+        ? _c("div", [
+            _c("p", [_vm._v("Non ci sono articoli nel tuo carrello")]),
+          ])
+        : _c(
+            "div",
+            _vm._l(_vm.cart, function (plate, index) {
+              return _c("ul", { key: index }, [
+                _c(
+                  "li",
+                  {
+                    staticClass:
+                      "flex justify-between items-center p-[20px] shadow-lg border-red",
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "cart-item-wrapper flex gap-[20px]" },
+                      [
+                        _c(
+                          "figure",
+                          { staticClass: "max-w-[80px] rounded-sm" },
+                          [
+                            _c("img", {
+                              staticClass: "object-cover",
+                              attrs: { src: plate.image },
+                            }),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "item-info" }, [
+                          _c("h3", [_vm._v(_vm._s(plate.name))]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(_vm._s(_vm.formatCurrency(plate.price))),
+                          ]),
+                        ]),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { attrs: { id: "quantity" } }, [
+                      _c("p", [_vm._v("Quantità")]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          on: {
+                            click: function ($event) {
+                              return _vm.removeFromCart(plate)
+                            },
+                          },
+                        },
+                        [_vm._v("Remove")]
+                      ),
+                    ]),
+                  ]
+                ),
+              ])
+            }),
+            0
+          ),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -3991,9 +4088,27 @@ var render = function () {
                         ]),
                         _vm._v(" "),
                         _c("div", [
-                          _c("span", [
+                          _c("p", { staticClass: "mb-[10px]" }, [
                             _vm._v(_vm._s(_vm.formatCurrency(plate.price))),
                           ]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.addToCart(plate)
+                                },
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n                                Add to Cart\n                            "
+                              ),
+                            ]
+                          ),
                         ]),
                       ]),
                       _vm._v(" "),
@@ -4010,7 +4125,9 @@ var render = function () {
               ),
             ]),
             _vm._v(" "),
-            _c("AppCart", { attrs: { slug: _vm.slug } }),
+            _c("AppCart", {
+              attrs: { plates: _vm.plates, formatCurrency: _vm.formatCurrency },
+            }),
           ],
           1
         )
@@ -21179,33 +21296,67 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cartModule", function() { return cartModule; });
+// import { store } from "./store"
 var cartModule = {
   namespaced: true,
   state: {
-    plates: [],
-    cart: ['item1', 'item2', 'item3'],
-    orders: [] // slug: this.$route.params.slug,
+    cart: [] // cartCreated: false
+    // slug: this.$route.params.slug,
 
   },
   mutations: {
-    cartFill: function cartFill(plate) {}
+    updateCart: function updateCart(state) {
+      //svuoto prima il mio carrello
+      state.cart = []; // mi prento tuttti gli item in storage cart 
+
+      var storageCartItems = JSON.parse(localStorage.getItem("cart")); // li inserisco nel mio carrello
+
+      storageCartItems.forEach(function (item) {
+        state.cart.push(item);
+        console.log('push');
+      });
+      state.cart = storageCartItems; // console.log('storageCartItems', storageCartItems)            
+    }
   },
   actions: {
-    fetchPlates: function fetchPlates(store, payload) {
-      // console.log(payload.slug)
-      axios.get("/api/restaurants/".concat(payload.slug)).then(function (res) {
-        console.log(res.data.plates);
-      }); //         // const { plates } = res.data;
-      //         // this.restaurant = restaurant;
-      //         // this.plates = plates;
-      //         // console.log(this.restaurant);
-      //         // this.loading = true;
-      //         // console.log(res.data);
-      //     })
+    // aggiunta al carrello che viene invocato in show
+    // devo acnche inserire gli articoli dentro localStorage.cart
+    // non si puo fare il push in storage xke lì i dati sono solo stringe JSON
+    addToStorageCart: function addToStorageCart(_ref, payload) {
+      var commit = _ref.commit;
+      // state.cart.push(plate)
+      var storageCart = JSON.parse(localStorage.cart);
+      storageCart.push(payload.plate);
+      localStorage.cart = JSON.stringify(storageCart); // console.log(`STORAGE CART ${localStorage.cart}`)
 
-      /* .catch(err => {
-          this.router.push('/404');
-      }) */
+      commit('updateCart');
+    },
+    // removeFromCartStorage({commit}, payload){
+    //     commit('removeFromCartStorage', payload.plate)
+    // },
+    removeFromCartStorage: function removeFromCartStorage(_ref2, payload) {
+      var commit = _ref2.commit;
+      //recupero gli item in storage
+      var storageCart = JSON.parse(localStorage.getItem('cart')); //cerco coincidenza con il plate per poterlo cancellare 
+
+      storageCart.forEach(function (item, index) {
+        if (item.id === payload.plate.id) {
+          storageCart.splice(index, 1); // cancello il plate con id corrispondente
+        }
+      }); //aggiorno il local sotrage con il nuovo array senza l'elemento cancellato
+
+      localStorage.cart = JSON.stringify(storageCart); //faccio un update del mio array che andrà a prendere i dati attuali del local storage
+
+      commit('updateCart');
+    },
+    createCartStorage: function createCartStorage(state) {
+      var cart = [];
+      localStorage.setItem('cart', JSON.stringify(cart)); // state.cartCreated = true         
+    },
+    updateCart: function updateCart(_ref3) {
+      var commit = _ref3.commit;
+      // let storageCartItems = localStorage.getItem('cart')
+      commit('updateCart');
     }
   },
   getters: {// non li utilizziamo perche useremo la funzione helper mapState per il momento
@@ -21243,7 +21394,8 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     cartModule: _modules__WEBPACK_IMPORTED_MODULE_2__["cartModule"]
   },
   state: {
-    restaurants: []
+    restaurants: [],
+    orders: []
   },
   mutations: {},
   actions: {},
@@ -21357,7 +21509,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

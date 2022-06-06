@@ -1953,6 +1953,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [// 'slug',  // ho bisogno dello slug da passare alla chiamata in store.js 
@@ -2049,10 +2050,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/RestaurantCard.vue */ "./resources/js/components/RestaurantCard.vue");
 /* harmony import */ var _components_CssLoaders_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/CssLoaders.vue */ "./resources/js/components/CssLoaders.vue");
-//
-//
-//
-//
 //
 //
 //
@@ -2312,6 +2309,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2385,7 +2388,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "img {\n  width: 100%;\n  display: block;\n}\nbody {\n  background: #fff;\n  color: #000;\n}\n.container-loader {\n  height: calc(100vh - 86px);\n}", ""]);
+exports.push([module.i, ".back-img {\n  background: linear-gradient(175deg, rgb(0, 204, 188) 50%, rgb(208, 235, 153) 50%);\n  height: 456px;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nbody {\n  background: #fff;\n  color: #000;\n}\n.container-loader {\n  height: calc(100vh - 86px);\n}", ""]);
 
 // exports
 
@@ -4166,7 +4169,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("router-view")], 1)
+  return _c("div", { staticClass: "back-img" }, [_c("router-view")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true

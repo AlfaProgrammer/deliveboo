@@ -498,6 +498,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .max-w-\[80px\] {
   max-width: 80px;
 }
+.max-w-sm {
+  max-width: 24rem;
+}
 .max-w-lg {
   max-width: 32rem;
 }

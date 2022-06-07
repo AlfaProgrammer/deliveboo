@@ -2053,6 +2053,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -28658,21 +28663,24 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.token
-      ? _c("div", { attrs: { id: "dropIn" } }, [_vm._v(_vm._s(_vm.dropIn()))])
-      : _vm._e(),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function ($event) {
-            return _vm.confirmCta(_vm.inst)
+    _c("div", { staticClass: "container max-w-sm" }, [
+      _vm.token
+        ? _c("div", { attrs: { id: "dropIn" } }, [_vm._v(_vm._s(_vm.dropIn()))])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "rounded bg-deliveroo py-1 px-2 text-white font-bold",
+          on: {
+            click: function ($event) {
+              return _vm.confirmCta(_vm.inst)
+            },
           },
         },
-      },
-      [_vm._v("Invia")]
-    ),
+        [_vm._v("\n            Invia\n        ")]
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []

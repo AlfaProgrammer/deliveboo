@@ -1,7 +1,12 @@
 <template lang="">
-    <div>   
-        <div id="dropIn" v-if="token">{{ dropIn() }}</div>
-        <button @click="confirmCta(inst)">Invia</button>
+    <div>
+        <div class="container max-w-sm">
+            <div id="dropIn" class="" v-if="token">{{ dropIn() }}</div>
+            <button class="rounded bg-deliveroo py-1 px-2 text-white font-bold"
+            @click="confirmCta(inst)">
+                Invia
+            </button>    
+        </div> 
     </div>
 </template>
 <script>

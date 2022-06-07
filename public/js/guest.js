@@ -2057,7 +2057,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       token: '',
-      inst: null
+      inst: null,
+      nonce: ''
     };
   },
   methods: {
@@ -2093,6 +2094,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     confirmCta: function confirmCta(instance) {
+      var _this3 = this;
+
       instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
         if (requestPaymentMethodErr) {
           // No payment method is available.
@@ -2101,6 +2104,7 @@ __webpack_require__.r(__webpack_exports__);
           return;
         }
 
+        _this3.nonce = payload.nonce;
         console.log(payload.nonce);
       });
     }
@@ -28643,7 +28647,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    this.token
+    _vm.token
       ? _c("div", { attrs: { id: "dropIn" } }, [_vm._v(_vm._s(_vm.dropIn()))])
       : _vm._e(),
     _vm._v(" "),

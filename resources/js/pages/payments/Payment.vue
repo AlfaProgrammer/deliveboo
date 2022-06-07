@@ -1,6 +1,6 @@
 <template lang="">
-    <div>
-        <div id="dropIn" v-if="this.token">{{ dropIn() }}</div>
+    <div>   
+        <div id="dropIn" v-if="token">{{ dropIn() }}</div>
         <button @click="confirmCta(inst)">Invia</button>
     </div>
 </template>
@@ -10,6 +10,7 @@ export default {
         return {
             token: '',
             inst: null,
+            nonce: ''
         }
     },
     methods: {
@@ -21,6 +22,7 @@ export default {
                 console.log(token);
             })
         },
+        
         dropIn() {
             const dropIn = require('braintree-web-drop-in');
             dropIn.create({
@@ -40,14 +42,14 @@ export default {
             });
         },
         confirmCta(instance) {
-            instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+            instance.requestPaymentMethod( (requestPaymentMethodErr, payload) => {
                 if (requestPaymentMethodErr) {
                     // No payment method is available.
                     // An appropriate error will be shown in the UI.
                     console.error(requestPaymentMethodErr);
                     return;
                 }
-
+                this.nonce = payload.nonce;
                 console.log(payload.nonce);
             }
         )},

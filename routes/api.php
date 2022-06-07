@@ -33,3 +33,10 @@ Route::namespace('api')
         Route::resource('restaurants', 'RestaurantController')
         ->only('index', 'show');
     });
+
+Route::namespace('api')
+->name('api.')
+->group(function(){
+    Route::resource('payments', 'PaymentController')
+    ->only('index', 'store');
+});

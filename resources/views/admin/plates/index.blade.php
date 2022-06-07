@@ -34,14 +34,15 @@
 
                     @foreach ($plates as $plate)
 
-                        <div class="card-wrapper col-6 col-md-4 col-lg-3 py-3 ">
+                        <div class="card-wrapper col-6 col-md-4 col-lg-3 py-3">
 
-                            <div class="card" >
-    
+                            {{-- <div class="card" > --}}
+                            <a class="card text-decoration-none" href="{{route('admin.plates.show', $plate)}}">
+
                                 <img class="card-img-top" src="{{ $plate->image ?: '' }}">
     
                                 <div class="card-body d-flex flex-column" >
-                                    <a href="{{route('admin.plates.show', $plate)}}" class="title">{{$plate['name']}}</a>
+                                    <h5 class="title">{{$plate['name']}}</h5>
                                     <div class="badge-wrapper">
                                         @foreach ($plate->allergens as $allergen)
                                         <span class="badge rounded-pill mb-2">{{$allergen->name}}</span>
@@ -49,8 +50,10 @@
                                     </div>
     
                                 </div>
-    
-                            </div>
+
+                            </a>
+                            {{-- </div> --}}
+
                         </div>
 
 

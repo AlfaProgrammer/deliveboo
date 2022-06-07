@@ -2388,7 +2388,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".back-img {\n  background: linear-gradient(175deg, rgb(0, 204, 188) 50%, rgb(208, 235, 153) 50%);\n  height: 456px;\n}\nimg {\n  width: 100%;\n  display: block;\n}\nbody {\n  background: #fff;\n  color: #000;\n}\n.container-loader {\n  height: calc(100vh - 86px);\n}", ""]);
+exports.push([module.i, "img {\n  width: 100%;\n  display: block;\n}\nbody {\n  background: #fff;\n  color: #000;\n}\n.container-loader {\n  height: calc(100vh - 86px);\n}", ""]);
 
 // exports
 

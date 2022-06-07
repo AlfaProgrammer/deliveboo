@@ -9,6 +9,7 @@ export default {
 </script>
 
 <style>
+
     .lds-ring {
         display: inline-block;
         position: relative;

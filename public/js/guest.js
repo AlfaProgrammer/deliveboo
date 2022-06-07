@@ -1953,12 +1953,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [// 'slug',  // ho bisogno dello slug da passare alla chiamata in store.js 
   // 'plates'
   'formatCurrency'],
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('cartModule', ['cart'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('cartModule', ['cart', 'cartTotal'])),
   methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('cartModule', [// 'fillCartFromStorage',
   'createCartStorage', 'updateCart'])), {}, {
     removeFromCart: function removeFromCart(plate) {
@@ -3640,60 +3643,69 @@ var render = function () {
           ])
         : _c(
             "div",
-            _vm._l(_vm.cart, function (plate, index) {
-              return _c("ul", { key: index }, [
-                _c(
-                  "li",
-                  {
-                    staticClass:
-                      "flex justify-between items-center p-[20px] shadow-lg border-red",
-                  },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "cart-item-wrapper flex gap-[20px]" },
-                      [
-                        _c(
-                          "figure",
-                          { staticClass: "max-w-[80px] rounded-sm" },
-                          [
-                            _c("img", {
-                              staticClass: "object-cover",
-                              attrs: { src: plate.image },
-                            }),
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "item-info" }, [
-                          _c("h3", [_vm._v(_vm._s(plate.name))]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v(_vm._s(_vm.formatCurrency(plate.price))),
-                          ]),
-                        ]),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { attrs: { id: "quantity" } }, [
-                      _c("p", [_vm._v("Quantità")]),
-                      _vm._v(" "),
+            [
+              _c("div", { staticClass: "totalPrice" }, [
+                _c("p", [_vm._v(_vm._s(_vm.formatCurrency(_vm.cartTotal)))]),
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.cart, function (plate, index) {
+                return _c("ul", { key: index }, [
+                  _c(
+                    "li",
+                    {
+                      staticClass:
+                        "flex justify-between items-center p-[20px] shadow-lg border-red",
+                    },
+                    [
                       _c(
-                        "button",
-                        {
-                          on: {
-                            click: function ($event) {
-                              return _vm.removeFromCart(plate)
+                        "div",
+                        { staticClass: "cart-item-wrapper flex gap-[20px]" },
+                        [
+                          _c(
+                            "figure",
+                            { staticClass: "max-w-[80px] rounded-sm" },
+                            [
+                              _c("img", {
+                                staticClass: "object-cover",
+                                attrs: { src: plate.image },
+                              }),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "item-info" }, [
+                            _c("h3", [_vm._v(_vm._s(plate.name))]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                "Tatale Carrello: " +
+                                  _vm._s(_vm.formatCurrency(plate.price))
+                              ),
+                            ]),
+                          ]),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "quantity" } }, [
+                        _c("p", [_vm._v("Quantità")]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function ($event) {
+                                return _vm.removeFromCart(plate)
+                              },
                             },
                           },
-                        },
-                        [_vm._v("Remove")]
-                      ),
-                    ]),
-                  ]
-                ),
-              ])
-            }),
-            0
+                          [_vm._v("Remove")]
+                        ),
+                      ]),
+                    ]
+                  ),
+                ])
+              }),
+            ],
+            2
           ),
     ]),
   ])
@@ -21300,27 +21312,19 @@ __webpack_require__.r(__webpack_exports__);
 var cartModule = {
   namespaced: true,
   state: {
-    cart: [] // cartCreated: false
+    cart: [],
+    cartTotal: 0 // cartCreated: false
     // slug: this.$route.params.slug,
 
   },
   mutations: {
-    updateCart: function updateCart(state) {
-<<<<<<< HEAD
+    updateCart: function updateCart(state, commit) {
       var storageCartItems = JSON.parse(localStorage.getItem("cart"));
-      state.cart = storageCartItems;
-=======
-      //svuoto prima il mio carrello
-      state.cart = []; // mi prento tuttti gli item in storage cart 
+      state.cart = storageCartItems; //assegnazione prezzo totale
 
-      var storageCartItems = JSON.parse(localStorage.getItem("cart")); // li inserisco nel mio carrello
-
-      storageCartItems.forEach(function (item) {
-        state.cart.push(item);
-        console.log('push');
-      });
-      state.cart = storageCartItems; // console.log('storageCartItems', storageCartItems)            
->>>>>>> Andrea-B.-Mail
+      state.cartTotal = state.cart.reduce(function (acc, item) {
+        return acc + item.price;
+      }, 0);
     }
   },
   actions: {
@@ -21514,7 +21518,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

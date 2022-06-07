@@ -1,47 +1,57 @@
-img {
-    aspect-ratio: 16/9; 
-    display: block;
+.plates-index {
+    .row {
+        .card {
+            height: 250px;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-decoration: none;
+            
+            img {
+                aspect-ratio: 16/9; 
+                display: block;
+            }
+        
+            .card-body {
+                background-color: #F5F5F4;    
+                white-space: normal; 
+                overflow-y: scroll;
+        
+                .title {
+                    font-weight: 700;
+                    color: #440063;
+                }
+        
+                .badge-wrapper {
+        
+                    .badge {
+                        background-color: #00CCBC;
+                        color: white;
+                    }
+        
+                }
+                
+        
+            }
+        
+        }
+        .card:hover {
+            border-color: #440063;
+        }
+        
+        .card-body::-webkit-scrollbar {
+            width: 5px;
+        }
+        .card-body {
+            scrollbar-width: thin;
+            scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+        }
+        .card-body::-webkit-scrollbar-track {
+            background: var(--scrollbarBG);
+        }
+        .card-body::-webkit-scrollbar-thumb {
+            background-color: var(--thumbBG) ;
+            border-radius: 999px;
+            border: 3px solid var(--scrollbarBG);
+        }
+    }
 }
-
-.card {
-    height: 250px;
-    border: 2px solid transparent;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.card-body {
-    background-color: #F5F5F4;    
-    white-space: normal; 
-}
-
-.card:hover {
-    border-color: #440063;
-}
-
-
-.title {
-    font-weight: 700;
-    color: #440063;
-}
-
-.badge {
-    background-color: #00CCBC;
-    color: white;
-}
-
-
-// .card-body::-webkit-scrollbar {
-//     width: 5px;
-//   }
-//   .card-body {
-//     scrollbar-width: thin;
-//     scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-//   }
-//   .card-body::-webkit-scrollbar-track {
-//     background: var(--scrollbarBG);
-//   }
-//   .card-body::-webkit-scrollbar-thumb {
-//     background-color: var(--thumbBG) ;
-//     border-radius: 999px;
-//     border: 3px solid var(--scrollbarBG);
-//   }

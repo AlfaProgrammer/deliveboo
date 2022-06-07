@@ -2057,18 +2057,28 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       token: '',
-      inst: null,
-      nonce: ''
+      inst: null
     };
   },
   methods: {
     fetchToken: function fetchToken() {
       var _this = this;
 
-      axios.get('/api/orders').then(function (res) {
+      axios.get('/api/payments').then(function (res) {
         var token = res.data.token;
         _this.token = token;
         console.log(token);
+      });
+    },
+    sendToken: function sendToken(nonce) {
+      axios.post('/api/payments', null, {
+        params: {
+          token: nonce
+        }
+      }).then(function (res) {
+        console.log(res);
+      })["catch"](function (err) {
+        console.error(err);
       });
     },
     dropIn: function dropIn() {
@@ -2104,7 +2114,8 @@ __webpack_require__.r(__webpack_exports__);
           return;
         }
 
-        _this3.nonce = payload.nonce;
+        _this3.sendToken(payload.nonce);
+
         console.log(payload.nonce);
       });
     }

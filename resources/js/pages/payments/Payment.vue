@@ -10,19 +10,30 @@ export default {
         return {
             token: '',
             inst: null,
-            nonce: ''
         }
     },
     methods: {
         fetchToken() {
-            axios.get('/api/orders')
+            axios.get('/api/payments')
             .then(res => {
                 const {token} = res.data
                 this.token = token;
                 console.log(token);
             })
         },
-        
+        sendToken(nonce) {
+            axios.post('/api/payments',null, {
+                params: {
+                    token: nonce,
+                }
+            })
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+        },
         dropIn() {
             const dropIn = require('braintree-web-drop-in');
             dropIn.create({
@@ -42,14 +53,15 @@ export default {
             });
         },
         confirmCta(instance) {
-            instance.requestPaymentMethod( (requestPaymentMethodErr, payload) => {
+            instance.requestPaymentMethod((requestPaymentMethodErr, payload) => {
                 if (requestPaymentMethodErr) {
                     // No payment method is available.
                     // An appropriate error will be shown in the UI.
                     console.error(requestPaymentMethodErr);
                     return;
                 }
-                this.nonce = payload.nonce;
+
+                this.sendToken(payload.nonce);
                 console.log(payload.nonce);
             }
         )},
@@ -60,5 +72,5 @@ export default {
 }
 </script>
 <style lang="scss">
-    
+
 </style>

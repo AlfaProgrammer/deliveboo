@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 
-class OrderController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -50,7 +50,26 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $tokenNonce = $request->query('token');
+
+        $gateway = new \Braintree\Gateway([
+            'environment' => 'sandbox',
+            'merchantId' => 'p7sgyb9mzr7b4s33',
+            'publicKey' => 'kf2gbnxvdwbg89wy',
+            'privateKey' => '1fbb2c0ac805e539785e3314d6a3d91a'
+        ]);
+
+        $result = $gateway->transaction()->sale([
+            'amount' => '100.00',
+            'paymentMethodNonce' => $tokenNonce,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+
+        return $result;
+
     }
 
     /**

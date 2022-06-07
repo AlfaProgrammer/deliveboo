@@ -21531,7 +21531,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+>>>>>>> Andrea-B_layout_2
 
 
 /***/ })

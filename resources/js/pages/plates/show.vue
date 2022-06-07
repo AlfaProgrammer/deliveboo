@@ -1,4 +1,5 @@
 <template>
+
     <section class="">
 
         <div class="container-loader flex justify-center items-center" v-if="!loading">
@@ -65,10 +66,13 @@
                 :formatCurrency="formatCurrency"
             />
 
-
         </div>
     </section>
+
 </template>
+
+// -----------------------------------------------------------------
+// JS
 
 <script>
 import CssLoaders from '../../components/CssLoaders.vue';
@@ -122,6 +126,9 @@ export default {
     }
 }
 </script>
+
+// -----------------------------------------------------------------
+// CSS
 
 <style lang="scss" scoped>
 

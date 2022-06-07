@@ -1953,6 +1953,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+>>>>>>> layout-1
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [// 'slug',  // ho bisogno dello slug da passare alla chiamata in store.js 
@@ -2049,6 +2053,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/RestaurantCard.vue */ "./resources/js/components/RestaurantCard.vue");
 /* harmony import */ var _components_CssLoaders_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/CssLoaders.vue */ "./resources/js/components/CssLoaders.vue");
+//
+//
 //
 //
 //
@@ -2234,6 +2240,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< HEAD
+=======
+//
+//
+//
+//
+>>>>>>> layout-1
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2297,6 +2310,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3869,7 +3888,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n            Categorie\n        ")]
+              [_vm._v("\n                Categorie\n            ")]
             ),
             _vm._v(" "),
             _c(
@@ -4156,7 +4175,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_c("router-view")], 1)
+  return _c("div", { staticClass: "back-img" }, [_c("router-view")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21307,9 +21326,12 @@ var cartModule = {
   mutations: {
     updateCart: function updateCart(state) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       var storageCartItems = JSON.parse(localStorage.getItem("cart"));
       state.cart = storageCartItems;
 =======
+=======
+>>>>>>> layout-1
       //svuoto prima il mio carrello
       state.cart = []; // mi prento tuttti gli item in storage cart 
 
@@ -21320,7 +21342,10 @@ var cartModule = {
         console.log('push');
       });
       state.cart = storageCartItems; // console.log('storageCartItems', storageCartItems)            
+<<<<<<< HEAD
 >>>>>>> Andrea-B.-Mail
+=======
+>>>>>>> layout-1
     }
   },
   actions: {
@@ -21514,7 +21539,11 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+=======
+module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
+>>>>>>> layout-1
 
 
 /***/ })

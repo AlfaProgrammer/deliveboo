@@ -47894,9 +47894,15 @@ try {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! C:\developer\deliveboo\resources\js\admin.js */"./resources/js/admin.js");
 __webpack_require__(/*! C:\developer\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 module.exports = __webpack_require__(/*! C:\developer\deliveboo\resources\sass\front.scss */"./resources/sass/front.scss");
+=======
+__webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/admin.js */"./resources/js/admin.js");
+__webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/sass/front.scss */"./resources/sass/front.scss");
+>>>>>>> layout-1
 
 
 /***/ })

@@ -27,16 +27,15 @@
                 {{-- ----------------------- --}}
                 {{-- CARDS --}}
 
-                <div class="container-fluid">
+                <div class="container-fluid plates-index">
 
                     <div class="row mb-5 mx-3">
 
                     @foreach ($plates as $plate)
 
-                        <div class="card-wrapper col-6 col-md-4 col-lg-3 py-3">
-
-                            {{-- <div class="card" > --}}
-                            <a class="card text-decoration-none" href="{{route('admin.plates.show', $plate)}}">
+                        <div class="card-wrapper col-6 col-md-4 col-lg-3 py-3 ">
+                                
+                            <a href="{{route('admin.plates.show', $plate)}}" class="card">
 
                                 <img class="card-img-top" src="{{ $plate->image ?: '' }}">
     
@@ -49,9 +48,7 @@
                                     </div>
     
                                 </div>
-
                             </a>
-                            {{-- </div> --}}
 
                         </div>
 

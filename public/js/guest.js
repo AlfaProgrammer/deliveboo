@@ -1956,10 +1956,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-<<<<<<< HEAD
 //
-=======
->>>>>>> Andrea-B_layout
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: [// 'slug',  // ho bisogno dello slug da passare alla chiamata in store.js 
@@ -21534,11 +21531,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
->>>>>>> Andrea-B_layout
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

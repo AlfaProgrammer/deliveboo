@@ -1,78 +1,98 @@
-.plate-show {
+.img-show {
+    
+    background-image: url('/img/deliv-1-1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no repeat;
+    height: calc(100vh - 120px);
 
-    h5 {
-        font-size: 1.28571429em;
-        font-weight: 700;
-        line-height: 1.2857em;
-        margin: 0;
-    }
-    
-    .card {
-        font-size: 1em;
-        overflow: hidden;
-        padding: 0;
-        border: none;
-        border-radius: .28571429rem;
-        box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    }
-    
-    .card-block {
-        font-size: 1em;
-        position: relative;
-        margin: 0;
-        padding: 0.25rem 1.25rem;
-        border: none;
-        border-top: 1px solid rgba(34, 36, 38, .1);
-        box-shadow: none;
-    }
-    
-    .card-img-top {
-        display: block;
-        width: 100%;
-        height: auto;
-    }
-    
-    .card-title {
-        font-size: 1.28571429em;
-        font-weight: 700;
-        line-height: 1.2857em;
-    }
-    
-    .card-text {
-        clear: both;
-        margin-top: .5em;
-        color: rgba(0, 0, 0, .68);
-    }
-    
-    .card-footer {
-        font-size: 1em;
-        position: static;
-        top: 0;
-        left: 0;
-        max-width: 100%;
-        padding: .75em 1em;
-        color: rgba(0, 0, 0, .4);
-        border-top: 1px solid rgba(0, 0, 0, .05) !important;
-        background: #fff;
-    }
-    
-    .btn {
-        border: 1px solid rgba(0, 0, 0, .05);
-    }
+    .plate-show {
+
+        h5 {
+            font-size: 1.28571429em;
+            font-weight: 700;
+            line-height: 1.2857em;
+            margin: 0;
+        }
         
-    
-    .text-bold {
-        font-weight: 700;
-    }
-    
-    .slug {
-        font-size: 1em;
-        color: rgba(0, 0, 0, .4);
-    }
-    
-    
-    .badge:hover {
-        color: rgba(0, 0, 0, .87);
+        .card {
+            font-size: 1em;
+            overflow: hidden;
+            padding: 0;
+            border: none;
+            border-radius: .28571429rem;
+            box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+        }
+        
+        .card-block {
+            font-size: 1em;
+            position: relative;
+            margin: 0;
+            padding: 0.25rem 1.25rem;
+            border: none;
+            border-top: 1px solid rgba(34, 36, 38, .1);
+            box-shadow: none;
+        }
+        
+        .card-img-top {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        
+        .card-title {
+            font-size: 1.28571429em;
+            font-weight: 700;
+            line-height: 1.2857em;
+        }
+        
+        .card-text {
+            clear: both;
+            margin-top: .5em;
+            color: rgba(0, 0, 0, .68);
+        }
+        
+        .card-footer {
+            font-size: 1em;
+            position: static;
+            top: 0;
+            left: 0;
+            max-width: 100%;
+            padding: .75em 1em;
+            color: rgba(0, 0, 0, .4);
+            border-top: 1px solid rgba(0, 0, 0, .05) !important;
+            background: #fff;
+
+            .badge {
+                color: white;
+                background-color: #02CCBC;
+            }
+
+            .badge:hover {
+                color: white;
+            }
+
+        }
+        
+        .btn {
+            border: 1px solid rgba(0, 0, 0, .05);
+        }
+            
+        
+        .text-bold {
+            font-weight: 700;
+        }
+        
+        .slug {
+            font-size: 1em;
+            color: rgba(0, 0, 0, .4);
+        }
+        
+        
+        .badge:hover {
+            color: rgba(0, 0, 0, .87);
+        }
+
     }
 
 }

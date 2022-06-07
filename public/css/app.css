@@ -10057,13 +10057,20 @@ h3 {
   border: 3px solid var(--scrollbarBG);
 }
 
-.plate-show h5 {
+.img-show {
+  background-image: url("/img/deliv-1-1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no repeat;
+  height: calc(100vh - 120px);
+}
+.img-show .plate-show h5 {
   font-size: 1.28571429em;
   font-weight: 700;
   line-height: 1.2857em;
   margin: 0;
 }
-.plate-show .card {
+.img-show .plate-show .card {
   font-size: 1em;
   overflow: hidden;
   padding: 0;
@@ -10071,7 +10078,7 @@ h3 {
   border-radius: 0.28571429rem;
   box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
 }
-.plate-show .card-block {
+.img-show .plate-show .card-block {
   font-size: 1em;
   position: relative;
   margin: 0;
@@ -10080,22 +10087,22 @@ h3 {
   border-top: 1px solid rgba(34, 36, 38, 0.1);
   box-shadow: none;
 }
-.plate-show .card-img-top {
+.img-show .plate-show .card-img-top {
   display: block;
   width: 100%;
   height: auto;
 }
-.plate-show .card-title {
+.img-show .plate-show .card-title {
   font-size: 1.28571429em;
   font-weight: 700;
   line-height: 1.2857em;
 }
-.plate-show .card-text {
+.img-show .plate-show .card-text {
   clear: both;
   margin-top: 0.5em;
   color: rgba(0, 0, 0, 0.68);
 }
-.plate-show .card-footer {
+.img-show .plate-show .card-footer {
   font-size: 1em;
   position: static;
   top: 0;
@@ -10106,27 +10113,41 @@ h3 {
   border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
   background: #fff;
 }
-.plate-show .btn {
+.img-show .plate-show .card-footer .badge {
+  color: white;
+  background-color: #02CCBC;
+}
+.img-show .plate-show .card-footer .badge:hover {
+  color: white;
+}
+.img-show .plate-show .btn {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.plate-show .text-bold {
+.img-show .plate-show .text-bold {
   font-weight: 700;
 }
-.plate-show .slug {
+.img-show .plate-show .slug {
   font-size: 1em;
   color: rgba(0, 0, 0, 0.4);
 }
-.plate-show .badge:hover {
+.img-show .plate-show .badge:hover {
   color: rgba(0, 0, 0, 0.87);
 }
 
-.plate-show h5 {
+.img-show {
+  background-image: url("/img/deliv-1-1.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no repeat;
+  height: calc(100vh - 120px);
+}
+.img-show .plate-show h5 {
   font-size: 1.28571429em;
   font-weight: 700;
   line-height: 1.2857em;
   margin: 0;
 }
-.plate-show .card {
+.img-show .plate-show .card {
   font-size: 1em;
   overflow: hidden;
   padding: 0;
@@ -10134,7 +10155,7 @@ h3 {
   border-radius: 0.28571429rem;
   box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
 }
-.plate-show .card-block {
+.img-show .plate-show .card-block {
   font-size: 1em;
   position: relative;
   margin: 0;
@@ -10143,22 +10164,22 @@ h3 {
   border-top: 1px solid rgba(34, 36, 38, 0.1);
   box-shadow: none;
 }
-.plate-show .card-img-top {
+.img-show .plate-show .card-img-top {
   display: block;
   width: 100%;
   height: auto;
 }
-.plate-show .card-title {
+.img-show .plate-show .card-title {
   font-size: 1.28571429em;
   font-weight: 700;
   line-height: 1.2857em;
 }
-.plate-show .card-text {
+.img-show .plate-show .card-text {
   clear: both;
   margin-top: 0.5em;
   color: rgba(0, 0, 0, 0.68);
 }
-.plate-show .card-footer {
+.img-show .plate-show .card-footer {
   font-size: 1em;
   position: static;
   top: 0;
@@ -10169,17 +10190,24 @@ h3 {
   border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
   background: #fff;
 }
-.plate-show .btn {
+.img-show .plate-show .card-footer .badge {
+  color: white;
+  background-color: #02CCBC;
+}
+.img-show .plate-show .card-footer .badge:hover {
+  color: white;
+}
+.img-show .plate-show .btn {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.plate-show .text-bold {
+.img-show .plate-show .text-bold {
   font-weight: 700;
 }
-.plate-show .slug {
+.img-show .plate-show .slug {
   font-size: 1em;
   color: rgba(0, 0, 0, 0.4);
 }
-.plate-show .badge:hover {
+.img-show .plate-show .badge:hover {
   color: rgba(0, 0, 0, 0.87);
 }
 

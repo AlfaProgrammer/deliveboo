@@ -37,6 +37,6 @@ Route::namespace('api')
 Route::namespace('api')
 ->name('api.')
 ->group(function(){
-    Route::resource('payments', 'PaymentController')
+    Route::resource('orders', 'OrderController')
     ->only('index', 'store');
 });

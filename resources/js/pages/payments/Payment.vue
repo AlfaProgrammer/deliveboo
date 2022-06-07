@@ -2,7 +2,6 @@
     <div>
         <div id="dropIn" v-if="this.token">{{ dropIn() }}</div>
         <button @click="confirmCta(inst)">Invia</button>
-
     </div>
 </template>
 <script>
@@ -15,7 +14,7 @@ export default {
     },
     methods: {
         fetchToken() {
-            axios.get('/api/payments')
+            axios.get('/api/orders')
             .then(res => {
                 const {token} = res.data
                 this.token = token;
@@ -56,7 +55,6 @@ export default {
     created() {
         this.fetchToken();  
     },
-
 }
 </script>
 <style lang="scss">

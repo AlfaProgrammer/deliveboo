@@ -2053,7 +2053,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2065,7 +2064,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchToken: function fetchToken() {
       var _this = this;
 
-      axios.get('/api/payments').then(function (res) {
+      axios.get('/api/orders').then(function (res) {
         var token = res.data.token;
         _this.token = token;
         console.log(token);

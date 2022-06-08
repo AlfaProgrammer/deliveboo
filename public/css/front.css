@@ -947,6 +947,10 @@ select {
   width: 30px;
   height: 30px;
 }
+.after\:content-\[\'\*\'\]::after {
+  --tw-content: '*';
+  content: var(--tw-content);
+}
 .hover\:cursor-pointer:hover {
   cursor: pointer;
 }

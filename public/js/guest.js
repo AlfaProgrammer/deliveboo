@@ -2124,7 +2124,9 @@ __webpack_require__.r(__webpack_exports__);
       cap: null
     };
   },
-  methods: {}
+  methods: {
+    checkForm: function checkForm() {}
+  }
 });
 
 /***/ }),
@@ -28774,38 +28776,39 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("form", { attrs: { action: "", method: "" } }, [
+  return _c("div", [
+    _c(
+      "form",
+      { attrs: { action: "", method: "" }, on: { submit: _vm.checkForm } },
+      [
         _c(
           "div",
           { staticClass: "container shadow overflow-hidden sm:rounded-md" },
           [
             _c("div", { staticClass: "px-4 py-5 bg-white sm:p-6" }, [
-              _c("div", { staticClass: "text-xs italic mb-5" }, [
-                _c("p", [
-                  _vm._v("I campi contrassegnati con * sono richiesti"),
-                ]),
-              ]),
+              _vm._m(0),
               _vm._v(" "),
               _c("div", { staticClass: "grid grid-cols-6 gap-6" }, [
                 _c("div", { staticClass: "col-span-6 sm:col-span-3" }, [
                   _c(
                     "label",
                     {
-                      staticClass: "block text-sm font-medium text-gray-700",
+                      staticClass:
+                        "after:content-['*'] block text-sm font-medium text-gray-700",
                       attrs: { for: "name" },
                     },
                     [_vm._v("Nome")]
                   ),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.name,
+                        expression: "name",
+                      },
+                    ],
                     staticClass:
                       "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
                     attrs: {
@@ -28814,6 +28817,15 @@ var staticRenderFns = [
                       id: "name",
                       autocomplete: "given-name",
                     },
+                    domProps: { value: _vm.name },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.name = $event.target.value
+                      },
+                    },
                   }),
                 ]),
                 _vm._v(" "),
@@ -28821,13 +28833,22 @@ var staticRenderFns = [
                   _c(
                     "label",
                     {
-                      staticClass: "block text-sm font-medium text-gray-700",
+                      staticClass:
+                        "after:content-['*'] block text-sm font-medium text-gray-700",
                       attrs: { for: "surname" },
                     },
                     [_vm._v("Cognome")]
                   ),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.surname,
+                        expression: "surname",
+                      },
+                    ],
                     staticClass:
                       "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
                     attrs: {
@@ -28836,6 +28857,15 @@ var staticRenderFns = [
                       id: "surname",
                       autocomplete: "surname",
                     },
+                    domProps: { value: _vm.surname },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.surname = $event.target.value
+                      },
+                    },
                   }),
                 ]),
                 _vm._v(" "),
@@ -28843,13 +28873,22 @@ var staticRenderFns = [
                   _c(
                     "label",
                     {
-                      staticClass: "block text-sm font-medium text-gray-700",
+                      staticClass:
+                        "after:content-['*'] block text-sm font-medium text-gray-700",
                       attrs: { for: "email" },
                     },
                     [_vm._v("Email")]
                   ),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.email,
+                        expression: "email",
+                      },
+                    ],
                     staticClass:
                       "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
                     attrs: {
@@ -28858,6 +28897,15 @@ var staticRenderFns = [
                       id: "email",
                       autocomplete: "email",
                     },
+                    domProps: { value: _vm.email },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.email = $event.target.value
+                      },
+                    },
                   }),
                 ]),
                 _vm._v(" "),
@@ -28865,19 +28913,37 @@ var staticRenderFns = [
                   _c(
                     "label",
                     {
-                      staticClass: "block text-sm font-medium text-gray-700",
+                      staticClass:
+                        "after:content-['*'] block text-sm font-medium text-gray-700",
                       attrs: { for: "phone_number" },
                     },
                     [_vm._v("Telefono")]
                   ),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.phone_number,
+                        expression: "phone_number",
+                      },
+                    ],
                     staticClass:
                       "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
                     attrs: {
                       type: "text",
                       name: "phone_number",
                       autocomplete: "phone_number",
+                    },
+                    domProps: { value: _vm.phone_number },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.phone_number = $event.target.value
+                      },
                     },
                   }),
                 ]),
@@ -28886,13 +28952,22 @@ var staticRenderFns = [
                   _c(
                     "label",
                     {
-                      staticClass: "block text-sm font-medium text-gray-700",
+                      staticClass:
+                        "after:content-['*'] block text-sm font-medium text-gray-700",
                       attrs: { for: "address" },
                     },
                     [_vm._v("Indirizzo / Via")]
                   ),
                   _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.address,
+                        expression: "address",
+                      },
+                    ],
                     staticClass:
                       "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
                     attrs: {
@@ -28900,6 +28975,15 @@ var staticRenderFns = [
                       name: "address",
                       id: "address",
                       autocomplete: "address",
+                    },
+                    domProps: { value: _vm.address },
+                    on: {
+                      input: function ($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.address = $event.target.value
+                      },
                     },
                   }),
                 ]),
@@ -28911,13 +28995,22 @@ var staticRenderFns = [
                     _c(
                       "label",
                       {
-                        staticClass: "block text-sm font-medium text-gray-700",
+                        staticClass:
+                          "after:content-['*'] block text-sm font-medium text-gray-700",
                         attrs: { for: "house_number" },
                       },
                       [_vm._v("N. civico")]
                     ),
                     _vm._v(" "),
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.house_number,
+                          expression: "house_number",
+                        },
+                      ],
                       staticClass:
                         "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
                       attrs: {
@@ -28925,6 +29018,15 @@ var staticRenderFns = [
                         name: "house_number",
                         id: "house_number",
                         autocomplete: "house_number",
+                      },
+                      domProps: { value: _vm.house_number },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.house_number = $event.target.value
+                        },
                       },
                     }),
                   ]
@@ -28937,13 +29039,22 @@ var staticRenderFns = [
                     _c(
                       "label",
                       {
-                        staticClass: "block text-sm font-medium text-gray-700",
+                        staticClass:
+                          "after:content-['*'] block text-sm font-medium text-gray-700",
                         attrs: { for: "city" },
                       },
                       [_vm._v("Città")]
                     ),
                     _vm._v(" "),
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.city,
+                          expression: "city",
+                        },
+                      ],
                       staticClass:
                         "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
                       attrs: {
@@ -28951,6 +29062,15 @@ var staticRenderFns = [
                         name: "city",
                         id: "city",
                         autocomplete: "address-level2",
+                      },
+                      domProps: { value: _vm.city },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.city = $event.target.value
+                        },
                       },
                     }),
                   ]
@@ -28963,13 +29083,22 @@ var staticRenderFns = [
                     _c(
                       "label",
                       {
-                        staticClass: "block text-sm font-medium text-gray-700",
+                        staticClass:
+                          "after:content-['*'] block text-sm font-medium text-gray-700",
                         attrs: { for: "cap" },
                       },
                       [_vm._v("ZIP / CAP")]
                     ),
                     _vm._v(" "),
                     _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.cap,
+                          expression: "cap",
+                        },
+                      ],
                       staticClass:
                         "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
                       attrs: {
@@ -28978,31 +29107,56 @@ var staticRenderFns = [
                         id: "cap",
                         autocomplete: "cap",
                       },
+                      domProps: { value: _vm.cap },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.cap = $event.target.value
+                        },
+                      },
                     }),
                   ]
                 ),
               ]),
             ]),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "px-4 py-3 bg-gray-50 text-right sm:px-6" },
-              [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola",
-                    attrs: { type: "submit" },
-                  },
-                  [_vm._v("\n                    Invia\n                ")]
-                ),
-              ]
-            ),
+            _vm._m(1),
           ]
         ),
-      ]),
+      ]
+    ),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-xs italic mb-5" }, [
+      _c("p", [_vm._v("I campi contrassegnati con * sono richiesti")]),
     ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "px-4 py-3 bg-gray-50 text-right sm:px-6" },
+      [
+        _c(
+          "button",
+          {
+            staticClass:
+              "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola",
+            attrs: { type: "submit" },
+          },
+          [_vm._v("\n                    Invia\n                ")]
+        ),
+      ]
+    )
   },
 ]
 render._withStripped = true

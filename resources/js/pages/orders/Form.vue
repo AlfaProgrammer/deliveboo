@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <form action="" method="">
+        <form action="" method="" @submit="checkForm">
             <div class="container shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
                     <div class="text-xs italic mb-5">
@@ -8,43 +8,43 @@
                     </div>
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
-                            <input type="text" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
+                            <input type="text" v-model="name" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
-                            <label for="surname" class="block text-sm font-medium text-gray-700">Cognome</label>
-                            <input type="text" name="surname" id="surname" autocomplete="surname" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <label for="surname" class="after:content-['*'] block text-sm font-medium text-gray-700">Cognome</label>
+                            <input type="text" v-model="surname" name="surname" id="surname" autocomplete="surname" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-4">
-                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="text" name="email" id="email" autocomplete="email" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <label for="email" class="after:content-['*'] block text-sm font-medium text-gray-700">Email</label>
+                            <input type="text" v-model="email" name="email" id="email" autocomplete="email" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-2">
-                            <label for="phone_number" class="block text-sm font-medium text-gray-700">Telefono</label>
-                            <input type="text" name="phone_number" autocomplete="phone_number" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <label for="phone_number" class="after:content-['*'] block text-sm font-medium text-gray-700">Telefono</label>
+                            <input type="text" v-model="phone_number" name="phone_number" autocomplete="phone_number" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
 
                         <div class="col-span-6">
-                            <label for="address" class="block text-sm font-medium text-gray-700">Indirizzo / Via</label>
-                            <input type="text" name="address" id="address" autocomplete="address" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <label for="address" class="after:content-['*'] block text-sm font-medium text-gray-700">Indirizzo / Via</label>
+                            <input type="text" v-model="address" name="address" id="address" autocomplete="address" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                            <label for="house_number" class="block text-sm font-medium text-gray-700">N. civico</label>
-                            <input type="text" name="house_number" id="house_number" autocomplete="house_number" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <label for="house_number" class="after:content-['*'] block text-sm font-medium text-gray-700">N. civico</label>
+                            <input type="text" v-model="house_number" name="house_number" id="house_number" autocomplete="house_number" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                            <label for="city" class="block text-sm font-medium text-gray-700">Città</label>
-                            <input type="text" name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <label for="city" class="after:content-['*'] block text-sm font-medium text-gray-700">Città</label>
+                            <input type="text" v-model="city" name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                         </div>
 
                         <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                            <label for="cap" class="block text-sm font-medium text-gray-700">ZIP / CAP</label>
-                            <input type="text" name="cap" id="cap" autocomplete="cap" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <label for="cap" class="after:content-['*'] block text-sm font-medium text-gray-700">ZIP / CAP</label>
+                            <input type="text" v-model="cap" name="cap" id="cap" autocomplete="cap" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,9 @@ export default {
         }
     },
     methods: {
-        
+        checkForm() {
+
+        }
     },
     
 }

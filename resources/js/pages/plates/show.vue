@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <!-- Qui vengono stampati i piatti  -->
             <div>
                 <h1 class="font-bold text-xl mb-5">Piatti</h1>
@@ -59,10 +59,11 @@
                     </div>
                 </div>
             </div>
-            
+            <!-- {{cart}} -->
             <!-- Carrello  -->
             <AppCart 
                 :plates="plates"
+                :restaurant_cart="restaurant_cart"
                 :formatCurrency="formatCurrency"
             />
 
@@ -77,19 +78,41 @@
 <script>
 import CssLoaders from '../../components/CssLoaders.vue';
 import AppCart from '../../components/AppCart.vue';
+import { mapState, mapActions } from 'vuex'
 
 export default {
     data(){
         return {
             restaurant: null,
+            restaurant_cart: [],
+            restaurantId: null,
+            // cart = null,
             plates: null,
             slug: this.$route.params.slug,
             loading: false,
         }
     },
+    computed:{
+        ...mapState('cartModule', ['cart']), 
+        
+    },
+     watch:{
+        cart(newCart, oldCart){            
+            this.updateRestaurantCart()
+            // console.log('aggiunto porco dio')
+            // console.log(this.restaurant_cart.length)
+        },
+        loading(){
+            if(this.loading == true){
+                this.updateRestaurantCart()
+            }
+        }
+    },
+
     components: {
         CssLoaders,
         AppCart,
+
     },
     methods: {
 
@@ -111,6 +134,7 @@ export default {
                     /* this.restaurant = res.data */
                     const {restaurant, plates} = res.data;
                     this.restaurant = restaurant;
+                    this.restaurantId = restaurant.id;
                     this.plates = plates;
                     // console.log(this.restaurant);
                     this.loading = true;
@@ -118,12 +142,52 @@ export default {
                 })
                 /* .catch(err => {
                     this.router.push('/404');
-                }) */
+                }) */            
+        },
+
+        // QUI ci sono le chiamate alle actions in nel cartModule di store.js
+
+        ...mapActions('cartModule', [
+            // 'fillCartFromStorage',
+            'createCartStorage',
+            'updateCart',
+        ]),
+        
+        
+        //assegnazione item corrispondenti al ristorante presi da cart, che contiene tutti
+        // i prodotti aggiunti
+
+        // assegnazione degli degli item in restaurant_cart_data 
+        updateRestaurantCart(){     
+            this.restaurant_cart = [ ]
+            // this.restaurant_cart = this.cart.filter( item => {
+            //     console.log(item.restaurant_id)
+            //     console.log(this.restaurantId)
+            //     item.restaurant_id === this.restaurantId
+            // })  
+            if(this.cart.length > 0){
+                this.cart.forEach( item => {
+                    if(item.restaurant_id === this.restaurantId){
+                        this.restaurant_cart.push(item)
+                    }
+                })
+            }
+            console.log(this.restaurant_cart.length)        
         }
+
+       
     },
-    beforeMount() {
+    created() {
         this.fetchRestaurant()
-    }
+
+        if( ! localStorage.cart ){
+            this.createCartStorage()
+        } else {
+            this.updateCart()
+        } 
+             
+
+    },
 }
 </script>
 

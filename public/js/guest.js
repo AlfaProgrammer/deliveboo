@@ -2051,6 +2051,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
 //
 //
 //
@@ -2120,7 +2125,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       errors: [],
-      name: null,
       form: {
         name: null,
         surname: null,
@@ -2134,10 +2138,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   watch: {
-    name: function name(value) {
+    'form.name': function formName(value) {
       this.form.name = value;
-      this.validateName(value);
+      this.validateName(value, 'name');
       console.log(this.form.name);
+    },
+    'form.surname': function formSurname(value) {
+      this.form.surname = value;
+      this.validateName(value, 'surname');
+      console.log(this.form.surname);
     }
   },
   methods: {
@@ -2151,10 +2160,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res);
       });
     },
-    validateName: function validateName(name) {
-      if (name === '') {
-        this.errors['name'] = 'richiesto';
+    validateName: function validateName(name, param) {
+      if (name === '' || Number(name)) {
+        this.errors.push(_defineProperty({}, param, 'il campo è richiesto'));
       }
+    },
+    checkError: function checkError(key) {
+      this.errors.forEach(function (el) {
+        console.log(el);
+      });
     }
   }
 });
@@ -28842,8 +28856,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name",
+                        value: _vm.form.name,
+                        expression: "form.name",
                       },
                     ],
                     staticClass:
@@ -28854,18 +28868,18 @@ var render = function () {
                       id: "name",
                       autocomplete: "given-name",
                     },
-                    domProps: { value: _vm.name },
+                    domProps: { value: _vm.form.name },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.name = $event.target.value
+                        _vm.$set(_vm.form, "name", $event.target.value)
                       },
                     },
                   }),
                   _vm._v(" "),
-                  _vm.errors.name
+                  _vm.errors
                     ? _c("div", [
                         _vm._v(
                           "\n                            " +
@@ -28914,6 +28928,16 @@ var render = function () {
                       },
                     },
                   }),
+                  _vm._v(" "),
+                  _vm.errors
+                    ? _c("div", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.surname) +
+                            "\n                        "
+                        ),
+                      ])
+                    : _vm._e(),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-span-6 sm:col-span-4" }, [

@@ -10,8 +10,8 @@
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
                             <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
-                            <input type="text" v-model="name" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                            <div v-if="errors.name">
+                            <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <div v-if="errors">
                                 {{errors.name}}
                             </div>
                         </div>
@@ -19,6 +19,9 @@
                         <div class="col-span-6 sm:col-span-3">
                             <label for="surname" class="after:content-['*'] block text-sm font-medium text-gray-700">Cognome</label>
                             <input type="text" v-model="form.surname" name="surname" id="surname" autocomplete="surname" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <div v-if="errors">
+                                {{errors.surname}}
+                            </div>
                         </div>
 
                         <div class="col-span-6 sm:col-span-4">
@@ -68,7 +71,6 @@ export default {
     data() {
         return {
             errors: [],
-            name: null,
             form: {
                 name: null,
                 surname: null,
@@ -82,10 +84,15 @@ export default {
         }
     },
     watch: {
-        name(value) {
+        'form.name': function(value) {
             this.form.name = value;
-            this.validateName(value);
+            this.validateName(value, 'name');
             console.log(this.form.name)
+        },
+        'form.surname': function(value) {
+            this.form.surname = value;
+            this.validateName(value, 'surname');
+            console.log(this.form.surname);
         }
     },
     methods: {
@@ -101,11 +108,17 @@ export default {
                 console.log(res);
             })
         },
-        validateName(name) {
-            if(name === '') {
-                this.errors['name'] = 'richiesto';
+        validateName(name, param) {
+            if(name === '' || Number(name)) {
+                this.errors.push({[param]: 'il campo è richiesto'});
             }
-        }
+        },
+        checkError(key) {
+            this.errors.forEach(el => {
+                console.log(el)
+            })
+            
+        },
     },
     
 }

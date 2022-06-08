@@ -10,9 +10,9 @@
               </p> 
           </div>
           <div v-else>
-                <!-- <div class="totalPrice">
-                    <p>{{formatCurrency(cartTotal)}}</p>
-                </div> -->
+                <div class="totalPrice">
+                    <p>{{formatCurrency(totalPrice)}}</p>
+                </div>
 
                 <ul v-for="(plate, index) in restaurant_cart" :key="index">
                     <li class="flex justify-between items-center p-[20px] shadow-lg border-red">
@@ -46,7 +46,7 @@
 export default {
     data(){
         return{
-
+            // cartTotalPrice: 0,
         }
     },
     props:[
@@ -54,8 +54,20 @@ export default {
         'formatCurrency'
     ],
     computed:{
-        //code...
+        totalPrice(){
+            this.cartTotalPrice = this.restaurant_cart.reduce( (acc, item) => {
+                return acc + item.price
+            }, 0) 
+            return this.cartTotalPrice
+        }
     },
+    // watch:{
+    //      restaurant_cart(){             
+    //          this.cartTotalPrice = restaurant_cart.reduce( (acc, item) => {
+    //              return acc + item.price
+    //          }, 0) 
+    //      }
+    // },
     methods:{
         // ...mapActions('cartModule', [
         //     // 'fillCartFromStorage',

@@ -2113,10 +2113,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       errors: [],
+      name: null,
       form: {
         name: null,
         surname: null,
@@ -2129,12 +2133,16 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  watch: {
+    name: function name(value) {
+      this.form.name = value;
+      this.validateName(value);
+      console.log(this.form.name);
+    }
+  },
   methods: {
     checkForm: function checkForm() {
-      if (!this.name) {
-        this.errors.push('il nome è richiesto');
-        console.log('il campo e richiesto');
-      }
+      if (!this.name) {}
     },
     submitForm: function submitForm() {
       axios.post('/api/orders', {
@@ -2142,6 +2150,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         console.log(res);
       });
+    },
+    validateName: function validateName(name) {
+      if (name === '') {
+        this.errors['name'] = 'richiesto';
+      }
     }
   }
 });
@@ -28829,8 +28842,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.form.name,
-                        expression: "form.name",
+                        value: _vm.name,
+                        expression: "name",
                       },
                     ],
                     staticClass:
@@ -28841,16 +28854,26 @@ var render = function () {
                       id: "name",
                       autocomplete: "given-name",
                     },
-                    domProps: { value: _vm.form.name },
+                    domProps: { value: _vm.name },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.form, "name", $event.target.value)
+                        _vm.name = $event.target.value
                       },
                     },
                   }),
+                  _vm._v(" "),
+                  _vm.errors.name
+                    ? _c("div", [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(_vm.errors.name) +
+                            "\n                        "
+                        ),
+                      ])
+                    : _vm._e(),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-span-6 sm:col-span-3" }, [

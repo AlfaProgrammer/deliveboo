@@ -10,7 +10,10 @@
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
                             <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
-                            <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <input type="text" v-model="name" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            <div v-if="errors.name">
+                                {{errors.name}}
+                            </div>
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
@@ -65,6 +68,7 @@ export default {
     data() {
         return {
             errors: [],
+            name: null,
             form: {
                 name: null,
                 surname: null,
@@ -77,11 +81,16 @@ export default {
             },
         }
     },
+    watch: {
+        name(value) {
+            this.form.name = value;
+            this.validateName(value);
+            console.log(this.form.name)
+        }
+    },
     methods: {
         checkForm() {
             if(!this.name) {
-                this.errors.push('il nome è richiesto')
-                console.log('il campo e richiesto');
             }
         },
         submitForm() {
@@ -91,6 +100,11 @@ export default {
             .then(res => {
                 console.log(res);
             })
+        },
+        validateName(name) {
+            if(name === '') {
+                this.errors['name'] = 'richiesto';
+            }
         }
     },
     

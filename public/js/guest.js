@@ -2108,8 +2108,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -28767,225 +28765,219 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("form", { attrs: { action: "#", method: "POST" } }, [
-        _c("div", { staticClass: "shadow overflow-hidden sm:rounded-md" }, [
-          _c("div", { staticClass: "px-4 py-5 bg-white sm:p-6" }, [
-            _c("div", { staticClass: "grid grid-cols-6 gap-6" }, [
-              _c("div", { staticClass: "col-span-6 sm:col-span-3" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "block text-sm font-medium text-gray-700",
-                    attrs: { for: "first-name" },
-                  },
-                  [_vm._v("First name")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass:
-                    "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
-                  attrs: {
-                    type: "text",
-                    name: "first-name",
-                    id: "first-name",
-                    autocomplete: "given-name",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-span-6 sm:col-span-3" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "block text-sm font-medium text-gray-700",
-                    attrs: { for: "last-name" },
-                  },
-                  [_vm._v("Last name")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass:
-                    "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
-                  attrs: {
-                    type: "text",
-                    name: "last-name",
-                    id: "last-name",
-                    autocomplete: "family-name",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-span-6 sm:col-span-4" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "block text-sm font-medium text-gray-700",
-                    attrs: { for: "email-address" },
-                  },
-                  [_vm._v("Email address")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass:
-                    "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
-                  attrs: {
-                    type: "text",
-                    name: "email-address",
-                    id: "email-address",
-                    autocomplete: "email",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-span-6 sm:col-span-3" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "block text-sm font-medium text-gray-700",
-                    attrs: { for: "country" },
-                  },
-                  [_vm._v("Country")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    staticClass:
-                      "mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm",
-                    attrs: {
-                      id: "country",
-                      name: "country",
-                      autocomplete: "country-name",
+      _c("form", { attrs: { action: "", method: "" } }, [
+        _c(
+          "div",
+          { staticClass: "container shadow overflow-hidden sm:rounded-md" },
+          [
+            _c("div", { staticClass: "px-4 py-5 bg-white sm:p-6" }, [
+              _c("div", { staticClass: "grid grid-cols-6 gap-6" }, [
+                _c("div", { staticClass: "col-span-6 sm:col-span-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "block text-sm font-medium text-gray-700",
+                      attrs: { for: "name" },
                     },
-                  },
+                    [_vm._v("Nome")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass:
+                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+                    attrs: {
+                      type: "text",
+                      name: "name",
+                      id: "name",
+                      autocomplete: "given-name",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-span-6 sm:col-span-3" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "block text-sm font-medium text-gray-700",
+                      attrs: { for: "surname" },
+                    },
+                    [_vm._v("Cognome")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass:
+                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+                    attrs: {
+                      type: "text",
+                      name: "surname",
+                      id: "surname",
+                      autocomplete: "surname",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-span-6 sm:col-span-4" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "block text-sm font-medium text-gray-700",
+                      attrs: { for: "email" },
+                    },
+                    [_vm._v("Email")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass:
+                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+                    attrs: {
+                      type: "text",
+                      name: "email",
+                      id: "email",
+                      autocomplete: "email",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-span-6 sm:col-span-2" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "block text-sm font-medium text-gray-700",
+                      attrs: { for: "phone_number" },
+                    },
+                    [_vm._v("Telefono")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass:
+                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+                    attrs: {
+                      type: "text",
+                      name: "phone_number",
+                      autocomplete: "phone_number",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-span-6" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "block text-sm font-medium text-gray-700",
+                      attrs: { for: "address" },
+                    },
+                    [_vm._v("Indirizzo / Via")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass:
+                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+                    attrs: {
+                      type: "text",
+                      name: "address",
+                      id: "address",
+                      autocomplete: "address",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-span-6 sm:col-span-3 lg:col-span-2" },
                   [
-                    _c("option", [_vm._v("United States")]),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "block text-sm font-medium text-gray-700",
+                        attrs: { for: "house_number" },
+                      },
+                      [_vm._v("N. civico")]
+                    ),
                     _vm._v(" "),
-                    _c("option", [_vm._v("Canada")]),
+                    _c("input", {
+                      staticClass:
+                        "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+                      attrs: {
+                        type: "text",
+                        name: "house_number",
+                        id: "house_number",
+                        autocomplete: "house_number",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-span-6 sm:col-span-6 lg:col-span-2" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "block text-sm font-medium text-gray-700",
+                        attrs: { for: "city" },
+                      },
+                      [_vm._v("Città")]
+                    ),
                     _vm._v(" "),
-                    _c("option", [_vm._v("Mexico")]),
+                    _c("input", {
+                      staticClass:
+                        "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+                      attrs: {
+                        type: "text",
+                        name: "city",
+                        id: "city",
+                        autocomplete: "address-level2",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "col-span-6 sm:col-span-3 lg:col-span-2" },
+                  [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "block text-sm font-medium text-gray-700",
+                        attrs: { for: "cap" },
+                      },
+                      [_vm._v("ZIP / CAP")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass:
+                        "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
+                      attrs: {
+                        type: "text",
+                        name: "cap",
+                        id: "cap",
+                        autocomplete: "cap",
+                      },
+                    }),
                   ]
                 ),
               ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-span-6" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: "block text-sm font-medium text-gray-700",
-                    attrs: { for: "street-address" },
-                  },
-                  [_vm._v("Street address")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass:
-                    "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
-                  attrs: {
-                    type: "text",
-                    name: "street-address",
-                    id: "street-address",
-                    autocomplete: "street-address",
-                  },
-                }),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-span-6 sm:col-span-6 lg:col-span-2" },
-                [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "block text-sm font-medium text-gray-700",
-                      attrs: { for: "city" },
-                    },
-                    [_vm._v("City")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass:
-                      "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
-                    attrs: {
-                      type: "text",
-                      name: "city",
-                      id: "city",
-                      autocomplete: "address-level2",
-                    },
-                  }),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-span-6 sm:col-span-3 lg:col-span-2" },
-                [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "block text-sm font-medium text-gray-700",
-                      attrs: { for: "region" },
-                    },
-                    [_vm._v("State / Province")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass:
-                      "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
-                    attrs: {
-                      type: "text",
-                      name: "region",
-                      id: "region",
-                      autocomplete: "address-level1",
-                    },
-                  }),
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-span-6 sm:col-span-3 lg:col-span-2" },
-                [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "block text-sm font-medium text-gray-700",
-                      attrs: { for: "postal-code" },
-                    },
-                    [_vm._v("ZIP / Postal code")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    staticClass:
-                      "mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md",
-                    attrs: {
-                      type: "text",
-                      name: "postal-code",
-                      id: "postal-code",
-                      autocomplete: "postal-code",
-                    },
-                  }),
-                ]
-              ),
             ]),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "px-4 py-3 bg-gray-50 text-right sm:px-6" },
-            [
-              _c(
-                "button",
-                {
-                  staticClass:
-                    "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500",
-                  attrs: { type: "submit" },
-                },
-                [_vm._v("Save")]
-              ),
-            ]
-          ),
-        ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "px-4 py-3 bg-gray-50 text-right sm:px-6" },
+              [
+                _c(
+                  "button",
+                  {
+                    staticClass:
+                      "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola",
+                    attrs: { type: "submit" },
+                  },
+                  [_vm._v("\n                    Invia\n                ")]
+                ),
+              ]
+            ),
+          ]
+        ),
       ]),
     ])
   },

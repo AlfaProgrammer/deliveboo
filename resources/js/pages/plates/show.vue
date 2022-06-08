@@ -44,7 +44,7 @@
 
                         <div class="grid gap-10 plate-container">
                             <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent" 
-                            v-for="plate in plates" :key="plate.id">
+                                 v-for="plate in plates" :key="plate.id">
                                 <div class="grow">
                                     <p class="font-bold mb-3">{{plate.name}}</p>
                                     <div>

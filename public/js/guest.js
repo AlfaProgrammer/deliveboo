@@ -26899,7 +26899,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "img[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56] {\n  transition: transform 350ms;\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: transform 150ms;\n}", ""]);
+exports.push([module.i, ".img-show[data-v-2e5b8f56] {\n  background-image: url(\"/img/deliv-1-1.png\");\n  background-size: cover;\n  background-position: center;\n  background-repeat: no repeat;\n  height: calc(100vh - 120px);\n}\nimg[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56] {\n  transition: transform 350ms;\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: transform 150ms;\n}", ""]);
 
 // exports
 
@@ -28876,7 +28876,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", {}, [
+  return _c("section", { staticClass: "img-show" }, [
     !_vm.loading
       ? _c(
           "div",
@@ -46486,11 +46486,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
-=======
-module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
->>>>>>> andrea-r-12
 
 
 /***/ })

@@ -1,6 +1,6 @@
 <template>
 
-    <section class="">
+    <section class="img-show">
 
         <div class="container-loader flex justify-center items-center" v-if="!loading">
             <CssLoaders/>
@@ -131,6 +131,14 @@ export default {
 // CSS
 
 <style lang="scss" scoped>
+
+    .img-show {
+        background-image: url('/img/deliv-1-1.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no repeat;
+        height: calc(100vh - 120px);
+    }
 
     img {
         aspect-ratio: 1;

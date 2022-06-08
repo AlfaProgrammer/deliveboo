@@ -5,8 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
-class PaymentController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,21 +14,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $gateway = new \Braintree\Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'p7sgyb9mzr7b4s33',
-            'publicKey' => 'kf2gbnxvdwbg89wy',
-            'privateKey' => '1fbb2c0ac805e539785e3314d6a3d91a'
-        ]);
-
-        // pass $clientToken to your front-end
-        $clientToken = $gateway->clientToken()->generate([
-        ]);
-
-        return response()->json([
-            'token' => $clientToken,
-            'succes' => true
-        ]);
+        //
     }
 
     /**
@@ -50,31 +35,8 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-
-        $tokenNonce = $request->query('token');
-
-        $gateway = new \Braintree\Gateway([
-            'environment' => 'sandbox',
-            'merchantId' => 'p7sgyb9mzr7b4s33',
-            'publicKey' => 'kf2gbnxvdwbg89wy',
-            'privateKey' => '1fbb2c0ac805e539785e3314d6a3d91a'
-        ]);
-
-        $result = $gateway->transaction()->sale([
-            'amount' => '15.00',
-            'paymentMethodNonce' => $tokenNonce,
-            'options' => [
-                'submitForSettlement' => true,
-            ]
-        ]);
-
-        if ($result->success) {
-            // See $result->transaction for details
-            return $result->transaction;
-          } else {
-            return $result->transaction;
-          }
-
+        $data = $request->all();
+        return $data;
     }
 
     /**

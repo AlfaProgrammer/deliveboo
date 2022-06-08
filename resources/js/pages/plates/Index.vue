@@ -1,6 +1,6 @@
 <template lang="">
 
-    <main class="container">
+    <main class="container px-5 py-3">
 
         <div class="container-loader flex justify-center items-center" v-if="!loading">
             <CssLoaders/>

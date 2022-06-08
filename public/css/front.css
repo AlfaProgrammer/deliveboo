@@ -435,6 +435,12 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-width: 390px;
   }
 }
+@media (min-width: 540px) {
+
+  .container {
+    max-width: 540px;
+  }
+}
 @media (min-width: 640px) {
 
   .container {
@@ -624,6 +630,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 .px-\[15px\] {
   padding-left: 15px;

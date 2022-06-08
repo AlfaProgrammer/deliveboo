@@ -56,7 +56,8 @@
                     </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                    <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola">
+                    <button :disabled="isDisable"
+                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola">
                         Invia
                     </button>
                 </div>
@@ -81,17 +82,17 @@ export default {
                 city: null,
                 cap: null,
             },
+            isDisable: true,
         }
     },
     watch: {
         'form.name': function(value) {
             this.form.name = value;
-            this.validateName(value, 'name');
+            this.validateString(value, 'name');
             console.log(this.form.name)
         },
         'form.surname': function(value) {
             this.form.surname = value;
-            this.validateName(value, 'surname');
             console.log(this.form.surname);
         }
     },
@@ -108,14 +109,18 @@ export default {
                 console.log(res);
             })
         },
-        validateName(name, param) {
-            if(name === '' || Number(name)) {
-                this.errors.push({[param]: 'il campo è richiesto'});
+        validateString(input, param) {
+            if(input === '' || Number(input)) {
+                if(this.errors.length === 0 || this.checkError() === false) {
+                    this.errors.push({[param]: 'il campo è obbligatorio e deve contenere lettere'});
+                } 
+
             }
         },
-        checkError(key) {
+        checkError() {
             this.errors.forEach(el => {
-                console.log(el)
+                const element = el;
+                this.errors.includes(element);
             })
             
         },

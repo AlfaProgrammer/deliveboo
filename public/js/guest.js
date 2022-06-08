@@ -2111,21 +2111,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      name: null,
-      surname: null,
-      email: null,
-      phone_number: null,
-      address: null,
-      house_number: null,
-      city: null,
-      cap: null
+      errors: [],
+      form: {
+        name: null,
+        surname: null,
+        email: null,
+        phone_number: null,
+        address: null,
+        house_number: null,
+        city: null,
+        cap: null
+      }
     };
   },
   methods: {
-    checkForm: function checkForm() {}
+    checkForm: function checkForm() {
+      if (!this.name) {
+        this.errors.push('il nome è richiesto');
+        console.log('il campo e richiesto');
+      }
+    },
+    submitForm: function submitForm() {
+      axios.post('/api/orders', {
+        form: this.form
+      }).then(function (res) {
+        console.log(res);
+      });
+    }
   }
 });
 
@@ -28779,7 +28796,14 @@ var render = function () {
   return _c("div", [
     _c(
       "form",
-      { attrs: { action: "", method: "" }, on: { submit: _vm.checkForm } },
+      {
+        on: {
+          submit: function ($event) {
+            $event.preventDefault()
+            return _vm.submitForm.apply(null, arguments)
+          },
+        },
+      },
       [
         _c(
           "div",
@@ -28805,8 +28829,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.name,
-                        expression: "name",
+                        value: _vm.form.name,
+                        expression: "form.name",
                       },
                     ],
                     staticClass:
@@ -28817,13 +28841,13 @@ var render = function () {
                       id: "name",
                       autocomplete: "given-name",
                     },
-                    domProps: { value: _vm.name },
+                    domProps: { value: _vm.form.name },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.name = $event.target.value
+                        _vm.$set(_vm.form, "name", $event.target.value)
                       },
                     },
                   }),
@@ -28845,8 +28869,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.surname,
-                        expression: "surname",
+                        value: _vm.form.surname,
+                        expression: "form.surname",
                       },
                     ],
                     staticClass:
@@ -28857,13 +28881,13 @@ var render = function () {
                       id: "surname",
                       autocomplete: "surname",
                     },
-                    domProps: { value: _vm.surname },
+                    domProps: { value: _vm.form.surname },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.surname = $event.target.value
+                        _vm.$set(_vm.form, "surname", $event.target.value)
                       },
                     },
                   }),
@@ -28885,8 +28909,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.email,
-                        expression: "email",
+                        value: _vm.form.email,
+                        expression: "form.email",
                       },
                     ],
                     staticClass:
@@ -28897,13 +28921,13 @@ var render = function () {
                       id: "email",
                       autocomplete: "email",
                     },
-                    domProps: { value: _vm.email },
+                    domProps: { value: _vm.form.email },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.email = $event.target.value
+                        _vm.$set(_vm.form, "email", $event.target.value)
                       },
                     },
                   }),
@@ -28925,8 +28949,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.phone_number,
-                        expression: "phone_number",
+                        value: _vm.form.phone_number,
+                        expression: "form.phone_number",
                       },
                     ],
                     staticClass:
@@ -28936,13 +28960,13 @@ var render = function () {
                       name: "phone_number",
                       autocomplete: "phone_number",
                     },
-                    domProps: { value: _vm.phone_number },
+                    domProps: { value: _vm.form.phone_number },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.phone_number = $event.target.value
+                        _vm.$set(_vm.form, "phone_number", $event.target.value)
                       },
                     },
                   }),
@@ -28964,8 +28988,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.address,
-                        expression: "address",
+                        value: _vm.form.address,
+                        expression: "form.address",
                       },
                     ],
                     staticClass:
@@ -28976,13 +29000,13 @@ var render = function () {
                       id: "address",
                       autocomplete: "address",
                     },
-                    domProps: { value: _vm.address },
+                    domProps: { value: _vm.form.address },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.address = $event.target.value
+                        _vm.$set(_vm.form, "address", $event.target.value)
                       },
                     },
                   }),
@@ -29007,8 +29031,8 @@ var render = function () {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.house_number,
-                          expression: "house_number",
+                          value: _vm.form.house_number,
+                          expression: "form.house_number",
                         },
                       ],
                       staticClass:
@@ -29019,13 +29043,17 @@ var render = function () {
                         id: "house_number",
                         autocomplete: "house_number",
                       },
-                      domProps: { value: _vm.house_number },
+                      domProps: { value: _vm.form.house_number },
                       on: {
                         input: function ($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.house_number = $event.target.value
+                          _vm.$set(
+                            _vm.form,
+                            "house_number",
+                            $event.target.value
+                          )
                         },
                       },
                     }),
@@ -29051,8 +29079,8 @@ var render = function () {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.city,
-                          expression: "city",
+                          value: _vm.form.city,
+                          expression: "form.city",
                         },
                       ],
                       staticClass:
@@ -29063,13 +29091,13 @@ var render = function () {
                         id: "city",
                         autocomplete: "address-level2",
                       },
-                      domProps: { value: _vm.city },
+                      domProps: { value: _vm.form.city },
                       on: {
                         input: function ($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.city = $event.target.value
+                          _vm.$set(_vm.form, "city", $event.target.value)
                         },
                       },
                     }),
@@ -29095,8 +29123,8 @@ var render = function () {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.cap,
-                          expression: "cap",
+                          value: _vm.form.cap,
+                          expression: "form.cap",
                         },
                       ],
                       staticClass:
@@ -29107,13 +29135,13 @@ var render = function () {
                         id: "cap",
                         autocomplete: "cap",
                       },
-                      domProps: { value: _vm.cap },
+                      domProps: { value: _vm.form.cap },
                       on: {
                         input: function ($event) {
                           if ($event.target.composing) {
                             return
                           }
-                          _vm.cap = $event.target.value
+                          _vm.$set(_vm.form, "cap", $event.target.value)
                         },
                       },
                     }),
@@ -29151,7 +29179,6 @@ var staticRenderFns = [
           {
             staticClass:
               "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola",
-            attrs: { type: "submit" },
           },
           [_vm._v("\n                    Invia\n                ")]
         ),

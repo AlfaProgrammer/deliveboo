@@ -3,6 +3,9 @@
         <form action="" method="">
             <div class="container shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
+                    <div class="text-xs italic mb-5">
+                        <p>I campi contrassegnati con * sono richiesti</p>
+                    </div>
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
                             <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
@@ -57,6 +60,21 @@
 
 <script>
 export default {
+    data() {
+        return {
+            name: null,
+            surname: null,
+            email: null,
+            phone_number: null,
+            address: null,
+            house_number: null,
+            city: null,
+            cap: null,
+        }
+    },
+    methods: {
+        
+    },
     
 }
 </script>

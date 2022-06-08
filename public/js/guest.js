@@ -2108,7 +2108,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      name: null,
+      surname: null,
+      email: null,
+      phone_number: null,
+      address: null,
+      house_number: null,
+      city: null,
+      cap: null
+    };
+  },
+  methods: {}
+});
 
 /***/ }),
 
@@ -28771,6 +28788,12 @@ var staticRenderFns = [
           { staticClass: "container shadow overflow-hidden sm:rounded-md" },
           [
             _c("div", { staticClass: "px-4 py-5 bg-white sm:p-6" }, [
+              _c("div", { staticClass: "text-xs italic mb-5" }, [
+                _c("p", [
+                  _vm._v("I campi contrassegnati con * sono richiesti"),
+                ]),
+              ]),
+              _vm._v(" "),
               _c("div", { staticClass: "grid grid-cols-6 gap-6" }, [
                 _c("div", { staticClass: "col-span-6 sm:col-span-3" }, [
                   _c(

@@ -64,11 +64,16 @@ class PaymentController extends Controller
             'amount' => '15.00',
             'paymentMethodNonce' => $tokenNonce,
             'options' => [
-                'submitForSettlement' => true
+                'submitForSettlement' => true,
             ]
         ]);
 
-        return $result;
+        if ($result->success) {
+            // See $result->transaction for details
+            return $result->transaction;
+          } else {
+            return $result->transaction;
+          }
 
     }
 

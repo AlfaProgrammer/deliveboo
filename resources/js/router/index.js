@@ -10,6 +10,7 @@ Vue.use(VueRouter);
 import Index from '../pages/plates/Index.vue';
 import show from '../pages/plates/show.vue';
 import payments from '../pages/payments/Payment.vue';
+import form from '../pages/orders/Form.vue';
 
 // costante dove andranno le rotte
 const routes = [
@@ -27,6 +28,12 @@ const routes = [
         path: '/payments',
         name: 'payments.index',
         component: payments
+    },
+    {
+        path: '/orders',
+        name: 'order.create',
+        component: form,
+
     }
 ];
 

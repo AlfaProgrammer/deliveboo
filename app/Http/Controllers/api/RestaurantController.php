@@ -67,6 +67,8 @@ class RestaurantController extends Controller
         $plates = $restaurant->plates()
             ->where('available', 1)->get();
 
+        // $plates->load('orders');
+
             return response()
             ->json(
                 [

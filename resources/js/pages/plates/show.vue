@@ -86,7 +86,7 @@ export default {
             restaurant: null,
             restaurant_cart: [],
             restaurantId: null,
-            // cart = null,
+            quantity: 0,
             plates: null,
             slug: this.$route.params.slug,
             loading: false,
@@ -97,10 +97,8 @@ export default {
         
     },
      watch:{
-        cart(newCart, oldCart){            
+        cart(){            
             this.updateRestaurantCart()
-            // console.log('aggiunto porco dio')
-            // console.log(this.restaurant_cart.length)
         },
         loading(){
             if(this.loading == true){
@@ -160,19 +158,20 @@ export default {
         // assegnazione degli degli item in restaurant_cart_data 
         updateRestaurantCart(){     
             this.restaurant_cart = [ ]
-            // this.restaurant_cart = this.cart.filter( item => {
-            //     console.log(item.restaurant_id)
-            //     console.log(this.restaurantId)
-            //     item.restaurant_id === this.restaurantId
-            // })  
             if(this.cart.length > 0){
                 this.cart.forEach( item => {
+                    // ora popolo l'array del singolo ristorante con gli elementi nel storageCart che gi appartengono
                     if(item.restaurant_id === this.restaurantId){
                         this.restaurant_cart.push(item)
                     }
                 })
             }
-            console.log(this.restaurant_cart.length)        
+            // aggiuntgo anche il parametro quantità ad ogni piatto aggiunto al carrello
+            // questo parametro poi in verrà inviato in POST insieme a tutti gli altri dati
+            // per creare l'ordine nel backend\
+            this.restaurant_cart.forEach(plate => {
+                plate.quantity = 1 // assegno 1 di default visto che è un item aggiunto al carrello
+            })       
         }
 
        

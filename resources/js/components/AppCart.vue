@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="cart_container ml-[20px] max-w-xl mx-auto my-4">
       <h1 class="font-bold text-xl mb-5">Carrello</h1>
       <div>
           <div v-if="restaurant_cart.length < 1 "> 
@@ -10,10 +10,7 @@
               </p> 
           </div>
           <div v-else>
-                <div class="totalPrice">
-                    <p>{{formatCurrency(totalPrice)}}</p>
-                </div>
-
+                
                 <ul v-for="(plate, index) in restaurant_cart" :key="index">
                     <li class="flex justify-between items-center p-[20px] shadow-lg border-red">
                         <div class="cart-item-wrapper flex gap-[20px]">
@@ -25,17 +22,42 @@
                             <div class="item-info">
                                 <h3>{{ plate.name }}</h3>
                                 <p>Prezzo: {{formatCurrency(plate.price)}}</p>
+                                <div class="quantity-wrapper flex gap-2"> 
+                                    <!-- <button class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"
+                                        @click.prevent="plate.quantity--"
+                                    >-</button> -->
+
+                                    <input type="number" class="w-[100px] text-center" v-model="plate.quantity">
+
+                                    <!-- <button class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"
+                                        @click.prevent="plate.quantity++"
+                                    >+</button> -->
+                                </div>
                             </div>
 
                         </div>
 
                         <div id="quantity">
-                            <p>Quantità</p>
-                            <button @click="removeFromCart(plate)">Remove</button>
+                            <button class="bg-rose-700 text-slate-50 rounded-lg px-[15px] pointer"
+                            @click.prevent="removeFromCart(plate)">Rimuovi</button>
                         </div>
 
                     </li>
                 </ul> 
+
+                <div class="totalPrice">
+                    <p>Totale: {{formatCurrency(totalPrice)}}</p>
+                </div>
+
+                <button 
+                    class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"                    
+                >
+                    Ordina Ora
+                </button>
+
+                <!-- <router-link :to="{name: 'restaurant.index'}" class="text-stone-700 border border-deliveroo hover:text-white hover:bg-deliveroo px-2 py-1 rounded">
+                    Ordina Ora
+                </router-link> -->
         </div>
       </div>
   </div>
@@ -46,7 +68,7 @@
 export default {
     data(){
         return{
-            // cartTotalPrice: 0,
+            quantityController: 0, 
         }
     },
     props:[
@@ -59,37 +81,35 @@ export default {
                 return acc + item.price
             }, 0) 
             return this.cartTotalPrice
-        }
+        },
     },
-    // watch:{
-    //      restaurant_cart(){             
-    //          this.cartTotalPrice = restaurant_cart.reduce( (acc, item) => {
-    //              return acc + item.price
-    //          }, 0) 
-    //      }
-    // },
+   
     methods:{
-        // ...mapActions('cartModule', [
-        //     // 'fillCartFromStorage',
-        //     'createCartStorage',
-        //     'updateCart',
-        // ]),
+        
         removeFromCart(plate){
             this.$store.dispatch({
                 type: 'cartModule/removeFromCartStorage',
                 plate: plate
             })
-        }
+        },
+    // la quantità nel oggetto del piatto non cè, quindi verrà creata automaticamente.
+        
+        quantityIncrease( quantity ){
+            let newquantity = quantity++
+            return newquantity
+        },
+
+        quantityDecrease( plate ){
+            while( plate.quantity > 1 ){
+                plate.quantity--
+                return plate.quantity
+            }
+            plate.quantity = 1
+            console.log(plate.quantity);            
+        },
        
     },
 
-    beforeMount(){
-        // if( ! localStorage.cart ){
-        //     this.createCartStorage()
-        // } else {
-        //     this.updateCart()
-        // }     
-    }
 }
 </script>
 

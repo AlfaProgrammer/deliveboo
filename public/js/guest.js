@@ -1908,13 +1908,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //
 //
 //
@@ -1957,27 +1950,47 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-
+//
+// import { mapState, mapActions } from 'vuex'
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: [// 'slug',  // ho bisogno dello slug da passare alla chiamata in store.js 
-  // 'plates'
-  'formatCurrency'],
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('cartModule', ['cart', 'cartTotal'])),
-  methods: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('cartModule', [// 'fillCartFromStorage',
-  'createCartStorage', 'updateCart'])), {}, {
+  data: function data() {
+    return {// cartTotalPrice: 0,
+    };
+  },
+  props: ['restaurant_cart', 'formatCurrency'],
+  computed: {
+    totalPrice: function totalPrice() {
+      this.cartTotalPrice = this.restaurant_cart.reduce(function (acc, item) {
+        return acc + item.price;
+      }, 0);
+      return this.cartTotalPrice;
+    }
+  },
+  // watch:{
+  //      restaurant_cart(){             
+  //          this.cartTotalPrice = restaurant_cart.reduce( (acc, item) => {
+  //              return acc + item.price
+  //          }, 0) 
+  //      }
+  // },
+  methods: {
+    // ...mapActions('cartModule', [
+    //     // 'fillCartFromStorage',
+    //     'createCartStorage',
+    //     'updateCart',
+    // ]),
     removeFromCart: function removeFromCart(plate) {
       this.$store.dispatch({
         type: 'cartModule/removeFromCartStorage',
         plate: plate
       });
     }
-  }),
-  beforeMount: function beforeMount() {
-    if (!localStorage.cart) {
-      this.createCartStorage();
-    } else {
-      this.updateCart();
-    }
+  },
+  beforeMount: function beforeMount() {// if( ! localStorage.cart ){
+    //     this.createCartStorage()
+    // } else {
+    //     this.updateCart()
+    // }     
   }
 });
 
@@ -2262,6 +2275,13 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CssLoaders_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/CssLoaders.vue */ "./resources/js/components/CssLoaders.vue");
 /* harmony import */ var _components_AppCart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/AppCart.vue */ "./resources/js/components/AppCart.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2338,22 +2358,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       restaurant: null,
+      restaurant_cart: [],
+      restaurantId: null,
+      // cart = null,
       plates: null,
       slug: this.$route.params.slug,
       loading: false
     };
   },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])('cartModule', ['cart'])),
+  watch: {
+    cart: function cart(newCart, oldCart) {
+      this.updateRestaurantCart(); // console.log('aggiunto porco dio')
+      // console.log(this.restaurant_cart.length)
+    },
+    loading: function loading() {
+      if (this.loading == true) {
+        this.updateRestaurantCart();
+      }
+    }
+  },
   components: {
     CssLoaders: _components_CssLoaders_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     AppCart: _components_AppCart_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
-  methods: {
+  methods: _objectSpread(_objectSpread({
     addToCart: function addToCart(plate) {
       this.$store.dispatch({
         type: 'cartModule/addToStorageCart',
@@ -2376,6 +2413,7 @@ __webpack_require__.r(__webpack_exports__);
             restaurant = _res$data.restaurant,
             plates = _res$data.plates;
         _this.restaurant = restaurant;
+        _this.restaurantId = restaurant.id;
         _this.plates = plates; // console.log(this.restaurant);
 
         _this.loading = true; // console.log(res.data);
@@ -2384,9 +2422,39 @@ __webpack_require__.r(__webpack_exports__);
           this.router.push('/404');
       }) */
     }
-  },
-  beforeMount: function beforeMount() {
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('cartModule', [// 'fillCartFromStorage',
+  'createCartStorage', 'updateCart'])), {}, {
+    //assegnazione item corrispondenti al ristorante presi da cart, che contiene tutti
+    // i prodotti aggiunti
+    // assegnazione degli degli item in restaurant_cart_data 
+    updateRestaurantCart: function updateRestaurantCart() {
+      var _this2 = this;
+
+      this.restaurant_cart = []; // this.restaurant_cart = this.cart.filter( item => {
+      //     console.log(item.restaurant_id)
+      //     console.log(this.restaurantId)
+      //     item.restaurant_id === this.restaurantId
+      // })  
+
+      if (this.cart.length > 0) {
+        this.cart.forEach(function (item) {
+          if (item.restaurant_id === _this2.restaurantId) {
+            _this2.restaurant_cart.push(item);
+          }
+        });
+      }
+
+      console.log(this.restaurant_cart.length);
+    }
+  }),
+  created: function created() {
     this.fetchRestaurant();
+
+    if (!localStorage.cart) {
+      this.createCartStorage();
+    } else {
+      this.updateCart();
+    }
   }
 });
 
@@ -28477,18 +28545,16 @@ var render = function () {
     _c("h1", { staticClass: "font-bold text-xl mb-5" }, [_vm._v("Carrello")]),
     _vm._v(" "),
     _c("div", [
-      _vm.cart.length < 1
-        ? _c("div", [
-            _c("p", [_vm._v("Non ci sono articoli nel tuo carrello")]),
-          ])
+      _vm.restaurant_cart.length < 1
+        ? _c("div", [_vm._m(0)])
         : _c(
             "div",
             [
               _c("div", { staticClass: "totalPrice" }, [
-                _c("p", [_vm._v(_vm._s(_vm.formatCurrency(_vm.cartTotal)))]),
+                _c("p", [_vm._v(_vm._s(_vm.formatCurrency(_vm.totalPrice)))]),
               ]),
               _vm._v(" "),
-              _vm._l(_vm.cart, function (plate, index) {
+              _vm._l(_vm.restaurant_cart, function (plate, index) {
                 return _c("ul", { key: index }, [
                   _c(
                     "li",
@@ -28517,7 +28583,7 @@ var render = function () {
                             _vm._v(" "),
                             _c("p", [
                               _vm._v(
-                                "Tatale Carrello: " +
+                                "Prezzo: " +
                                   _vm._s(_vm.formatCurrency(plate.price))
                               ),
                             ]),
@@ -28550,7 +28616,22 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v(
+        "\n                Non ci sono articoli nel tuo carrello per questo ristorante "
+      ),
+      _c("br"),
+      _vm._v(
+        "\n                Ricordati che puoi acquistare da un ristorante per volta.\n            "
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -29021,7 +29102,11 @@ var render = function () {
             ]),
             _vm._v(" "),
             _c("AppCart", {
-              attrs: { plates: _vm.plates, formatCurrency: _vm.formatCurrency },
+              attrs: {
+                plates: _vm.plates,
+                restaurant_cart: _vm.restaurant_cart,
+                formatCurrency: _vm.formatCurrency,
+              },
             }),
           ],
           1
@@ -46280,19 +46365,18 @@ __webpack_require__.r(__webpack_exports__);
 var cartModule = {
   namespaced: true,
   state: {
-    cart: [],
-    cartTotal: 0 // cartCreated: false
+    cart: [] // cartTotal: 0,
+    // cartCreated: false
     // slug: this.$route.params.slug,
 
   },
   mutations: {
-    updateCart: function updateCart(state, commit) {
+    updateCart: function updateCart(state) {
       var storageCartItems = JSON.parse(localStorage.getItem("cart"));
       state.cart = storageCartItems; //assegnazione prezzo totale
-
-      state.cartTotal = state.cart.reduce(function (acc, item) {
-        return acc + item.price;
-      }, 0);
+      // state.cartTotal = state.cart.reduce( (acc, item) => {
+      //     return acc + item.price
+      // }, 0) 
     }
   },
   actions: {
@@ -46486,11 +46570,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
-=======
-module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
->>>>>>> origin/up-nav
+module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

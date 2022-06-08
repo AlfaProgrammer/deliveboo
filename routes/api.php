@@ -40,3 +40,10 @@ Route::namespace('api')
     Route::resource('payments', 'PaymentController')
     ->only('index', 'store');
 });
+
+Route::namespace('api')
+->name('api.')
+->group(function(){
+    Route::resource('orders', 'OrderController')
+    ->only('index', 'store');
+});

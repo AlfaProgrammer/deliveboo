@@ -5,22 +5,13 @@ export const cartModule = {
 
     state: {
         cart: [],
-        // cartTotal: 0,
-        // cartCreated: false
-        // slug: this.$route.params.slug,
-
-
     },
+
     mutations: {
 
         updateCart( state ){                
-                let storageCartItems = JSON.parse(localStorage.getItem("cart"))
-                state.cart = storageCartItems
-                
-                //assegnazione prezzo totale
-                // state.cartTotal = state.cart.reduce( (acc, item) => {
-                //     return acc + item.price
-                // }, 0) 
+            let storageCartItems = JSON.parse(localStorage.getItem("cart"))
+            state.cart = storageCartItems               
 
         },
 

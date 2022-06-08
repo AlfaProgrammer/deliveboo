@@ -11,8 +11,7 @@
                         <div class="col-span-6 sm:col-span-3">
                             <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
                             <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                            <div v-if="errors">
-                                {{errors.name}}
+                            <div v-if="">
                             </div>
                         </div>
 
@@ -122,7 +121,6 @@ export default {
                 const element = el;
                 this.errors.includes(element);
             })
-            
         },
     },
     

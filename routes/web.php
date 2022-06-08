@@ -36,3 +36,6 @@ Route::middleware('auth')
 Route::fallback(function() {
     return view('guest.index');
 });
+
+
+Route::get('/loading', 'LoaderController@index')->name('loading');

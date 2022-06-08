@@ -1,39 +1,43 @@
 <template>
 
   <div>
-      <h1 class="font-bold text-xl mb-5">Carrello</h1>
+      <h1 class="font-bold text-xl mt-5 mb-5">Il tuo Carrello</h1>
 
       <div>
           <div v-if="cart.length < 1 "> 
               <p>Non ci sono articoli nel tuo carrello</p> 
           </div>
-          <div v-else>
-                <div class="totalPrice">
-                    <p>{{formatCurrency(cartTotal)}}</p>
-                </div>
+          <div class=" flex" v-else>
 
-                <ul v-for="(plate, index) in cart" :key="index">
-                    <li class="flex justify-between items-center p-[20px] shadow-lg border-red">
-                        <div class="cart-item-wrapper flex gap-[20px]">
+                <div class="totalPrice p-4 rounded shadow-lg shadow-stone-600">
+                    <p>Totale provvisorio: {{formatCurrency(cartTotal)}}</p>
 
-                             <figure class="max-w-[80px] rounded-sm">
-                                <img class="object-cover" :src="plate.image">
-                            </figure>
+                    <ul v-for="(plate, index) in cart" :key="index">
 
-                            <div class="item-info">
-                                <h3>{{ plate.name }}</h3>
-                                <p>Tatale Carrello: {{formatCurrency(plate.price)}}</p>
+                        <li class="flex justify-between items-center p-[20px] shadow-lg border-red">
+                            <div class="cart-item-wrapper flex gap-[20px]">
+
+                                <figure class="max-w-[80px] rounded-sm">
+                                    <img class="object-cover" :src="plate.image">
+                                </figure>
+
+                                <div class="item-info">
+                                    <h3>{{ plate.name }}</h3>
+                                    <p>{{formatCurrency(plate.price)}}</p>
+                                </div>
+
                             </div>
 
-                        </div>
+                            <div id="quantity">
+                                <p>Quantità</p>
+                                <button @click="removeFromCart(plate)">Rimuovi</button>
+                            </div>
 
-                        <div id="quantity">
-                            <p>Quantità</p>
-                            <button @click="removeFromCart(plate)">Remove</button>
-                        </div>
+                        </li>
 
-                    </li>
-                </ul> 
+                    </ul> 
+
+                </div>
         </div>
       </div>
 

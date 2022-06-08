@@ -70,12 +70,12 @@
         
     </div> --}}
 
-    <section class="img-show">
+    <section class="img-show d-flex align-items-center">
 
         <div class="container plate-show">
 
             <div class="row  mb-5">
-                <div class="col-12 col-sm-6 mt-4">
+                <div class="col-12 col-sm-6 mt-4 m-auto">
                     <div class="card">
                         <img class="card-img-top" src="{{ $plate->image ?: '' }}">
                         <div class="card-block">

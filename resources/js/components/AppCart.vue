@@ -12,6 +12,7 @@
                     Ricordati che puoi acquistare da un ristorante per volta.
                 </p> 
             </div>
+            
             <div class=" flex" v-else>
 
                 <div class="totalPrice p-4 rounded shadow-lg shadow-stone-600">
@@ -45,7 +46,7 @@
             </div>
 
         </div>
-        
+
     </div>
 
 </template>

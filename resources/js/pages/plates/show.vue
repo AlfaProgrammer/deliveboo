@@ -10,7 +10,7 @@
 
             <div class="border-2 border-red-600 flex flex-row justify-between">
             
-                <h1 class="font-bold text-xl mb-5">Piatti</h1>
+                <!-- <h1 class="font-bold text-xl mb-5">Piatti</h1> -->
                 <div class="border-2 border-sky-600">
 
                     <nav class="mb-6 font-bold">

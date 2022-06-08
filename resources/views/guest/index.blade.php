@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Deliveboo</title>
+        <title>Deliveboo - Consegna a domicilio</title>
 
         <link rel="stylesheet" href="{{ asset('css/front.css') }}">
     </head>
     <body>
-        <div class="bg-stone-100 mb-6 py-4 px-3 flex items-center">
+        <div class="bg-black mb-3 py-4 px-3 flex items-center">
             <figure class="grow">
                 <img class="logo" src="https://cdn.discordapp.com/attachments/976763752844230717/981947802919788574/deliveroo-3442893-2875354.png" alt="">
             </figure>

@@ -8,66 +8,81 @@
 
         <div class="container" v-if="loading">
 
-            <nav class="mb-6 font-bold">
-                <router-link :to="{name: 'restaurant.index'}" class="text-stone-700 border border-deliveroo hover:text-white hover:bg-deliveroo px-2 py-1 rounded">
-                    Ristoranti
-                </router-link>
-            </nav>
-
-            <!-- Info ristorante  -->
-            <div class="flex flex-wrap gap-3 mb-5">
-                <figure class="max-w-lg rounded-lg overflow-hidden">
-                    <img :src="restaurant.image" class="restaurant-cover">
-                </figure>
-                <div class="grow">
-                    <h1 class="font-bold text-4xl mb-3">{{restaurant.name}}</h1>
-                    <div class="flex items-center gap-2">
-                        <span v-for="category in restaurant.categories" :key="category.id" 
-                        class="rounded-full bg-deliveroo mb-2 px-2 text-white font-bold">
-                            {{category.name}}
-                        </span>
-                    </div>
-                    <div>
-                        {{restaurant.city}} - {{restaurant.address}}
-                    </div>
-                </div>
-            </div>
+            <div class="border-2 border-red-600 flex flex-row justify-between">
             
-            <!-- Qui vengono stampati i piatti  -->
-            <div>
                 <h1 class="font-bold text-xl mb-5">Piatti</h1>
+                <div class="border-2 border-sky-600">
 
-                <div class="grid gap-10 plate-container">
-                    <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-300 plate-card border-2 border-transparent" 
-                    v-for="plate in plates" :key="plate.id">
-                        <div class="grow">
-                            <p class="font-bold mb-3">{{plate.name}}</p>
-                            <div>
-                                <p class="mb-[10px]">{{formatCurrency(plate.price)}}</p>
-                                <button 
-                                    class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"
-                                    @click="addToCart(plate)"
-                                >
-                                    Add to Cart
-                                </button>
-                            </div>  
-                        </div>
-                        <figure class="max-w-[80px] rounded-sm">
-                            <img class="object-cover" :src="plate.image">
+                    <nav class="mb-6 font-bold">
+                        <router-link :to="{name: 'restaurant.index'}" class="text-stone-700 border border-deliveroo hover:text-white hover:bg-deliveroo px-2 py-1 rounded">
+                            Ristoranti
+                        </router-link>
+                    </nav>
+
+                    <!-- Info ristorante  -->
+                    <div class="flex flex-wrap gap-3 mb-5">
+                        <figure class="max-w-lg rounded-lg overflow-hidden shadow-lg shadow-stone-600">
+                            <img :src="restaurant.image" class="restaurant-cover">
                         </figure>
-
+                        <div class="grow ml-4">
+                            <h1 class="font-bold text-4xl mb-3">{{restaurant.name}}</h1>
+                            <div class="flex items-center gap-2">
+                                <span v-for="category in restaurant.categories" :key="category.id" 
+                                class="rounded-full bg-deliveroo mb-2 px-2 text-white font-bold">
+                                    {{category.name}}
+                                </span>
+                            </div>
+                            <div>
+                                <span>📍 </span>{{restaurant.city}} - {{restaurant.address}}
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Qui vengono stampati i piatti  -->
+                    <div>
+                        <h1 class="font-bold text-xl mb-5">Piatti</h1>
+
+                        <div class="grid gap-10 plate-container">
+                            <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent" 
+                            v-for="plate in plates" :key="plate.id">
+                                <div class="grow">
+                                    <p class="font-bold mb-3">{{plate.name}}</p>
+                                    <div>
+                                        <p class="mb-[10px]">{{formatCurrency(plate.price)}}</p>
+                                        <button 
+                                            class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"
+                                            @click="addToCart(plate)"
+                                        >
+                                            Add to Cart
+                                        </button>
+                                    </div>  
+                                </div>
+                                <figure class="max-w-[80px] rounded-sm">
+                                    <img class="object-cover" :src="plate.image">
+                                </figure>
+
+                            </div>
+                        </div>
+                    </div>
+                
                 </div>
+
+                <div class="border-2 border-sky-600">
+
+                    <!-- {{cart}} -->
+                    <!-- Carrello  -->
+                    <AppCart 
+                        :plates="plates"
+                        :restaurant_cart="restaurant_cart"
+                        :formatCurrency="formatCurrency"
+                    />
+                    
+                </div>
+
             </div>
-            <!-- {{cart}} -->
-            <!-- Carrello  -->
-            <AppCart 
-                :plates="plates"
-                :restaurant_cart="restaurant_cart"
-                :formatCurrency="formatCurrency"
-            />
 
         </div>
+
     </section>
 
 </template>
@@ -197,11 +212,13 @@ export default {
 <style lang="scss" scoped>
 
     .img-show {
-        background-image: url('/img/deliv-1-1.png');
+        background-image: url('/img/wave5.svg');
         background-size: cover;
         background-position: center;
         background-repeat: no repeat;
-        height: calc(100vh - 120px);
+        min-height: calc(100vh - 86px);
+        padding-bottom: 20px;
+        margin-bottom: 12px;
     }
 
     img {

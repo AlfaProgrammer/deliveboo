@@ -1,10 +1,11 @@
 .img-show {
     
-    background-image: url('/img/deliv-1-1.png');
+    background-image: url('/img/wave-haikei.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no repeat;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 30px);
+    
 
     .plate-show {
 
@@ -78,7 +79,6 @@
             border: 1px solid rgba(0, 0, 0, .05);
         }
             
-        
         .text-bold {
             font-weight: 700;
         }
@@ -87,7 +87,6 @@
             font-size: 1em;
             color: rgba(0, 0, 0, .4);
         }
-        
         
         .badge:hover {
             color: rgba(0, 0, 0, .87);

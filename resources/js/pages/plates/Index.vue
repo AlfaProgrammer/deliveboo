@@ -7,6 +7,7 @@
         </div>
 
         <div v-if="loading">
+
             <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
 
             <div class="drop-down-menu mb-10">

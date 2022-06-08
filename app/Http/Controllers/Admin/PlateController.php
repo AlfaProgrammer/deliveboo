@@ -182,15 +182,13 @@ class PlateController extends Controller
      */
     public function destroy(Plate $plate)
     {
-        $user = Auth::user(); 
 
-        $email = $user->email;
-
-        Mail::to($email)->send( new SendDeletePlateMail($plate) );
-
-        $plate->delete();
-
+        $user = Auth::user();
         
+        $email = $user->email;
+        
+        Mail::to($email)->send( new SendDeletePlateMail($plate));
+        $plate->delete();
 
         return redirect()->route('admin.plates.index');
     }

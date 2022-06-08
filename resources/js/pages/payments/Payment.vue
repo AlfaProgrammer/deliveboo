@@ -1,6 +1,11 @@
 <template lang="">
     <div>
-        <div class="container max-w-sm">
+
+        <div class="container-loader flex justify-center items-center" v-if="!loading">
+            <CssLoaders/>
+        </div>
+
+        <div class="container max-w-sm" v-if="loading">
             <div id="dropIn" class="" v-if="token">{{ dropIn() }}</div>
             <button class="rounded bg-deliveroo py-1 px-2 text-white font-bold"
             @click="confirmCta(inst)">
@@ -10,12 +15,18 @@
     </div>
 </template>
 <script>
+import CssLoaders from '../../components/CssLoaders.vue';
+
 export default {
     data() {
         return {
             token: '',
             inst: null,
+            loading: false,
         }
+    },
+    components:{
+        CssLoaders,
     },
     methods: {
         fetchToken() {
@@ -23,6 +34,7 @@ export default {
             .then(res => {
                 const {token} = res.data
                 this.token = token;
+                this.loading = true
                 console.log(token);
             })
         },
@@ -50,9 +62,11 @@ export default {
                     // An error in the create call is likely due to
                     // incorrect configuration values or network issues.
                     // An appropriate error will be shown in the UI.
+                    
                     console.error(createErr);
                     return;
                 }
+                
                 this.inst = instance;
                 console.log(instance);
             });

@@ -47894,9 +47894,15 @@ try {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\js\admin.js */"./resources/js/admin.js");
 __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
 module.exports = __webpack_require__(/*! E:\boolean\progetti-boolean\deliveboo\resources\sass\front.scss */"./resources/sass/front.scss");
+=======
+__webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\admin.js */"./resources/js/admin.js");
+__webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\sass\front.scss */"./resources/sass/front.scss");
+>>>>>>> Andrea-B---Footer
 
 
 /***/ })

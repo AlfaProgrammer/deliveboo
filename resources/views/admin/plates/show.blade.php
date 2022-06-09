@@ -70,7 +70,7 @@
         
     </div> --}}
 
-
+<section class="img-show d-flex align-items-center">
     <div class="container plate-show">
         <div class="row  mb-5">
             <div class="col-12 col-sm-6 mt-4">
@@ -144,6 +144,7 @@
             
             
         </div>
-</div>
+    </div>
+</section>
 
 @endsection

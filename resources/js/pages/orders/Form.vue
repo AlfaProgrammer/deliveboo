@@ -12,9 +12,10 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <validationProvider name="nome" rules="required|alpha|max:30" v-slot="{ errors }">
                                     <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
-                                    <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name " required 
-                                    class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
-                                    <div>
+                                    <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name "  
+                                    class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                    :class="errors[0] ? 'border-2 border-red-500 focus:border-red-500' : ''"/>
+                                    <div class="text-sm text-red-500 font-bold italic py-1 px-2">
                                         {{errors[0]}}
                                     </div>
                                 </validationProvider>
@@ -23,8 +24,8 @@
                             <div class="col-span-6 sm:col-span-3">
                                 <validationProvider name="cognome" rules="required|alpha|max:50" v-slot="{ errors }">
                                     <label for="surname" class="after:content-['*'] block text-sm font-medium text-gray-700">Cognome</label>
-                                    <input type="text" v-model="form.surname" name="surname" id="surname" autocomplete="surname" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                                    <div>
+                                    <input type="text" v-model="form.surname" name="surname" id="surname" autocomplete="surname" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <div class="text-sm text-red-500 font-bold italic py-1 px-2">
                                         {{errors[0]}}
                                     </div>
                                 </validationProvider>
@@ -34,8 +35,8 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <validationProvider name="email" rules="required|email|max:50" v-slot="{ errors }">
                                     <label for="email" class="after:content-['*'] block text-sm font-medium text-gray-700">Email</label>
-                                    <input type="email" v-model="form.email" name="email" id="email" autocomplete="email" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                                    <div>
+                                    <input type="email" v-model="form.email" name="email" id="email" autocomplete="email" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <div class="text-sm text-red-500 font-bold italic py-1 px-2">
                                         {{errors[0]}}
                                     </div>
                                 </validationProvider>
@@ -44,8 +45,8 @@
                             <div class="col-span-6 sm:col-span-2">
                                 <validationProvider name="telefono" rules="required|numeric|min:10|max:20" v-slot="{ errors }">
                                     <label for="phone_number" class="after:content-['*'] block text-sm font-medium text-gray-700">Telefono</label>
-                                    <input type="text" v-model="form.phone_number" name="phone_number" autocomplete="phone_number" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                    <div>
+                                    <input type="text" v-model="form.phone_number" name="phone_number" autocomplete="phone_number" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <div class="text-sm text-red-500 font-bold italic py-1 px-2">
                                         {{errors[0]}}
                                     </div>
                                 </validationProvider>
@@ -54,8 +55,8 @@
                             <div class="col-span-6">
                                 <validationProvider name="indirizzo" rules="required|max:80|alpha" v-slot="{ errors }">
                                     <label for="address" class="after:content-['*'] block text-sm font-medium text-gray-700">Indirizzo / Via</label>
-                                    <input type="text" v-model="form.address" name="address" id="address" autocomplete="address" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                                    <div>
+                                    <input type="text" v-model="form.address" name="address" id="address" autocomplete="address" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <div class="text-sm text-red-500 font-bold italic py-1 px-2">
                                         {{errors[0]}}
                                     </div>
                                 </validationProvider>
@@ -64,27 +65,31 @@
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                                 <validationProvider name="civico" rules="required|alpha_num|max:10" v-slot="{ errors }">
                                     <label for="house_number" class="after:content-['*'] block text-sm font-medium text-gray-700">N. civico</label>
-                                    <input type="text" v-model="form.house_number" name="house_number" id="house_number" autocomplete="house_number" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                                    <div>
+                                    <input type="text" v-model="form.house_number" name="house_number" id="house_number" autocomplete="house_number" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <div class="text-sm text-red-500 font-bold italic py-1 px-2">
                                         {{errors[0]}}
                                     </div>
                                 </validationProvider>
                             </div>
 
                             <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                                <validationProvider name="email" rules="required|email" v-slot="{ errors }">
-
+                                <validationProvider name="città" rules="required|alpha|max:30" v-slot="{ errors }">
+                                    <label for="city" class="after:content-['*'] block text-sm font-medium text-gray-700">Città</label>
+                                    <input type="text" v-model="form.city" name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <div class="text-sm text-red-500 font-bold italic py-1 px-2">
+                                        {{errors[0]}}
+                                    </div>
                                 </validationProvider>
-                                <label for="city" class="after:content-['*'] block text-sm font-medium text-gray-700">Città</label>
-                                <input type="text" v-model="form.city" name="city" id="city" autocomplete="address-level2" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
 
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                <validationProvider name="email" rules="required|email" v-slot="{ errors }">
-
+                                <validationProvider name="cap" rules="required|numeric|max:5" v-slot="{ errors }">
+                                    <label for="cap" class="after:content-['*'] block text-sm font-medium text-gray-700">ZIP / CAP</label>
+                                    <input type="text" v-model="form.cap" name="cap" id="cap" autocomplete="cap" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <div class="text-sm text-red-500 font-bold italic py-1 px-2">
+                                        {{errors[0]}}
+                                    </div>
                                 </validationProvider>
-                                <label for="cap" class="after:content-['*'] block text-sm font-medium text-gray-700">ZIP / CAP</label>
-                                <input type="text" v-model="form.cap" name="cap" id="cap" autocomplete="cap" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
                         </div>
                     </div>
@@ -102,6 +107,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
         return {

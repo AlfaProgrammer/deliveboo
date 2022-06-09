@@ -32,6 +32,7 @@
         padding: 0.5em 2em;
         border-radius: 5px;
         font-size: 0.8rem;
+        text-decoration: none;
     }
     
     a.pure-button-primary {
@@ -55,16 +56,16 @@
     }
 
     .user-welcome {
-        margin-bottom: 25px;
+        // margin-bottom: 13px;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
         
 
-        h3 {
+        .user {
             color: #0D8B88;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             width: fit-content;
             border-radius: 5px;
             padding: 7px 19px;
@@ -79,25 +80,37 @@
     
     .splash {
         height: 50%;
-
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-transform: uppercase;
     }
     
     .splash-head {
-        width: fit-content;
-        justify-self: center;
+        // width: fit-content;
+        // justify-self: center;
         font-size: 1rem;
-        font-weight: bold;
-        color: white;
-        padding: 1em 1.6em;
-        font-weight: 100;
+        // font-weight: bold;
+        // color: white;
+        padding: 0.3em 1.6em;
+        // font-weight: 100;
         border-radius: 5px;
         line-height: 1em;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        background-color: lightcoral;
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        // background-color: lightcoral;
         color: black;
         font-weight: 900;
-        margin-bottom: 1.4rem;
+        // margin-bottom: 1.4rem;
+    }
+
+    .categories {
+        gap: 15px;
+        margin-bottom: 20px;
+
+        span {
+            color: white;
+            background-color: #00CCBC;
+        }
     }
     
     .splash-subhead {
@@ -105,6 +118,19 @@
         color: black;
         letter-spacing: 0.05em;
         opacity: 0.8;
+    }
+
+    .user-welcome .no-restaurant {
+        color: #0D8B88;
+            width: fit-content;
+            border-radius: 5px;
+            padding: 7px 19px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+    }
+
+    .buttons-wrapper {
+        gap: 25px;
     }
     
 }
@@ -117,7 +143,8 @@
         // background-color: #1f8dd6;
     }
 
-    .img-restaurant-index .user-welcome h3 {
+    .img-restaurant-index .user-welcome .user, 
+    .img-restaurant-index .user-welcome .no-restaurant{
         font-size: 2rem;
     }
 
@@ -144,7 +171,8 @@
         // background-color: #1f8dd6;
     }
 
-    .img-restaurant-index .user-welcome h3 {
+    .img-restaurant-index .user-welcome h3,
+    .img-restaurant-index .user-welcome .no-restaurant {
         font-size: 2.5rem;
     }
 

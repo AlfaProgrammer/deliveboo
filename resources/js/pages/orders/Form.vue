@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <form @submit.prevent="validate">
+        <form @submit.prevent="validate" methods="post">
 
             <div class="container shadow overflow-hidden sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
@@ -10,8 +10,10 @@
                     <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
                             <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
-                            <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                            <div v-if="!valid">
+                            <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name" 
+                            class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            :class="valid ? 'valid:border-green-500' : 'invalid:border-red-500'"/>
+                            <div v-if="!valid" class="text-red-500 text-sm">
                                 {{errors.name}}
                             </div>
                         </div>
@@ -19,8 +21,8 @@
                         <div class="col-span-6 sm:col-span-3">
                             <label for="surname" class="after:content-['*'] block text-sm font-medium text-gray-700">Cognome</label>
                             <input type="text" v-model="form.surname" name="surname" id="surname" autocomplete="surname" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                            <div v-if="">
-                                
+                            <div v-if="!valid" class="text-red-500 text-sm">
+                                {{errors.name}}
                             </div>
                         </div>
 
@@ -56,7 +58,7 @@
                     </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                    <button 
+                    <button  type="submit"
                     class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola">
                         Invia
                     </button>
@@ -82,7 +84,7 @@ export default {
                 cap: '',
             },
             errors: {},
-            valid: true,
+            valid: null,
             success: false,
             isDisable: true,
         }
@@ -97,22 +99,24 @@ export default {
             })
         },
         validate() {
-            this.errors = {} 
-
-            const validName = this.validateString(this.form.name);
-            this.errors.name = validName.error;
-            if (this.valid) {
-                this.valid = validName.valid
+            if(!this.form.name.length) {
+                this.valid = false;
+                this.errors.name = 'il campo è richiesto'
+                console.log('do validate');
+            } else {
+                this.valid = true;
+                console.log('correct');
             }
-
-
+            if(!this.form.surname.length) {
+                this.valid = false;
+                this.errors.name = 'il campo è richiesto'
+                console.log('do validate');
+            } else {
+                this.valid = true;
+                console.log('correct');
+            }
         },
-        validateString(value) {
-            if(!value.lengt) {
-                return { valid: false , error: 'il campo è richiesto' }; 
-            }
-            return { valid: true, error: null };
-        }
+        
     },
     
 }

@@ -14,6 +14,11 @@
 
 // input validations 
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 .navbar {
     background-color: black;
     height: 62px;

@@ -71,9 +71,9 @@ class PaymentController extends Controller
         if ($result->success) {
             // See $result->transaction for details
             return $result->transaction;
-          } else {
+        } else {
             return $result->transaction;
-          }
+        }
 
     }
 

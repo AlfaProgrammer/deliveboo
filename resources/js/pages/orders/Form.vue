@@ -134,12 +134,14 @@ export default {
         submitForm() {
             axios.post('/api/orders', {
                 form: this.form,
+                total: null,
             })
             .then(res => {
                 console.log(res);
             })
         },
         onSubmit() {
+            this.submitForm();
             console.log(this.form);
         }
     },

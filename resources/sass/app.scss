@@ -10,16 +10,15 @@
 // Style 
 @import './Plates/index.scss';
 @import './Plates/show.scss';
-
-@import './Plates/show.scss';
+@import './noRestaurant/index.scss';
 
 // input validations 
 
-input:valid{
+input:valid {
     border: 1px solid green;
 }
 
-input:invalid{
+input:invalid {
     border: 1px solid red;
 }
 

@@ -10,7 +10,7 @@
                         </div>
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
-                                <validationProvider name="name" rules="require" v-slot="{ errors }">
+                                <validationProvider name="name" rules="required|alpha" v-slot="{ errors }">
                                     <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
                                     <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name " required 
                                     class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"/>
@@ -21,37 +21,64 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="surname" class="after:content-['*'] block text-sm font-medium text-gray-700">Cognome</label>
-                                <input type="text" v-model="form.surname" name="surname" id="surname" autocomplete="surname" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <validationProvider name="surname" rules="required" v-slot="{ errors }">
+                                    <label for="surname" class="after:content-['*'] block text-sm font-medium text-gray-700">Cognome</label>
+                                    <input type="text" v-model="form.surname" name="surname" id="surname" autocomplete="surname" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <div>
+                                        {{errors[0]}}
+                                    </div>
+                                </validationProvider>
                                 
                             </div>
 
                             <div class="col-span-6 sm:col-span-4">
-                                <label for="email" class="after:content-['*'] block text-sm font-medium text-gray-700">Email</label>
-                                <input type="text" v-model="form.email" name="email" id="email" autocomplete="email" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <validationProvider name="email" rules="required|email" v-slot="{ errors }">
+                                    <label for="email" class="after:content-['*'] block text-sm font-medium text-gray-700">Email</label>
+                                    <input type="email" v-model="form.email" name="email" id="email" autocomplete="email" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                    <div>
+                                        {{errors[0]}}
+                                    </div>
+                                </validationProvider>
                             </div>
 
                             <div class="col-span-6 sm:col-span-2">
-                                <label for="phone_number" class="after:content-['*'] block text-sm font-medium text-gray-700">Telefono</label>
-                                <input type="text" v-model="form.phone_number" name="phone_number" autocomplete="phone_number" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <validationProvider name="phone_number" rules="required|" v-slot="{ errors }">
+                                    <label for="phone_number" class="after:content-['*'] block text-sm font-medium text-gray-700">Telefono</label>
+                                    <input type="text" v-model="form.phone_number" name="phone_number" autocomplete="phone_number" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <div>
+                                        {{errors[0]}}
+                                    </div>
+                                </validationProvider>
                             </div>
 
                             <div class="col-span-6">
+                                <validationProvider name="email" rules="required|email" v-slot="{ errors }">
+
+                                </validationProvider>
                                 <label for="address" class="after:content-['*'] block text-sm font-medium text-gray-700">Indirizzo / Via</label>
                                 <input type="text" v-model="form.address" name="address" id="address" autocomplete="address" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
 
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                <validationProvider name="email" rules="required|email" v-slot="{ errors }">
+
+                                </validationProvider>
                                 <label for="house_number" class="after:content-['*'] block text-sm font-medium text-gray-700">N. civico</label>
                                 <input type="text" v-model="form.house_number" name="house_number" id="house_number" autocomplete="house_number" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
 
                             <div class="col-span-6 sm:col-span-6 lg:col-span-2">
+                                <validationProvider name="email" rules="required|email" v-slot="{ errors }">
+
+                                </validationProvider>
                                 <label for="city" class="after:content-['*'] block text-sm font-medium text-gray-700">Città</label>
                                 <input type="text" v-model="form.city" name="city" id="city" autocomplete="address-level2" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
 
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                                <validationProvider name="email" rules="required|email" v-slot="{ errors }">
+
+                                </validationProvider>
                                 <label for="cap" class="after:content-['*'] block text-sm font-medium text-gray-700">ZIP / CAP</label>
                                 <input type="text" v-model="form.cap" name="cap" id="cap" autocomplete="cap" required class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
@@ -95,7 +122,7 @@ export default {
                 console.log(res);
             })
         },
-        onsubmit() {
+        onSubmit() {
             console.log(this.form);
         }
     },

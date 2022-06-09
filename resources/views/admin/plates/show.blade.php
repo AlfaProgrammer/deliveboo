@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     {{-- <div class="container"> --}}
 
         {{-- <h1>{{$plate['name']}}</h1>

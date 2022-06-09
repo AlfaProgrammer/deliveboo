@@ -30,6 +30,7 @@ Route::middleware('auth')
             Route::resource('restaurants', 'RestaurantController')->only([
                 'create', 'store'
             ]);
+            Route::resource('orders', 'OrderController');/* ->name('orders'); */
 
         });
 

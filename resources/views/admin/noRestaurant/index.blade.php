@@ -67,8 +67,7 @@
                 </p>
                 <p class="buttons-wrapper d-flex">
                     <a href="{{route('admin.plates.index')}}" class="pure-button">Visualizza Piatti</a>
-                    {{-- {{route('admin.orders.index')}} --}}
-                    <a href="" type="button" class="pure-button">Visualizza Ordini</a>
+                    <a href="{{route('admin.orders.index')}}" type="button" class="pure-button">Visualizza Ordini</a>
                 </p>
                
                 

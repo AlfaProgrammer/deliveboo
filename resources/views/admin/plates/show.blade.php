@@ -72,7 +72,7 @@
 
 <section class="img-show d-flex align-items-center">
     <div class="container plate-show">
-        <div class="row  mb-5">
+        <div class="row mb-5 d-flex justify-content-center">
             <div class="col-12 col-sm-6 mt-4">
                 <div class="card">
                     <img class="card-img-top" src="{{ $plate->image ?: '' }}">
@@ -93,7 +93,7 @@
                             <span class="badge rounded-pill bg-success mb-2">{{$allergen->name}}</span>
                         @endforeach
                         <div>
-                            <span>Prezzo: {{$plate['price']}} euro</span>
+                            <span>Prezzo: <span class="eurobold">{{$plate['price']}}</span> euro</span>
                         </div>
                         <div>
                             <small>Ultima modifica: {{ $plate['updated_at'] }}</small>

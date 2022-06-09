@@ -14,7 +14,29 @@
 
 // input validations 
 
+<<<<<<< HEAD
 input:valid {
+=======
+.navbar {
+    background-color: black;
+    height: 62px;
+    
+    a {
+        color: #00CCBC;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .img-logo-wrapper {
+        margin: 0 10px 0 0;
+    }
+}
+
+input:valid{
+>>>>>>> fixes-front
     border: 1px solid green;
 }
 
@@ -29,8 +51,6 @@ input:invalid {
     outline: none !important;
     box-shadow: none !important;
 }
-
-
 
 .lds-ring {
     display: inline-block;
@@ -73,7 +93,6 @@ input:invalid {
     transform: rotate(360deg);
     }
 }
-
 
 .container-loader {
     height: calc(100vh - 86px);

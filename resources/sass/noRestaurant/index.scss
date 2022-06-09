@@ -1,0 +1,192 @@
+.img-restaurant-index {
+    background-image: url('/img/wave0.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no repeat;
+    height: calc(100vh - 55px);
+    margin-top: -1.5rem !important;
+    margin-bottom: -1.5rem !important;
+    justify-content: center;
+
+    // * {
+    //     -webkit-box-sizing: border-box;
+    //     -moz-box-sizing: border-box;
+    //     box-sizing: border-box;
+    // }
+    
+    body {
+        line-height: 1.7em;
+        color: #7f8c8d;
+        font-size: 13px;
+    }
+    
+    .pure-img-responsive {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .pure-button {
+        background-color: #FEEE4A;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        color: black;
+        padding: 0.5em 2em;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        text-decoration: none;
+    }
+    
+    a.pure-button-primary {
+        background: white;
+        color: #1f8dd6;
+        border-radius: 5px;
+        font-size: 120%;
+    }
+    
+    
+    .splash-container {
+        overflow: hidden;
+        align-items: center;
+        width: 80%;
+        border: 2px solid white;
+        border-radius: 5px;
+        padding: 15px;
+        background-color: #F5F5F4;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align: center;
+    }
+
+    .user-welcome {
+        // margin-bottom: 13px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+
+        .user {
+            color: #0D8B88;
+            // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            width: fit-content;
+            border-radius: 5px;
+            padding: 7px 19px;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        p {
+            padding: 0 0.2rem;
+        }
+    }
+    
+    .splash {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-transform: uppercase;
+    }
+    
+    .splash-head {
+        // width: fit-content;
+        // justify-self: center;
+        font-size: 1rem;
+        // font-weight: bold;
+        // color: white;
+        padding: 0.3em 1.6em;
+        // font-weight: 100;
+        border-radius: 5px;
+        line-height: 1em;
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        // background-color: lightcoral;
+        color: black;
+        font-weight: 900;
+        // margin-bottom: 1.4rem;
+    }
+
+    .categories {
+        gap: 15px;
+        margin-bottom: 20px;
+
+        span {
+            color: white;
+            background-color: #00CCBC;
+        }
+    }
+    
+    .splash-subhead {
+        margin-bottom: 30px;
+        color: black;
+        letter-spacing: 0.05em;
+        opacity: 0.8;
+    }
+
+    .user-welcome .no-restaurant {
+        color: #0D8B88;
+            width: fit-content;
+            border-radius: 5px;
+            padding: 7px 19px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+    }
+
+    .buttons-wrapper {
+        gap: 25px;
+    }
+    
+}
+
+@media screen and (min-width: 768px) {
+    
+    .img-restaurant-index .splash-head {
+        font-size: 1.5rem;
+        line-height: 1em;
+        // background-color: #1f8dd6;
+    }
+
+    .img-restaurant-index .user-welcome .user, 
+    .img-restaurant-index .user-welcome .no-restaurant{
+        font-size: 2rem;
+    }
+
+    .img-restaurant-index .user-welcome p {
+        padding: 0 1.5rem;
+    }
+
+    .img-restaurant-index .splash-container {
+        width: 60%;
+        // background-color: #1f8dd6;
+    }
+
+    .img-restaurant-index .pure-button {
+        font-size: 1rem;
+    }
+
+}
+
+@media screen and (min-width:  1200px) {
+    
+    .img-restaurant-index .splash-head {
+        font-size: 2.2rem;
+        line-height: 1em;
+        // background-color: #1f8dd6;
+    }
+
+    .img-restaurant-index .user-welcome h3,
+    .img-restaurant-index .user-welcome .no-restaurant {
+        font-size: 2.5rem;
+    }
+
+    .img-restaurant-index .user-welcome p {
+        padding: 0 4.5rem;
+    }
+
+    .img-restaurant-index .splash-container {
+        width: 50%;
+        // background-color: #1f8dd6;
+    }
+
+    .img-restaurant-index .pure-button {
+        font-size: 1rem;
+    }    
+
+}

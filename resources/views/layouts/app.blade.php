@@ -21,8 +21,11 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md shadow-sm">
+            <div class="container d-flex flex-row">
+                <span class="img-logo-wrapper">
+                    <img class="logo" src="https://cdn.discordapp.com/attachments/976763752844230717/981947802919788574/deliveroo-3442893-2875354.png" alt="">
+                </span>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Home') }}
                 </a>

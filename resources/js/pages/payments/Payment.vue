@@ -34,7 +34,7 @@ export default {
             .then(res => {
                 const {token} = res.data
                 this.token = token;
-                this.loading = true
+                this.loading = true;
                 console.log(token);
             })
         },
@@ -86,8 +86,8 @@ export default {
         )},
     },
     created() {
-        this.fetchToken();  
-    },
+        this.fetchToken(); 
+    }
 }
 </script>
 <style lang="scss">

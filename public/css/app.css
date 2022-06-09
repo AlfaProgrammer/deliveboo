@@ -10058,11 +10058,11 @@ h3 {
 }
 
 .img-show {
-  background-image: url("/img/deliv-1-1.png");
+  background-image: url("/img/wave-haikei.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 30px);
 }
 .img-show .plate-show h5 {
   font-size: 1.28571429em;
@@ -10135,11 +10135,11 @@ h3 {
 }
 
 .img-show {
-  background-image: url("/img/deliv-1-1.png");
+  background-image: url("/img/wave-haikei.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 30px);
 }
 .img-show .plate-show h5 {
   font-size: 1.28571429em;

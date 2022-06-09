@@ -12,14 +12,15 @@
                             <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
                             <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             <div v-if="">
+
                             </div>
                         </div>
 
                         <div class="col-span-6 sm:col-span-3">
                             <label for="surname" class="after:content-['*'] block text-sm font-medium text-gray-700">Cognome</label>
                             <input type="text" v-model="form.surname" name="surname" id="surname" autocomplete="surname" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
-                            <div v-if="errors">
-                                {{errors.surname}}
+                            <div v-if="">
+                                
                             </div>
                         </div>
 
@@ -70,7 +71,6 @@
 export default {
     data() {
         return {
-            errors: [],
             form: {
                 name: null,
                 surname: null,
@@ -84,42 +84,13 @@ export default {
             isDisable: true,
         }
     },
-    watch: {
-        'form.name': function(value) {
-            this.form.name = value;
-            this.validateString(value, 'name');
-            console.log(this.form.name)
-        },
-        'form.surname': function(value) {
-            this.form.surname = value;
-            console.log(this.form.surname);
-        }
-    },
     methods: {
-        checkForm() {
-            if(!this.name) {
-            }
-        },
         submitForm() {
             axios.post('/api/orders', {
                 form: this.form,
             })
             .then(res => {
                 console.log(res);
-            })
-        },
-        validateString(input, param) {
-            if(input === '' || Number(input)) {
-                if(this.errors.length === 0 || this.checkError() === false) {
-                    this.errors.push({[param]: 'il campo è obbligatorio e deve contenere lettere'});
-                } 
-
-            }
-        },
-        checkError() {
-            this.errors.forEach(el => {
-                const element = el;
-                this.errors.includes(element);
             })
         },
     },

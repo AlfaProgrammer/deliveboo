@@ -43,7 +43,7 @@
                                     <h5 class="title">{{$plate['name']}}</h5>
                                     <div class="badge-wrapper">
                                         @foreach ($plate->allergens as $allergen)
-                                        <span class="badge rounded-pill mb-2">{{$allergen->name}}</span>
+                                            <span class="badge rounded-pill mb-2">{{$allergen->name}}</span>
                                         @endforeach
                                     </div>
     

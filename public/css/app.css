@@ -10134,14 +10134,6 @@ h3 {
   color: rgba(0, 0, 0, 0.87);
 }
 
-<<<<<<< HEAD
-.img-show {
-  background-image: url("/img/wave-haikei.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no repeat;
-  height: calc(100vh - 30px);
-=======
 .img-restaurant-index {
   background-image: url("/img/wave0.svg");
   background-size: cover;
@@ -10151,7 +10143,6 @@ h3 {
   margin-top: -1.5rem !important;
   margin-bottom: -1.5rem !important;
   justify-content: center;
->>>>>>> Andrea-B-noRestaurant-index
 }
 .img-restaurant-index body {
   line-height: 1.7em;
@@ -10169,6 +10160,7 @@ h3 {
   padding: 0.5em 2em;
   border-radius: 5px;
   font-size: 0.8rem;
+  text-decoration: none;
 }
 .img-restaurant-index a.pure-button-primary {
   background: white;
@@ -10188,15 +10180,13 @@ h3 {
   text-align: center;
 }
 .img-restaurant-index .user-welcome {
-  margin-bottom: 25px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.img-restaurant-index .user-welcome h3 {
+.img-restaurant-index .user-welcome .user {
   color: #0D8B88;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -10210,30 +10200,45 @@ h3 {
 }
 .img-restaurant-index .splash {
   height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-transform: uppercase;
 }
 .img-restaurant-index .splash-head {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  justify-self: center;
   font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  padding: 1em 1.6em;
+  padding: 0.3em 1.6em;
   border-radius: 5px;
   line-height: 1em;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: lightcoral;
   color: black;
   font-weight: 900;
-  margin-bottom: 1.4rem;
+}
+.img-restaurant-index .categories {
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.img-restaurant-index .categories span {
+  color: white;
+  background-color: #00CCBC;
 }
 .img-restaurant-index .splash-subhead {
   margin-bottom: 30px;
   color: black;
   letter-spacing: 0.05em;
   opacity: 0.8;
+}
+.img-restaurant-index .user-welcome .no-restaurant {
+  color: #0D8B88;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 5px;
+  padding: 7px 19px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.img-restaurant-index .buttons-wrapper {
+  gap: 25px;
 }
 
 @media screen and (min-width: 768px) {
@@ -10242,7 +10247,8 @@ h3 {
     line-height: 1em;
   }
 
-  .img-restaurant-index .user-welcome h3 {
+  .img-restaurant-index .user-welcome .user,
+.img-restaurant-index .user-welcome .no-restaurant {
     font-size: 2rem;
   }
 
@@ -10264,7 +10270,8 @@ h3 {
     line-height: 1em;
   }
 
-  .img-restaurant-index .user-welcome h3 {
+  .img-restaurant-index .user-welcome h3,
+.img-restaurant-index .user-welcome .no-restaurant {
     font-size: 2.5rem;
   }
 

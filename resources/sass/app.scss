@@ -11,6 +11,7 @@
 @import './Plates/index.scss';
 @import './Plates/show.scss';
 @import './noRestaurant/index.scss';
+@import './orders/index.scss';
 
 // input validations 
 
@@ -97,4 +98,8 @@ input:invalid {
 
 .container-loader {
     height: calc(100vh - 86px);
+}
+
+.navbar{
+    z-index: 99999;
 }

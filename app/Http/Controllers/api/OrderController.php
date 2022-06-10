@@ -47,23 +47,26 @@ class OrderController extends Controller
         foreach($cart as $plate) {
 
             array_push($plateId, $plate['id']);
-        }
 
+        }
+        //return $restaurantId;
         //return $plateId;
 
         $total = $data['total'];
         //return $total;
         foreach($data as $value) {
 
-            // $order = new Order();
+            $order = new Order();
 
-            // $order->fill($value);
+            $order->fill($value);
 
-            // $order->total_price = $total;
+            $order->total_price = $total;
 
-            // $order->save();
+            $order->save();
 
-            return [$value, $total];
+            $order->plates()->attach($plateId);
+
+            return [$order, $cart];
         }
     }
 

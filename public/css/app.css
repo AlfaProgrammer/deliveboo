@@ -10015,15 +10015,26 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.contenitore-big {
+  height: calc(100vh - 125px);
+  flex-wrap: nowrap;
+}
+
 .plates-index .row .card {
-  height: 250px;
+  height: 140px;
+  width: 560px;
   border: 2px solid transparent;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-decoration: none;
 }
 .plates-index .row .card img {
-  aspect-ratio: 16/9;
+  width: 80px;
+  height: 80px;
   display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 .plates-index .row .card .card-body {
   background-color: #F5F5F4;
@@ -10034,39 +10045,62 @@ h3 {
   font-weight: 700;
   color: #440063;
 }
-.plates-index .row .card .card-body .badge-wrapper .badge {
-  background-color: #00CCBC;
-  color: white;
+.plates-index .row .card-body {
+  transition: transform 350ms;
 }
 .plates-index .row .card:hover {
   border-color: #440063;
+  transform: scale(1.1);
+  transition: transform 150ms;
 }
-.plates-index .row .card-body::-webkit-scrollbar {
+
+.img-shad-large {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.over-flow-cont {
+  overflow: auto;
+}
+
+.card-.over-flow-cont::-webkit-scrollbar {
   width: 5px;
 }
-.plates-index .row .card-body {
-  scrollbar-width: thin;
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
-}
-.plates-index .row .card-body::-webkit-scrollbar-track {
+
+.card-.over-flow-cont::-webkit-scrollbar-track {
   background: var(--scrollbarBG);
 }
-.plates-index .row .card-body::-webkit-scrollbar-thumb {
+
+.card-.over-flow-cont::-webkit-scrollbar-thumb {
   background-color: var(--thumbBG);
   border-radius: 999px;
   border: 3px solid var(--scrollbarBG);
 }
 
+h4, h2 {
+  color: black;
+  font-weight: 900;
+}
+
+.allergie {
+  background-color: #00CCBC;
+  color: white;
+}
+
+a p {
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+
 .img-show {
-  background-image: url("/img/wave-haikei.svg");
+  background-image: url("/img/wave27.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;
-  height: calc(100vh - 30px);
+  height: 100vh;
 }
-.img-show .plate-show h5 {
+.img-show .plate-show h4 {
   font-size: 1.28571429em;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.2857em;
   margin: 0;
 }
@@ -10076,7 +10110,7 @@ h3 {
   padding: 0;
   border: none;
   border-radius: 0.28571429rem;
-  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .img-show .plate-show .card-block {
   font-size: 1em;
@@ -10112,6 +10146,9 @@ h3 {
   color: rgba(0, 0, 0, 0.4);
   border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
   background: #fff;
+}
+.img-show .plate-show .card-footer .eurobold {
+  color: black;
 }
 .img-show .plate-show .card-footer .badge {
   color: white;
@@ -10287,6 +10324,70 @@ h3 {
     font-size: 1rem;
   }
 }
+.background-orders {
+  background-image: url("/img/wave31.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no repeat;
+  height: 100vh;
+  /* margin-top: -1.5rem !important;
+  margin-bottom: -1.5rem !important; */
+  display: flex;
+  justify-content: center;
+  padding: 200px;
+  width: 100%;
+  overflow: auto;
+}
+
+.card-order {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  justify-content: center;
+  margin: 50px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  min-width: 350px;
+}
+
+.card-order > div {
+  margin: 20px 0px;
+}
+
+.info-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-plates {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgba(68, 71, 74, 0.5960784314);
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.navbar {
+  background-color: black;
+  height: 62px;
+}
+.navbar a {
+  color: #00CCBC;
+}
+.navbar .logo {
+  width: 30px;
+  height: 30px;
+}
+.navbar .img-logo-wrapper {
+  margin: 0 10px 0 0;
+}
+
 input:valid {
   border: 1px solid green;
 }
@@ -10358,4 +10459,8 @@ input:invalid {
 }
 .container-loader {
   height: calc(100vh - 86px);
+}
+
+.navbar {
+  z-index: 99999;
 }

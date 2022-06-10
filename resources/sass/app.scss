@@ -11,10 +11,34 @@
 @import './Plates/index.scss';
 @import './Plates/show.scss';
 @import './noRestaurant/index.scss';
+@import './orders/index.scss';
 
 // input validations 
 
-input:valid {
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.navbar {
+    background-color: black;
+    height: 62px;
+    
+    a {
+        color: #00CCBC;
+    }
+
+    .logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .img-logo-wrapper {
+        margin: 0 10px 0 0;
+    }
+}
+
+input:valid{
     border: 1px solid green;
 }
 
@@ -29,8 +53,6 @@ input:invalid {
     outline: none !important;
     box-shadow: none !important;
 }
-
-
 
 .lds-ring {
     display: inline-block;
@@ -74,7 +96,10 @@ input:invalid {
     }
 }
 
-
 .container-loader {
     height: calc(100vh - 86px);
+}
+
+.navbar{
+    z-index: 99999;
 }

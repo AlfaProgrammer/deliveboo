@@ -19,7 +19,7 @@ class OrderSeeder extends Seeder
         $plates = Plate::all();
         $plate_ids = $plates->pluck('id')->all();
 
-        for ($i=0; $i < 20; $i++) { 
+        for ($i=0; $i < 100; $i++) { 
             
             $newOrder = new Order();
 

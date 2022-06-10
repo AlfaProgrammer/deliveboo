@@ -38,6 +38,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 import vueBraintree from 'vue-braintree';
 Vue.use(vueBraintree);
 
+import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
+import {ValidationObserver} from 'vee-validate';
+Vue.component('ValidationProvider', ValidationProvider);
+Vue.component('ValidationObserver', ValidationObserver);
+
  import '../sass/front.scss';
  import App from './views/App.vue';
  import router from './router';

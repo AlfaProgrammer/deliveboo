@@ -1,17 +1,17 @@
 .img-show {
     
-    background-image: url('/img/wave-haikei.svg');
+    background-image: url('/img/wave27.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no repeat;
-    height: calc(100vh - 30px);
+    height: 100vh;
     
 
     .plate-show {
 
-        h5 {
+        h4 {
             font-size: 1.28571429em;
-            font-weight: 700;
+            font-weight: 900;
             line-height: 1.2857em;
             margin: 0;
         }
@@ -22,7 +22,7 @@
             padding: 0;
             border: none;
             border-radius: .28571429rem;
-            box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
         
         .card-block {
@@ -63,6 +63,10 @@
             color: rgba(0, 0, 0, .4);
             border-top: 1px solid rgba(0, 0, 0, .05) !important;
             background: #fff;
+
+            .eurobold {
+                color: black;
+            }
 
             .badge {
                 color: white;

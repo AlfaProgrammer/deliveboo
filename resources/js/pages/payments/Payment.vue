@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <div>
 
         <div class="container-loader flex justify-center items-center" v-if="!loading">

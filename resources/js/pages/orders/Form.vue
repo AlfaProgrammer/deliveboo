@@ -1,4 +1,4 @@
-<template lang="">
+<template>
     <div>
         <ValidationObserver v-slot="{ handleSubmit }">
 

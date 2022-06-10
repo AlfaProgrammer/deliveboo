@@ -36,14 +36,13 @@
             </div>
             <div class="column-4">
                 <h4>Porta Deliveboo con te</h4>
-                <ul>
                   <ul class="menu">
-                            <li v-for="(el, i) in UlApp" :key="i">
-                                <a href="">
-                                </a> 
-                            </li>
-                        </ul>  
-                </ul>
+                    <li class="badge-wrapper" v-for="(el, i) in UlApp" :key="i">
+                        <a href="">
+                          <img :src="require('../../../public/img/'+ el.icon )">
+                        </a> 
+                    </li>
+                  </ul>  
             </div>
         </div>
         <div class="row-down container grid grid-cols-2 justify-between gap-3 px-3 max-w-5xl">
@@ -128,10 +127,10 @@ export default {
       ],
       UlApp: [
         {
-          icon: 'playstore.png',
+          icon: 'playstore.svg',
         },
         {
-          icon: 'appstore.png',
+          icon: 'appstore.svg',
         },
       ],
     }
@@ -163,6 +162,11 @@ export default {
 
         li {
           padding: 2px;
+        }
+        .badge-wrapper {
+          max-width: 150px;
+          // max-height: 43px;
+          margin: 5px 0;
         }
       
         a:hover {

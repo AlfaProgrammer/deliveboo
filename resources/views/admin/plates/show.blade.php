@@ -71,7 +71,7 @@
         
     </div> --}}
 
-<section class="img-show d-flex align-items-center">
+<section class="img-show d-flex align-items-center nav-fix">
     <div class="container plate-show">
         <div class="row mb-5 d-flex justify-content-center">
             <div class="col-12 col-sm-6 mt-4">

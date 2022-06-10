@@ -10334,7 +10334,7 @@ a p {
   margin-bottom: -1.5rem !important; */
   display: flex;
   justify-content: center;
-  padding: 200px;
+  padding: 100px;
   width: 100%;
   overflow: auto;
 }
@@ -10463,4 +10463,9 @@ input:invalid {
 
 .navbar {
   z-index: 99999;
+}
+
+.nav-fix {
+  height: 100vh;
+  padding-top: 120px;
 }

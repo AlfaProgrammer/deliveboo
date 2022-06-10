@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container nav-fix">
         <h2>Crea il tuo ristoranete</h2>
 
         <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">

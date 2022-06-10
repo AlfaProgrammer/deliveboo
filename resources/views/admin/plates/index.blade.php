@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="contenitore-big row m-0">
+<div class="contenitore-big row m-0 nav-fix">
 
     {{-- --------------------------------------------- --}}
 

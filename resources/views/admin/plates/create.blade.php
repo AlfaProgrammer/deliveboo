@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container nav-fix">
 
         <h1>Inserisci un nuovo piatto</h1>
         

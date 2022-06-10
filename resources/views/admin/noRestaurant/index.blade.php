@@ -39,7 +39,7 @@
         
     @endif --}}
 
-    <section class="img-restaurant-index d-flex align-items-center">
+    <section class="img-restaurant-index d-flex align-items-center nav-fix">
     
         @if($restaurant)
             

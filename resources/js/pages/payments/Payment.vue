@@ -12,6 +12,7 @@
                 Invia
             </button>    
         </div> 
+
     </div>
 </template>
 <script>
@@ -23,12 +24,25 @@ export default {
             token: '',
             inst: null,
             loading: false,
+            cart: [],
         }
     },
     components:{
         CssLoaders,
     },
+    computed: {
+        totalPirce() {
+            const total = this.cart.reduce((acc,item)=>{
+                return acc + item.price
+            }, 0);
+
+            return total;
+        }
+    },
     methods: {
+        takeCart() {
+            this.cart = JSON.parse(localStorage.getItem("cart"));
+        },
         fetchToken() {
             axios.get('/api/payments')
             .then(res => {
@@ -39,13 +53,15 @@ export default {
             })
         },
         sendToken(nonce) {
-            axios.post('/api/payments',null, {
+            axios.post('/api/payments',{
+                total: this.totalPirce,
+            }, {
                 params: {
                     token: nonce,
                 }
             })
             .then(res => {
-                console.log(res);
+                console.log(res.data);
             })
             .catch(err => {
                 console.error(err);
@@ -81,12 +97,15 @@ export default {
                 }
 
                 this.sendToken(payload.nonce);
+                //this.$router.push({ name: 'order.create' });
                 console.log(payload.nonce);
             }
         )},
     },
     created() {
-        this.fetchToken(); 
+        this.fetchToken();
+        this.takeCart();
+
     }
 }
 </script>

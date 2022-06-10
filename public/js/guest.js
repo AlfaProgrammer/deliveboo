@@ -2153,7 +2153,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Footer',
   data: function data() {
@@ -2194,9 +2193,9 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Tipi di cucina'
       }],
       UlApp: [{
-        icon: 'playstore.png'
+        icon: 'playstore.svg'
       }, {
-        icon: 'appstore.png'
+        icon: 'appstore.svg'
       }]
     };
   }
@@ -2368,6 +2367,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2380,22 +2380,39 @@ __webpack_require__.r(__webpack_exports__);
         house_number: '',
         city: '',
         cap: ''
-      }
+      },
+      cart: []
     };
   },
   methods: {
+    takeCart: function takeCart() {
+      this.cart = JSON.parse(localStorage.getItem("cart"));
+    },
     submitForm: function submitForm() {
+      var _this = this;
+
       axios.post('/api/orders', {
         form: this.form,
-        total: null
+        total: 25.00,
+        cart: this.cart //localStorage.getItem('totalPrice'),
+
       }).then(function (res) {
-        console.log(res);
+        console.log(res.data);
+
+        _this.$router.push({
+          name: 'payments.index'
+        });
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     onSubmit: function onSubmit() {
       this.submitForm();
       console.log(this.form);
     }
+  },
+  created: function created() {
+    this.takeCart();
   }
 });
 
@@ -2427,19 +2444,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       token: '',
       inst: null,
-      loading: false
+      loading: false,
+      cart: []
     };
   },
   components: {
     CssLoaders: _components_CssLoaders_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  computed: {
+    totalPirce: function totalPirce() {
+      var total = this.cart.reduce(function (acc, item) {
+        return acc + item.price;
+      }, 0);
+      return total;
+    }
+  },
   methods: {
+    takeCart: function takeCart() {
+      this.cart = JSON.parse(localStorage.getItem("cart"));
+    },
     fetchToken: function fetchToken() {
       var _this = this;
 
@@ -2451,12 +2481,14 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     sendToken: function sendToken(nonce) {
-      axios.post('/api/payments', null, {
+      axios.post('/api/payments', {
+        total: this.totalPirce
+      }, {
         params: {
           token: nonce
         }
       }).then(function (res) {
-        console.log(res);
+        console.log(res.data);
       })["catch"](function (err) {
         console.error(err);
       });
@@ -2494,7 +2526,8 @@ __webpack_require__.r(__webpack_exports__);
           return;
         }
 
-        _this3.sendToken(payload.nonce);
+        _this3.sendToken(payload.nonce); //this.$router.push({ name: 'order.create' });
+
 
         console.log(payload.nonce);
       });
@@ -2502,6 +2535,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.fetchToken();
+    this.takeCart();
   }
 });
 
@@ -27314,7 +27348,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".footer[data-v-57f10562] {\n  width: 100%;\n  background-color: #2E3333;\n  padding-top: 20px;\n  color: white;\n  font-size: 11px;\n  font-family: plex-sans, sans-serif;\n}\n.footer div[class^=column][data-v-57f10562] {\n  background-color: #434848;\n  padding: 20px 25px;\n  border-radius: 2px;\n  white-space: nowrap;\n}\n.footer div[class^=column] li[data-v-57f10562] {\n  padding: 2px;\n}\n.footer div[class^=column] a[data-v-57f10562]:hover {\n  color: #247B74;\n}\n.footer h4[data-v-57f10562] {\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 24px;\n}\n.footer .container-fluid[data-v-57f10562] {\n  width: 1152px;\n  display: flex;\n  flex-direction: column;\n}\n.footer .row-down[data-v-57f10562] {\n  min-height: 40px;\n  display: flex;\n  padding: 15px 0.75rem;\n}\n.footer .row-down .social-wrapper[data-v-57f10562] {\n  gap: 10px;\n  align-items: flex-start;\n  color: #fff;\n}\n.footer .row-down path[data-v-57f10562] {\n  fill: currentColor;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(1):hover {\n  color: #1877F2;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(2):hover {\n  color: #416F90;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(3):hover {\n  color: #F00075;\n}\n.footer .row-down p[data-v-57f10562] {\n  color: #636767;\n}", ""]);
+exports.push([module.i, ".footer[data-v-57f10562] {\n  width: 100%;\n  background-color: #2E3333;\n  padding-top: 20px;\n  color: white;\n  font-size: 11px;\n  font-family: plex-sans, sans-serif;\n}\n.footer div[class^=column][data-v-57f10562] {\n  background-color: #434848;\n  padding: 20px 25px;\n  border-radius: 2px;\n  white-space: nowrap;\n}\n.footer div[class^=column] li[data-v-57f10562] {\n  padding: 2px;\n}\n.footer div[class^=column] .badge-wrapper[data-v-57f10562] {\n  max-width: 150px;\n  margin: 5px 0;\n}\n.footer div[class^=column] a[data-v-57f10562]:hover {\n  color: #247B74;\n}\n.footer h4[data-v-57f10562] {\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 24px;\n}\n.footer .container-fluid[data-v-57f10562] {\n  width: 1152px;\n  display: flex;\n  flex-direction: column;\n}\n.footer .row-down[data-v-57f10562] {\n  min-height: 40px;\n  display: flex;\n  padding: 15px 0.75rem;\n}\n.footer .row-down .social-wrapper[data-v-57f10562] {\n  gap: 10px;\n  align-items: flex-start;\n  color: #fff;\n}\n.footer .row-down path[data-v-57f10562] {\n  fill: currentColor;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(1):hover {\n  color: #1877F2;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(2):hover {\n  color: #416F90;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(3):hover {\n  color: #F00075;\n}\n.footer .row-down p[data-v-57f10562] {\n  color: #636767;\n}", ""]);
 
 // exports
 
@@ -34363,18 +34397,20 @@ var render = function () {
           _c("div", { staticClass: "column-4" }, [
             _c("h4", [_vm._v("Porta Deliveboo con te")]),
             _vm._v(" "),
-            _c("ul", [
-              _c(
-                "ul",
-                { staticClass: "menu" },
-                _vm._l(_vm.UlApp, function (el, i) {
-                  return _c("li", { key: i }, [
-                    _c("a", { attrs: { href: "" } }),
-                  ])
-                }),
-                0
-              ),
-            ]),
+            _c(
+              "ul",
+              { staticClass: "menu" },
+              _vm._l(_vm.UlApp, function (el, i) {
+                return _c("li", { key: i, staticClass: "badge-wrapper" }, [
+                  _c("a", { attrs: { href: "" } }, [
+                    _c("img", {
+                      attrs: { src: __webpack_require__("./public/img sync recursive ^\\.\\/.*$")("./" + el.icon) },
+                    }),
+                  ]),
+                ])
+              }),
+              0
+            ),
           ]),
         ]
       ),
@@ -34610,7 +34646,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "nome",
-                                        rules: "required|alpha|max:30",
+                                        rules: "required|alpha_spaces|max:30",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -34701,7 +34737,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "cognome",
-                                        rules: "required|alpha|max:50",
+                                        rules: "required|alpha_spaces|max:50",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -34980,7 +35016,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "indirizzo",
-                                        rules: "required|max:80|alpha",
+                                        rules: "required|max:80|alpha_spaces",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -35075,7 +35111,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "civico",
-                                        rules: "required|alpha_num|max:10",
+                                        rules: "required|max:10",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -35175,7 +35211,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "città",
-                                        rules: "required|alpha|max:30",
+                                        rules: "required|alpha_spaces|max:30",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -52443,6 +52479,482 @@ module.exports = g;
 
 /***/ }),
 
+/***/ "./public/img sync recursive ^\\.\\/.*$":
+/*!**********************************!*\
+  !*** ./public/img sync ^\.\/.*$ ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./appstore.svg": "./public/img/appstore.svg",
+	"./deliv-1-1.png": "./public/img/deliv-1-1.png",
+	"./image2vector.svg": "./public/img/image2vector.svg",
+	"./playstore.svg": "./public/img/playstore.svg",
+	"./wave0.svg": "./public/img/wave0.svg",
+	"./wave00.svg": "./public/img/wave00.svg",
+	"./wave1.svg": "./public/img/wave1.svg",
+	"./wave10.svg": "./public/img/wave10.svg",
+	"./wave11.svg": "./public/img/wave11.svg",
+	"./wave12.svg": "./public/img/wave12.svg",
+	"./wave13.svg": "./public/img/wave13.svg",
+	"./wave14.svg": "./public/img/wave14.svg",
+	"./wave15.svg": "./public/img/wave15.svg",
+	"./wave16.svg": "./public/img/wave16.svg",
+	"./wave17.svg": "./public/img/wave17.svg",
+	"./wave18.svg": "./public/img/wave18.svg",
+	"./wave19.svg": "./public/img/wave19.svg",
+	"./wave2.svg": "./public/img/wave2.svg",
+	"./wave20.svg": "./public/img/wave20.svg",
+	"./wave21.svg": "./public/img/wave21.svg",
+	"./wave22.svg": "./public/img/wave22.svg",
+	"./wave23.svg": "./public/img/wave23.svg",
+	"./wave24.svg": "./public/img/wave24.svg",
+	"./wave25.svg": "./public/img/wave25.svg",
+	"./wave26.svg": "./public/img/wave26.svg",
+	"./wave27.svg": "./public/img/wave27.svg",
+	"./wave28.svg": "./public/img/wave28.svg",
+	"./wave29.svg": "./public/img/wave29.svg",
+	"./wave3.svg": "./public/img/wave3.svg",
+	"./wave30.svg": "./public/img/wave30.svg",
+	"./wave31.svg": "./public/img/wave31.svg",
+	"./wave4.svg": "./public/img/wave4.svg",
+	"./wave5.svg": "./public/img/wave5.svg",
+	"./wave6.svg": "./public/img/wave6.svg",
+	"./wave7.svg": "./public/img/wave7.svg",
+	"./wave8.svg": "./public/img/wave8.svg",
+	"./wave9.svg": "./public/img/wave9.svg"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./public/img sync recursive ^\\.\\/.*$";
+
+/***/ }),
+
+/***/ "./public/img/appstore.svg":
+/*!*********************************!*\
+  !*** ./public/img/appstore.svg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/appstore.svg?9beaa0db7ef2975ab326f0a2639bd0e1";
+
+/***/ }),
+
+/***/ "./public/img/deliv-1-1.png":
+/*!**********************************!*\
+  !*** ./public/img/deliv-1-1.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/deliv-1-1.png?887e2ec7c5b02f699bfffd867d6c884e";
+
+/***/ }),
+
+/***/ "./public/img/image2vector.svg":
+/*!*************************************!*\
+  !*** ./public/img/image2vector.svg ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/image2vector.svg?8001b2e62f462f139fce3711709f96c2";
+
+/***/ }),
+
+/***/ "./public/img/playstore.svg":
+/*!**********************************!*\
+  !*** ./public/img/playstore.svg ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/playstore.svg?0a18bd2b525981e78c0bf9e3fa37f803";
+
+/***/ }),
+
+/***/ "./public/img/wave0.svg":
+/*!******************************!*\
+  !*** ./public/img/wave0.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave0.svg?e71a2919148ff31dee60998bd3c3d3fe";
+
+/***/ }),
+
+/***/ "./public/img/wave00.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave00.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave00.svg?d1d8ed410b61041606dc9dd9537a1b4d";
+
+/***/ }),
+
+/***/ "./public/img/wave1.svg":
+/*!******************************!*\
+  !*** ./public/img/wave1.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave1.svg?31d7364a69455709c3d9aaad3002d793";
+
+/***/ }),
+
+/***/ "./public/img/wave10.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave10.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave10.svg?d29c84ff1819460d483bb76c054e56c6";
+
+/***/ }),
+
+/***/ "./public/img/wave11.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave11.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave11.svg?6f20fc37482266374ea392dda3c0750c";
+
+/***/ }),
+
+/***/ "./public/img/wave12.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave12.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave12.svg?b86ea13959962f6ab11b71a9c8975270";
+
+/***/ }),
+
+/***/ "./public/img/wave13.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave13.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave13.svg?80b2d85baeacc5693c445795432fbb82";
+
+/***/ }),
+
+/***/ "./public/img/wave14.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave14.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave14.svg?11435740d02593ad1d5eb18718b2dcf9";
+
+/***/ }),
+
+/***/ "./public/img/wave15.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave15.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave15.svg?291998bed99316a928ef195c70f6b740";
+
+/***/ }),
+
+/***/ "./public/img/wave16.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave16.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave16.svg?b240bc96e2bd635d66ab13685101731a";
+
+/***/ }),
+
+/***/ "./public/img/wave17.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave17.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave17.svg?2af57fcf233e7580e49a5824504d193b";
+
+/***/ }),
+
+/***/ "./public/img/wave18.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave18.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave18.svg?6193d759019017e9d574fed720559103";
+
+/***/ }),
+
+/***/ "./public/img/wave19.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave19.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave19.svg?abfd78e24084855db1db3331f98d7ca9";
+
+/***/ }),
+
+/***/ "./public/img/wave2.svg":
+/*!******************************!*\
+  !*** ./public/img/wave2.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave2.svg?afb35e8fc8b4311d39dcbf93b4986143";
+
+/***/ }),
+
+/***/ "./public/img/wave20.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave20.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave20.svg?abfc47f885f400832260a356ae4daa63";
+
+/***/ }),
+
+/***/ "./public/img/wave21.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave21.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave21.svg?7a2a54607ff7212a211a5b2b734e217f";
+
+/***/ }),
+
+/***/ "./public/img/wave22.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave22.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave22.svg?9c1e2efa7e3e24a824dc6385658ad175";
+
+/***/ }),
+
+/***/ "./public/img/wave23.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave23.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave23.svg?ee2835a595bbf45378e733f6d1e03fcf";
+
+/***/ }),
+
+/***/ "./public/img/wave24.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave24.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave24.svg?c55f7e59f5bc12de54ce7a98c83ec5c8";
+
+/***/ }),
+
+/***/ "./public/img/wave25.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave25.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave25.svg?4152d2b5a757422463f9bf18ddabf8f5";
+
+/***/ }),
+
+/***/ "./public/img/wave26.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave26.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave26.svg?1d20e65f24f815e51cbad1839232a25e";
+
+/***/ }),
+
+/***/ "./public/img/wave27.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave27.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave27.svg?ba0dd83e226daeb2fb31202a81d9aed4";
+
+/***/ }),
+
+/***/ "./public/img/wave28.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave28.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave28.svg?d789e08a434ef9dcff34daeda6c58097";
+
+/***/ }),
+
+/***/ "./public/img/wave29.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave29.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave29.svg?4acf09fca12fd8a72fc1c4db79c103d1";
+
+/***/ }),
+
+/***/ "./public/img/wave3.svg":
+/*!******************************!*\
+  !*** ./public/img/wave3.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave3.svg?7a74cbe415318d68b7f5beee15e17409";
+
+/***/ }),
+
+/***/ "./public/img/wave30.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave30.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave30.svg?f721e6246716525acfcdb07c903bddcb";
+
+/***/ }),
+
+/***/ "./public/img/wave31.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave31.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave31.svg?3a66811ffd0fe5168ab8777ebd5a69d0";
+
+/***/ }),
+
+/***/ "./public/img/wave4.svg":
+/*!******************************!*\
+  !*** ./public/img/wave4.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave4.svg?67757f542ea8a304db61183d00d304ed";
+
+/***/ }),
+
+/***/ "./public/img/wave5.svg":
+/*!******************************!*\
+  !*** ./public/img/wave5.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave5.svg?5526921cfa9956f0a9ff1d15a33bcf27";
+
+/***/ }),
+
+/***/ "./public/img/wave6.svg":
+/*!******************************!*\
+  !*** ./public/img/wave6.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave6.svg?fd30d45dd87f8c384c74dc0f18a71e6b";
+
+/***/ }),
+
+/***/ "./public/img/wave7.svg":
+/*!******************************!*\
+  !*** ./public/img/wave7.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave7.svg?e39e2c2f94722ad829cb123a9e9da83f";
+
+/***/ }),
+
+/***/ "./public/img/wave8.svg":
+/*!******************************!*\
+  !*** ./public/img/wave8.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave8.svg?080fd6784717b1e28b77dc921b372dec";
+
+/***/ }),
+
+/***/ "./public/img/wave9.svg":
+/*!******************************!*\
+  !*** ./public/img/wave9.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave9.svg?c187609b2e04414d8189f819e3be55a4";
+
+/***/ }),
+
 /***/ "./resources/js/components/AppCart.vue":
 /*!*********************************************!*\
   !*** ./resources/js/components/AppCart.vue ***!
@@ -53422,7 +53934,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

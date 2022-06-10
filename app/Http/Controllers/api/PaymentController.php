@@ -50,8 +50,11 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
 
         $tokenNonce = $request->query('token');
+        $total = $data['total'];
+        //return $total;
 
         $gateway = new \Braintree\Gateway([
             'environment' => 'sandbox',
@@ -61,7 +64,7 @@ class PaymentController extends Controller
         ]);
 
         $result = $gateway->transaction()->sale([
-            'amount' => '15.00',
+            'amount' => $total,
             'paymentMethodNonce' => $tokenNonce,
             'options' => [
                 'submitForSettlement' => true,

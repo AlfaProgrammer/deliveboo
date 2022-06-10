@@ -128,13 +128,18 @@ export default {
                 city: '',
                 cap: '',
             },
+            cart: [],
         }
     },
     methods: {
+        takeCart() {
+            this.cart = JSON.parse(localStorage.getItem("cart"));
+        },
         submitForm() {
             axios.post('/api/orders', {
                 form: this.form,
                 total: 25.00,
+                cart: this.cart,
                 //localStorage.getItem('totalPrice'),
             })
             .then(res => {
@@ -149,6 +154,9 @@ export default {
             console.log(this.form);
         },
     },
+    created() {
+        this.takeCart();
+    }
     
 }
 </script>

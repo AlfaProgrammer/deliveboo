@@ -37,19 +37,31 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        //dd($data);
-        
+        //return($data);
+
+        $cart = $data['cart'];
+        //return $cart;
+
+        $plateId = [];
+
+        foreach($cart as $plate) {
+
+            array_push($plateId, $plate['id']);
+        }
+
+        return $plateId;
+
         $total = $data['total'];
         //return $total;
         foreach($data as $value) {
 
-            $order = new Order();
+            // $order = new Order();
 
-            $order->fill($value);
+            // $order->fill($value);
 
-            $order->total_price = $total;
+            // $order->total_price = $total;
 
-            $order->save();
+            // $order->save();
 
             return [$value, $total];
         }

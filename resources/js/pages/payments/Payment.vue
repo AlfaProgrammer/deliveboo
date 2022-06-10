@@ -13,14 +13,10 @@
             </button>    
         </div> 
 
-        <div>
-            {{cart}}
-        </div>
     </div>
 </template>
 <script>
 import CssLoaders from '../../components/CssLoaders.vue';
-import { mapState } from 'vuex';
 
 export default {
     data() {
@@ -28,23 +24,25 @@ export default {
             token: '',
             inst: null,
             loading: false,
-            prezzoTotale: 0,
+            cart: [],
         }
     },
     components:{
         CssLoaders,
     },
     computed: {
-        ...mapState('cartModule', ['cart']),
         totalPirce() {
-            this.prezzoTotale = this.cart.reduce((acc,item)=>{
+            const total = this.cart.reduce((acc,item)=>{
                 return acc + item.price
             }, 0);
 
-            return this.prezzoTotale;
+            return total;
         }
     },
     methods: {
+        takeCart() {
+            this.cart = JSON.parse(localStorage.getItem("cart"));
+        },
         fetchToken() {
             axios.get('/api/payments')
             .then(res => {
@@ -55,13 +53,15 @@ export default {
             })
         },
         sendToken(nonce) {
-            axios.post('/api/payments',null, {
+            axios.post('/api/payments',{
+                total: this.totalPirce,
+            }, {
                 params: {
                     token: nonce,
                 }
             })
             .then(res => {
-                console.log(res);
+                console.log(res.data);
             })
             .catch(err => {
                 console.error(err);
@@ -103,6 +103,7 @@ export default {
     },
     created() {
         this.fetchToken();
+        this.takeCart();
 
     }
 }

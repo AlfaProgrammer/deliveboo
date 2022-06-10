@@ -2153,7 +2153,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Footer',
   data: function data() {
@@ -2194,9 +2193,9 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Tipi di cucina'
       }],
       UlApp: [{
-        icon: 'playstore.png'
+        icon: 'playstore.svg'
       }, {
-        icon: 'appstore.png'
+        icon: 'appstore.svg'
       }]
     };
   }
@@ -27314,7 +27313,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".footer[data-v-57f10562] {\n  width: 100%;\n  background-color: #2E3333;\n  padding-top: 20px;\n  color: white;\n  font-size: 11px;\n  font-family: plex-sans, sans-serif;\n}\n.footer div[class^=column][data-v-57f10562] {\n  background-color: #434848;\n  padding: 20px 25px;\n  border-radius: 2px;\n  white-space: nowrap;\n}\n.footer div[class^=column] li[data-v-57f10562] {\n  padding: 2px;\n}\n.footer div[class^=column] a[data-v-57f10562]:hover {\n  color: #247B74;\n}\n.footer h4[data-v-57f10562] {\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 24px;\n}\n.footer .container-fluid[data-v-57f10562] {\n  width: 1152px;\n  display: flex;\n  flex-direction: column;\n}\n.footer .row-down[data-v-57f10562] {\n  min-height: 40px;\n  display: flex;\n  padding: 15px 0.75rem;\n}\n.footer .row-down .social-wrapper[data-v-57f10562] {\n  gap: 10px;\n  align-items: flex-start;\n  color: #fff;\n}\n.footer .row-down path[data-v-57f10562] {\n  fill: currentColor;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(1):hover {\n  color: #1877F2;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(2):hover {\n  color: #416F90;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(3):hover {\n  color: #F00075;\n}\n.footer .row-down p[data-v-57f10562] {\n  color: #636767;\n}", ""]);
+exports.push([module.i, ".footer[data-v-57f10562] {\n  width: 100%;\n  background-color: #2E3333;\n  padding-top: 20px;\n  color: white;\n  font-size: 11px;\n  font-family: plex-sans, sans-serif;\n}\n.footer div[class^=column][data-v-57f10562] {\n  background-color: #434848;\n  padding: 20px 25px;\n  border-radius: 2px;\n  white-space: nowrap;\n}\n.footer div[class^=column] li[data-v-57f10562] {\n  padding: 2px;\n}\n.footer div[class^=column] .badge-wrapper[data-v-57f10562] {\n  max-width: 150px;\n  margin: 5px 0;\n}\n.footer div[class^=column] a[data-v-57f10562]:hover {\n  color: #247B74;\n}\n.footer h4[data-v-57f10562] {\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 24px;\n}\n.footer .container-fluid[data-v-57f10562] {\n  width: 1152px;\n  display: flex;\n  flex-direction: column;\n}\n.footer .row-down[data-v-57f10562] {\n  min-height: 40px;\n  display: flex;\n  padding: 15px 0.75rem;\n}\n.footer .row-down .social-wrapper[data-v-57f10562] {\n  gap: 10px;\n  align-items: flex-start;\n  color: #fff;\n}\n.footer .row-down path[data-v-57f10562] {\n  fill: currentColor;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(1):hover {\n  color: #1877F2;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(2):hover {\n  color: #416F90;\n}\n.footer .row-down svg[data-v-57f10562]:nth-child(3):hover {\n  color: #F00075;\n}\n.footer .row-down p[data-v-57f10562] {\n  color: #636767;\n}", ""]);
 
 // exports
 
@@ -34363,18 +34362,20 @@ var render = function () {
           _c("div", { staticClass: "column-4" }, [
             _c("h4", [_vm._v("Porta Deliveboo con te")]),
             _vm._v(" "),
-            _c("ul", [
-              _c(
-                "ul",
-                { staticClass: "menu" },
-                _vm._l(_vm.UlApp, function (el, i) {
-                  return _c("li", { key: i }, [
-                    _c("a", { attrs: { href: "" } }),
-                  ])
-                }),
-                0
-              ),
-            ]),
+            _c(
+              "ul",
+              { staticClass: "menu" },
+              _vm._l(_vm.UlApp, function (el, i) {
+                return _c("li", { key: i, staticClass: "badge-wrapper" }, [
+                  _c("a", { attrs: { href: "" } }, [
+                    _c("img", {
+                      attrs: { src: __webpack_require__("./public/img sync recursive ^\\.\\/.*$")("./" + el.icon) },
+                    }),
+                  ]),
+                ])
+              }),
+              0
+            ),
           ]),
         ]
       ),
@@ -52440,6 +52441,170 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ "./public/img sync recursive ^\\.\\/.*$":
+/*!**********************************!*\
+  !*** ./public/img sync ^\.\/.*$ ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./appstore.svg": "./public/img/appstore.svg",
+	"./deliv-1-1.png": "./public/img/deliv-1-1.png",
+	"./image2vector.svg": "./public/img/image2vector.svg",
+	"./playstore.svg": "./public/img/playstore.svg",
+	"./wave-haikei.svg": "./public/img/wave-haikei.svg",
+	"./wave0.svg": "./public/img/wave0.svg",
+	"./wave1.svg": "./public/img/wave1.svg",
+	"./wave2.svg": "./public/img/wave2.svg",
+	"./wave3.svg": "./public/img/wave3.svg",
+	"./wave4.svg": "./public/img/wave4.svg",
+	"./wave5.svg": "./public/img/wave5.svg"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./public/img sync recursive ^\\.\\/.*$";
+
+/***/ }),
+
+/***/ "./public/img/appstore.svg":
+/*!*********************************!*\
+  !*** ./public/img/appstore.svg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/appstore.svg?0a6a96b9e3294e2e3b62f5bbd8f16f22";
+
+/***/ }),
+
+/***/ "./public/img/deliv-1-1.png":
+/*!**********************************!*\
+  !*** ./public/img/deliv-1-1.png ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/deliv-1-1.png?887e2ec7c5b02f699bfffd867d6c884e";
+
+/***/ }),
+
+/***/ "./public/img/image2vector.svg":
+/*!*************************************!*\
+  !*** ./public/img/image2vector.svg ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/image2vector.svg?8001b2e62f462f139fce3711709f96c2";
+
+/***/ }),
+
+/***/ "./public/img/playstore.svg":
+/*!**********************************!*\
+  !*** ./public/img/playstore.svg ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/playstore.svg?59c5fd948e8c762a5059cb2ad51acd16";
+
+/***/ }),
+
+/***/ "./public/img/wave-haikei.svg":
+/*!************************************!*\
+  !*** ./public/img/wave-haikei.svg ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave-haikei.svg?7f478b1395934e84e0212b54427959d1";
+
+/***/ }),
+
+/***/ "./public/img/wave0.svg":
+/*!******************************!*\
+  !*** ./public/img/wave0.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave0.svg?637e752e8c01cd57aff238ea15d8cdec";
+
+/***/ }),
+
+/***/ "./public/img/wave1.svg":
+/*!******************************!*\
+  !*** ./public/img/wave1.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave1.svg?ec68b9d4bc9b939c2bd491edda6704c0";
+
+/***/ }),
+
+/***/ "./public/img/wave2.svg":
+/*!******************************!*\
+  !*** ./public/img/wave2.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave2.svg?1772527a1fd286082491e24d2e87cce8";
+
+/***/ }),
+
+/***/ "./public/img/wave3.svg":
+/*!******************************!*\
+  !*** ./public/img/wave3.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave3.svg?7a74cbe415318d68b7f5beee15e17409";
+
+/***/ }),
+
+/***/ "./public/img/wave4.svg":
+/*!******************************!*\
+  !*** ./public/img/wave4.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave4.svg?7f478b1395934e84e0212b54427959d1";
+
+/***/ }),
+
+/***/ "./public/img/wave5.svg":
+/*!******************************!*\
+  !*** ./public/img/wave5.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave5.svg?5526921cfa9956f0a9ff1d15a33bcf27";
 
 /***/ }),
 

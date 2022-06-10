@@ -10,7 +10,7 @@
                         </div>
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
-                                <validationProvider name="nome" rules="required|alpha|max:30" v-slot="{ errors }">
+                                <validationProvider name="nome" rules="required|alpha_spaces|max:30" v-slot="{ errors }">
                                     <label for="name" class="after:content-['*'] block text-sm font-medium text-gray-700">Nome</label>
                                     <input type="text" v-model="form.name" name="name" id="name" autocomplete="given-name "  
                                     class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md"
@@ -22,7 +22,7 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3">
-                                <validationProvider name="cognome" rules="required|alpha|max:50" v-slot="{ errors }">
+                                <validationProvider name="cognome" rules="required|alpha_spaces|max:50" v-slot="{ errors }">
                                     <label for="surname" class="after:content-['*'] block text-sm font-medium text-gray-700">Cognome</label>
                                     <input type="text" v-model="form.surname" name="surname" id="surname" autocomplete="surname" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md" 
                                     :class="errors.length ? 'border-2 border-red-500 focus:border-red-500' : ''"/>
@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="col-span-6">
-                                <validationProvider name="indirizzo" rules="required|max:80|alpha" v-slot="{ errors }">
+                                <validationProvider name="indirizzo" rules="required|max:80|alpha_spaces" v-slot="{ errors }">
                                     <label for="address" class="after:content-['*'] block text-sm font-medium text-gray-700">Indirizzo / Via</label>
                                     <input type="text" v-model="form.address" name="address" id="address" autocomplete="address" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md" 
                                     :class="errors.length ? 'border-2 border-red-500 focus:border-red-500' : ''"/>
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                                <validationProvider name="civico" rules="required|alpha_num|max:10" v-slot="{ errors }">
+                                <validationProvider name="civico" rules="required|max:10" v-slot="{ errors }">
                                     <label for="house_number" class="after:content-['*'] block text-sm font-medium text-gray-700">N. civico</label>
                                     <input type="text" v-model="form.house_number" name="house_number" id="house_number" autocomplete="house_number" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md" 
                                     :class="errors.length ? 'border-2 border-red-500 focus:border-red-500' : ''"/>
@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="col-span-6 sm:col-span-6 lg:col-span-2">
-                                <validationProvider name="città" rules="required|alpha|max:30" v-slot="{ errors }">
+                                <validationProvider name="città" rules="required|alpha_spaces|max:30" v-slot="{ errors }">
                                     <label for="city" class="after:content-['*'] block text-sm font-medium text-gray-700">Città</label>
                                     <input type="text" v-model="form.city" name="city" id="city" autocomplete="address-level2" class="mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md" 
                                     :class="errors.length ? 'border-2 border-red-500 focus:border-red-500' : ''"/>
@@ -134,16 +134,16 @@ export default {
         submitForm() {
             axios.post('/api/orders', {
                 form: this.form,
-                total: null,
+                total: 25.00,
             })
             .then(res => {
-                console.log(res);
+                console.log(res.data);
             })
         },
         onSubmit() {
             this.submitForm();
             console.log(this.form);
-        }
+        },
     },
     
 }

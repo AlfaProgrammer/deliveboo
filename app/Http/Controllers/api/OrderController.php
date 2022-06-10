@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -36,7 +37,22 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        return $data;
+        
+        $total = $data['total'];
+        //return $total;
+        foreach($data as $value) {
+
+            $order = new Order();
+
+            $order->fill($value);
+
+            $order->total_price = $total;
+
+            $order->save();
+
+            return [$value, $total];
+        }
+        //return $data['form']['name'];
     }
 
     /**

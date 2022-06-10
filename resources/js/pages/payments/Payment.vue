@@ -12,10 +12,15 @@
                 Invia
             </button>    
         </div> 
+
+        <div>
+            {{cart}}
+        </div>
     </div>
 </template>
 <script>
 import CssLoaders from '../../components/CssLoaders.vue';
+import { mapState } from 'vuex';
 
 export default {
     data() {
@@ -23,10 +28,21 @@ export default {
             token: '',
             inst: null,
             loading: false,
+            prezzoTotale: 0,
         }
     },
     components:{
         CssLoaders,
+    },
+    computed: {
+        ...mapState('cartModule', ['cart']),
+        totalPirce() {
+            this.prezzoTotale = this.cart.reduce((acc,item)=>{
+                return acc + item.price
+            }, 0);
+
+            return this.prezzoTotale;
+        }
     },
     methods: {
         fetchToken() {
@@ -86,7 +102,8 @@ export default {
         )},
     },
     created() {
-        this.fetchToken(); 
+        this.fetchToken();
+
     }
 }
 </script>

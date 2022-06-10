@@ -10057,6 +10057,10 @@ h3 {
   border: 3px solid var(--scrollbarBG);
 }
 
+.img-shad-large {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .img-show {
   background-image: url("/img/wave27.svg");
   background-size: cover;
@@ -10290,6 +10294,11 @@ h3 {
     font-size: 1rem;
   }
 }
+img {
+  max-width: 100%;
+  display: block;
+}
+
 .navbar {
   background-color: black;
   height: 62px;

@@ -97,7 +97,7 @@ export default {
                 }
 
                 this.sendToken(payload.nonce);
-                //this.$router.push({ name: 'order.create' });
+                this.$router.push({ name: 'orders.show' });
                 console.log(payload.nonce);
             }
         )},

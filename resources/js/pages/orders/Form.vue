@@ -132,6 +132,15 @@ export default {
             cart: [],
         }
     },
+    computed: {
+        totalPirce() {
+            const total = this.cart.reduce((acc,item)=>{
+                return acc + item.price
+            }, 0);
+
+            return total;
+        }
+    },
     methods: {
         takeCart() {
             this.cart = JSON.parse(localStorage.getItem("cart"));
@@ -139,12 +148,14 @@ export default {
         submitForm() {
             axios.post('/api/orders', {
                 form: this.form,
-                total: 25.00,
+                total: this.totalPirce,
                 cart: this.cart,
                 //localStorage.getItem('totalPrice'),
             })
             .then(res => {
                 console.log(res.data);
+                const {order} = res.data;
+                localStorage.order = JSON.stringify(order);
                 this.$router.push({name: 'payments.index'});
             })
             .catch(error => {

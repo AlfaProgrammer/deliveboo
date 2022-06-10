@@ -52456,13 +52456,39 @@ var map = {
 	"./deliv-1-1.png": "./public/img/deliv-1-1.png",
 	"./image2vector.svg": "./public/img/image2vector.svg",
 	"./playstore.svg": "./public/img/playstore.svg",
-	"./wave-haikei.svg": "./public/img/wave-haikei.svg",
 	"./wave0.svg": "./public/img/wave0.svg",
+	"./wave00.svg": "./public/img/wave00.svg",
 	"./wave1.svg": "./public/img/wave1.svg",
+	"./wave10.svg": "./public/img/wave10.svg",
+	"./wave11.svg": "./public/img/wave11.svg",
+	"./wave12.svg": "./public/img/wave12.svg",
+	"./wave13.svg": "./public/img/wave13.svg",
+	"./wave14.svg": "./public/img/wave14.svg",
+	"./wave15.svg": "./public/img/wave15.svg",
+	"./wave16.svg": "./public/img/wave16.svg",
+	"./wave17.svg": "./public/img/wave17.svg",
+	"./wave18.svg": "./public/img/wave18.svg",
+	"./wave19.svg": "./public/img/wave19.svg",
 	"./wave2.svg": "./public/img/wave2.svg",
+	"./wave20.svg": "./public/img/wave20.svg",
+	"./wave21.svg": "./public/img/wave21.svg",
+	"./wave22.svg": "./public/img/wave22.svg",
+	"./wave23.svg": "./public/img/wave23.svg",
+	"./wave24.svg": "./public/img/wave24.svg",
+	"./wave25.svg": "./public/img/wave25.svg",
+	"./wave26.svg": "./public/img/wave26.svg",
+	"./wave27.svg": "./public/img/wave27.svg",
+	"./wave28.svg": "./public/img/wave28.svg",
+	"./wave29.svg": "./public/img/wave29.svg",
 	"./wave3.svg": "./public/img/wave3.svg",
+	"./wave30.svg": "./public/img/wave30.svg",
+	"./wave31.svg": "./public/img/wave31.svg",
 	"./wave4.svg": "./public/img/wave4.svg",
-	"./wave5.svg": "./public/img/wave5.svg"
+	"./wave5.svg": "./public/img/wave5.svg",
+	"./wave6.svg": "./public/img/wave6.svg",
+	"./wave7.svg": "./public/img/wave7.svg",
+	"./wave8.svg": "./public/img/wave8.svg",
+	"./wave9.svg": "./public/img/wave9.svg"
 };
 
 
@@ -52494,7 +52520,7 @@ webpackContext.id = "./public/img sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/appstore.svg?0a6a96b9e3294e2e3b62f5bbd8f16f22";
+module.exports = "/images/appstore.svg?9beaa0db7ef2975ab326f0a2639bd0e1";
 
 /***/ }),
 
@@ -52527,18 +52553,7 @@ module.exports = "/images/image2vector.svg?8001b2e62f462f139fce3711709f96c2";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/playstore.svg?59c5fd948e8c762a5059cb2ad51acd16";
-
-/***/ }),
-
-/***/ "./public/img/wave-haikei.svg":
-/*!************************************!*\
-  !*** ./public/img/wave-haikei.svg ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/wave-haikei.svg?7f478b1395934e84e0212b54427959d1";
+module.exports = "/images/playstore.svg?0a18bd2b525981e78c0bf9e3fa37f803";
 
 /***/ }),
 
@@ -52549,7 +52564,18 @@ module.exports = "/images/wave-haikei.svg?7f478b1395934e84e0212b54427959d1";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/wave0.svg?637e752e8c01cd57aff238ea15d8cdec";
+module.exports = "/images/wave0.svg?e71a2919148ff31dee60998bd3c3d3fe";
+
+/***/ }),
+
+/***/ "./public/img/wave00.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave00.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave00.svg?d1d8ed410b61041606dc9dd9537a1b4d";
 
 /***/ }),
 
@@ -52560,7 +52586,117 @@ module.exports = "/images/wave0.svg?637e752e8c01cd57aff238ea15d8cdec";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/wave1.svg?ec68b9d4bc9b939c2bd491edda6704c0";
+module.exports = "/images/wave1.svg?31d7364a69455709c3d9aaad3002d793";
+
+/***/ }),
+
+/***/ "./public/img/wave10.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave10.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave10.svg?d29c84ff1819460d483bb76c054e56c6";
+
+/***/ }),
+
+/***/ "./public/img/wave11.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave11.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave11.svg?6f20fc37482266374ea392dda3c0750c";
+
+/***/ }),
+
+/***/ "./public/img/wave12.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave12.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave12.svg?b86ea13959962f6ab11b71a9c8975270";
+
+/***/ }),
+
+/***/ "./public/img/wave13.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave13.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave13.svg?80b2d85baeacc5693c445795432fbb82";
+
+/***/ }),
+
+/***/ "./public/img/wave14.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave14.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave14.svg?11435740d02593ad1d5eb18718b2dcf9";
+
+/***/ }),
+
+/***/ "./public/img/wave15.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave15.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave15.svg?291998bed99316a928ef195c70f6b740";
+
+/***/ }),
+
+/***/ "./public/img/wave16.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave16.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave16.svg?b240bc96e2bd635d66ab13685101731a";
+
+/***/ }),
+
+/***/ "./public/img/wave17.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave17.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave17.svg?2af57fcf233e7580e49a5824504d193b";
+
+/***/ }),
+
+/***/ "./public/img/wave18.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave18.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave18.svg?6193d759019017e9d574fed720559103";
+
+/***/ }),
+
+/***/ "./public/img/wave19.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave19.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave19.svg?abfd78e24084855db1db3331f98d7ca9";
 
 /***/ }),
 
@@ -52571,7 +52707,117 @@ module.exports = "/images/wave1.svg?ec68b9d4bc9b939c2bd491edda6704c0";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/wave2.svg?1772527a1fd286082491e24d2e87cce8";
+module.exports = "/images/wave2.svg?afb35e8fc8b4311d39dcbf93b4986143";
+
+/***/ }),
+
+/***/ "./public/img/wave20.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave20.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave20.svg?abfc47f885f400832260a356ae4daa63";
+
+/***/ }),
+
+/***/ "./public/img/wave21.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave21.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave21.svg?7a2a54607ff7212a211a5b2b734e217f";
+
+/***/ }),
+
+/***/ "./public/img/wave22.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave22.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave22.svg?9c1e2efa7e3e24a824dc6385658ad175";
+
+/***/ }),
+
+/***/ "./public/img/wave23.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave23.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave23.svg?ee2835a595bbf45378e733f6d1e03fcf";
+
+/***/ }),
+
+/***/ "./public/img/wave24.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave24.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave24.svg?c55f7e59f5bc12de54ce7a98c83ec5c8";
+
+/***/ }),
+
+/***/ "./public/img/wave25.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave25.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave25.svg?4152d2b5a757422463f9bf18ddabf8f5";
+
+/***/ }),
+
+/***/ "./public/img/wave26.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave26.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave26.svg?1d20e65f24f815e51cbad1839232a25e";
+
+/***/ }),
+
+/***/ "./public/img/wave27.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave27.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave27.svg?ba0dd83e226daeb2fb31202a81d9aed4";
+
+/***/ }),
+
+/***/ "./public/img/wave28.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave28.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave28.svg?d789e08a434ef9dcff34daeda6c58097";
+
+/***/ }),
+
+/***/ "./public/img/wave29.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave29.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave29.svg?4acf09fca12fd8a72fc1c4db79c103d1";
 
 /***/ }),
 
@@ -52586,6 +52832,28 @@ module.exports = "/images/wave3.svg?7a74cbe415318d68b7f5beee15e17409";
 
 /***/ }),
 
+/***/ "./public/img/wave30.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave30.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave30.svg?f721e6246716525acfcdb07c903bddcb";
+
+/***/ }),
+
+/***/ "./public/img/wave31.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave31.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave31.svg?3a66811ffd0fe5168ab8777ebd5a69d0";
+
+/***/ }),
+
 /***/ "./public/img/wave4.svg":
 /*!******************************!*\
   !*** ./public/img/wave4.svg ***!
@@ -52593,7 +52861,7 @@ module.exports = "/images/wave3.svg?7a74cbe415318d68b7f5beee15e17409";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/wave4.svg?7f478b1395934e84e0212b54427959d1";
+module.exports = "/images/wave4.svg?67757f542ea8a304db61183d00d304ed";
 
 /***/ }),
 
@@ -52605,6 +52873,50 @@ module.exports = "/images/wave4.svg?7f478b1395934e84e0212b54427959d1";
 /***/ (function(module, exports) {
 
 module.exports = "/images/wave5.svg?5526921cfa9956f0a9ff1d15a33bcf27";
+
+/***/ }),
+
+/***/ "./public/img/wave6.svg":
+/*!******************************!*\
+  !*** ./public/img/wave6.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave6.svg?fd30d45dd87f8c384c74dc0f18a71e6b";
+
+/***/ }),
+
+/***/ "./public/img/wave7.svg":
+/*!******************************!*\
+  !*** ./public/img/wave7.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave7.svg?e39e2c2f94722ad829cb123a9e9da83f";
+
+/***/ }),
+
+/***/ "./public/img/wave8.svg":
+/*!******************************!*\
+  !*** ./public/img/wave8.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave8.svg?080fd6784717b1e28b77dc921b372dec";
+
+/***/ }),
+
+/***/ "./public/img/wave9.svg":
+/*!******************************!*\
+  !*** ./public/img/wave9.svg ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave9.svg?c187609b2e04414d8189f819e3be55a4";
 
 /***/ }),
 
@@ -53587,7 +53899,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm position-fixed w-100 navbar">
             <div class="container d-flex flex-row">
                 <span class="img-logo-wrapper">
                     <img class="logo" src="https://cdn.discordapp.com/attachments/976763752844230717/981947802919788574/deliveroo-3442893-2875354.png" alt="">
@@ -75,7 +75,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
     </div>

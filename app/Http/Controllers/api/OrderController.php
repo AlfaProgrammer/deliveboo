@@ -37,7 +37,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        dd($data);
+        //dd($data);
         
         $total = $data['total'];
         //return $total;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class OrderController extends Controller
 {
@@ -65,8 +66,11 @@ class OrderController extends Controller
             $order->save();
 
             $order->plates()->attach($plateId);
-
-            return [$order, $cart];
+            
+            return response()->json([
+                'order' => $order,
+                'success' => true,
+            ]);
         }
     }
 

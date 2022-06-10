@@ -110,6 +110,7 @@
             </form>
 
         </ValidationObserver>
+
     </div>
 </template>
 
@@ -144,6 +145,7 @@ export default {
             })
             .then(res => {
                 console.log(res.data);
+                this.$router.push({name: 'payments.index'});
             })
             .catch(error => {
                 console.log(error);

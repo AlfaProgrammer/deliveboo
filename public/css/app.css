@@ -10016,8 +10016,9 @@ h3 {
   }
 }
 .contenitore-big {
-  height: calc(100vh - 125px);
   flex-wrap: nowrap;
+  width: 100%;
+  padding: 100px;
 }
 
 .plates-index .row .card {

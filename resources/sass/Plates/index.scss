@@ -1,6 +1,9 @@
 .contenitore-big {
-    height: calc(100vh - 125px);
+    // height: calc(100vh - 125px);
     flex-wrap: nowrap;
+    // height: 100vh;
+    width: 100%;
+    padding: 100px;
 }
 
 .plates-index {

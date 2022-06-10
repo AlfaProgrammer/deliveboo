@@ -6,7 +6,7 @@
 
     {{-- --------------------------------------------- --}}
 
-    <div class="col-6 d-flex flex-column">
+    <div class="col-12 md-col-6 d-flex flex-column">
 
         <div class="mb-5 mt-2 ml-1">
             <a href="{{ route('admin.home') }}" class="btn btn-warning">Torna alla dashboard</a>
@@ -27,7 +27,7 @@
 
     {{-- --------------------------------------------- --}}
 
-    <div class="container-fluid plates-index col-6 over-flow-cont">
+    <div class="container-fluid plates-index col-12 md-col-6 over-flow-cont">
 
         <div class="row">
             

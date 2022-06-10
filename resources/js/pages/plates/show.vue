@@ -184,9 +184,9 @@ export default {
             // aggiuntgo anche il parametro quantità ad ogni piatto aggiunto al carrello
             // questo parametro poi in verrà inviato in POST insieme a tutti gli altri dati
             // per creare l'ordine nel backend\
-            this.restaurant_cart.forEach(plate => {
-                plate.quantity = 1 // assegno 1 di default visto che è un item aggiunto al carrello
-            })       
+            // this.restaurant_cart.forEach(plate => {
+            //     plate.quantity = 1 // assegno 1 di default visto che è un item aggiunto al carrello
+            // })       
         }
 
        

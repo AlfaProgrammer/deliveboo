@@ -29,8 +29,8 @@
                                 <p>Prezzo: {{formatCurrency(plate.price)}}</p>
                             </div>
 
-                            <div id="quantity">
-                                <p>Quantità</p>
+                            <div id="plate-state">
+                                <p>Quantità: {{plate.quantity}}</p>
                                 <button @click="removeFromCart(plate)">Rimuovi</button>
                             </div>
 
@@ -40,7 +40,7 @@
 
                                 <div class="quantity-wrapper flex gap-2"> 
 
-                                    <input type="number" class="w-[100px] text-center" v-model="plate.quantity">
+                                    <input @keypress.prevent @change="info(plate)" type="number" class="w-[100px] text-center" min="1" v-model="plate.quantity">
 
                                 </div>
                             </div>
@@ -65,13 +65,8 @@
 </template>
 
 <script>
-// import { mapState, mapActions } from 'vuex'
+// import { mapMutations } from 'vuex'
 export default {
-    data(){
-        return{
-            quantityController: 0, 
-        }
-    },
     props:[
         'restaurant_cart', 
         'formatCurrency'
@@ -79,40 +74,33 @@ export default {
     computed:{
         totalPrice(){
             this.cartTotalPrice = this.restaurant_cart.reduce( (acc, item) => {
-                return acc + item.price
+                return acc + item.price * item.quantity
             }, 0) 
             return this.cartTotalPrice
         },
     },
    
-    methods:{
-        
+    methods:{        
         removeFromCart(plate){
             this.$store.dispatch({
                 type: 'cartModule/removeFromCartStorage',
                 plate: plate
             })
         },
-    // la quantità nel oggetto del piatto non cè, quindi verrà creata automaticamente.
-        
-        quantityIncrease( quantity ){
-            let newquantity = quantity++
-            return newquantity
-        },
+        info(plate){           
+            this.$store.dispatch({
+                type: 'cartModule/updateCartQuantity',
+                plate: plate
+            })
 
-        quantityDecrease( plate ){
-            while( plate.quantity > 1 ){
-                plate.quantity--
-                return plate.quantity
-            }
-            plate.quantity = 1
-            console.log(plate.quantity);            
-        },
+            // console.log(`Plate quantity ${plate.quantity}`)
+            
+        }
+    // la quantità nel oggetto del piatto non cè, quindi verrà creata automaticamente.
        
     },
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
 </style>

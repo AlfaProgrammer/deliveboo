@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class OrderController extends Controller
 {
@@ -36,7 +38,40 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        return $data;
+        //return($data);
+
+        $cart = $data['cart'];
+        //return $cart;
+
+        $plateId = [];
+
+        foreach($cart as $plate) {
+
+            array_push($plateId, $plate['id']);
+
+        }
+        //return $restaurantId;
+        //return $plateId;
+
+        $total = $data['total'];
+        //return $total;
+        foreach($data as $value) {
+
+            $order = new Order();
+
+            $order->fill($value);
+
+            $order->total_price = $total;
+
+            $order->save();
+
+            $order->plates()->attach($plateId);
+            
+            return response()->json([
+                'order' => $order,
+                'success' => true,
+            ]);
+        }
     }
 
     /**

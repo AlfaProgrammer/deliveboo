@@ -49,7 +49,7 @@ class OrderController extends Controller
             array_push($plateId, $plate['id']);
         }
 
-        return $plateId;
+        //return $plateId;
 
         $total = $data['total'];
         //return $total;

@@ -30,34 +30,26 @@ export const cartModule = {
 
             localStorage.cart = JSON.stringify(storageCart)
 
-            console.log(`Quantita ${payload.plate.quantity}`)
-
             commit('updateCart')
             
         },
 
         // aggiunta al carrello che viene invocato in show
         // devo acnche inserire gli articoli dentro localStorage.cart
-        // non si puo fare il push in storage xke lì i dati sono solo stringe JSON
         addToStorageCart({commit}, payload ){
-            // state.cart.push(plate)
             let storageCart = JSON.parse(localStorage.cart) // recupero tutti i piatti dal carrello generale
             //verifico l'esistenza del piatto dentro tale carrello
             let plateIndex = storageCart.findIndex(plate => plate.id === payload.plate.id)    
-        
+            //plateIndex = -1 quando l'elemento non viene trovato nell'array
             if( plateIndex !== -1 ){                
                 storageCart[plateIndex].quantity++                
             }else{ // se il piatto ancora non esiste devo prima di aggiungerlo creare la sua proprieta "quantity"
                 payload.plate.quantity = 1
                 storageCart.push(payload.plate)
                 console.log(payload.plate.id)
-                
-                // console.log('non esiste')
             }
 
             localStorage.cart = JSON.stringify(storageCart)
-
-            // console.log(`STORAGE CART ${localStorage.cart}`)
 
             commit('updateCart')
         },

@@ -33,8 +33,11 @@ const routes = [
         path: '/orders',
         name: 'order.create',
         component: form,
-
-    }
+    },
+    // {
+    //     path: '/catchAll(.*)*',
+    //     redirect:{name: restaurant.index}
+    // }
 ];
 
 // istanziare vue router

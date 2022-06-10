@@ -1,11 +1,10 @@
-// import { store } from "./store"
 
 export const cartModule = {
     namespaced:  true,
 
     state: {
         cart: [],
-        cartSummary: 'ciaone',
+        cartOnOrder: {},
     },
 
     mutations: {
@@ -15,10 +14,32 @@ export const cartModule = {
             state.cart = storageCartItems             
         },
 
+        updateOrderCart(state, payload){
 
+            let cartTotalPrice = payload.cart.reduce( (acc, item) => {
+                return acc + item.price * item.quantity
+            }, 0) 
+
+            let order ={
+                cartRestauratReference: payload.slug,
+                cartTotalPrice:  cartTotalPrice,
+                cartItems: payload.cart
+            }
+
+            state.cartOnOrder = order;
+            
+        }
 
     },
     actions: {
+
+        createOrderCart({commit}, payload){
+            // let orderCart = []
+            // localStorage.setItem("orderCart", JSON.stringify(orderCart))           
+
+            commit( 'updateOrderCart', payload)
+        },
+
         updateCartQuantity({commit}, payload){
             let storageCart = JSON.parse(localStorage.getItem('cart'))
 

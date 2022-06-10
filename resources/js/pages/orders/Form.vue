@@ -1,5 +1,9 @@
-<template lang="">
+<template>
     <div>
+        <div class="order-summary container">
+            <h1 class="text-xl font-bold"> Stai Ordinando da <span class="text-deliveroo">{{cartOnOrder.cartRestauratReference}}</span> </h1>
+            <p>Il totale del tuo ordine sarà di: <span class="font-bold text-deliveroo"> {{cartOnOrder.cartTotalPrice}} euro</span> </p>
+        </div>
         <ValidationObserver v-slot="{ handleSubmit }">
 
             <form @submit.prevent="handleSubmit(onSubmit)" methods="post">
@@ -110,11 +114,12 @@
             </form>
 
         </ValidationObserver>
+
     </div>
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
 export default {
     data() {
         return {
@@ -145,6 +150,9 @@ export default {
             console.log(this.form);
         }
     },
+    computed:mapState('cartModule',[
+        'cartOnOrder',
+    ])
     
 }
 </script>

@@ -53,12 +53,15 @@
                 <div class="totalPrice">
                     <p>Totale: {{formatCurrency(totalPrice)}}</p>
                 </div>
-
+                <!-- <router-link :to="{name: 'order.create'}" @click="console.log('ciao')" class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer">
+                    Ordina Ora
+                </router-link>   -->
                 <button 
-                    class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer"                    
+                    class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer"   
+                    @click="createOrderCart(restaurant_cart, slug), goToOrder()"                 
                 >
                     Ordina Ora
-                </button>                
+                </button>           
             </div>
         </div>   
 
@@ -102,7 +105,7 @@
 </template>
 
 <script>
-// import { mapMutations } from 'vuex'
+// import { mapActions } from 'vuex'
 export default {
     data(){
         return{
@@ -111,19 +114,32 @@ export default {
         }
     },
     props:[
-        'restaurant_cart', 
-        'formatCurrency'
+        'slug', 
+        'formatCurrency',
+        'restaurant_cart'
     ],
     computed:{
         totalPrice(){
-            this.cartTotalPrice = this.restaurant_cart.reduce( (acc, item) => {
+            let cartTotalPrice = this.restaurant_cart.reduce( (acc, item) => {
                 return acc + item.price * item.quantity
             }, 0) 
-            return this.cartTotalPrice
+            return cartTotalPrice
         },
     },
    
     methods:{
+        createOrderCart(restaurant_cart, slug){
+            this.$store.dispatch({
+                type: 'cartModule/createOrderCart',
+                cart: restaurant_cart,
+                slug: slug,
+            })
+        },
+
+        goToOrder(){
+            this.$router.push({name: 'order.create'})
+        },
+
         modalShowToggle( plate ){
             this.modalShow = ! this.modalShow
             this.plateInModal = plate

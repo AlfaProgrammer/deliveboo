@@ -72,7 +72,7 @@
                     <!-- {{cart}} -->
                     <!-- Carrello  -->
                     <AppCart 
-                        :plates="plates"
+                        :slug="slug"
                         :restaurant_cart="restaurant_cart"
                         :formatCurrency="formatCurrency"
                     />

@@ -135,6 +135,7 @@ export default {
             axios.post('/api/orders', {
                 form: this.form,
                 total: 25.00,
+                //localStorage.getItem('totalPrice'),
             })
             .then(res => {
                 console.log(res.data);

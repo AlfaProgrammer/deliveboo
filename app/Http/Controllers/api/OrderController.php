@@ -37,6 +37,7 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        dd($data);
         
         $total = $data['total'];
         //return $total;
@@ -52,7 +53,6 @@ class OrderController extends Controller
 
             return [$value, $total];
         }
-        //return $data['form']['name'];
     }
 
     /**

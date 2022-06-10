@@ -2367,6 +2367,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2379,22 +2380,39 @@ __webpack_require__.r(__webpack_exports__);
         house_number: '',
         city: '',
         cap: ''
-      }
+      },
+      cart: []
     };
   },
   methods: {
+    takeCart: function takeCart() {
+      this.cart = JSON.parse(localStorage.getItem("cart"));
+    },
     submitForm: function submitForm() {
+      var _this = this;
+
       axios.post('/api/orders', {
         form: this.form,
-        total: null
+        total: 25.00,
+        cart: this.cart //localStorage.getItem('totalPrice'),
+
       }).then(function (res) {
-        console.log(res);
+        console.log(res.data);
+
+        _this.$router.push({
+          name: 'payments.index'
+        });
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     onSubmit: function onSubmit() {
       this.submitForm();
       console.log(this.form);
     }
+  },
+  created: function created() {
+    this.takeCart();
   }
 });
 
@@ -2426,19 +2444,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       token: '',
       inst: null,
-      loading: false
+      loading: false,
+      cart: []
     };
   },
   components: {
     CssLoaders: _components_CssLoaders_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  computed: {
+    totalPirce: function totalPirce() {
+      var total = this.cart.reduce(function (acc, item) {
+        return acc + item.price;
+      }, 0);
+      return total;
+    }
+  },
   methods: {
+    takeCart: function takeCart() {
+      this.cart = JSON.parse(localStorage.getItem("cart"));
+    },
     fetchToken: function fetchToken() {
       var _this = this;
 
@@ -2450,12 +2481,14 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     sendToken: function sendToken(nonce) {
-      axios.post('/api/payments', null, {
+      axios.post('/api/payments', {
+        total: this.totalPirce
+      }, {
         params: {
           token: nonce
         }
       }).then(function (res) {
-        console.log(res);
+        console.log(res.data);
       })["catch"](function (err) {
         console.error(err);
       });
@@ -2493,7 +2526,8 @@ __webpack_require__.r(__webpack_exports__);
           return;
         }
 
-        _this3.sendToken(payload.nonce);
+        _this3.sendToken(payload.nonce); //this.$router.push({ name: 'order.create' });
+
 
         console.log(payload.nonce);
       });
@@ -2501,6 +2535,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.fetchToken();
+    this.takeCart();
   }
 });
 
@@ -34611,7 +34646,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "nome",
-                                        rules: "required|alpha|max:30",
+                                        rules: "required|alpha_spaces|max:30",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -34702,7 +34737,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "cognome",
-                                        rules: "required|alpha|max:50",
+                                        rules: "required|alpha_spaces|max:50",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -34981,7 +35016,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "indirizzo",
-                                        rules: "required|max:80|alpha",
+                                        rules: "required|max:80|alpha_spaces",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -35076,7 +35111,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "civico",
-                                        rules: "required|alpha_num|max:10",
+                                        rules: "required|max:10",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -35176,7 +35211,7 @@ var render = function () {
                                     _c("validationProvider", {
                                       attrs: {
                                         name: "città",
-                                        rules: "required|alpha|max:30",
+                                        rules: "required|alpha_spaces|max:30",
                                       },
                                       scopedSlots: _vm._u(
                                         [
@@ -53899,7 +53934,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

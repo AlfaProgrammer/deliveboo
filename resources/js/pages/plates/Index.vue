@@ -1,4 +1,4 @@
-<template lang="">
+<template>
 
     <main class="container px-5 py-3">
 

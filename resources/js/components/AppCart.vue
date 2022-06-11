@@ -29,18 +29,20 @@
                                 <p>Prezzo: {{formatCurrency(plate.price)}}</p>
                             </div>
 
-                            <div id="quantity">
-                                <p>Quantità</p>
-                                <button @click="removeFromCart(plate)">Rimuovi</button>
+                            <div id="plate-state">
+                                <p>Quantità: {{plate.quantity}}</p>
+                                <button @click="modalShowToggle(plate)">Rimuovi</button>
                             </div>
 
                             <div class="item-info">
                                 <h3>{{ plate.name }}</h3>
                                 <p>Prezzo: {{formatCurrency(plate.price)}}</p>
 
-                                <div class="quantity-wrapper flex gap-2"> 
+                                <div class="quantity-wrapper flex gap-2 items-center"> 
 
-                                    <input type="number" class="w-[100px] text-center" v-model="plate.quantity">
+                                    <button  @click="decreaseQuantity(plate)" class="font-bold">-</button>
+                                    <div class="font-bold text-white">{{plate.quantity}}</div>
+                                    <button  @click="increaseQuantity(plate)" class="font-bold">+</button>
 
                                 </div>
                             </div>
@@ -51,68 +53,142 @@
                 <div class="totalPrice">
                     <p>Totale: {{formatCurrency(totalPrice)}}</p>
                 </div>
-
+                <!-- <router-link :to="{name: 'order.create'}" @click="console.log('ciao')" class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer">
+                    Ordina Ora
+                </router-link>   -->
                 <button 
-                    class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"                    
+                    class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer"   
+                    @click="createOrderCart(restaurant_cart, slug), goToOrder()"                 
                 >
                     Ordina Ora
-                </button>
-                
+                </button>           
             </div>
-        </div>        
+        </div>   
+
+         <!-- MODALE CONFERMA RIMOZIONE dal CARRELLO -->
+        <div id="modal" class="flex item-center justify-center" :class="[modalShow ? '': 'hidden']">
+            <div id="modal-info" 
+            class="max-h-[50%] bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent">
+                
+                <h3 class="font-bold mb-3 text-xl">Sei sicuro di voler eliminare questo piatto ?</h3>
+
+                <p class="font-bold mb-3">{{plateInModal.name}}</p>
+
+                <figure class="max-w-[80px] rounded-sm mb-3">
+                    <img class="object-cover" :src="plateInModal.image">
+                </figure> 
+
+                <p class="mb-3">Quantità: {{plateInModal.quantity}}</p>
+
+                <div>
+                    <!-- <p class="mb-[10px]">{{formatCurrency(plateInModal.price)}}</p> -->
+                    <button 
+                        class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"
+                        @click="removeFromCart(plateInModal)"
+                    >
+                        Elimina
+                    </button>
+
+                    <button 
+                        class="text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer"
+                        @click="modalShow = !modalShow"
+                    >
+                        Annulla
+                    </button>
+                </div>
+
+            </div>  
+        </div>   
+
     </div>
 
 </template>
 
 <script>
-// import { mapState, mapActions } from 'vuex'
+// import { mapActions } from 'vuex'
 export default {
     data(){
         return{
-            quantityController: 0, 
+            modalShow: false,
+            plateInModal: {},
         }
     },
     props:[
-        'restaurant_cart', 
-        'formatCurrency'
+        'slug', 
+        'formatCurrency',
+        'restaurant_cart'
     ],
     computed:{
         totalPrice(){
-            this.cartTotalPrice = this.restaurant_cart.reduce( (acc, item) => {
-                return acc + item.price
+            let cartTotalPrice = this.restaurant_cart.reduce( (acc, item) => {
+                return acc + item.price * item.quantity
             }, 0) 
-            return this.cartTotalPrice
+            return cartTotalPrice
         },
     },
    
     methods:{
-        
+        createOrderCart(restaurant_cart, slug){
+            this.$store.dispatch({
+                type: 'cartModule/createOrderCart',
+                cart: restaurant_cart,
+                slug: slug,
+            })
+        },
+
+        goToOrder(){
+            this.$router.push({name: 'order.create'})
+        },
+
+        modalShowToggle( plate ){
+            this.modalShow = ! this.modalShow
+            this.plateInModal = plate
+        },        
         removeFromCart(plate){
             this.$store.dispatch({
                 type: 'cartModule/removeFromCartStorage',
                 plate: plate
             })
-        },
-    // la quantità nel oggetto del piatto non cè, quindi verrà creata automaticamente.
-        
-        quantityIncrease( quantity ){
-            let newquantity = quantity++
-            return newquantity
-        },
 
-        quantityDecrease( plate ){
-            while( plate.quantity > 1 ){
-                plate.quantity--
-                return plate.quantity
-            }
-            plate.quantity = 1
-            console.log(plate.quantity);            
+            this.modalShow = ! this.modalShow
         },
+        increaseQuantity(plate){
+            plate.quantity++
+            
+            this.updateQuantity(plate)
+
+        },
+        decreaseQuantity(plate){
+            if(plate.quantity > 1){
+                plate.quantity--
+            }else{
+                plate.quantity = 1
+            }
+            
+            this.updateQuantity(plate)
+        },
+        updateQuantity( plate ){           
+            this.$store.dispatch({
+                type: 'cartModule/updateCartQuantity',
+                plate: plate
+            })
+
+            // console.log(`Plate quantity ${plate.quantity}`)
+            
+        }
+    // la quantità nel oggetto del piatto non cè, quindi verrà creata automaticamente.
        
     },
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    #modal{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;        
+        background-color: rgb(128, 128, 128, 0.7);        
+    }
 </style>

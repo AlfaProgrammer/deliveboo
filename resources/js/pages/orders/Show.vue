@@ -4,8 +4,8 @@
             <loader />
         </section>
 
-        <section v-else class="py-16 px-4 bkg-order-show">
-            <div class="container flex justify-center items-center">
+        <section v-else class="py-12 px-4 bkg-order-show">
+            <div class="container flex justify-center items-center h-full">
 
                 <div class="card rounded shadow-lg shadow-stone-700 p-7 bg-stone-100">
                     <div class="border-b-2 border-b-deliveroo rounded-sm py-1.5 px-2.5 text-center">
@@ -66,6 +66,7 @@
 </template>
 <script>
 import loader from '../../components/CssLoaders.vue';
+import { mapState } from 'vuex';
 
 export default {
     components: {
@@ -73,9 +74,12 @@ export default {
     },
     data() {
         return {
-            cart: [],
             order: {},
+            cart: [],
         }
+    },
+    computed: {
+        ...mapState('cartModule', ['cartOnOrder']),
     },
     methods: {
         takeCart() {
@@ -90,8 +94,8 @@ export default {
         }
     },
     created() {
-        this.takeCart();
         this.takeOrder();
+        this.takeCart();
     }
     
 }
@@ -100,15 +104,14 @@ export default {
 <style lang="scss" scoped>
 
     .bkg-order-show {
-        height: calc((100vh - 62px) - 341px);
         background-image: url('/images/wave4.svg');
         background-position: center;
-        background-size: 1660px;
+        background-size: 280%;
         background-repeat: no-repeat;
     }
 
     .card {
-        flex-basis: 720px;
+        flex-basis: 620px;
 
     }
 

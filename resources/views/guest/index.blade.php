@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{{ asset('css/front.css') }}">
     </head>
     <body>
-        <div class="bg-black mb-3 py-4 px-3 flex items-center">
+        <div class="bg-black py-4 px-3 flex items-center">
             <figure class="grow">
                 <img class="logo" src="https://cdn.discordapp.com/attachments/976763752844230717/981947802919788574/deliveroo-3442893-2875354.png" alt="">
             </figure>

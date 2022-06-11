@@ -1,11 +1,9 @@
 <template>
 
-    <div class="back-img">
+    <div>
         <router-view></router-view>
         <Footer />
     </div>
-    
-    
 
 </template>
 

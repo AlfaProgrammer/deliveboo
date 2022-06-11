@@ -57,10 +57,6 @@
                         @click="deleteOrderFromStorage()">
                             Home
                         </button>
-                        <!-- <router-link tag="button" :to="{ name: 'restaurant.index' }"
-                        class="rounded bg-viola py-2.5 px-5 text-white font-bold">
-                            Home
-                        </router-link> -->
                     </div>
                 </div>
 

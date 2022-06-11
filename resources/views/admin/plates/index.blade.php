@@ -8,18 +8,18 @@
 
     <div class="col-12 col-lg-6 d-flex flex-column">
 
-        <div class="mt-lg-5 ml-lg-3">
+        <div class="ml-lg-3">
             <a href="{{ route('admin.home') }}" class="btn btn-warning">Torna alla dashboard</a>
+            <a href="{{ route('admin.plates.create') }}" class="btn btn-primary text-nowrap">Crea nuovo piatto</a>
         </div>
         @if ($plates)
 
         <div class="container row m-0 mt-5 align-self-center">
-            <div class="col-12 col-lg-9">
-                <img class="rounded rounded-lg img-shad-large" src="{{ $user->restaurant->image }}" alt="">
-            </div>
-            <div class="col-12 col-lg-3 mt-5 justify-content-center justify-content-sm-star">
+            <div class="col-12 justify-content-center justify-content-sm-star">
                 <h2 class="mb-4">{{$user->restaurant->name}}</h2>
-                <a href="{{ route('admin.plates.create') }}" class="btn btn-primary text-nowrap">Crea nuovo piatto</a>
+            </div>
+            <div class="col-12">
+                <img class="rounded rounded-lg img-shad-large" src="{{ $user->restaurant->image }}" alt="">
             </div>
         </div>
         

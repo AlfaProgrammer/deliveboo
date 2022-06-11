@@ -1,13 +1,13 @@
 <template>
     <div>
-        <section v-show="!order" class="flex items-center justify-center">
+        <section v-if="!order" class="flex items-center justify-center">
             <loader />
         </section>
 
-        <section class="my-14">
+        <section v-else class="py-16 px-4 bkg-order-show">
             <div class="container flex justify-center items-center">
 
-                <div class="card rounded shadow-lg shadow-stone-700 p-7">
+                <div class="card rounded shadow-lg shadow-stone-700 p-7 bg-stone-100">
                     <div class="border-b-2 border-b-deliveroo rounded-sm py-1.5 px-2.5 text-center">
                         <h1 class="text-viola font-bold text-2xl mb-2">
                             Il tuo ordine è avvenuto con successo
@@ -99,8 +99,17 @@ export default {
 
 <style lang="scss" scoped>
 
+    .bkg-order-show {
+        height: calc((100vh - 62px) - 341px);
+        background-image: url('/images/wave4.svg');
+        background-position: center;
+        background-size: 1660px;
+        background-repeat: no-repeat;
+    }
+
     .card {
-        flex-basis: 620px;
+        flex-basis: 720px;
+
     }
 
 </style>

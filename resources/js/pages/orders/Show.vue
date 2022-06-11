@@ -40,16 +40,17 @@
                         <h2 class="text-viola font-bold text-lg">Articoli:</h2>
                         <ol class="font-medium">
                             <li v-for="plate in cart" :key="plate.id"
-                            class="flex items-center gap-3">
-                                <h4 class="text-stone-700 font-medium">{{ plate.name }}</h4>
-                                <span class="grow text-right">{{ plate.price }}&euro;</span>
+                            class="flex items-center justify-between gap-3">
+                                <h4 class="text-stone-700 font-medium basis-[40%]">{{ plate.name }}</h4>                                
+                                <span class="ml-[15px] basis-[30%]">quantità: {{plate.quantity}}</span>
+                                <span class="text-right basis-[40%]">{{ formatCurrency( (plate.price*plate.quantity) ) }}</span>                                
                             </li>
                         </ol>
                     </div>
 
                     <div class="border-b-2 border-b-deliveroo rounded-sm flex items-center gap-3 py-1.5 px-2.5 mb-4">
                         <h2 class="text-viola font-bold text-lg">Totale Ordine:</h2>
-                        <h4 class="grow text-right font-medium">{{ order.total_price }}&euro;</h4>
+                        <h4 class="grow text-right font-medium">{{ formatCurrency(order.total_price) }}</h4>
                     </div>
 
                     <div class=" py-1.5 px-2.5 text-center">
@@ -87,7 +88,10 @@ export default {
         deleteOrderFromStorage() {
             localStorage.removeItem('order');
             this.$router.push({ name: 'restaurant.index' });
-        }
+        },
+        formatCurrency( price ){
+            return (price.toLocaleString('it-IT', { style: 'currency', currency: 'EUR'}))
+        },
     },
     created() {
         this.takeCart();

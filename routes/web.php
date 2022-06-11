@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\SendOrderCompleteMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,7 @@ Route::fallback(function() {
 
 
 Route::get('/loading', 'LoaderController@index')->name('loading');
+
+Route::get('/email', function () {
+    return new SendOrderCompleteMail();
+});

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Plate;
 use App\Restaurant;
 use App\Mail\SendDeletePlateMail;
+use App\Mail\SendOrderCompleteMail;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
@@ -187,7 +188,10 @@ class PlateController extends Controller
         
         $email = $user->email;
         
-        Mail::to($email)->send( new SendDeletePlateMail($plate));
+        // Mail::to($email)->send( new SendDeletePlateMail($plate));
+        // $plate->delete();
+
+        Mail::to($email)->send( new SendOrderCompleteMail($plate));
         $plate->delete();
 
         return redirect()->route('admin.plates.index');

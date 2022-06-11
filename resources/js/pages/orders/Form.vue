@@ -2,7 +2,7 @@
     <div>
         <div class="order-summary container">
             <h1 class="text-xl font-bold"> Stai Ordinando da <span class="text-deliveroo">{{cartOnOrder.cartRestauratReference}}</span> </h1>
-            <p>Il totale del tuo ordine sarà di: <span class="font-bold text-deliveroo"> {{cartOnOrder.cartTotalPrice}} euro</span> </p>
+            <p>Il totale del tuo ordine sarà di: <span class="font-bold text-deliveroo"> {{formatCurrency(cartOnOrder.cartTotalPrice)}}</span> </p>
         </div>
         <ValidationObserver v-slot="{ handleSubmit }">
 
@@ -155,6 +155,9 @@ export default {
         onSubmit() {
             this.submitForm();
             console.log(this.form);
+        },
+        formatCurrency( price ){
+            return (price.toLocaleString('it-IT', { style: 'currency', currency: 'EUR'}))
         },
     },
     computed: mapState('cartModule',[

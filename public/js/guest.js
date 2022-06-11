@@ -2891,8 +2891,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'App',
@@ -35857,12 +35855,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "back-img" },
-    [_c("router-view"), _vm._v(" "), _c("Footer")],
-    1
-  )
+  return _c("div", [_c("router-view"), _vm._v(" "), _c("Footer")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -52555,7 +52548,7 @@ webpackContext.id = "./public/img sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/appstore.svg?9beaa0db7ef2975ab326f0a2639bd0e1";
+module.exports = "/images/appstore.svg?0a6a96b9e3294e2e3b62f5bbd8f16f22";
 
 /***/ }),
 
@@ -52588,7 +52581,7 @@ module.exports = "/images/image2vector.svg?8001b2e62f462f139fce3711709f96c2";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/playstore.svg?0a18bd2b525981e78c0bf9e3fa37f803";
+module.exports = "/images/playstore.svg?59c5fd948e8c762a5059cb2ad51acd16";
 
 /***/ }),
 
@@ -53934,7 +53927,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
 
 
 /***/ })

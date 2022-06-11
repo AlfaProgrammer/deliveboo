@@ -52511,6 +52511,12 @@ var map = {
 	"./wave3.svg": "./public/img/wave3.svg",
 	"./wave30.svg": "./public/img/wave30.svg",
 	"./wave31.svg": "./public/img/wave31.svg",
+	"./wave32.svg": "./public/img/wave32.svg",
+	"./wave33.svg": "./public/img/wave33.svg",
+	"./wave34.svg": "./public/img/wave34.svg",
+	"./wave35.svg": "./public/img/wave35.svg",
+	"./wave36.svg": "./public/img/wave36.svg",
+	"./wave37.svg": "./public/img/wave37.svg",
 	"./wave4.svg": "./public/img/wave4.svg",
 	"./wave5.svg": "./public/img/wave5.svg",
 	"./wave6.svg": "./public/img/wave6.svg",
@@ -52878,7 +52884,73 @@ module.exports = "/images/wave30.svg?f721e6246716525acfcdb07c903bddcb";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/wave31.svg?3a66811ffd0fe5168ab8777ebd5a69d0";
+module.exports = "/images/wave31.svg?bc9d0aa3b87c5c48b5f456d365a7eb3b";
+
+/***/ }),
+
+/***/ "./public/img/wave32.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave32.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave32.svg?ba0532896e9709b1f516f4c1e5744dc6";
+
+/***/ }),
+
+/***/ "./public/img/wave33.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave33.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave33.svg?f461e662f03697dde8e0561f5511cd69";
+
+/***/ }),
+
+/***/ "./public/img/wave34.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave34.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave34.svg?ba60d90c8104522543a893878d81ba7d";
+
+/***/ }),
+
+/***/ "./public/img/wave35.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave35.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave35.svg?ac793452084702acae7845547b260a33";
+
+/***/ }),
+
+/***/ "./public/img/wave36.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave36.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave36.svg?ba37320f9a8eeb269418dc22c6e59c2f";
+
+/***/ }),
+
+/***/ "./public/img/wave37.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave37.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave37.svg?3238328e7e06bfd93956444ccb54d233";
 
 /***/ }),
 

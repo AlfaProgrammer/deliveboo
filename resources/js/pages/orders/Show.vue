@@ -1,13 +1,13 @@
 <template>
     <div>
-        <section v-if="!order">
+        <section v-show="!order" class="flex items-center justify-center">
             <loader />
         </section>
 
-        <section v-else class="my-14">
+        <section class="my-14">
             <div class="container flex justify-center items-center">
 
-                <div class="card rounded shadow-lg shadow-stone-300 p-7">
+                <div class="card rounded shadow-lg shadow-stone-700 p-7">
                     <div class="border-b-2 border-b-deliveroo rounded-sm py-1.5 px-2.5 text-center">
                         <h1 class="text-viola font-bold text-2xl mb-2">
                             Il tuo ordine è avvenuto con successo
@@ -53,7 +53,7 @@
                     </div>
 
                     <div class=" py-1.5 px-2.5 text-center">
-                        <button class="rounded bg-viola py-2.5 px-5 text-white font-bold"
+                        <button class="rounded bg-viola py-1 px-3 text-white font-bold"
                         @click="deleteOrderFromStorage()">
                             Home
                         </button>
@@ -96,6 +96,7 @@ export default {
     
 }
 </script>
+
 <style lang="scss" scoped>
 
     .card {

@@ -6,7 +6,7 @@
         </div>
 
         <div class="container max-w-sm" v-if="loading">
-            <div id="dropIn" class="" v-if="token">
+            <div id="dropIn" class="drop-shadow-xl dropin" v-if="token">
                 {{ dropIn() }}
             </div>
 
@@ -123,6 +123,10 @@ export default {
         background-position: center;
         background-size: 1080px;
         background-repeat: no-repeat;
+
+        .dropin {
+            filter: drop-shadow(2px 4px 8px #57534e);
+        }
     }
         
 </style>

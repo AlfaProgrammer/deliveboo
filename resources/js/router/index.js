@@ -11,6 +11,7 @@ import Index from '../pages/plates/Index.vue';
 import show from '../pages/plates/show.vue';
 import payments from '../pages/payments/Payment.vue';
 import form from '../pages/orders/Form.vue';
+import order from '../pages/orders/Show.vue';
 
 // costante dove andranno le rotte
 const routes = [
@@ -33,8 +34,12 @@ const routes = [
         path: '/orders',
         name: 'order.create',
         component: form,
-
-    }
+    },
+    {
+        path: '/orders/show',
+        name: 'orders.show',
+        component: order,
+    },
 ];
 
 // istanziare vue router

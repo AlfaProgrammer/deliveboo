@@ -6,18 +6,18 @@
 
     {{-- --------------------------------------------- --}}
 
-    <div class="col-6 d-flex flex-column">
+    <div class="col-12 col-lg-6 d-flex flex-column">
 
-        <div class="mb-5 mt-2 ml-1">
+        <div class="mt-lg-5 ml-lg-3">
             <a href="{{ route('admin.home') }}" class="btn btn-warning">Torna alla dashboard</a>
         </div>
         @if ($plates)
 
-        <div class="container row m-0 mt-5">
-            <div class="col-9">
+        <div class="container row m-0 mt-5 align-self-center">
+            <div class="col-12 col-lg-9">
                 <img class="rounded rounded-lg img-shad-large" src="{{ $user->restaurant->image }}" alt="">
             </div>
-            <div class="col-3">
+            <div class="col-12 col-lg-3 mt-5 justify-content-center justify-content-sm-star">
                 <h2 class="mb-4">{{$user->restaurant->name}}</h2>
                 <a href="{{ route('admin.plates.create') }}" class="btn btn-primary text-nowrap">Crea nuovo piatto</a>
             </div>
@@ -27,13 +27,13 @@
 
     {{-- --------------------------------------------- --}}
 
-    <div class="container-fluid plates-index col-6 over-flow-cont">
+    <div class="container-fluid plates-index col-12 col-lg-6 over-flow-cont">
 
         <div class="row">
             
             @foreach ($plates as $plate)
                 
-            <div class="card-wrapper col-6"> 
+            <div class="card-wrapper col-12 col-xl-6"> 
 
                 <div class="row card-body justify-content-center">
 

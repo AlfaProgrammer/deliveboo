@@ -22,32 +22,22 @@
 </template>
 <script>
 import CssLoaders from '../../components/CssLoaders.vue';
-
+import {mapState} from 'vuex';
 export default {
     data() {
         return {
             token: '',
             inst: null,
             loading: false,
-            cart: [],
         }
     },
     components:{
         CssLoaders,
     },
     computed: {
-        totalPirce() {
-            const total = this.cart.reduce((acc,item)=>{
-                return acc + item.price
-            }, 0);
-
-            return total;
-        }
+        ...mapState('cartModule', ['cartOnOrder']),
     },
     methods: {
-        takeCart() {
-            this.cart = JSON.parse(localStorage.getItem("cart"));
-        },
         fetchToken() {
             axios.get('/api/payments')
             .then(res => {
@@ -59,7 +49,7 @@ export default {
         },
         sendToken(nonce) {
             axios.post('/api/payments',{
-                total: this.totalPirce,
+                total: this.cartOnOrder.cartTotalPrice,
             }, {
                 params: {
                     token: nonce,
@@ -109,8 +99,6 @@ export default {
     },
     created() {
         this.fetchToken();
-        this.takeCart();
-
     }
 }
 </script>

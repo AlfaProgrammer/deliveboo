@@ -1,6 +1,7 @@
 .contenitore-big {
     height: calc(100vh - 125px);
-    flex-wrap: nowrap;
+    // flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .plates-index {

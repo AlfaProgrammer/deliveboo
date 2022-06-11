@@ -10017,7 +10017,7 @@ h3 {
 }
 .contenitore-big {
   height: calc(100vh - 125px);
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .plates-index .row .card {
@@ -10177,7 +10177,6 @@ a p {
   background-position: center;
   background-repeat: no repeat;
   height: calc(100vh - 55px);
-  margin-top: -1.5rem !important;
   margin-bottom: -1.5rem !important;
   justify-content: center;
 }

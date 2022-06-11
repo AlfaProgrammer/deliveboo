@@ -53167,6 +53167,7 @@ var map = {
 	"./wave35.svg": "./public/img/wave35.svg",
 	"./wave36.svg": "./public/img/wave36.svg",
 	"./wave37.svg": "./public/img/wave37.svg",
+	"./wave38.svg": "./public/img/wave38.svg",
 	"./wave4.svg": "./public/img/wave4.svg",
 	"./wave5.svg": "./public/img/wave5.svg",
 	"./wave6.svg": "./public/img/wave6.svg",
@@ -53601,6 +53602,17 @@ module.exports = "/images/wave36.svg?ba37320f9a8eeb269418dc22c6e59c2f";
 /***/ (function(module, exports) {
 
 module.exports = "/images/wave37.svg?3238328e7e06bfd93956444ccb54d233";
+
+/***/ }),
+
+/***/ "./public/img/wave38.svg":
+/*!*******************************!*\
+  !*** ./public/img/wave38.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wave38.svg?3a66811ffd0fe5168ab8777ebd5a69d0";
 
 /***/ }),
 

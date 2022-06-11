@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     {{-- @if($restaurant)
     
         <div class="container restaurant-index">
@@ -96,11 +94,4 @@
     
     </section>
     
-    
-    
-
-
-
-
-
 @endsection 

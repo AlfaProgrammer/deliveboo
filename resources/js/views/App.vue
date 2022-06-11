@@ -7,9 +7,6 @@
 
 </template>
 
-// -----------------------------------------------------------------
-// JS
-
 <script>
 import Footer from '../components/FooterGuest.vue';
 
@@ -20,9 +17,6 @@ export default {
     }
 }
 </script>
-
-// -----------------------------------------------------------------
-// CSS
 
 <style lang="scss">
 

@@ -37,6 +37,18 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'form.name' => 'required|string|max:30',
+            'form.surname' => 'required|string|max:50',
+            'form.email' => 'required|email|max:50',
+            'form.phone_number' => 'required|string|min:10|max:20',
+            'form.address' => 'required|string|max:80',
+            'form.house_number' => 'required|string|max:10',
+            'form.city' => 'required|string|max:30',
+            'form.cap' => 'required|numeric|digits_between:1,5',
+        ]);
+
         $data = $request->all();
         //return($data);
 

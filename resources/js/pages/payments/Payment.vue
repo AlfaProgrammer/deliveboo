@@ -29,6 +29,7 @@ export default {
             token: '',
             inst: null,
             loading: false,
+            cart: [],
         }
     },
     components:{

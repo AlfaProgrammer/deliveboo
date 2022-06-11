@@ -66,6 +66,7 @@
 </template>
 <script>
 import loader from '../../components/CssLoaders.vue';
+import { mapState } from 'vuex';
 
 export default {
     components: {
@@ -73,9 +74,12 @@ export default {
     },
     data() {
         return {
-            cart: [],
             order: {},
+            cart: [],
         }
+    },
+    computed: {
+        ...mapState('cartModule', ['cartOnOrder']),
     },
     methods: {
         takeCart() {
@@ -90,8 +94,8 @@ export default {
         }
     },
     created() {
-        this.takeCart();
         this.takeOrder();
+        this.takeCart();
     }
     
 }

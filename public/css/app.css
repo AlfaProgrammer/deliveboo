@@ -10094,6 +10094,16 @@ a p {
   margin-top: 6px;
 }
 
+.bkg-wave {
+  background-image: url("/img/wave5.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no repeat;
+  min-height: calc(100vh - 130px);
+  padding-bottom: 20px;
+  margin-bottom: 12px;
+}
+
 .img-show {
   background-image: url("/img/wave27.svg");
   background-size: cover;
@@ -10469,5 +10479,5 @@ input:invalid {
 
 .nav-fix {
   height: 100vh;
-  padding-top: 120px;
+  padding-top: 80px;
 }

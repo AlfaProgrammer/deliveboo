@@ -52,20 +52,12 @@ class OrderController extends Controller
         $data = $request->all();
         //return($data);
 
-        $cart = $data['cart'];
+        $cart = $data['cart']['cartItems'];
         //return $cart;
 
-        $plateId = [];
+        $total = $data['cart']['cartTotalPrice'];
+        //return $total;
 
-        foreach($cart as $plate) {
-
-            array_push($plateId, $plate['id']);
-
-        }
-        //return $restaurantId;
-        //return $plateId;
-
-        $total = $data['total'];
         //return $total;
         foreach($data as $value) {
 
@@ -77,8 +69,16 @@ class OrderController extends Controller
 
             $order->save();
 
-            $order->plates()->attach($plateId);
-            
+            foreach($cart as $plate) {
+
+                $plateId = $plate['id'];
+                $plateQuantity = $plate['quantity'];
+
+                $order ->plates()->attach($plateId,[
+                    'quantity' => $plateQuantity,
+                ]);
+            }
+
             return response()->json([
                 'order' => $order,
                 'success' => true,

@@ -133,27 +133,13 @@ export default {
                 city: '',
                 cap: '',
             },
-            cart: [],
-        }
-    },
-    computed: {
-        totalPirce() {
-            const total = this.cart.reduce((acc,item)=>{
-                return acc + item.price
-            }, 0);
-
-            return total;
         }
     },
     methods: {
-        takeCart() {
-            this.cart = JSON.parse(localStorage.getItem("cart"));
-        },
         submitForm() {
             axios.post('/api/orders', {
                 form: this.form,
-                total: this.totalPirce,
-                cart: this.cart,
+                cart: this.cartOnOrder,
                 //localStorage.getItem('totalPrice'),
             })
             .then(res => {
@@ -171,10 +157,7 @@ export default {
             console.log(this.form);
         },
     },
-    created() {
-        this.takeCart();
-    },
-    computed:mapState('cartModule',[
+    computed: mapState('cartModule',[
         'cartOnOrder',
     ])
     

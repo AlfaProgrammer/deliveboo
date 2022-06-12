@@ -38,7 +38,7 @@ a img {
 /* Typography */
 
 h1 {
-    color: #3d4852;
+    color: #440063;
     font-size: 18px;
     font-weight: bold;
     margin-top: 0;
@@ -53,6 +53,7 @@ h2 {
 }
 
 h3 {
+    color: #440063;
     font-size: 14px;
     font-weight: bold;
     margin-top: 0;
@@ -136,7 +137,7 @@ img {
     -premailer-width: 570px;
     background-color: #ffffff;
     border-color: #e8e5ef;
-    border-radius: 2px;
+    border-radius: 4px;
     border-width: 1px;
     box-shadow: 0 2px 0 rgba(0, 0, 150, 0.025), 2px 4px 0 rgba(0, 0, 150, 0.015);
     margin: 0 auto;
@@ -231,11 +232,12 @@ img {
 
 .button-blue,
 .button-primary {
-    background-color: #2d3748;
-    border-bottom: 8px solid #2d3748;
-    border-left: 18px solid #2d3748;
-    border-right: 18px solid #2d3748;
-    border-top: 8px solid #2d3748;
+    font-weight: 500;
+    background-color: #00ccbc;
+    border-bottom: 8px solid #00ccbc;
+    border-left: 18px solid #00ccbc;
+    border-right: 18px solid #00ccbc;
+    border-top: 8px solid #00ccbc;
 }
 
 .button-green,
@@ -286,4 +288,10 @@ img {
 
 .break-all {
     word-break: break-all;
+}
+
+.cornice {
+    width: 100%;
+    border-bottom: 2px solid #00ccbc;
+    margin-bottom: 15px;
 }

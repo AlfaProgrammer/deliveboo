@@ -30,6 +30,7 @@ export default {
             inst: null,
             loading: false,
             cart: [],
+            order: {},
         }
     },
     components:{
@@ -51,6 +52,7 @@ export default {
         sendToken(nonce) {
             axios.post('/api/payments',{
                 total: this.cartOnOrder.cartTotalPrice,
+                order: this.order,
             }, {
                 params: {
                     token: nonce,
@@ -97,9 +99,13 @@ export default {
                 console.log(payload.nonce);
             }
         )},
+        takeOrder() {
+            this.order = JSON.parse(localStorage.getItem("order"));
+        },
     },
     created() {
         this.fetchToken();
+        this.takeOrder();
     }
 }
 </script>

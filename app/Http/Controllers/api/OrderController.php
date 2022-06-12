@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendOrderCompleteMail;
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 class OrderController extends Controller
@@ -78,7 +80,7 @@ class OrderController extends Controller
                     'quantity' => $plateQuantity,
                 ]);
             }
-
+            
             return response()->json([
                 'order' => $order,
                 'success' => true,

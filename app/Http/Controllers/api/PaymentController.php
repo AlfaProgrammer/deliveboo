@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendOrderCompleteMail;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -52,6 +53,8 @@ class PaymentController extends Controller
     {
         $data = $request->all();
 
+        $order = $data['order'];
+
         $tokenNonce = $request->query('token');
         $total = $data['total'];
         //return $total;
@@ -70,6 +73,8 @@ class PaymentController extends Controller
                 'submitForSettlement' => true,
             ]
         ]);
+
+        Mail::to($order['email'])->send(new SendOrderCompleteMail($order));
 
         if ($result->success) {
             // See $result->transaction for details

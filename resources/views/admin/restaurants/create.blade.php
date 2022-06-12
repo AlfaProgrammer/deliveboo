@@ -2,13 +2,13 @@
 
 @section('content')
     <div class="container nav-fix">
-        <h2>Crea il tuo ristoranete</h2>
+        <h2>Crea il tuo ristorante</h2>
 
         <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             
             <div class="form-group">
-                <label for="name">Nome</label>
+                <label for="name">Nome*</label>
                 <input class="form-control form-control-lg @error('name') is-invalid @enderror" type="text" name="name" placeholder="Inserisci il nome del ristorante" value="{{old('name')}}">
                 @error('name')
                 <div class="invalid-feedback">{{$message}}</div>
@@ -23,10 +23,11 @@
                 @enderror
             </div>
 
-            @foreach ($categories as $category)  
+            <p>Categorie*</p>
+            @foreach ($categories as $category)
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" name="categories[]" id="categories-{{$category->id}}" value="{{$category->id}}">
-                    <label class="form-check-label" for="inlineCheckbox1">{{$category->name}}</label>
+                    <label class="form-check-label" for="categories-{{ $category->id }}">{{$category->name}}</label>
                 </div>
                 @error('categories')
                     <div class="text-danger">{{ $message }}</div>
@@ -49,24 +50,24 @@
             </div>
 
             <div class="form-group">
-                <label for="cap">CAP</label>
-                <input type="text"class="form-control" id="FormControlTextarea1" value="{{old('cap')}}" name="cap" placeholder="CAP" />
+                <label for="cap">CAP*</label>
+                <input type="text"class="form-control @error('cap') is-invalid @enderror" id="FormControlTextarea1" value="{{old('cap')}}" name="cap" placeholder="CAP" />
                 @error('cap')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="address">Indirizzo</label>
-                <input type="text"class="form-control" id="FormControlTextarea1" value="{{old('address')}}" name="address" placeholder="Inserisci l'indirizzo" />
+                <label for="address">Indirizzo*</label>
+                <input type="text"class="form-control @error('address') is-invalid @enderror" id="FormControlTextarea1" value="{{old('address')}}" name="address" placeholder="Inserisci l'indirizzo" />
                 @error('address')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div>
 
             <div class="form-group">
-                <label for="city">Città</label>
-                <input type="text"class="form-control" id="FormControlTextarea1" value="{{old('city')}}" name="city" placeholder="Inserisci città" />
+                <label for="city">Città*</label>
+                <input type="text"class="form-control @error('city') is-invalid @enderror" id="FormControlTextarea1" value="{{old('city')}}" name="city" placeholder="Inserisci città" />
                 @error('city')
                 <div class="invalid-feedback">{{$message}}</div>
                 @enderror

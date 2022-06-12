@@ -2,7 +2,7 @@
 
     <section class="img-show">
 
-        <div class="container-loader flex justify-center items-center" v-if="!loading">
+        <div class="container-loader flex justify-center items-center grow" v-if="!loading">
             <CssLoaders/>
         </div>
 

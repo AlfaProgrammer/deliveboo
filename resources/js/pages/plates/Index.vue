@@ -11,7 +11,7 @@
             <banner />
 
             <section id="bkcg-home">
-                <div class="container px-5 py-3">
+                <div class="container px-5 py-6">
 
                     <div class="drop-down-menu mb-10">
                         <button @click="setActive()" 

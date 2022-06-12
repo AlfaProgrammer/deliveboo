@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <section id="banner-bottom-wrap" class="grid grid-cols-2 mt-6">
+        <section id="banner-bottom-wrap" class="grid grid-cols-2">
             <div class="banner-bottom-1"></div>
             <div class="banner-bottom-2"></div>
         </section>

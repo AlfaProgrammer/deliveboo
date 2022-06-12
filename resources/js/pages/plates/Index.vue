@@ -1,39 +1,47 @@
 <template>
 
-    <main class="container px-5 py-3">
+    <main>
 
         <div class="container-loader flex justify-center items-center" v-if="!loading">
             <CssLoaders/>
         </div>
 
-        <div v-if="loading">
+        <section v-if="loading">
 
-            <h1 class="text-center text-6xl font-bold mb-10 text-deliveroo">Deliveboo</h1>
+            <banner />
 
-            <div class="drop-down-menu mb-10">
-                <button @click="setActive()" 
-                :class="active ? 'bg-viola text-white' : 'text-deliveroo'"
-                class="font-bold py-1 px-3 mb-3 border-2 border-viola rounded">
-                    Categorie
-                </button>
-                <div :class="['menu-item', active ? 'block' : 'hidden', 'bg-bgcheck/50', 'rounded-2xl']">
-                    <ul class="ks-cboxtags text-stone-500">
-                        <li v-for="category in categories" :key="category.id">
-                            <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
-                            <label :for="category.name">{{ category.name }}</label>
-                        </li>
-                    </ul>
+            <section id="bkcg-home">
+                <div class="container px-5 py-3">
+
+                    <div class="drop-down-menu mb-10">
+                        <button @click="setActive()" 
+                        :class="active ? 'bg-viola text-white' : 'text-deliveroo'"
+                        class="font-bold py-1 px-3 mb-3 border-2 border-viola rounded">
+                            Categorie
+                        </button>
+                        <div :class="['menu-item', active ? 'block' : 'hidden', 'bg-color-full', 'rounded-2xl']">
+                            <ul class="ks-cboxtags text-stone-500">
+                                <li v-for="category in categories" :key="category.id">
+                                    <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
+                                    <label :for="category.name">{{ category.name }}</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="grid restaurant-wrap gap-6">
+                        <RestaurantCard
+                            v-for="restaurant in restaurants"
+                            :key="restaurant.id"
+                            :restaurant="restaurant"
+                        />
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="grid restaurant-wrap gap-6">
-                <RestaurantCard
-                    v-for="restaurant in restaurants"
-                    :key="restaurant.id"
-                    :restaurant="restaurant"
-                />
-            </div>
-        </div>
+            <banner-bottom />
+
+        </section>
 
     </main>
     
@@ -45,6 +53,8 @@
 <script>
 import RestaurantCard from '../../components/RestaurantCard.vue';
 import CssLoaders from '../../components/CssLoaders.vue';
+import banner from '../../components/Banner.vue';
+import bannerBottom from '../../components/BannerBottom.vue';
 
 export default {
     data() {
@@ -59,6 +69,8 @@ export default {
     components: {
         RestaurantCard,
         CssLoaders,
+        banner,
+        bannerBottom,
     },
     methods: {
         fetchRestaurants() {
@@ -119,7 +131,20 @@ export default {
         transition: transform 150ms;
     }
 
+    //** background home wave **/
+
+    #bkcg-home {
+        background-image: url('/img/wave44.svg');
+        background-size: cover;
+        background-repeat: repeat;
+        background-position: center;
+    }
+
     //** Checkboxstyle **/
+
+    .bg-color-full {
+        background-color: #E7FFBD;
+    }
 
     .drop-down-menu button {
         transition: all .3s ease-in-out;

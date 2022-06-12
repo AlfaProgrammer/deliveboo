@@ -75,7 +75,8 @@
     <div class="container plate-show">
         <div class="row mb-5 d-flex justify-content-center">
             <div class="col-12 col-sm-6 mt-4">
-                <div class="card">
+                <h1>{{$plate['name']}}</h1>
+                <div class="card mb-2">
                     <img class="card-img-top" src="{{ $plate->image ?: '' }}">
                     <div class="card-block">
                         <h4 class="card-title mt-3">{{$plate['name']}}</h4>
@@ -139,9 +140,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            
+            </div>    
         </div>
     </div>
 </section>

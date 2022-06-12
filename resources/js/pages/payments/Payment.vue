@@ -29,7 +29,9 @@ export default {
             token: '',
             inst: null,
             loading: false,
+            isDisable: false,
             cart: [],
+            order: {},
         }
     },
     components:{
@@ -51,6 +53,8 @@ export default {
         sendToken(nonce) {
             axios.post('/api/payments',{
                 total: this.cartOnOrder.cartTotalPrice,
+                restaurant: this.cartOnOrder.cartRestauratReference,
+                order: this.order,
             }, {
                 params: {
                     token: nonce,
@@ -93,13 +97,28 @@ export default {
                 }
 
                 this.sendToken(payload.nonce);
-                this.$router.push({ name: 'orders.show' });
+                this.loader();
+                this.returnToOrderDetails();
                 console.log(payload.nonce);
             }
         )},
+        takeOrder() {
+            this.order = JSON.parse(localStorage.getItem("order"));
+        },
+        loader() {
+            setTimeout( ()=> {
+                this.loading = false
+            }, '1000');
+        },
+        returnToOrderDetails() {
+            setTimeout( ()=> {
+                this.$router.push({ name: 'orders.show' });
+            }, '5000')
+        }
     },
     created() {
         this.fetchToken();
+        this.takeOrder();
     }
 }
 </script>

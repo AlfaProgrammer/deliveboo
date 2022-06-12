@@ -1,72 +1,73 @@
 <template>
 
-    <div class="cart_container ml-[20px] max-w-xl mx-auto my-4">
+    <div class="cart_container max-w-xl">
 
-        <h1 class="font-bold text-xl mb-5">Carrello</h1>
-
-        <div v-if="restaurant_cart.length < 1 "> 
-            <p>
-                Non ci sono articoli nel tuo carrello per questo ristorante <br>
-                Ricordati che puoi acquistare da un ristorante per volta.
-            </p> 
+        <div v-if="restaurant_cart.length < 1 ">
+            <div class="rounded shadow-lg shadow-stone-700 p-5 bg-[#f5f5f5] min-h-[150px]">
+                <h1 class="font-bold text-viola mb-3 uppercase">Il tuo carrello è vuoto</h1>
+                <h4 class="font-semibold">
+                    Ricordati che puoi acquistare da un ristorante per volta.
+                </h4> 
+            </div> 
         </div>        
             
         <div v-else class=" flex">
 
             <div class="totalPrice p-4 rounded shadow-lg shadow-stone-600">
-                <p>Totale provvisorio: {{formatCurrency(totalPrice)}}</p>
 
                 <ul v-for="(plate, index) in restaurant_cart" :key="index">
-                    <li class="flex justify-between items-center p-[20px] shadow-lg border-red">
-                        <div class="cart-item-wrapper flex gap-[20px]">
+                    <li class="grid grid-cols-3 p-[20px] shadow-lg gap-3">
 
-                            <figure class="max-w-[80px] rounded-sm">
-                                <img class="object-cover" :src="plate.image">
-                            </figure>
+                        <figure class="col-span-1 rounded-sm overflow-hidden">
+                            <img class="object-cover aspect-square" :src="plate.image">
+                        </figure>
 
-                            <div class="item-info">
-                                <h3>{{ plate.name }}</h3>
-                                <p>Prezzo: {{formatCurrency(plate.price)}}</p>
-                            </div>
+                        <div id="plate-state" class="text-center col-span-2 sm:col-span-1 lg:col-span-2 xl:col-span-1 flex flex-col justify-center sm:justify-start items-center gap-y-4">
+                            <p class="mb-3">
+                                <span class="font-semibold">Quantità:</span> {{plate.quantity}}
+                            </p>
+                            <button class="rounded-full bg-viola text-white font-semibold py-1 px-3 text-sm"
+                            @click="modalShowToggle(plate)">
+                                Rimuovi
+                            </button>
+                        </div>
 
-                            <div id="plate-state">
-                                <p>Quantità: {{plate.quantity}}</p>
-                                <button @click="modalShowToggle(plate)">Rimuovi</button>
-                            </div>
+                        <div class="item-info col-span-3 sm:col-span-1 lg:col-span-3 xl:col-span-1 flex items-center justify-evenly sm:flex-col sm:justify-center sm:items-start lg:flex-row lg:justify-start xl:flex-col gap-y-3 gap-x-1">
+                            <h3><span class="font-semibold">Articolo:</span> {{ plate.name }}</h3>
+                            <p>
+                                <span class="font-semibold">Prezzo:</span> {{formatCurrency(plate.price)}}
+                            </p>
 
-                            <div class="item-info">
-                                <h3>{{ plate.name }}</h3>
-                                <p>Prezzo: {{formatCurrency(plate.price)}}</p>
-
-                                <div class="quantity-wrapper flex gap-2 items-center"> 
-
-                                    <button  @click="decreaseQuantity(plate)" class="font-bold">-</button>
-                                    <div class="font-bold text-white">{{plate.quantity}}</div>
-                                    <button  @click="increaseQuantity(plate)" class="font-bold">+</button>
-
-                                </div>
+                            <div class="quantity-wrapper flex gap-2 justify-center self-center"> 
+                                <button  @click="decreaseQuantity(plate)" class="font-bold">-</button>
+                                <div class="font-bold quantity-text">{{plate.quantity}}</div>
+                                <button  @click="increaseQuantity(plate)" class="font-bold">+</button>
                             </div>
                         </div>
+                    
                     </li>
                 </ul> 
 
-                <div class="totalPrice">
-                    <p>Totale: {{formatCurrency(totalPrice)}}</p>
+                <div class="flex items-center justify-evenly">
+                    <div class="totalPrice font-bold">
+                        <p>Totale: {{formatCurrency(totalPrice)}}</p>
+                    </div>
+                    <!-- <router-link :to="{name: 'order.create'}" @click="console.log('ciao')" class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer">
+                        Ordina Ora
+                    </router-link>   -->
+                    <button 
+                        class="bg-viola text-white rounded-lg px-[15px] font-semibold"   
+                        @click="createOrderCart(restaurant_cart, slug), goToOrder()"                 
+                    >
+                        Ordina Ora
+                    </button>           
                 </div>
-                <!-- <router-link :to="{name: 'order.create'}" @click="console.log('ciao')" class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer">
-                    Ordina Ora
-                </router-link>   -->
-                <button 
-                    class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer"   
-                    @click="createOrderCart(restaurant_cart, slug), goToOrder()"                 
-                >
-                    Ordina Ora
-                </button>           
+
             </div>
         </div>   
 
          <!-- MODALE CONFERMA RIMOZIONE dal CARRELLO -->
-        <div id="modal" class="flex item-center justify-center" :class="[modalShow ? '': 'hidden']">
+        <div id="modal" class="flex items-center justify-center" :class="[modalShow ? '': 'hidden']">
             <div id="modal-info" 
             class="max-h-[50%] bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent">
                 
@@ -190,5 +191,15 @@ export default {
         right: 0;
         left: 0;        
         background-color: rgb(128, 128, 128, 0.7);        
+    }
+
+    .totalPrice {
+        background-color: #F5F5F5;
+        margin: 15px 0;
+        max-width: -moz-available;
+    }
+
+    .quantity-text {
+        color: rgb(14 165 233 / 1);
     }
 </style>

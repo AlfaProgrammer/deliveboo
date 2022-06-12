@@ -5,6 +5,8 @@
     <div class="container nav-fix">
 
         <h1>Inserisci un nuovo piatto</h1>
+        <p><i>I campi contrassegnati con * sono obbligatori</i></p>
+
         
         <form action="{{ route('admin.plates.store') }}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
             @csrf
@@ -53,7 +55,7 @@
             <div>
                 <label for="price" class="input-number-label">Prezzo*</label>
                 <span class="input-number input-number-currency">
-                    <input class="form-control @error('price') is-invalid @enderror" type="number" id="price" name="price" step="0.50" placeholder="0.00" min="0" max="999.99" required/>
+                    <input class="form-control @error('price') is-invalid @enderror" type="number" id="price" name="price" step="0.01" placeholder="Es: 15.99" min="0" max="999.99" required/>
                     <span class="sr-only">Aumenta valore Euro</span>
                     <span class="sr-only">Diminuisci valore Euro</span>
                 </span>

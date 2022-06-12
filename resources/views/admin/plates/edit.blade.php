@@ -5,6 +5,7 @@
 <div class="container  nav-fix">
 
     <h1>Modifica il tuo piatto</h1>
+    <p><i>I campi contrassegnati con * sono obbligatori</i></p>
     
     <form action="{{ route('admin.plates.update',$plate) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -57,7 +58,7 @@
         <div>
             <label for="price" class="input-number-label">Prezzo</label>
             <span class="input-number input-number-currency">
-                <input type="number" id="price" name="price" step="0.50" value="{{old('price') ? old('price') : $plate->price}}" min="0" max="999.99" />
+                <input type="number" id="price" name="price" step="0.01" value="{{old('price') ? old('price') : $plate->price}}" min="0" max="999.99" />
                 <span class="sr-only">Aumenta valore Euro</span>
                 <span class="sr-only">Diminuisci valore Euro</span>
             </span>

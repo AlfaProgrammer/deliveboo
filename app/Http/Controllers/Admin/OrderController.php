@@ -16,18 +16,16 @@ class OrderController extends Controller
 
         $restaurant = $user->restaurant;
         $plates = $restaurant->plates;
-        $plates->load('orders');
+        //$plates->load('orders');
         $orders = Order::with('plates')->whereHas('plates', function($q) use ($plates) {
             $q->whereIn('order_plate.plate_id', $plates);
-        })->get();
+        })->orderBy('created_at', 'desc')
+            ->get();
         /* dd($plates); */
 
         /* $orders = $plates[0]->orders; */
     
-        
-        
-
-
+        //dd($orders);
         return view('admin.orders.index', compact('plates', 'orders'));
     }
 }

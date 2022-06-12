@@ -7,20 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendOrderCompleteMail extends Mailable
+class SendOrderRestaurantMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $order;
+    public $user;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($_order)
+    public function __construct($_user)
     {
-        $this->order = $_order;
+        $this->user = $_user;
     }
 
     /**
@@ -31,7 +31,7 @@ class SendOrderCompleteMail extends Mailable
     public function build()
     {
         return $this
-        ->markdown('email.order-complete')
-        ->subject('Conferma Ordine');
+        ->markdown('email.order-restaurant')
+        ->subject('Ordine Ricevuto');
     }
 }

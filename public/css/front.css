@@ -756,9 +756,6 @@ select {
 .flex-col {
   flex-direction: column;
 }
-.flex-col {
-  flex-direction: column;
-}
 .flex-wrap {
   flex-wrap: wrap;
 }
@@ -1174,15 +1171,10 @@ select {
     grid-column: span 3 / span 3;
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   .md\:ml-\[20px\] {
     margin-left: 20px;
   }
 
->>>>>>> ultimi-fix-layout
-=======
   .md\:flex {
     display: flex;
   }
@@ -1191,7 +1183,6 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
->>>>>>> origin/fix-front-04
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }

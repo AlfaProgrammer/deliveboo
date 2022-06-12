@@ -52,6 +52,7 @@ export default {
         sendToken(nonce) {
             axios.post('/api/payments',{
                 total: this.cartOnOrder.cartTotalPrice,
+                restaurant: this.cartOnOrder.cartRestauratReference,
                 order: this.order,
             }, {
                 params: {

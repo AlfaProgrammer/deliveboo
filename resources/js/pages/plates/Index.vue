@@ -19,7 +19,7 @@
                         class="font-bold py-1 px-3 mb-3 border-2 border-viola rounded">
                             Categorie
                         </button>
-                        <div :class="['menu-item', active ? 'block' : 'hidden', 'bg-bgcheck/50', 'rounded-2xl']">
+                        <div :class="['menu-item', active ? 'block' : 'hidden', 'bg-color-full', 'rounded-2xl']">
                             <ul class="ks-cboxtags text-stone-500">
                                 <li v-for="category in categories" :key="category.id">
                                     <input type="checkbox" @change="check($event)" v-model="checkedCategories" :value="category.id" :id="category.name">   
@@ -141,6 +141,10 @@ export default {
     }
 
     //** Checkboxstyle **/
+
+    .bg-color-full {
+        background-color: #E7FFBD;
+    }
 
     .drop-down-menu button {
         transition: all .3s ease-in-out;

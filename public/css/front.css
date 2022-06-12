@@ -875,9 +875,6 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(68 0 99 / var(--tw-bg-opacity));
 }
-.bg-bgcheck\/50 {
-  background-color: rgb(209 255 119 / 0.5);
-}
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;

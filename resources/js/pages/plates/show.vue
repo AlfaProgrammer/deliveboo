@@ -6,12 +6,12 @@
             <CssLoaders/>
         </div>
 
-        <div class="container" v-if="loading">
+        <div class="container main-wrapper" v-if="loading">
 
-            <div class="border-2 border-red-600 flex flex-row justify-between">
+            <div class="cards-wrapper flex flex-col justify-between lg:flex-row ">
             
                 <!-- <h1 class="font-bold text-xl mb-5">Piatti</h1> -->
-                <div class="border-2 border-sky-600">
+                <div class="">
 
                     <nav class="mb-6 font-bold">
                         <router-link :to="{name: 'restaurant.index'}" class="text-stone-700 border border-deliveroo hover:text-white hover:bg-deliveroo px-2 py-1 rounded">
@@ -40,14 +40,14 @@
 
                     <!-- Qui vengono stampati i piatti  -->
                     <div>
-                        <h1 class="font-bold text-xl mb-5">Piatti</h1>
+                        <h1 class="font-bold text-xl ml-[20px] mb-5">Piatti</h1>
 
                         <div v-if="plates.length == 0 ">
                             <p>Non ci sono piatti disponibili per questo ristorante</p>
                             <p>Torna alla pagina <router-link :to="{name: 'restaurant.index'}" class="text-deliveroo font-bold">Home</router-link> per sceglierne un'altro . . .</p>
                         </div>
 
-                        <div v-else class="grid gap-10 plate-container">
+                        <div v-else class="grid gap-10 plate-container mb-[15px]">
                             <div class="flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent" 
                                  v-for="plate in plates" :key="plate.id">
                                 <div class="grow">
@@ -72,7 +72,7 @@
                 
                 </div>
 
-                <div class="border-2 border-sky-600">
+                <div class="">
 
                     <!-- {{cart}} -->
                     <!-- Carrello  -->
@@ -221,9 +221,20 @@ export default {
         background-size: cover;
         background-position: center;
         background-repeat: no repeat;
-        min-height: calc(100vh - 86px);
         padding-bottom: 20px;
-        margin-bottom: 12px;
+        min-height: calc((100vh - 62px) - 341px);
+        display: flex;
+    }
+
+    .main-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .cards-wrapper {
+        justify-content: space-between;
+        width: 100%;
+        padding-top: 50px;
     }
 
     img {

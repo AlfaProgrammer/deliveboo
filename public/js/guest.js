@@ -2307,6 +2307,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/404.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/404.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/orders/Form.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/orders/Form.vue?vue&type=script&lang=js& ***!
@@ -2317,6 +2345,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
+//
 //
 //
 //
@@ -2476,6 +2506,12 @@ __webpack_require__.r(__webpack_exports__);
     onSubmit: function onSubmit() {
       this.submitForm();
       console.log(this.form);
+    },
+    formatCurrency: function formatCurrency(price) {
+      return price.toLocaleString('it-IT', {
+        style: 'currency',
+        currency: 'EUR'
+      });
     }
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('cartModule', ['cartOnOrder'])
@@ -2493,6 +2529,14 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CssLoaders_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/CssLoaders.vue */ "./resources/js/components/CssLoaders.vue");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
 //
 //
 //
@@ -2560,32 +2604,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     loader: _components_CssLoaders_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      cart: [],
       order: {}
     };
   },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])('cartModule', ['cartOnOrder'])),
   methods: {
-    takeCart: function takeCart() {
-      this.cart = JSON.parse(localStorage.getItem("cart"));
-    },
     takeOrder: function takeOrder() {
       this.order = JSON.parse(localStorage.getItem("order"));
     },
     deleteOrderFromStorage: function deleteOrderFromStorage() {
       localStorage.removeItem('order');
+      localStorage.removeItem('cart');
       this.$router.push({
         name: 'restaurant.index'
+      });
+    },
+    formatCurrency: function formatCurrency(price) {
+      return price.toLocaleString('it-IT', {
+        style: 'currency',
+        currency: 'EUR'
       });
     }
   },
   created: function created() {
-    this.takeCart();
     this.takeOrder();
   }
 });
@@ -2638,7 +2686,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     return {
       token: '',
       inst: null,
-      loading: false
+      loading: false,
+      isDisable: false,
+      cart: [],
+      order: {}
     };
   },
   components: {
@@ -2658,7 +2709,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     sendToken: function sendToken(nonce) {
       axios.post('/api/payments', {
-        total: this.cartOnOrder.cartTotalPrice
+        total: this.cartOnOrder.cartTotalPrice,
+        restaurant: this.cartOnOrder.cartRestauratReference,
+        order: this.order
       }, {
         params: {
           token: nonce
@@ -2704,16 +2757,36 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this3.sendToken(payload.nonce);
 
-        _this3.$router.push({
-          name: 'orders.show'
-        });
+        _this3.loader();
+
+        _this3.returnToOrderDetails();
 
         console.log(payload.nonce);
       });
+    },
+    takeOrder: function takeOrder() {
+      this.order = JSON.parse(localStorage.getItem("order"));
+    },
+    loader: function loader() {
+      var _this4 = this;
+
+      setTimeout(function () {
+        _this4.loading = false;
+      }, '1000');
+    },
+    returnToOrderDetails: function returnToOrderDetails() {
+      var _this5 = this;
+
+      setTimeout(function () {
+        _this5.$router.push({
+          name: 'orders.show'
+        });
+      }, '5000');
     }
   },
   created: function created() {
     this.fetchToken();
+    this.takeOrder();
   }
 });
 
@@ -2945,6 +3018,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -3002,10 +3080,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.plates = plates; // console.log(this.restaurant);
 
         _this.loading = true; // console.log(res.data);
+      })["catch"](function (err) {
+        // console.log(err)                    
+        _this.$router.push('/404');
       });
-      /* .catch(err => {
-          this.router.push('/404');
-      }) */
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('cartModule', [// 'fillCartFromStorage',
   'createCartStorage', 'updateCart'])), {}, {
@@ -27520,7 +27598,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#modal[data-v-047541c6] {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  background-color: rgba(128, 128, 128, 0.7);\n}", ""]);
+exports.push([module.i, "#modal[data-v-047541c6] {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  background-color: rgba(128, 128, 128, 0.7);\n}\n.totalPrice[data-v-047541c6] {\n  background-color: #F5F5F5;\n  margin: 15px 0;\n  max-width: -moz-available;\n}\n.quantity-text[data-v-047541c6] {\n  color: rgb(14, 165, 233);\n}", ""]);
 
 // exports
 
@@ -27565,6 +27643,25 @@ exports.push([module.i, "img[data-v-272b0098] {\n  aspect-ratio: 16/9;\n}", ""])
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".wrapper-404[data-v-82158542] {\n  height: calc(100vh - 341px - 62px);\n  width: 100%;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/orders/Show.vue?vue&type=style&index=0&id=0b4ab9ae&lang=scss&scoped=true&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/orders/Show.vue?vue&type=style&index=0&id=0b4ab9ae&lang=scss&scoped=true& ***!
@@ -27577,7 +27674,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bkg-order-show[data-v-0b4ab9ae] {\n  height: calc(100vh - 62px - 341px);\n  background-image: url(\"/images/wave4.svg\");\n  background-position: center;\n  background-size: 1660px;\n  background-repeat: no-repeat;\n}\n.card[data-v-0b4ab9ae] {\n  flex-basis: 720px;\n}", ""]);
+exports.push([module.i, ".bkg-order-show[data-v-0b4ab9ae] {\n  background-image: url(\"/images/wave4.svg\");\n  background-position: center;\n  background-size: 280%;\n  background-repeat: no-repeat;\n}\n.card[data-v-0b4ab9ae] {\n  flex-basis: 620px;\n}", ""]);
 
 // exports
 
@@ -27634,7 +27731,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".img-show[data-v-2e5b8f56] {\n  background-image: url(\"/img/wave5.svg\");\n  background-size: cover;\n  background-position: center;\n  background-repeat: no repeat;\n  min-height: calc(100vh - 86px);\n  padding-bottom: 20px;\n  margin-bottom: 12px;\n}\nimg[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56] {\n  transition: transform 350ms;\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: transform 150ms;\n}", ""]);
+exports.push([module.i, ".img-show[data-v-2e5b8f56] {\n  background-image: url(\"/img/wave5.svg\");\n  background-size: cover;\n  background-position: center;\n  background-repeat: no repeat;\n  padding-bottom: 20px;\n  min-height: calc(100vh - 62px - 341px);\n  display: flex;\n}\n.main-wrapper[data-v-2e5b8f56] {\n  display: flex;\n  justify-content: center;\n}\n.cards-wrapper[data-v-2e5b8f56] {\n  justify-content: space-between;\n  width: 100%;\n  padding-top: 50px;\n}\nimg[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56] {\n  transition: transform 350ms;\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: transform 150ms;\n}", ""]);
 
 // exports
 
@@ -28228,6 +28325,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./RestaurantCard.vue?vue&type=style&index=0&id=272b0098&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RestaurantCard.vue?vue&type=style&index=0&id=272b0098&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -34223,9 +34350,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "cart_container ml-[20px] max-w-xl mx-auto my-4" },
+    { staticClass: "cart_container md:ml-[20px] max-w-xl mx-auto my-4" },
     [
-      _c("h1", { staticClass: "font-bold text-xl mb-5" }, [_vm._v("Carrello")]),
+      _c("h1", { staticClass: "font-bold text-xl ml-[20px] mb-5" }, [
+        _vm._v("Carrello"),
+      ]),
       _vm._v(" "),
       _vm.restaurant_cart.length < 1
         ? _c("div", [_vm._m(0)])
@@ -34329,7 +34458,7 @@ var render = function () {
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "font-bold text-white" },
+                                    { staticClass: "font-bold quantity-text" },
                                     [_vm._v(_vm._s(plate.quantity))]
                                   ),
                                   _vm._v(" "),
@@ -34799,7 +34928,7 @@ var render = function () {
             ),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "column-4" }, [
+          _c("div", { staticClass: "column-4 md:col-span-3 lg:col-span-1" }, [
             _c("h4", [_vm._v("Porta Deliveboo con te")]),
             _vm._v(" "),
             _c(
@@ -34984,6 +35113,76 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/404.vue?vue&type=template&id=82158542&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/404.vue?vue&type=template&id=82158542&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "wrapper-404 flex items-center justify-center bg-stone-300",
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "not-found-card flex-col justify-center p-[20px] w-[50%] bg-deliveroo rounded-lg text-sm md:text-base",
+        },
+        [
+          _c(
+            "p",
+            { staticClass: "text-7xl text-white text-center mb-[10px]" },
+            [_vm._v("404")]
+          ),
+          _vm._v(" "),
+          _c("p", { staticClass: "text-white text-center font-bold" }, [
+            _c(
+              "i",
+              [
+                _vm._v(
+                  "\n                Spiacente, la pagina richesta non è stata trovata. "
+                ),
+                _c("br"),
+                _vm._v("\n                Torna alla "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "text-purple-900",
+                    attrs: { to: { name: "restaurant.index" } },
+                  },
+                  [_vm._v(" home-page ")]
+                ),
+                _vm._v(
+                  "\n                per continuare la navigazione\n            "
+                ),
+              ],
+              1
+            ),
+          ]),
+        ]
+      ),
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/orders/Form.vue?vue&type=template&id=3bb8aff5&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/orders/Form.vue?vue&type=template&id=3bb8aff5&scoped=true& ***!
@@ -34999,856 +35198,876 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "order-summary container" }, [
-        _c("h1", { staticClass: "text-xl font-bold" }, [
-          _vm._v(" Stai Ordinando da "),
-          _c("span", { staticClass: "text-deliveroo" }, [
-            _vm._v(_vm._s(_vm.cartOnOrder.cartRestauratReference)),
+  return _c("div", [
+    _c(
+      "section",
+      { staticClass: "my-6" },
+      [
+        _c("div", { staticClass: "order-summary px-4 py-5 container" }, [
+          _c("h1", { staticClass: "text-xl font-bold" }, [
+            _vm._v(" Stai Ordinando da "),
+            _c("span", { staticClass: "text-deliveroo" }, [
+              _vm._v(_vm._s(_vm.cartOnOrder.cartRestauratReference)),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _vm._v("Il totale del tuo ordine sarà di: "),
+            _c("span", { staticClass: "font-bold text-deliveroo" }, [
+              _vm._v(
+                " " + _vm._s(_vm.formatCurrency(_vm.cartOnOrder.cartTotalPrice))
+              ),
+            ]),
           ]),
         ]),
         _vm._v(" "),
-        _c("p", [
-          _vm._v("Il totale del tuo ordine sarà di: "),
-          _c("span", { staticClass: "font-bold text-deliveroo" }, [
-            _vm._v(" " + _vm._s(_vm.cartOnOrder.cartTotalPrice) + " euro"),
-          ]),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("ValidationObserver", {
-        scopedSlots: _vm._u([
-          {
-            key: "default",
-            fn: function (ref) {
-              var handleSubmit = ref.handleSubmit
-              return [
-                _c(
-                  "form",
-                  {
-                    attrs: { methods: "post" },
-                    on: {
-                      submit: function ($event) {
-                        $event.preventDefault()
-                        return handleSubmit(_vm.onSubmit)
+        _c("ValidationObserver", {
+          scopedSlots: _vm._u([
+            {
+              key: "default",
+              fn: function (ref) {
+                var handleSubmit = ref.handleSubmit
+                return [
+                  _c(
+                    "form",
+                    {
+                      attrs: { methods: "post" },
+                      on: {
+                        submit: function ($event) {
+                          $event.preventDefault()
+                          return handleSubmit(_vm.onSubmit)
+                        },
                       },
                     },
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "container shadow overflow-hidden sm:rounded-md",
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "px-4 py-5 bg-white sm:p-6" },
-                          [
-                            _c("div", { staticClass: "text-xs italic mb-5" }, [
-                              _c("p", [
-                                _vm._v(
-                                  "I campi contrassegnati con * sono richiesti"
-                                ),
-                              ]),
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "grid grid-cols-6 gap-6" },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "col-span-6 sm:col-span-3" },
-                                  [
-                                    _c("validationProvider", {
-                                      attrs: {
-                                        name: "nome",
-                                        rules: "required|alpha_spaces|max:30",
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "default",
-                                            fn: function (ref) {
-                                              var errors = ref.errors
-                                              return [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass:
-                                                      "after:content-['*'] block text-sm font-medium text-gray-700",
-                                                    attrs: { for: "name" },
-                                                  },
-                                                  [_vm._v("Nome")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "container shadow overflow-hidden sm:rounded-md",
+                        },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "px-4 py-5 bg-white sm:p-6" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: "text-xs italic mb-5" },
+                                [
+                                  _c("p", [
+                                    _vm._v(
+                                      "I campi contrassegnati con * sono richiesti"
+                                    ),
+                                  ]),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "grid grid-cols-6 gap-6" },
+                                [
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-span-6 sm:col-span-3" },
+                                    [
+                                      _c("validationProvider", {
+                                        attrs: {
+                                          name: "nome",
+                                          rules: "required|alpha_spaces|max:30",
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "default",
+                                              fn: function (ref) {
+                                                var errors = ref.errors
+                                                return [
+                                                  _c(
+                                                    "label",
                                                     {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value: _vm.form.name,
-                                                      expression: "form.name",
+                                                      staticClass:
+                                                        "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      attrs: { for: "name" },
                                                     },
-                                                  ],
-                                                  staticClass:
-                                                    "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
-                                                  class: errors.length
-                                                    ? "border-2 border-red-500 focus:border-red-500"
-                                                    : "",
-                                                  attrs: {
-                                                    type: "text",
-                                                    name: "name",
-                                                    id: "name",
-                                                    autocomplete: "given-name ",
-                                                  },
-                                                  domProps: {
-                                                    value: _vm.form.name,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "name",
-                                                        $event.target.value
-                                                      )
-                                                    },
-                                                  },
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
+                                                    [_vm._v("Nome")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.form.name,
+                                                        expression: "form.name",
+                                                      },
+                                                    ],
                                                     staticClass:
-                                                      "text-sm text-red-500 font-bold italic py-1 px-2",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                    " +
-                                                        _vm._s(errors[0]) +
-                                                        "\n                                "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            },
-                                          },
-                                        ],
-                                        null,
-                                        true
-                                      ),
-                                    }),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-span-6 sm:col-span-3" },
-                                  [
-                                    _c("validationProvider", {
-                                      attrs: {
-                                        name: "cognome",
-                                        rules: "required|alpha_spaces|max:50",
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "default",
-                                            fn: function (ref) {
-                                              var errors = ref.errors
-                                              return [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass:
-                                                      "after:content-['*'] block text-sm font-medium text-gray-700",
-                                                    attrs: { for: "surname" },
-                                                  },
-                                                  [_vm._v("Cognome")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value: _vm.form.surname,
-                                                      expression:
-                                                        "form.surname",
-                                                    },
-                                                  ],
-                                                  staticClass:
-                                                    "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
-                                                  class: errors.length
-                                                    ? "border-2 border-red-500 focus:border-red-500"
-                                                    : "",
-                                                  attrs: {
-                                                    type: "text",
-                                                    name: "surname",
-                                                    id: "surname",
-                                                    autocomplete: "surname",
-                                                  },
-                                                  domProps: {
-                                                    value: _vm.form.surname,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "surname",
-                                                        $event.target.value
-                                                      )
-                                                    },
-                                                  },
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "text-sm text-red-500 font-bold italic py-1 px-2",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                    " +
-                                                        _vm._s(errors[0]) +
-                                                        "\n                                "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            },
-                                          },
-                                        ],
-                                        null,
-                                        true
-                                      ),
-                                    }),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-span-6 sm:col-span-4" },
-                                  [
-                                    _c("validationProvider", {
-                                      attrs: {
-                                        name: "email",
-                                        rules: "required|email|max:50",
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "default",
-                                            fn: function (ref) {
-                                              var errors = ref.errors
-                                              return [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass:
-                                                      "after:content-['*'] block text-sm font-medium text-gray-700",
-                                                    attrs: { for: "email" },
-                                                  },
-                                                  [_vm._v("Email")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
-                                                    {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value: _vm.form.email,
-                                                      expression: "form.email",
-                                                    },
-                                                  ],
-                                                  staticClass:
-                                                    "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
-                                                  class: errors.length
-                                                    ? "border-2 border-red-500 focus:border-red-500"
-                                                    : "",
-                                                  attrs: {
-                                                    type: "email",
-                                                    name: "email",
-                                                    id: "email",
-                                                    autocomplete: "email",
-                                                  },
-                                                  domProps: {
-                                                    value: _vm.form.email,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "email",
-                                                        $event.target.value
-                                                      )
-                                                    },
-                                                  },
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "text-sm text-red-500 font-bold italic py-1 px-2",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                    " +
-                                                        _vm._s(errors[0]) +
-                                                        "\n                                "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            },
-                                          },
-                                        ],
-                                        null,
-                                        true
-                                      ),
-                                    }),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-span-6 sm:col-span-2" },
-                                  [
-                                    _c("validationProvider", {
-                                      attrs: {
-                                        name: "telefono",
-                                        rules: "required|numeric|min:10|max:20",
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "default",
-                                            fn: function (ref) {
-                                              var errors = ref.errors
-                                              return [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass:
-                                                      "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
+                                                    class: errors.length
+                                                      ? "border-2 border-red-500 focus:border-red-500"
+                                                      : "",
                                                     attrs: {
-                                                      for: "phone_number",
+                                                      type: "text",
+                                                      name: "name",
+                                                      id: "name",
+                                                      autocomplete:
+                                                        "given-name ",
                                                     },
-                                                  },
-                                                  [_vm._v("Telefono")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
+                                                    domProps: {
+                                                      value: _vm.form.name,
+                                                    },
+                                                    on: {
+                                                      input: function ($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "name",
+                                                          $event.target.value
+                                                        )
+                                                      },
+                                                    },
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
                                                     {
-                                                      name: "model",
-                                                      rawName: "v-model",
+                                                      staticClass:
+                                                        "text-sm text-red-500 font-bold italic py-1 px-2",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                        " +
+                                                          _vm._s(errors[0]) +
+                                                          "\n                                    "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              },
+                                            },
+                                          ],
+                                          null,
+                                          true
+                                        ),
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-span-6 sm:col-span-3" },
+                                    [
+                                      _c("validationProvider", {
+                                        attrs: {
+                                          name: "cognome",
+                                          rules: "required|alpha_spaces|max:50",
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "default",
+                                              fn: function (ref) {
+                                                var errors = ref.errors
+                                                return [
+                                                  _c(
+                                                    "label",
+                                                    {
+                                                      staticClass:
+                                                        "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      attrs: { for: "surname" },
+                                                    },
+                                                    [_vm._v("Cognome")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.form.surname,
+                                                        expression:
+                                                          "form.surname",
+                                                      },
+                                                    ],
+                                                    staticClass:
+                                                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
+                                                    class: errors.length
+                                                      ? "border-2 border-red-500 focus:border-red-500"
+                                                      : "",
+                                                    attrs: {
+                                                      type: "text",
+                                                      name: "surname",
+                                                      id: "surname",
+                                                      autocomplete: "surname",
+                                                    },
+                                                    domProps: {
+                                                      value: _vm.form.surname,
+                                                    },
+                                                    on: {
+                                                      input: function ($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "surname",
+                                                          $event.target.value
+                                                        )
+                                                      },
+                                                    },
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-sm text-red-500 font-bold italic py-1 px-2",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                        " +
+                                                          _vm._s(errors[0]) +
+                                                          "\n                                    "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              },
+                                            },
+                                          ],
+                                          null,
+                                          true
+                                        ),
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-span-6 sm:col-span-4" },
+                                    [
+                                      _c("validationProvider", {
+                                        attrs: {
+                                          name: "email",
+                                          rules: "required|email|max:50",
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "default",
+                                              fn: function (ref) {
+                                                var errors = ref.errors
+                                                return [
+                                                  _c(
+                                                    "label",
+                                                    {
+                                                      staticClass:
+                                                        "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      attrs: { for: "email" },
+                                                    },
+                                                    [_vm._v("Email")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.form.email,
+                                                        expression:
+                                                          "form.email",
+                                                      },
+                                                    ],
+                                                    staticClass:
+                                                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
+                                                    class: errors.length
+                                                      ? "border-2 border-red-500 focus:border-red-500"
+                                                      : "",
+                                                    attrs: {
+                                                      type: "email",
+                                                      name: "email",
+                                                      id: "email",
+                                                      autocomplete: "email",
+                                                    },
+                                                    domProps: {
+                                                      value: _vm.form.email,
+                                                    },
+                                                    on: {
+                                                      input: function ($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "email",
+                                                          $event.target.value
+                                                        )
+                                                      },
+                                                    },
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-sm text-red-500 font-bold italic py-1 px-2",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                        " +
+                                                          _vm._s(errors[0]) +
+                                                          "\n                                    "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              },
+                                            },
+                                          ],
+                                          null,
+                                          true
+                                        ),
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-span-6 sm:col-span-2" },
+                                    [
+                                      _c("validationProvider", {
+                                        attrs: {
+                                          name: "telefono",
+                                          rules:
+                                            "required|numeric|min:10|max:20",
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "default",
+                                              fn: function (ref) {
+                                                var errors = ref.errors
+                                                return [
+                                                  _c(
+                                                    "label",
+                                                    {
+                                                      staticClass:
+                                                        "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      attrs: {
+                                                        for: "phone_number",
+                                                      },
+                                                    },
+                                                    [_vm._v("Telefono")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.form.phone_number,
+                                                        expression:
+                                                          "form.phone_number",
+                                                      },
+                                                    ],
+                                                    staticClass:
+                                                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md ",
+                                                    class: errors.length
+                                                      ? "border-2 border-red-500 focus:border-red-500"
+                                                      : "",
+                                                    attrs: {
+                                                      type: "text",
+                                                      name: "phone_number",
+                                                      autocomplete:
+                                                        "phone_number",
+                                                    },
+                                                    domProps: {
                                                       value:
                                                         _vm.form.phone_number,
-                                                      expression:
-                                                        "form.phone_number",
                                                     },
-                                                  ],
-                                                  staticClass:
-                                                    "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md ",
-                                                  class: errors.length
-                                                    ? "border-2 border-red-500 focus:border-red-500"
-                                                    : "",
-                                                  attrs: {
-                                                    type: "text",
-                                                    name: "phone_number",
-                                                    autocomplete:
-                                                      "phone_number",
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.form.phone_number,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "phone_number",
-                                                        $event.target.value
-                                                      )
+                                                    on: {
+                                                      input: function ($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "phone_number",
+                                                          $event.target.value
+                                                        )
+                                                      },
                                                     },
-                                                  },
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "text-sm text-red-500 font-bold italic py-1 px-2",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                    " +
-                                                        _vm._s(errors[0]) +
-                                                        "\n                                "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            },
-                                          },
-                                        ],
-                                        null,
-                                        true
-                                      ),
-                                    }),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "col-span-6" },
-                                  [
-                                    _c("validationProvider", {
-                                      attrs: {
-                                        name: "indirizzo",
-                                        rules: "required|max:80|alpha_spaces",
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "default",
-                                            fn: function (ref) {
-                                              var errors = ref.errors
-                                              return [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass:
-                                                      "after:content-['*'] block text-sm font-medium text-gray-700",
-                                                    attrs: { for: "address" },
-                                                  },
-                                                  [_vm._v("Indirizzo / Via")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
                                                     {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value: _vm.form.address,
-                                                      expression:
-                                                        "form.address",
+                                                      staticClass:
+                                                        "text-sm text-red-500 font-bold italic py-1 px-2",
                                                     },
-                                                  ],
-                                                  staticClass:
-                                                    "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
-                                                  class: errors.length
-                                                    ? "border-2 border-red-500 focus:border-red-500"
-                                                    : "",
-                                                  attrs: {
-                                                    type: "text",
-                                                    name: "address",
-                                                    id: "address",
-                                                    autocomplete: "address",
-                                                  },
-                                                  domProps: {
-                                                    value: _vm.form.address,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "address",
-                                                        $event.target.value
-                                                      )
-                                                    },
-                                                  },
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "text-sm text-red-500 font-bold italic py-1 px-2",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                    " +
-                                                        _vm._s(errors[0]) +
-                                                        "\n                                "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                        " +
+                                                          _vm._s(errors[0]) +
+                                                          "\n                                    "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              },
                                             },
-                                          },
-                                        ],
-                                        null,
-                                        true
-                                      ),
-                                    }),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-span-6 sm:col-span-3 lg:col-span-2",
-                                  },
-                                  [
-                                    _c("validationProvider", {
-                                      attrs: {
-                                        name: "civico",
-                                        rules: "required|max:10",
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "default",
-                                            fn: function (ref) {
-                                              var errors = ref.errors
-                                              return [
-                                                _c(
-                                                  "label",
-                                                  {
+                                          ],
+                                          null,
+                                          true
+                                        ),
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "col-span-6" },
+                                    [
+                                      _c("validationProvider", {
+                                        attrs: {
+                                          name: "indirizzo",
+                                          rules: "required|max:80|alpha_spaces",
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "default",
+                                              fn: function (ref) {
+                                                var errors = ref.errors
+                                                return [
+                                                  _c(
+                                                    "label",
+                                                    {
+                                                      staticClass:
+                                                        "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      attrs: { for: "address" },
+                                                    },
+                                                    [_vm._v("Indirizzo / Via")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.form.address,
+                                                        expression:
+                                                          "form.address",
+                                                      },
+                                                    ],
                                                     staticClass:
-                                                      "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
+                                                    class: errors.length
+                                                      ? "border-2 border-red-500 focus:border-red-500"
+                                                      : "",
                                                     attrs: {
-                                                      for: "house_number",
+                                                      type: "text",
+                                                      name: "address",
+                                                      id: "address",
+                                                      autocomplete: "address",
                                                     },
-                                                  },
-                                                  [_vm._v("N. civico")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
+                                                    domProps: {
+                                                      value: _vm.form.address,
+                                                    },
+                                                    on: {
+                                                      input: function ($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "address",
+                                                          $event.target.value
+                                                        )
+                                                      },
+                                                    },
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
                                                     {
-                                                      name: "model",
-                                                      rawName: "v-model",
+                                                      staticClass:
+                                                        "text-sm text-red-500 font-bold italic py-1 px-2",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                        " +
+                                                          _vm._s(errors[0]) +
+                                                          "\n                                    "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              },
+                                            },
+                                          ],
+                                          null,
+                                          true
+                                        ),
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-span-6 sm:col-span-3 lg:col-span-2",
+                                    },
+                                    [
+                                      _c("validationProvider", {
+                                        attrs: {
+                                          name: "civico",
+                                          rules: "required|max:10",
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "default",
+                                              fn: function (ref) {
+                                                var errors = ref.errors
+                                                return [
+                                                  _c(
+                                                    "label",
+                                                    {
+                                                      staticClass:
+                                                        "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      attrs: {
+                                                        for: "house_number",
+                                                      },
+                                                    },
+                                                    [_vm._v("N. civico")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value:
+                                                          _vm.form.house_number,
+                                                        expression:
+                                                          "form.house_number",
+                                                      },
+                                                    ],
+                                                    staticClass:
+                                                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
+                                                    class: errors.length
+                                                      ? "border-2 border-red-500 focus:border-red-500"
+                                                      : "",
+                                                    attrs: {
+                                                      type: "text",
+                                                      name: "house_number",
+                                                      id: "house_number",
+                                                      autocomplete:
+                                                        "house_number",
+                                                    },
+                                                    domProps: {
                                                       value:
                                                         _vm.form.house_number,
-                                                      expression:
-                                                        "form.house_number",
                                                     },
-                                                  ],
-                                                  staticClass:
-                                                    "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
-                                                  class: errors.length
-                                                    ? "border-2 border-red-500 focus:border-red-500"
-                                                    : "",
-                                                  attrs: {
-                                                    type: "text",
-                                                    name: "house_number",
-                                                    id: "house_number",
-                                                    autocomplete:
-                                                      "house_number",
-                                                  },
-                                                  domProps: {
-                                                    value:
-                                                      _vm.form.house_number,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "house_number",
-                                                        $event.target.value
-                                                      )
+                                                    on: {
+                                                      input: function ($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "house_number",
+                                                          $event.target.value
+                                                        )
+                                                      },
                                                     },
-                                                  },
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "text-sm text-red-500 font-bold italic py-1 px-2",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                    " +
-                                                        _vm._s(errors[0]) +
-                                                        "\n                                "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            },
-                                          },
-                                        ],
-                                        null,
-                                        true
-                                      ),
-                                    }),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-span-6 sm:col-span-6 lg:col-span-2",
-                                  },
-                                  [
-                                    _c("validationProvider", {
-                                      attrs: {
-                                        name: "città",
-                                        rules: "required|alpha_spaces|max:30",
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "default",
-                                            fn: function (ref) {
-                                              var errors = ref.errors
-                                              return [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass:
-                                                      "after:content-['*'] block text-sm font-medium text-gray-700",
-                                                    attrs: { for: "city" },
-                                                  },
-                                                  [_vm._v("Città")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
                                                     {
-                                                      name: "model",
-                                                      rawName: "v-model",
+                                                      staticClass:
+                                                        "text-sm text-red-500 font-bold italic py-1 px-2",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                        " +
+                                                          _vm._s(errors[0]) +
+                                                          "\n                                    "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              },
+                                            },
+                                          ],
+                                          null,
+                                          true
+                                        ),
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-span-6 sm:col-span-6 lg:col-span-2",
+                                    },
+                                    [
+                                      _c("validationProvider", {
+                                        attrs: {
+                                          name: "città",
+                                          rules: "required|alpha_spaces|max:30",
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "default",
+                                              fn: function (ref) {
+                                                var errors = ref.errors
+                                                return [
+                                                  _c(
+                                                    "label",
+                                                    {
+                                                      staticClass:
+                                                        "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      attrs: { for: "city" },
+                                                    },
+                                                    [_vm._v("Città")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.form.city,
+                                                        expression: "form.city",
+                                                      },
+                                                    ],
+                                                    staticClass:
+                                                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
+                                                    class: errors.length
+                                                      ? "border-2 border-red-500 focus:border-red-500"
+                                                      : "",
+                                                    attrs: {
+                                                      type: "text",
+                                                      name: "city",
+                                                      id: "city",
+                                                      autocomplete:
+                                                        "address-level2",
+                                                    },
+                                                    domProps: {
                                                       value: _vm.form.city,
-                                                      expression: "form.city",
                                                     },
-                                                  ],
-                                                  staticClass:
-                                                    "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
-                                                  class: errors.length
-                                                    ? "border-2 border-red-500 focus:border-red-500"
-                                                    : "",
-                                                  attrs: {
-                                                    type: "text",
-                                                    name: "city",
-                                                    id: "city",
-                                                    autocomplete:
-                                                      "address-level2",
-                                                  },
-                                                  domProps: {
-                                                    value: _vm.form.city,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "city",
-                                                        $event.target.value
-                                                      )
+                                                    on: {
+                                                      input: function ($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "city",
+                                                          $event.target.value
+                                                        )
+                                                      },
                                                     },
-                                                  },
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "text-sm text-red-500 font-bold italic py-1 px-2",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                    " +
-                                                        _vm._s(errors[0]) +
-                                                        "\n                                "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            },
-                                          },
-                                        ],
-                                        null,
-                                        true
-                                      ),
-                                    }),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "col-span-6 sm:col-span-3 lg:col-span-2",
-                                  },
-                                  [
-                                    _c("validationProvider", {
-                                      attrs: {
-                                        name: "cap",
-                                        rules: "required|numeric|max:5",
-                                      },
-                                      scopedSlots: _vm._u(
-                                        [
-                                          {
-                                            key: "default",
-                                            fn: function (ref) {
-                                              var errors = ref.errors
-                                              return [
-                                                _c(
-                                                  "label",
-                                                  {
-                                                    staticClass:
-                                                      "after:content-['*'] block text-sm font-medium text-gray-700",
-                                                    attrs: { for: "cap" },
-                                                  },
-                                                  [_vm._v("ZIP / CAP")]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("input", {
-                                                  directives: [
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
                                                     {
-                                                      name: "model",
-                                                      rawName: "v-model",
-                                                      value: _vm.form.cap,
-                                                      expression: "form.cap",
+                                                      staticClass:
+                                                        "text-sm text-red-500 font-bold italic py-1 px-2",
                                                     },
-                                                  ],
-                                                  staticClass:
-                                                    "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
-                                                  class: errors.length
-                                                    ? "border-2 border-red-500 focus:border-red-500"
-                                                    : "",
-                                                  attrs: {
-                                                    type: "text",
-                                                    name: "cap",
-                                                    id: "cap",
-                                                    autocomplete: "cap",
-                                                  },
-                                                  domProps: {
-                                                    value: _vm.form.cap,
-                                                  },
-                                                  on: {
-                                                    input: function ($event) {
-                                                      if (
-                                                        $event.target.composing
-                                                      ) {
-                                                        return
-                                                      }
-                                                      _vm.$set(
-                                                        _vm.form,
-                                                        "cap",
-                                                        $event.target.value
-                                                      )
-                                                    },
-                                                  },
-                                                }),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "text-sm text-red-500 font-bold italic py-1 px-2",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "\n                                    " +
-                                                        _vm._s(errors[0]) +
-                                                        "\n                                "
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                        " +
+                                                          _vm._s(errors[0]) +
+                                                          "\n                                    "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              },
                                             },
-                                          },
-                                        ],
-                                        null,
-                                        true
-                                      ),
-                                    }),
-                                  ],
-                                  1
-                                ),
-                              ]
-                            ),
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "px-4 py-3 bg-gray-50 text-right sm:px-6",
-                          },
-                          [
-                            _c(
-                              "button",
-                              {
-                                staticClass:
-                                  "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola",
-                                attrs: { type: "submit" },
-                              },
-                              [
-                                _vm._v(
-                                  "\n                        Invia\n                    "
-                                ),
-                              ]
-                            ),
-                          ]
-                        ),
-                      ]
-                    ),
-                  ]
-                ),
-              ]
+                                          ],
+                                          null,
+                                          true
+                                        ),
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "col-span-6 sm:col-span-3 lg:col-span-2",
+                                    },
+                                    [
+                                      _c("validationProvider", {
+                                        attrs: {
+                                          name: "cap",
+                                          rules: "required|numeric|max:5",
+                                        },
+                                        scopedSlots: _vm._u(
+                                          [
+                                            {
+                                              key: "default",
+                                              fn: function (ref) {
+                                                var errors = ref.errors
+                                                return [
+                                                  _c(
+                                                    "label",
+                                                    {
+                                                      staticClass:
+                                                        "after:content-['*'] block text-sm font-medium text-gray-700",
+                                                      attrs: { for: "cap" },
+                                                    },
+                                                    [_vm._v("ZIP / CAP")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c("input", {
+                                                    directives: [
+                                                      {
+                                                        name: "model",
+                                                        rawName: "v-model",
+                                                        value: _vm.form.cap,
+                                                        expression: "form.cap",
+                                                      },
+                                                    ],
+                                                    staticClass:
+                                                      "mt-1 focus:ring-viola focus:border-viola block w-full shadow-sm sm:text-sm border-deliveroo rounded-md",
+                                                    class: errors.length
+                                                      ? "border-2 border-red-500 focus:border-red-500"
+                                                      : "",
+                                                    attrs: {
+                                                      type: "text",
+                                                      name: "cap",
+                                                      id: "cap",
+                                                      autocomplete: "cap",
+                                                    },
+                                                    domProps: {
+                                                      value: _vm.form.cap,
+                                                    },
+                                                    on: {
+                                                      input: function ($event) {
+                                                        if (
+                                                          $event.target
+                                                            .composing
+                                                        ) {
+                                                          return
+                                                        }
+                                                        _vm.$set(
+                                                          _vm.form,
+                                                          "cap",
+                                                          $event.target.value
+                                                        )
+                                                      },
+                                                    },
+                                                  }),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "text-sm text-red-500 font-bold italic py-1 px-2",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                        " +
+                                                          _vm._s(errors[0]) +
+                                                          "\n                                    "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              },
+                                            },
+                                          ],
+                                          null,
+                                          true
+                                        ),
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                ]
+                              ),
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "px-4 py-3 bg-gray-50 text-right sm:px-6",
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-deliveroo hover:bg-viola focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-viola",
+                                  attrs: { type: "submit" },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            Invia\n                        "
+                                  ),
+                                ]
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]
+                  ),
+                ]
+              },
             },
-          },
-        ]),
-      }),
-    ],
-    1
-  )
+          ]),
+        }),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -35883,7 +36102,9 @@ var render = function () {
       : _c("section", { staticClass: "py-16 px-4 bkg-order-show" }, [
           _c(
             "div",
-            { staticClass: "container flex justify-center items-center" },
+            {
+              staticClass: "container flex justify-center items-center h-full",
+            },
             [
               _c(
                 "div",
@@ -35973,23 +36194,46 @@ var render = function () {
                       _c(
                         "ol",
                         { staticClass: "font-medium" },
-                        _vm._l(_vm.cart, function (plate) {
+                        _vm._l(_vm.cartOnOrder.cartItems, function (plate) {
                           return _c(
                             "li",
                             {
                               key: plate.id,
-                              staticClass: "flex items-center gap-3",
+                              staticClass:
+                                "flex items-center justify-between gap-3",
                             },
                             [
                               _c(
                                 "h4",
-                                { staticClass: "text-stone-700 font-medium" },
+                                {
+                                  staticClass:
+                                    "text-stone-700 font-medium basis-[40%]",
+                                },
                                 [_vm._v(_vm._s(plate.name))]
                               ),
                               _vm._v(" "),
-                              _c("span", { staticClass: "grow text-right" }, [
-                                _vm._v(_vm._s(plate.price) + "€"),
-                              ]),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "text-stone-700 ml-[15px] basis-[30%]",
+                                },
+                                [_vm._v("quantità: " + _vm._s(plate.quantity))]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { staticClass: "text-right basis-[40%]" },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatCurrency(
+                                        plate.price * plate.quantity
+                                      )
+                                    )
+                                  ),
+                                ]
+                              ),
                             ]
                           )
                         }),
@@ -36012,7 +36256,9 @@ var render = function () {
                       ),
                       _vm._v(" "),
                       _c("h4", { staticClass: "grow text-right font-medium" }, [
-                        _vm._v(_vm._s(_vm.order.total_price) + "€"),
+                        _vm._v(
+                          _vm._s(_vm.formatCurrency(_vm.order.total_price))
+                        ),
                       ]),
                     ]
                   ),
@@ -36313,15 +36559,15 @@ var render = function () {
       : _vm._e(),
     _vm._v(" "),
     _vm.loading
-      ? _c("div", { staticClass: "container" }, [
+      ? _c("div", { staticClass: "container main-wrapper" }, [
           _c(
             "div",
             {
               staticClass:
-                "border-2 border-red-600 flex flex-row justify-between",
+                "cards-wrapper flex flex-col justify-between lg:flex-row ",
             },
             [
-              _c("div", { staticClass: "border-2 border-sky-600" }, [
+              _c("div", {}, [
                 _c(
                   "nav",
                   { staticClass: "mb-6 font-bold" },
@@ -36399,73 +36645,104 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", [
-                  _c("h1", { staticClass: "font-bold text-xl mb-5" }, [
-                    _vm._v("Piatti"),
-                  ]),
-                  _vm._v(" "),
                   _c(
-                    "div",
-                    { staticClass: "grid gap-10 plate-container" },
-                    _vm._l(_vm.plates, function (plate) {
-                      return _c(
+                    "h1",
+                    { staticClass: "font-bold text-xl ml-[20px] mb-5" },
+                    [_vm._v("Piatti")]
+                  ),
+                  _vm._v(" "),
+                  _vm.plates.length == 0
+                    ? _c("div", [
+                        _c("p", [
+                          _vm._v(
+                            "Non ci sono piatti disponibili per questo ristorante"
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "p",
+                          [
+                            _vm._v("Torna alla pagina "),
+                            _c(
+                              "router-link",
+                              {
+                                staticClass: "text-deliveroo font-bold",
+                                attrs: { to: { name: "restaurant.index" } },
+                              },
+                              [_vm._v("Home")]
+                            ),
+                            _vm._v(" per sceglierne un'altro . . ."),
+                          ],
+                          1
+                        ),
+                      ])
+                    : _c(
                         "div",
                         {
-                          key: plate.id,
-                          staticClass:
-                            "flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent",
+                          staticClass: "grid gap-10 plate-container mb-[15px]",
                         },
-                        [
-                          _c("div", { staticClass: "grow" }, [
-                            _c("p", { staticClass: "font-bold mb-3" }, [
-                              _vm._v(_vm._s(plate.name)),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", [
-                              _c("p", { staticClass: "mb-[10px]" }, [
-                                _vm._v(_vm._s(_vm.formatCurrency(plate.price))),
+                        _vm._l(_vm.plates, function (plate) {
+                          return _c(
+                            "div",
+                            {
+                              key: plate.id,
+                              staticClass:
+                                "flex gap-3 bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent",
+                            },
+                            [
+                              _c("div", { staticClass: "grow" }, [
+                                _c("p", { staticClass: "font-bold mb-3" }, [
+                                  _vm._v(_vm._s(plate.name)),
+                                ]),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _c("p", { staticClass: "mb-[10px]" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.formatCurrency(plate.price))
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass:
+                                        "text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer",
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.addToCart(plate)
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                        Add to Cart\n                                    "
+                                      ),
+                                    ]
+                                  ),
+                                ]),
                               ]),
                               _vm._v(" "),
                               _c(
-                                "button",
-                                {
-                                  staticClass:
-                                    "text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer",
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.addToCart(plate)
-                                    },
-                                  },
-                                },
+                                "figure",
+                                { staticClass: "max-w-[80px] rounded-sm" },
                                 [
-                                  _vm._v(
-                                    "\n                                        Add to Cart\n                                    "
-                                  ),
+                                  _c("img", {
+                                    staticClass: "object-cover",
+                                    attrs: { src: plate.image },
+                                  }),
                                 ]
                               ),
-                            ]),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "figure",
-                            { staticClass: "max-w-[80px] rounded-sm" },
-                            [
-                              _c("img", {
-                                staticClass: "object-cover",
-                                attrs: { src: plate.image },
-                              }),
                             ]
-                          ),
-                        ]
-                      )
-                    }),
-                    0
-                  ),
+                          )
+                        }),
+                        0
+                      ),
                 ]),
               ]),
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "border-2 border-sky-600" },
+                {},
                 [
                   _c("AppCart", {
                     attrs: {
@@ -53205,7 +53482,7 @@ webpackContext.id = "./public/img sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/appstore.svg?0a6a96b9e3294e2e3b62f5bbd8f16f22";
+module.exports = "/images/appstore.svg?9beaa0db7ef2975ab326f0a2639bd0e1";
 
 /***/ }),
 
@@ -53238,7 +53515,7 @@ module.exports = "/images/image2vector.svg?8001b2e62f462f139fce3711709f96c2";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/playstore.svg?59c5fd948e8c762a5059cb2ad51acd16";
+module.exports = "/images/playstore.svg?0a18bd2b525981e78c0bf9e3fa37f803";
 
 /***/ }),
 
@@ -54101,6 +54378,93 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_7___default.a({
 
 /***/ }),
 
+/***/ "./resources/js/pages/404.vue":
+/*!************************************!*\
+  !*** ./resources/js/pages/404.vue ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _404_vue_vue_type_template_id_82158542_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./404.vue?vue&type=template&id=82158542&scoped=true& */ "./resources/js/pages/404.vue?vue&type=template&id=82158542&scoped=true&");
+/* harmony import */ var _404_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./404.vue?vue&type=script&lang=js& */ "./resources/js/pages/404.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _404_vue_vue_type_style_index_0_id_82158542_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true& */ "./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _404_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _404_vue_vue_type_template_id_82158542_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _404_vue_vue_type_template_id_82158542_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "82158542",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/404.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/404.vue?vue&type=script&lang=js&":
+/*!*************************************************************!*\
+  !*** ./resources/js/pages/404.vue?vue&type=script&lang=js& ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./404.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/404.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true& ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_style_index_0_id_82158542_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--8-2!../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../node_modules/vue-loader/lib??vue-loader-options!./404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/404.vue?vue&type=style&index=0&id=82158542&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_style_index_0_id_82158542_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_style_index_0_id_82158542_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_style_index_0_id_82158542_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_style_index_0_id_82158542_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/pages/404.vue?vue&type=template&id=82158542&scoped=true&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/pages/404.vue?vue&type=template&id=82158542&scoped=true& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_template_id_82158542_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./404.vue?vue&type=template&id=82158542&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/404.vue?vue&type=template&id=82158542&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_template_id_82158542_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_404_vue_vue_type_template_id_82158542_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/orders/Form.vue":
 /*!********************************************!*\
   !*** ./resources/js/pages/orders/Form.vue ***!
@@ -54535,11 +54899,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_payments_Payment_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/payments/Payment.vue */ "./resources/js/pages/payments/Payment.vue");
 /* harmony import */ var _pages_orders_Form_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/orders/Form.vue */ "./resources/js/pages/orders/Form.vue");
 /* harmony import */ var _pages_orders_Show_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/orders/Show.vue */ "./resources/js/pages/orders/Show.vue");
+/* harmony import */ var _pages_404_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pages/404.vue */ "./resources/js/pages/404.vue");
  // importare vue router
 
  // dire a vue di usare vue-router
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); // qui andranno i componenti
+
 
 
 
@@ -54567,6 +54933,9 @@ var routes = [{
   path: '/orders/show',
   name: 'orders.show',
   component: _pages_orders_Show_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+}, {
+  path: '*',
+  component: _pages_404_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
 }]; // istanziare vue router
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -54829,7 +55198,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

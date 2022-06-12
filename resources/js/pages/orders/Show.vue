@@ -39,7 +39,7 @@
                     <div class="border-b-2 border-b-deliveroo rounded-sm py-1.5 px-2.5">
                         <h2 class="text-viola font-bold text-lg">Articoli:</h2>
                         <ol class="font-medium">
-                            <li v-for="plate in cart" :key="plate.id"
+                            <li v-for="plate in cartOnOrder.cartItems" :key="plate.id"
                             class="flex items-center justify-between gap-3">
                                 <h4 class="text-stone-700 font-medium basis-[40%]">{{ plate.name }}</h4>                                
                                 <span class="ml-[15px] basis-[30%]">quantità: {{plate.quantity}}</span>
@@ -76,21 +76,18 @@ export default {
     data() {
         return {
             order: {},
-            cart: [],
         }
     },
     computed: {
         ...mapState('cartModule', ['cartOnOrder']),
     },
     methods: {
-        takeCart() {
-            this.cart = JSON.parse(localStorage.getItem("cart"));
-        },
         takeOrder() {
             this.order = JSON.parse(localStorage.getItem("order"));
         },
         deleteOrderFromStorage() {
             localStorage.removeItem('order');
+            localStorage.removeItem('cart');
             this.$router.push({ name: 'restaurant.index' });
         },
         formatCurrency( price ){

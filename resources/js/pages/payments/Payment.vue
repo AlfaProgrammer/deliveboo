@@ -96,13 +96,18 @@ export default {
                 }
 
                 this.sendToken(payload.nonce);
-                this.$router.push({ name: 'orders.show' });
+                this.ReturnToOrderDetails();
                 console.log(payload.nonce);
             }
         )},
         takeOrder() {
             this.order = JSON.parse(localStorage.getItem("order"));
         },
+        ReturnToOrderDetails() {
+            setTimeout( ()=> {
+                this.$router.push({ name: 'orders.show' });
+            }, '2000');
+        }
     },
     created() {
         this.fetchToken();

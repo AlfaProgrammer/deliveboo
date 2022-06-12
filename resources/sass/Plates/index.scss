@@ -113,4 +113,12 @@ a {
     min-height: calc(100vh - 130px);
     padding-bottom: 20px;
     margin-bottom: 12px;
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 1310px) {
+    .row .card-wrapper {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }

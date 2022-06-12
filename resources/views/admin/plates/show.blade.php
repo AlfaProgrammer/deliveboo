@@ -135,8 +135,10 @@
                                
                             </form>
                 
-                            <a type="button" href="{{ route('admin.plates.edit',$plate) }}" class="btn btn-warning float-right btn-sm my-3">Modifica</a>
-                
+                            <a type="button" href="{{ route('admin.plates.edit',$plate) }}" class="btn btn-warning float-right btn-sm my-3 mr-2">Modifica</a>
+
+                            <a href="{{ route('admin.plates.index') }}" class="btn btn-sm btn-primary">Torna ai piatti</a>
+
                         </div>
                     </div>
                 </div>

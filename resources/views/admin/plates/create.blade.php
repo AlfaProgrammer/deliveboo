@@ -73,7 +73,9 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary my-3">Aggiungi</button>
+            <button type="submit" class="btn btn-primary my-3 mr-3">Aggiungi</button>
+
+            <a href="{{ route('admin.plates.index') }}" class="btn btn-warning">Torna ai piatti</a>
 
         </form>
 

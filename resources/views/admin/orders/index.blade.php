@@ -43,11 +43,11 @@
                     </div>
                 @endforeach
 
-                    <div class="arrow">
+                    {{-- <div class="arrow">
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div>
+                    </div> --}}
 
             </div>
 

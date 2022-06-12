@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="my-6">
+        <section class="form-wrapper flex flex-col justify-center py-10 px-3">
 
             <div class="order-summary px-4 py-5 container">
                 <h1 class="text-xl font-bold"> Stai Ordinando da <span class="text-deliveroo">{{cartOnOrder.cartRestauratReference}}</span> </h1>
@@ -171,4 +171,8 @@ export default {
 
 <style lang="scss" scoped>
     
+    .form-wrapper {
+        min-height: calc((100vh - 62px) - 341px);
+    }
+
 </style>

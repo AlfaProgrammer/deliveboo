@@ -1,16 +1,11 @@
 <template>
 
-    <div class="back-img">
+    <div>
         <router-view></router-view>
         <Footer />
-    </div>
-    
-    
+    </div> 
 
 </template>
-
-// -----------------------------------------------------------------
-// JS
 
 <script>
 import Footer from '../components/FooterGuest.vue';
@@ -22,9 +17,6 @@ export default {
     }
 }
 </script>
-
-// -----------------------------------------------------------------
-// CSS
 
 <style lang="scss">
 

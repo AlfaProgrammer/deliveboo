@@ -10017,9 +10017,12 @@ h3 {
 }
 .contenitore-big {
   height: calc(100vh - 125px);
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
+.plates-index .row {
+  padding: 20px;
+}
 .plates-index .row .card {
   height: 140px;
   width: 560px;
@@ -10089,6 +10092,16 @@ h4, h2 {
 a p {
   font-size: 0.8rem;
   margin-top: 6px;
+}
+
+.bkg-wave {
+  background-image: url("/img/wave5.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no repeat;
+  min-height: calc(100vh - 130px);
+  padding-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .img-show {
@@ -10172,12 +10185,11 @@ a p {
 }
 
 .img-restaurant-index {
-  background-image: url("/img/wave0.svg");
+  background-image: url("/img/wave5.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;
-  height: calc(100vh - 55px);
-  margin-top: -1.5rem !important;
+  height: calc(100vh - 15px);
   margin-bottom: -1.5rem !important;
   justify-content: center;
 }
@@ -10325,7 +10337,7 @@ a p {
   }
 }
 .background-orders {
-  background-image: url("/img/wave31.svg");
+  background-image: url("/img/wave38.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;
@@ -10336,18 +10348,29 @@ a p {
   justify-content: center;
   padding: 100px;
   width: 100%;
+}
+
+h1 {
+  margin-bottom: 40px;
+}
+
+.main-wrap {
+  padding: 20px;
   overflow: auto;
+  height: 580px;
 }
 
 .card-order {
+  min-height: 350px;
   display: flex;
   flex-direction: column;
   padding: 20px;
   justify-content: center;
-  margin: 50px;
+  margin-bottom: 30px;
   background: #f5f5f5;
   border-radius: 10px;
   min-width: 350px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .card-order > div {
@@ -10368,6 +10391,62 @@ a p {
   margin-bottom: 20px;
 }
 
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: 63%;
+  transform: translate(-50%, -50%);
+}
+
+.arrow span {
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid #06A8FF;
+  border-right: 5px solid #06A8FF;
+  transform: rotate(45deg);
+  margin: -10px;
+  -webkit-animation: animate 2s infinite;
+          animation: animate 2s infinite;
+}
+
+.arrow span:nth-child(2) {
+  -webkit-animation-delay: -0.2s;
+          animation-delay: -0.2s;
+}
+
+.arrow span:nth-child(3) {
+  -webkit-animation-delay: -0.4s;
+          animation-delay: -0.4s;
+}
+
+@-webkit-keyframes animate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
+  }
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg) translate(-20px, -20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg) translate(20px, 20px);
+  }
+}
 img {
   max-width: 100%;
   display: block;
@@ -10467,5 +10546,5 @@ input:invalid {
 
 .nav-fix {
   height: 100vh;
-  padding-top: 120px;
+  padding-top: 80px;
 }

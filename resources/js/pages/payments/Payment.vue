@@ -1,23 +1,28 @@
-<template lang="">
-    <div>
+<template>
+    <div class="payment-wrapper justify-center flex items-center py-3 px-4">
 
-        <div class="container-loader flex justify-center items-center" v-if="!loading">
+        <div v-if="!loading">
             <CssLoaders/>
         </div>
 
         <div class="container max-w-sm" v-if="loading">
-            <div id="dropIn" class="" v-if="token">{{ dropIn() }}</div>
-            <button class="rounded bg-deliveroo py-1 px-2 text-white font-bold"
-            @click="confirmCta(inst)">
-                Invia
-            </button>    
-        </div> 
+            <div id="dropIn" class="drop-shadow-xl dropin" v-if="token">
+                {{ dropIn() }}
+            </div>
+
+            <div>
+                <button class="rounded bg-viola py-1 px-3 text-white font-bold"
+                @click="confirmCta(inst)">
+                    Invia
+                </button>    
+            </div>
+        </div>
 
     </div>
 </template>
 <script>
 import CssLoaders from '../../components/CssLoaders.vue';
-
+import {mapState} from 'vuex';
 export default {
     data() {
         return {
@@ -31,18 +36,9 @@ export default {
         CssLoaders,
     },
     computed: {
-        totalPirce() {
-            const total = this.cart.reduce((acc,item)=>{
-                return acc + item.price
-            }, 0);
-
-            return total;
-        }
+        ...mapState('cartModule', ['cartOnOrder']),
     },
     methods: {
-        takeCart() {
-            this.cart = JSON.parse(localStorage.getItem("cart"));
-        },
         fetchToken() {
             axios.get('/api/payments')
             .then(res => {
@@ -54,7 +50,7 @@ export default {
         },
         sendToken(nonce) {
             axios.post('/api/payments',{
-                total: this.totalPirce,
+                total: this.cartOnOrder.cartTotalPrice,
             }, {
                 params: {
                     token: nonce,
@@ -97,18 +93,29 @@ export default {
                 }
 
                 this.sendToken(payload.nonce);
-                //this.$router.push({ name: 'order.create' });
+                this.$router.push({ name: 'orders.show' });
                 console.log(payload.nonce);
             }
         )},
     },
     created() {
         this.fetchToken();
-        this.takeCart();
-
     }
 }
 </script>
-<style lang="scss">
 
+<style lang="scss" scoped>
+
+    .payment-wrapper {
+        height: calc((100vh - 62px) - 341px);
+        background-image: url('/images/wave00.svg');
+        background-position: center;
+        background-size: 1080px;
+        background-repeat: no-repeat;
+
+        .dropin {
+            filter: drop-shadow(2px 4px 8px #57534e);
+        }
+    }
+        
 </style>

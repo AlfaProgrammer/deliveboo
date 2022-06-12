@@ -37,23 +37,27 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'form.name' => 'required|string|max:30',
+            'form.surname' => 'required|string|max:50',
+            'form.email' => 'required|email|max:50',
+            'form.phone_number' => 'required|string|min:10|max:20',
+            'form.address' => 'required|string|max:80',
+            'form.house_number' => 'required|string|max:10',
+            'form.city' => 'required|string|max:30',
+            'form.cap' => 'required|numeric|digits_between:1,5',
+        ]);
+
         $data = $request->all();
         //return($data);
 
-        $cart = $data['cart'];
+        $cart = $data['cart']['cartItems'];
         //return $cart;
 
-        $plateId = [];
+        $total = $data['cart']['cartTotalPrice'];
+        //return $total;
 
-        foreach($cart as $plate) {
-
-            array_push($plateId, $plate['id']);
-
-        }
-        //return $restaurantId;
-        //return $plateId;
-
-        $total = $data['total'];
         //return $total;
         foreach($data as $value) {
 
@@ -65,8 +69,16 @@ class OrderController extends Controller
 
             $order->save();
 
-            $order->plates()->attach($plateId);
-            
+            foreach($cart as $plate) {
+
+                $plateId = $plate['id'];
+                $plateQuantity = $plate['quantity'];
+
+                $order ->plates()->attach($plateId,[
+                    'quantity' => $plateQuantity,
+                ]);
+            }
+
             return response()->json([
                 'order' => $order,
                 'success' => true,

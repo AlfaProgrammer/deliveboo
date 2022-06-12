@@ -1,5 +1,9 @@
-<template lang="">
+<template>
     <div>
+        <div class="order-summary container">
+            <h1 class="text-xl font-bold"> Stai Ordinando da <span class="text-deliveroo">{{cartOnOrder.cartRestauratReference}}</span> </h1>
+            <p>Il totale del tuo ordine sarà di: <span class="font-bold text-deliveroo"> {{formatCurrency(cartOnOrder.cartTotalPrice)}}</span> </p>
+        </div>
         <ValidationObserver v-slot="{ handleSubmit }">
 
             <form @submit.prevent="handleSubmit(onSubmit)" methods="post">
@@ -115,7 +119,7 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
 export default {
     data() {
         return {
@@ -129,22 +133,19 @@ export default {
                 city: '',
                 cap: '',
             },
-            cart: [],
         }
     },
     methods: {
-        takeCart() {
-            this.cart = JSON.parse(localStorage.getItem("cart"));
-        },
         submitForm() {
             axios.post('/api/orders', {
                 form: this.form,
-                total: 25.00,
-                cart: this.cart,
+                cart: this.cartOnOrder,
                 //localStorage.getItem('totalPrice'),
             })
             .then(res => {
                 console.log(res.data);
+                const {order} = res.data;
+                localStorage.order = JSON.stringify(order);
                 this.$router.push({name: 'payments.index'});
             })
             .catch(error => {
@@ -155,10 +156,13 @@ export default {
             this.submitForm();
             console.log(this.form);
         },
+        formatCurrency( price ){
+            return (price.toLocaleString('it-IT', { style: 'currency', currency: 'EUR'}))
+        },
     },
-    created() {
-        this.takeCart();
-    }
+    computed: mapState('cartModule',[
+        'cartOnOrder',
+    ])
     
 }
 </script>

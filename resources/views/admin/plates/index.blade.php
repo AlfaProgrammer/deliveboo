@@ -2,24 +2,24 @@
 
 @section('content')
 
-<div class="contenitore-big row m-0 nav-fix">
+<div class="bkg-wave contenitore-big row m-0 nav-fix">
 
     {{-- --------------------------------------------- --}}
 
-    <div class="col-6 d-flex flex-column">
+    <div class="col-12 col-lg-6 d-flex flex-column">
 
-        <div class="mb-5 mt-2 ml-1">
-            <a href="{{ route('admin.home') }}" class="btn btn-warning">Torna alla dashboard</a>
+        <div class="ml-3 mt-2">
+            <a href="{{ route('admin.home') }}" class="btn btn-warning mr-2">Torna alla dashboard</a>
+            <a href="{{ route('admin.plates.create') }}" class="btn btn-primary text-nowrap">Crea nuovo piatto</a>
         </div>
         @if ($plates)
 
-        <div class="container row m-0 mt-5">
-            <div class="col-9">
-                <img class="rounded rounded-lg img-shad-large" src="{{ $user->restaurant->image }}" alt="">
+        <div class="container row m-0 mt-5 align-self-center">
+            <div class="col-12 justify-content-center justify-content-sm-star">
+                <h1 class="mb-4">{{$user->restaurant->name}}</h1>
             </div>
-            <div class="col-3">
-                <h2 class="mb-4">{{$user->restaurant->name}}</h2>
-                <a href="{{ route('admin.plates.create') }}" class="btn btn-primary text-nowrap">Crea nuovo piatto</a>
+            <div class="col-12">
+                <img class="rounded rounded-lg img-shad-large" src="{{ $user->restaurant->image }}" alt="">
             </div>
         </div>
         
@@ -27,13 +27,13 @@
 
     {{-- --------------------------------------------- --}}
 
-    <div class="container-fluid plates-index col-6 over-flow-cont">
+    <div class="container-fluid plates-index col-12 col-lg-6 over-flow-cont">
 
         <div class="row">
             
             @foreach ($plates as $plate)
                 
-            <div class="card-wrapper col-6"> 
+            <div class="card-wrapper col-12 col-xl-6"> 
 
                 <div class="row card-body justify-content-center">
 

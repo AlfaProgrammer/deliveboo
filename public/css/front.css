@@ -651,10 +651,6 @@ select {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-.my-6 {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
 .ml-\[20px\] {
   margin-left: 20px;
 }
@@ -666,6 +662,9 @@ select {
 }
 .mb-\[10px\] {
   margin-bottom: 10px;
+}
+.mt-6 {
+  margin-top: 1.5rem;
 }
 .mb-2 {
   margin-bottom: 0.5rem;
@@ -920,6 +919,10 @@ select {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -962,6 +965,10 @@ select {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -977,10 +984,6 @@ select {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
-}
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
 }
 .text-4xl {
   font-size: 2.25rem;
@@ -1007,6 +1010,10 @@ select {
   --tw-text-opacity: 1;
   color: rgb(248 250 252 / var(--tw-text-opacity));
 }
+.text-viola {
+  --tw-text-opacity: 1;
+  color: rgb(68 0 99 / var(--tw-text-opacity));
+}
 .text-purple-900 {
   --tw-text-opacity: 1;
   color: rgb(88 28 135 / var(--tw-text-opacity));
@@ -1018,10 +1025,6 @@ select {
 .text-red-500 {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
-}
-.text-viola {
-  --tw-text-opacity: 1;
-  color: rgb(68 0 99 / var(--tw-text-opacity));
 }
 .text-stone-700 {
   --tw-text-opacity: 1;
@@ -1177,6 +1180,14 @@ select {
 
   .md\:col-span-3 {
     grid-column: span 3 / span 3;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:grid-cols-3 {

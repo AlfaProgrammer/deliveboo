@@ -1,6 +1,6 @@
 <template>
-    <div class="flex items-center justify-center w-screen h-screen bg-stone-300">
-        <div class="not-found-card flex-col justify-center p-[20px] w-[50%] bg-deliveroo rounded-lg">
+    <div class="wrapper-404 flex items-center justify-center bg-stone-300">
+        <div class="not-found-card flex-col justify-center p-[20px] w-[50%] bg-deliveroo rounded-lg text-sm md:text-base">
             <p class="text-7xl text-white text-center mb-[10px]">404</p>
             <p class="text-white text-center font-bold">
                 <i>
@@ -19,6 +19,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+    .wrapper-404 {
+        height: calc((100vh - 341px) - 62px);
+        width: 100%;
+    }
 
 </style>

@@ -18,27 +18,27 @@
                 <ul v-for="(plate, index) in restaurant_cart" :key="index">
                     <li class="grid grid-cols-3 p-[20px] shadow-lg gap-3">
 
-                        <figure class="col-span-2 sm:col-span-1 rounded-sm overflow-hidden">
+                        <figure class="col-span-1 rounded-sm overflow-hidden">
                             <img class="object-cover aspect-square" :src="plate.image">
                         </figure>
 
-                        <div id="plate-state col-span-1 sm:col-span-1" class="text-center">
+                        <div id="plate-state" class="text-center col-span-2 sm:col-span-1 lg:col-span-2 xl:col-span-1 flex flex-col justify-center sm:justify-start items-center gap-y-4">
                             <p class="mb-3">
                                 <span class="font-semibold">Quantità:</span> {{plate.quantity}}
                             </p>
-                            <button class="rounded-full bg-viola text-white font-semibold py-1 px-2 text-sm"
+                            <button class="rounded-full bg-viola text-white font-semibold py-1 px-3 text-sm"
                             @click="modalShowToggle(plate)">
                                 Rimuovi
                             </button>
                         </div>
 
-                        <div class="item-info col-span-3 sm:col-span-1 flex items-center justify-evenly sm:block">
+                        <div class="item-info col-span-3 sm:col-span-1 lg:col-span-3 xl:col-span-1 flex items-center justify-evenly sm:flex-col sm:justify-center sm:items-start lg:flex-row lg:justify-start xl:flex-col gap-y-3 gap-x-1">
                             <h3><span class="font-semibold">Articolo:</span> {{ plate.name }}</h3>
                             <p>
                                 <span class="font-semibold">Prezzo:</span> {{formatCurrency(plate.price)}}
                             </p>
 
-                            <div class="quantity-wrapper flex gap-2 items-center justify-center"> 
+                            <div class="quantity-wrapper flex gap-2 justify-center self-center"> 
                                 <button  @click="decreaseQuantity(plate)" class="font-bold">-</button>
                                 <div class="font-bold quantity-text">{{plate.quantity}}</div>
                                 <button  @click="increaseQuantity(plate)" class="font-bold">+</button>

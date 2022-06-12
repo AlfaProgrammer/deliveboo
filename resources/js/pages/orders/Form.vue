@@ -4,7 +4,12 @@
 
             <div class="order-summary px-4 py-5 container">
                 <h1 class="text-xl font-bold"> Stai Ordinando da <span class="text-deliveroo">{{cartOnOrder.cartRestauratReference}}</span> </h1>
-                <p>Il totale del tuo ordine sarà di: <span class="font-bold text-deliveroo"> {{formatCurrency(cartOnOrder.cartTotalPrice)}}</span> </p>
+                <p class="mb-3">Il totale del tuo ordine sarà di: <span class="font-bold text-deliveroo"> {{formatCurrency(cartOnOrder.cartTotalPrice)}}</span> </p>
+
+                <router-link tag="button" class="font-bold py-1 px-3 mb-3 border-2 border-viola rounded text-deliveroo"
+                :to="{name: 'restaurant.show', params: {slug: cartOnOrder.cartRestauratReference}}">
+                    Torna al carrello
+                </router-link>
             </div>
             <ValidationObserver v-slot="{ handleSubmit }">
 

@@ -158,9 +158,10 @@ export default {
                     this.loading = true;
                     // console.log(res.data);
                 })
-                /* .catch(err => {
-                    this.router.push('/404');
-                }) */            
+                .catch(err=>{
+                    // console.log(err)                    
+                    this.$router.push('/404');
+                })            
         },
 
         // QUI ci sono le chiamate alle actions in nel cartModule di store.js

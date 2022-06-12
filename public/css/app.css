@@ -10095,7 +10095,7 @@ a p {
 }
 
 .bkg-wave {
-  background-image: url("/img/wave5.svg");
+  background-image: url("/img/wave38.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;
@@ -10105,11 +10105,16 @@ a p {
 }
 
 .img-show {
-  background-image: url("/img/wave27.svg");
+  background-image: url("/img/wave38.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;
   height: 100vh;
+}
+.img-show .plate-show h1 {
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 30px;
 }
 .img-show .plate-show h4 {
   font-size: 1.28571429em;
@@ -10185,7 +10190,7 @@ a p {
 }
 
 .img-restaurant-index {
-  background-image: url("/img/wave5.svg");
+  background-image: url("/img/wave38.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;

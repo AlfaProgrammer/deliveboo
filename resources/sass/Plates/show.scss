@@ -1,6 +1,6 @@
 .img-show {
     
-    background-image: url('/img/wave27.svg');
+    background-image: url('/img/wave38.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no repeat;
@@ -8,6 +8,13 @@
     
 
     .plate-show {
+
+        h1 {
+            font-weight: 900;
+            text-align: center;
+            // text-transform: uppercase;
+            margin-bottom: 30px;
+        }
 
         h4 {
             font-size: 1.28571429em;

@@ -34,7 +34,7 @@
                   </li>
                 </ul>
             </div>
-            <div class="column-4">
+            <div class="column-4 md:col-span-3 lg:col-span-1">
                 <h4>Porta Deliveboo con te</h4>
                   <ul class="menu">
                     <li class="badge-wrapper" v-for="(el, i) in UlApp" :key="i">

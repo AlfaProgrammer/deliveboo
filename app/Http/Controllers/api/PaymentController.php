@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendOrderCompleteMail;
+use App\Mail\SendOrderRestaurantMail;
+use App\Restaurant;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class PaymentController extends Controller
 {
@@ -52,6 +56,22 @@ class PaymentController extends Controller
     {
         $data = $request->all();
 
+        $order = $data['order'];
+
+        $restaurantSlug = $data['restaurant'];
+
+        //return $restaurantSlug;
+
+        $restaurant = Restaurant::with('user')
+            ->where('slug', $restaurantSlug)
+            ->first();
+
+        $user = $restaurant->user;
+
+        $userEmail = $restaurant->user->email;
+
+        //return $user;
+
         $tokenNonce = $request->query('token');
         $total = $data['total'];
         //return $total;
@@ -70,6 +90,10 @@ class PaymentController extends Controller
                 'submitForSettlement' => true,
             ]
         ]);
+
+        Mail::to($order['email'])->send(new SendOrderCompleteMail($order));
+
+        Mail::to($userEmail)->send(new SendOrderRestaurantMail($user));
 
         if ($result->success) {
             // See $result->transaction for details

@@ -14,52 +14,55 @@
         <div v-else class=" flex">
 
             <div class="totalPrice p-4 rounded shadow-lg shadow-stone-600">
-                <p>Totale provvisorio: {{formatCurrency(totalPrice)}}</p>
 
                 <ul v-for="(plate, index) in restaurant_cart" :key="index">
-                    <li class="flex justify-between items-center p-[20px] shadow-lg border-red">
-                        <div class="cart-item-wrapper flex gap-[20px]">
+                    <li class="grid grid-cols-3 p-[20px] shadow-lg gap-3">
 
-                            <figure class="max-w-[80px] rounded-sm">
-                                <img class="object-cover" :src="plate.image">
-                            </figure>
+                        <figure class="col-span-2 sm:col-span-1 rounded-sm overflow-hidden">
+                            <img class="object-cover aspect-square" :src="plate.image">
+                        </figure>
 
-                            <div id="plate-state">
-                                <p>Quantità: {{plate.quantity}}</p>
-                                <button class="rounded-full bg-viola text-white font-semibold px-2 text-sm"
-                                @click="modalShowToggle(plate)">
-                                    Rimuovi
-                                </button>
-                            </div>
+                        <div id="plate-state col-span-1 sm:col-span-1" class="text-center">
+                            <p class="mb-3">
+                                <span class="font-semibold">Quantità:</span> {{plate.quantity}}
+                            </p>
+                            <button class="rounded-full bg-viola text-white font-semibold py-1 px-2 text-sm"
+                            @click="modalShowToggle(plate)">
+                                Rimuovi
+                            </button>
+                        </div>
 
-                            <div class="item-info">
-                                <h3>{{ plate.name }}</h3>
-                                <p>Prezzo: {{formatCurrency(plate.price)}}</p>
+                        <div class="item-info col-span-3 sm:col-span-1 flex items-center justify-evenly sm:block">
+                            <h3><span class="font-semibold">Articolo:</span> {{ plate.name }}</h3>
+                            <p>
+                                <span class="font-semibold">Prezzo:</span> {{formatCurrency(plate.price)}}
+                            </p>
 
-                                <div class="quantity-wrapper flex gap-2 items-center"> 
-
-                                    <button  @click="decreaseQuantity(plate)" class="font-bold">-</button>
-                                    <div class="font-bold quantity-text">{{plate.quantity}}</div>
-                                    <button  @click="increaseQuantity(plate)" class="font-bold">+</button>
-
-                                </div>
+                            <div class="quantity-wrapper flex gap-2 items-center justify-center"> 
+                                <button  @click="decreaseQuantity(plate)" class="font-bold">-</button>
+                                <div class="font-bold quantity-text">{{plate.quantity}}</div>
+                                <button  @click="increaseQuantity(plate)" class="font-bold">+</button>
                             </div>
                         </div>
+                    
                     </li>
                 </ul> 
 
-                <div class="totalPrice">
-                    <p>Totale: {{formatCurrency(totalPrice)}}</p>
+                <div class="flex items-center justify-evenly">
+                    <div class="totalPrice font-bold">
+                        <p>Totale: {{formatCurrency(totalPrice)}}</p>
+                    </div>
+                    <!-- <router-link :to="{name: 'order.create'}" @click="console.log('ciao')" class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer">
+                        Ordina Ora
+                    </router-link>   -->
+                    <button 
+                        class="bg-viola text-white rounded-lg px-[15px] font-semibold"   
+                        @click="createOrderCart(restaurant_cart, slug), goToOrder()"                 
+                    >
+                        Ordina Ora
+                    </button>           
                 </div>
-                <!-- <router-link :to="{name: 'order.create'}" @click="console.log('ciao')" class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer">
-                    Ordina Ora
-                </router-link>   -->
-                <button 
-                    class="bg-viola text-white rounded-lg px-[15px] font-semibold"   
-                    @click="createOrderCart(restaurant_cart, slug), goToOrder()"                 
-                >
-                    Ordina Ora
-                </button>           
+
             </div>
         </div>   
 

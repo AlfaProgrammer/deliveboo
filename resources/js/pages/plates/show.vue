@@ -5,7 +5,7 @@
     </div>
 
     <div class="container main-wrapper" v-if="loading">
-      <div class="cards-wrapper flex flex-col justify-between lg:flex-row gap-3 px-5">
+      <div class="cards-wrapper flex flex-col justify-between lg:flex-row gap-y-5 gap-x-10 px-5">
         <!-- <h1 class="font-bold text-xl mb-5">Piatti</h1> -->
         <div class="">
           <nav class="mb-6 font-bold">

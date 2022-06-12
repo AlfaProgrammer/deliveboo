@@ -1,7 +1,7 @@
 @component('mail::message')
 # Congratulazioni! Ordine Completato!
 
-Gentile {{ $order['name'] . $order['surname'] }}, il tuo ordine è completo.<br>
+Gentile {{ $order['name'] . ' ' . $order['surname'] }}, il tuo ordine è completo.<br>
 Attendi ancora qualche minuto per riceverlo all'indirizzo che hai indicato in fase di ordinazione. <br>
 <div class="cornice"></div>
 <h3>Riepilogo ordine:</h3>

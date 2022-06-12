@@ -1,14 +1,14 @@
 <template>
 
-    <div class="cart_container md:ml-[20px] max-w-xl mx-auto my-4">
+    <div class="cart_container max-w-xl">
 
-        <h1 class="font-bold text-xl ml-[20px] mb-5">Carrello</h1>
-
-        <div v-if="restaurant_cart.length < 1 "> 
-            <p>
-                Non ci sono articoli nel tuo carrello per questo ristorante <br>
-                Ricordati che puoi acquistare da un ristorante per volta.
-            </p> 
+        <div v-if="restaurant_cart.length < 1 ">
+            <div class="rounded shadow-lg shadow-stone-700 p-5 bg-[#f5f5f5] min-h-[150px]">
+                <h1 class="font-bold text-viola mb-3 uppercase">Il tuo carrello è vuoto</h1>
+                <h4 class="font-semibold">
+                    Ricordati che puoi acquistare da un ristorante per volta.
+                </h4> 
+            </div> 
         </div>        
             
         <div v-else class=" flex">
@@ -24,14 +24,12 @@
                                 <img class="object-cover" :src="plate.image">
                             </figure>
 
-                            <div class="item-info">
-                                <h3>{{ plate.name }}</h3>
-                                <p>Prezzo: {{formatCurrency(plate.price)}}</p>
-                            </div>
-
                             <div id="plate-state">
                                 <p>Quantità: {{plate.quantity}}</p>
-                                <button @click="modalShowToggle(plate)">Rimuovi</button>
+                                <button class="rounded-full bg-viola text-white font-semibold px-2 text-sm"
+                                @click="modalShowToggle(plate)">
+                                    Rimuovi
+                                </button>
                             </div>
 
                             <div class="item-info">
@@ -57,7 +55,7 @@
                     Ordina Ora
                 </router-link>   -->
                 <button 
-                    class="bg-sky-500/100 text-white rounded-lg px-[15px] pointer"   
+                    class="bg-viola text-white rounded-lg px-[15px] font-semibold"   
                     @click="createOrderCart(restaurant_cart, slug), goToOrder()"                 
                 >
                     Ordina Ora
@@ -66,7 +64,7 @@
         </div>   
 
          <!-- MODALE CONFERMA RIMOZIONE dal CARRELLO -->
-        <div id="modal" class="flex item-center justify-center" :class="[modalShow ? '': 'hidden']">
+        <div id="modal" class="flex items-center justify-center" :class="[modalShow ? '': 'hidden']">
             <div id="modal-info" 
             class="max-h-[50%] bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent">
                 

@@ -1,8 +1,8 @@
 <template>
 
-    <div class="cart_container ml-[20px] max-w-xl mx-auto my-4">
+    <div class="cart_container md:ml-[20px] max-w-xl mx-auto my-4">
 
-        <h1 class="font-bold text-xl mb-5">Carrello</h1>
+        <h1 class="font-bold text-xl ml-[20px] mb-5">Carrello</h1>
 
         <div v-if="restaurant_cart.length < 1 "> 
             <p>
@@ -41,7 +41,7 @@
                                 <div class="quantity-wrapper flex gap-2 items-center"> 
 
                                     <button  @click="decreaseQuantity(plate)" class="font-bold">-</button>
-                                    <div class="font-bold text-white">{{plate.quantity}}</div>
+                                    <div class="font-bold quantity-text">{{plate.quantity}}</div>
                                     <button  @click="increaseQuantity(plate)" class="font-bold">+</button>
 
                                 </div>
@@ -190,5 +190,15 @@ export default {
         right: 0;
         left: 0;        
         background-color: rgb(128, 128, 128, 0.7);        
+    }
+
+    .totalPrice {
+        background-color: #F5F5F5;
+        margin: 15px 0;
+        max-width: -moz-available;
+    }
+
+    .quantity-text {
+        color: rgb(14 165 233 / 1);
     }
 </style>

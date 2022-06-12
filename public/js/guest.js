@@ -27598,7 +27598,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#modal[data-v-047541c6] {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  background-color: rgba(128, 128, 128, 0.7);\n}", ""]);
+exports.push([module.i, "#modal[data-v-047541c6] {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  background-color: rgba(128, 128, 128, 0.7);\n}\n.totalPrice[data-v-047541c6] {\n  background-color: #F5F5F5;\n  margin: 15px 0;\n  max-width: -moz-available;\n}\n.quantity-text[data-v-047541c6] {\n  color: rgb(14, 165, 233);\n}", ""]);
 
 // exports
 
@@ -27731,7 +27731,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".img-show[data-v-2e5b8f56] {\n  background-image: url(\"/img/wave5.svg\");\n  background-size: cover;\n  background-position: center;\n  background-repeat: no repeat;\n  min-height: calc(100vh - 86px);\n  padding-bottom: 20px;\n  margin-bottom: 12px;\n}\nimg[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56] {\n  transition: transform 350ms;\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: transform 150ms;\n}", ""]);
+exports.push([module.i, ".img-show[data-v-2e5b8f56] {\n  background-image: url(\"/img/wave5.svg\");\n  background-size: cover;\n  background-position: center;\n  background-repeat: no repeat;\n  padding-bottom: 20px;\n  min-height: calc(100vh - 62px - 341px);\n  display: flex;\n}\n.main-wrapper[data-v-2e5b8f56] {\n  display: flex;\n  justify-content: center;\n}\n.cards-wrapper[data-v-2e5b8f56] {\n  justify-content: space-between;\n  width: 100%;\n  padding-top: 50px;\n}\nimg[data-v-2e5b8f56] {\n  aspect-ratio: 1;\n}\n.restaurant-cover[data-v-2e5b8f56] {\n  aspect-ratio: 16/9;\n}\n.plate-container[data-v-2e5b8f56] {\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n}\n.plate-card[data-v-2e5b8f56] {\n  transition: transform 350ms;\n}\n.plate-card[data-v-2e5b8f56]:hover {\n  border-color: #440063;\n  transform: scale(1.1);\n  transition: transform 150ms;\n}", ""]);
 
 // exports
 
@@ -34350,9 +34350,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "cart_container ml-[20px] max-w-xl mx-auto my-4" },
+    { staticClass: "cart_container md:ml-[20px] max-w-xl mx-auto my-4" },
     [
-      _c("h1", { staticClass: "font-bold text-xl mb-5" }, [_vm._v("Carrello")]),
+      _c("h1", { staticClass: "font-bold text-xl ml-[20px] mb-5" }, [
+        _vm._v("Carrello"),
+      ]),
       _vm._v(" "),
       _vm.restaurant_cart.length < 1
         ? _c("div", [_vm._m(0)])
@@ -34456,7 +34458,7 @@ var render = function () {
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "font-bold text-white" },
+                                    { staticClass: "font-bold quantity-text" },
                                     [_vm._v(_vm._s(plate.quantity))]
                                   ),
                                   _vm._v(" "),
@@ -36557,15 +36559,15 @@ var render = function () {
       : _vm._e(),
     _vm._v(" "),
     _vm.loading
-      ? _c("div", { staticClass: "container" }, [
+      ? _c("div", { staticClass: "container main-wrapper" }, [
           _c(
             "div",
             {
               staticClass:
-                "border-2 border-red-600 flex flex-row justify-between",
+                "cards-wrapper flex flex-col justify-between lg:flex-row ",
             },
             [
-              _c("div", { staticClass: "border-2 border-sky-600" }, [
+              _c("div", {}, [
                 _c(
                   "nav",
                   { staticClass: "mb-6 font-bold" },
@@ -36643,9 +36645,17 @@ var render = function () {
                 ]),
                 _vm._v(" "),
                 _c("div", [
+<<<<<<< HEAD
                   _c("h1", { staticClass: "font-bold text-xl mb-5" }, [
                     _vm._v("Piatti"),
                   ]),
+=======
+                  _c(
+                    "h1",
+                    { staticClass: "font-bold text-xl ml-[20px] mb-5" },
+                    [_vm._v("Piatti")]
+                  ),
+>>>>>>> ultimi-fix-layout
                   _vm._v(" "),
                   _vm.plates.length == 0
                     ? _c("div", [
@@ -36674,7 +36684,13 @@ var render = function () {
                       ])
                     : _c(
                         "div",
+<<<<<<< HEAD
                         { staticClass: "grid gap-10 plate-container" },
+=======
+                        {
+                          staticClass: "grid gap-10 plate-container mb-[15px]",
+                        },
+>>>>>>> ultimi-fix-layout
                         _vm._l(_vm.plates, function (plate) {
                           return _c(
                             "div",
@@ -36736,7 +36752,7 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "border-2 border-sky-600" },
+                {},
                 [
                   _c("AppCart", {
                     attrs: {
@@ -53482,7 +53498,7 @@ webpackContext.id = "./public/img sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/appstore.svg?0a6a96b9e3294e2e3b62f5bbd8f16f22";
+module.exports = "/images/appstore.svg?9beaa0db7ef2975ab326f0a2639bd0e1";
 
 /***/ }),
 
@@ -53515,7 +53531,7 @@ module.exports = "/images/image2vector.svg?8001b2e62f462f139fce3711709f96c2";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/playstore.svg?59c5fd948e8c762a5059cb2ad51acd16";
+module.exports = "/images/playstore.svg?0a18bd2b525981e78c0bf9e3fa37f803";
 
 /***/ }),
 
@@ -55264,7 +55280,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\andre\BOOLEAN\LARAVEL\progetto-finale\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

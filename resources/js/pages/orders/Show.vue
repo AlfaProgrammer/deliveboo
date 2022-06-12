@@ -4,7 +4,7 @@
             <loader />
         </section>
 
-        <section v-else class="py-12 px-4 bkg-order-show">
+        <section v-else class="py-16 px-4 bkg-order-show">
             <div class="container flex justify-center items-center h-full">
 
                 <div class="card rounded shadow-lg shadow-stone-700 p-7 bg-stone-100">
@@ -42,7 +42,7 @@
                             <li v-for="plate in cartOnOrder.cartItems" :key="plate.id"
                             class="flex items-center justify-between gap-3">
                                 <h4 class="text-stone-700 font-medium basis-[40%]">{{ plate.name }}</h4>                                
-                                <span class="ml-[15px] basis-[30%]">quantità: {{plate.quantity}}</span>
+                                <span class="text-stone-700 ml-[15px] basis-[30%]">quantità: {{plate.quantity}}</span>
                                 <span class="text-right basis-[40%]">{{ formatCurrency( (plate.price*plate.quantity) ) }}</span>                                
                             </li>
                         </ol>
@@ -96,7 +96,6 @@ export default {
     },
     created() {
         this.takeOrder();
-        this.takeCart();
     }
     
 }

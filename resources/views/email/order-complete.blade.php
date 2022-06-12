@@ -11,7 +11,7 @@ Totale: {{ $order['total_price'] }}&euro; <br>
 
 
 @component('mail::button', ['url' => 'http://127.0.0.1:8000/'])
-Torna a trovarci
+Hai ancora fame ?
 @endcomponent
 
 Grazie,<br>

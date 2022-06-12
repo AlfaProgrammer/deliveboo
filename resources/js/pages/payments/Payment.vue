@@ -29,6 +29,7 @@ export default {
             token: '',
             inst: null,
             loading: false,
+            isDisable: false,
             cart: [],
             order: {},
         }
@@ -96,17 +97,23 @@ export default {
                 }
 
                 this.sendToken(payload.nonce);
-                this.ReturnToOrderDetails();
+                this.loader();
+                this.returnToOrderDetails();
                 console.log(payload.nonce);
             }
         )},
         takeOrder() {
             this.order = JSON.parse(localStorage.getItem("order"));
         },
-        ReturnToOrderDetails() {
+        loader() {
+            setTimeout( ()=> {
+                this.loading = false
+            }, '1000');
+        },
+        returnToOrderDetails() {
             setTimeout( ()=> {
                 this.$router.push({ name: 'orders.show' });
-            }, '2000');
+            }, '5000')
         }
     },
     created() {

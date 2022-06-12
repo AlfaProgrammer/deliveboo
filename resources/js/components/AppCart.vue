@@ -32,7 +32,7 @@
                             </button>
                         </div>
 
-                        <div class="item-info col-span-3 sm:col-span-1 lg:col-span-3 xl:col-span-1 flex items-center justify-evenly sm:flex-col sm:justify-center sm:items-start lg:flex-row lg:justify-start xl:flex-col gap-y-3 gap-x-1">
+                        <div class="item-info col-span-3 sm:col-span-1 lg:col-span-3 xl:col-span-1 flex items-center justify-evenly sm:flex-col sm:justify-start sm:items-start lg:flex-row xl:flex-col gap-y-3 gap-x-1">
                             <h3><span class="font-semibold">Articolo:</span> {{ plate.name }}</h3>
                             <p>
                                 <span class="font-semibold">Prezzo:</span> {{formatCurrency(plate.price)}}

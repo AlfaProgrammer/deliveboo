@@ -6,10 +6,10 @@
                 <img :src="restaurant.image" class="object-cover object-center">
             </figure>
             <div class="px-2 mb-2">
-                <h3>{{restaurant.name}}</h3>
+                <h3 class="font-bold">{{restaurant.name}}</h3>
             </div>
             <div class="flex items-center gap-2 px-2 mb-2">
-                <span class="rounded-full bg-deliveroo px-3 text-white font-bold"
+                <span class="rounded-full bg-deliveroo px-3 text-white font-bold text-sm"
                 v-for="category in restaurant.categories" :key="category.id">
                     {{category.name}}
                 </span>

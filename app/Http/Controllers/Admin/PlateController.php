@@ -191,7 +191,7 @@ class PlateController extends Controller
         // Mail::to($email)->send( new SendDeletePlateMail($plate));
         // $plate->delete();
 
-        Mail::to($email)->send( new SendOrderCompleteMail($plate));
+        Mail::to($email)->send( new SendDeletePlateMail($plate));
         $plate->delete();
 
         return redirect()->route('admin.plates.index');

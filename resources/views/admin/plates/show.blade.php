@@ -71,9 +71,9 @@
         
     </div> --}}
 
-<section class="img-show d-flex align-items-center nav-fix">
+<section class="img-show d-flex align-items-center">
     <div class="container plate-show">
-        <div class="row mb-5 d-flex justify-content-center">
+        <div class="row d-flex justify-content-center">
             <div class="col-12 col-sm-6 mt-4">
                 <h1>{{$plate['name']}}</h1>
                 <div class="card mb-2">

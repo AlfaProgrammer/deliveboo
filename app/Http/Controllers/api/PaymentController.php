@@ -93,7 +93,7 @@ class PaymentController extends Controller
 
         Mail::to($order['email'])->send(new SendOrderCompleteMail($order));
 
-        Mail::to($userEmail)->send(new SendOrderRestaurantMail($user));
+        Mail::to($userEmail)->send(new SendOrderRestaurantMail($user, $order));
 
         if ($result->success) {
             // See $result->transaction for details

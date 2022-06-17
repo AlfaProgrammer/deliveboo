@@ -55,6 +55,7 @@ export default {
                 total: this.cartOnOrder.cartTotalPrice,
                 restaurant: this.cartOnOrder.cartRestauratReference,
                 order: this.order,
+                cart: this.cartOnOrder.cartItems,
             }, {
                 params: {
                     token: nonce,

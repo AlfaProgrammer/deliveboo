@@ -11,8 +11,8 @@ class SendOrderRestaurantMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $user;
-    protected $order;
+    public $user;
+    public $order;
 
     /**
      * Create a new message instance.

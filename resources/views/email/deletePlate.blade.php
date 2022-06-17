@@ -1,0 +1,1 @@
+il piatto e stato correttamente eliminato

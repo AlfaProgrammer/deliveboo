@@ -7,7 +7,7 @@ Attendi ancora qualche minuto per riceverlo all'indirizzo che hai indicato in fa
 <h3>Riepilogo ordine:</h3>
 Indirizzo: {{ $order['address'] . ' ' . $order['house_number'] }} <br>
 Città: {{ $order['city'] }} <br>
-Totale: {{ $order['total_price'] }}&euro; <br>
+Totale: {{ $order['total_price'] }} &euro; <br>
 
 
 @component('mail::button', ['url' => 'http://127.0.0.1:8000/'])

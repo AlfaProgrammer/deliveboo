@@ -12,7 +12,7 @@ Città: {{ $order['city'] }} <br>
 
 <h3>Dati Ordine:</h3>
 Ordine n. : {{ $order['id'] }} <br>
-Totale: {{ $order['total_price'] }}&euro; <br>
+Totale: {{ $order['total_price'] }} &euro; <br>
 
 <div class="cornice"></div>
 

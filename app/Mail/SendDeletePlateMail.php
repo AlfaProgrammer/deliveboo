@@ -34,6 +34,6 @@ class SendDeletePlateMail extends Mailable
     {
         return $this
         ->subject('Conferma Eliminazione Piatto')
-        ->view('email.deletePlate');
+        ->markdown('email.deletePlate');
     }
 }

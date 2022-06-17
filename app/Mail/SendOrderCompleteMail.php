@@ -12,15 +12,17 @@ class SendOrderCompleteMail extends Mailable
     use Queueable, SerializesModels;
 
     public $order;
+    public $cart;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($_order)
+    public function __construct($_order, $_cart)
     {
         $this->order = $_order;
+        $this->cart = $_cart;
     }
 
     /**

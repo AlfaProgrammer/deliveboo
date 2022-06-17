@@ -12,15 +12,17 @@ class SendOrderRestaurantMail extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
+    public $order;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($_user)
+    public function __construct($_user, $_order)
     {
         $this->user = $_user;
+        $this->order = $_order;
     }
 
     /**

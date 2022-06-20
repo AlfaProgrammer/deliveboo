@@ -10102,14 +10102,22 @@ a p {
   min-height: calc(100vh - 130px);
   padding-bottom: 20px;
   margin-bottom: 12px;
+  overflow-y: scroll;
 }
 
+@media screen and (max-width: 1520px) {
+  .row .card-wrapper {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
 .img-show {
   background-image: url("/img/wave38.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no repeat;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 80px 0;
 }
 .img-show .plate-show h1 {
   font-weight: 900;
@@ -10494,6 +10502,6 @@ input:invalid {
 }
 
 .nav-fix {
-  height: 100vh;
-  padding-top: 80px;
+  min-height: 100vh;
+  padding: 80px 0;
 }

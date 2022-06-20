@@ -2014,6 +2014,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 // import { mapActions } from 'vuex'
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2519,6 +2520,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2763,7 +2769,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post('/api/payments', {
         total: this.cartOnOrder.cartTotalPrice,
         restaurant: this.cartOnOrder.cartRestauratReference,
-        order: this.order
+        order: this.order,
+        cart: this.cartOnOrder.cartItems
       }, {
         params: {
           token: nonce
@@ -3089,6 +3096,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3104,7 +3114,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       loading: false
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])('cartModule', ['cart'])),
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapState"])("cartModule", ["cart"])),
   watch: {
     cart: function cart() {
       this.updateRestaurantCart();
@@ -3122,15 +3132,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: _objectSpread(_objectSpread({
     addToCart: function addToCart(plate) {
       this.$store.dispatch({
-        type: 'cartModule/addToStorageCart',
+        type: "cartModule/addToStorageCart",
         plate: plate
       });
     },
     formatCurrency: function formatCurrency(price) {
       // price = (price / 100);
-      return price.toLocaleString('it-IT', {
-        style: 'currency',
-        currency: 'EUR'
+      return price.toLocaleString("it-IT", {
+        style: "currency",
+        currency: "EUR"
       });
     },
     fetchRestaurant: function fetchRestaurant() {
@@ -3147,15 +3157,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this.loading = true; // console.log(res.data);
       })["catch"](function (err) {
-        // console.log(err)                    
-        _this.$router.push('/404');
+        // console.log(err)
+        _this.$router.push("/404");
       });
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])('cartModule', [// 'fillCartFromStorage',
-  'createCartStorage', 'updateCart'])), {}, {
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_2__["mapActions"])("cartModule", [// 'fillCartFromStorage',
+  "createCartStorage", "updateCart"])), {}, {
     //assegnazione item corrispondenti al ristorante presi da cart, che contiene tutti
     // i prodotti aggiunti
-    // assegnazione degli degli item in restaurant_cart_data 
+    // assegnazione degli degli item in restaurant_cart_data
     updateRestaurantCart: function updateRestaurantCart() {
       var _this2 = this;
 
@@ -3173,7 +3183,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // per creare l'ordine nel backend\
       // this.restaurant_cart.forEach(plate => {
       //     plate.quantity = 1 // assegno 1 di default visto che è un item aggiunto al carrello
-      // })       
+      // })
 
     }
   }),
@@ -27797,7 +27807,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".bkg-order-show[data-v-0b4ab9ae] {\n  background-image: url(\"/images/wave4.svg\");\n  background-position: center;\n  background-size: 280%;\n  background-repeat: no-repeat;\n}\n.card[data-v-0b4ab9ae] {\n  flex-basis: 620px;\n}", ""]);
+exports.push([module.i, ".bkg-order-show[data-v-0b4ab9ae] {\n  min-height: calc(100vh - 62px - 341px);\n  background-image: url(\"/images/wave4.svg\");\n  background-position: center;\n  background-size: 280%;\n  background-repeat: no-repeat;\n}\n.card[data-v-0b4ab9ae] {\n  flex-basis: 620px;\n}", ""]);
 
 // exports
 
@@ -34561,143 +34571,150 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "cart_container md:ml-[20px] max-w-xl mx-auto my-4" },
-    [
-      _c("h1", { staticClass: "font-bold text-xl ml-[20px] mb-5" }, [
-        _vm._v("Carrello"),
-      ]),
-      _vm._v(" "),
-      _vm.restaurant_cart.length < 1
-        ? _c("div", [_vm._m(0)])
-        : _c("div", { staticClass: " flex" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "totalPrice p-4 rounded shadow-lg shadow-stone-600",
-              },
-              [
-                _c("p", [
-                  _vm._v(
-                    "Totale provvisorio: " +
-                      _vm._s(_vm.formatCurrency(_vm.totalPrice))
-                  ),
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.restaurant_cart, function (plate, index) {
-                  return _c("ul", { key: index }, [
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "flex justify-between items-center p-[20px] shadow-lg border-red",
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "cart-item-wrapper flex gap-[20px]" },
-                          [
-                            _c(
-                              "figure",
-                              { staticClass: "max-w-[80px] rounded-sm" },
-                              [
-                                _c("img", {
-                                  staticClass: "object-cover",
-                                  attrs: { src: plate.image },
-                                }),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "item-info" }, [
-                              _c("h3", [_vm._v(_vm._s(plate.name))]),
-                              _vm._v(" "),
-                              _c("p", [
-                                _vm._v(
-                                  "Prezzo: " +
-                                    _vm._s(_vm.formatCurrency(plate.price))
-                                ),
-                              ]),
+  return _c("div", { staticClass: "cart_container max-w-xl" }, [
+    _vm.restaurant_cart.length < 1
+      ? _c("div", [_vm._m(0)])
+      : _c("div", { staticClass: " flex" }, [
+          _c(
+            "div",
+            {
+              staticClass: "totalPrice p-4 rounded shadow-lg shadow-stone-600",
+            },
+            [
+              _vm._l(_vm.restaurant_cart, function (plate, index) {
+                return _c("ul", { key: index }, [
+                  _c(
+                    "li",
+                    {
+                      staticClass: "grid grid-cols-3 p-[20px] shadow-lg gap-3",
+                    },
+                    [
+                      _c(
+                        "figure",
+                        {
+                          staticClass: "col-span-1 rounded-sm overflow-hidden",
+                        },
+                        [
+                          _c("img", {
+                            staticClass: "object-cover aspect-square",
+                            attrs: { src: plate.image },
+                          }),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "text-center col-span-2 sm:col-span-1 lg:col-span-2 xl:col-span-1 flex flex-col justify-center sm:justify-start items-center gap-y-4",
+                          attrs: { id: "plate-state" },
+                        },
+                        [
+                          _c("p", { staticClass: "mb-3" }, [
+                            _c("span", { staticClass: "font-semibold" }, [
+                              _vm._v("Quantità:"),
                             ]),
-                            _vm._v(" "),
-                            _c("div", { attrs: { id: "plate-state" } }, [
-                              _c("p", [
-                                _vm._v("Quantità: " + _vm._s(plate.quantity)),
-                              ]),
+                            _vm._v(
+                              " " +
+                                _vm._s(plate.quantity) +
+                                "\n                        "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "rounded-full bg-viola text-white font-semibold py-1 px-3 text-sm",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.modalShowToggle(plate)
+                                },
+                              },
+                            },
+                            [
+                              _vm._v(
+                                "\n                            Rimuovi\n                        "
+                              ),
+                            ]
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "item-info col-span-3 sm:col-span-1 lg:col-span-3 xl:col-span-1 flex items-center justify-evenly sm:flex-col sm:justify-start sm:items-start lg:flex-row xl:flex-col gap-y-3 gap-x-1",
+                        },
+                        [
+                          _c("h3", [
+                            _c("span", { staticClass: "font-semibold" }, [
+                              _vm._v("Articolo:"),
+                            ]),
+                            _vm._v(" " + _vm._s(plate.name)),
+                          ]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _c("span", { staticClass: "font-semibold" }, [
+                              _vm._v("Prezzo:"),
+                            ]),
+                            _vm._v(
+                              " " +
+                                _vm._s(_vm.formatCurrency(plate.price)) +
+                                "\n                        "
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "quantity-wrapper flex gap-2 justify-center self-center",
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "font-bold",
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.decreaseQuantity(plate)
+                                    },
+                                  },
+                                },
+                                [_vm._v("-")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "font-bold quantity-text" },
+                                [_vm._v(_vm._s(plate.quantity))]
+                              ),
                               _vm._v(" "),
                               _c(
                                 "button",
                                 {
+                                  staticClass: "font-bold",
                                   on: {
                                     click: function ($event) {
-                                      return _vm.modalShowToggle(plate)
+                                      return _vm.increaseQuantity(plate)
                                     },
                                   },
                                 },
-                                [_vm._v("Rimuovi")]
+                                [_vm._v("+")]
                               ),
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "item-info" }, [
-                              _c("h3", [_vm._v(_vm._s(plate.name))]),
-                              _vm._v(" "),
-                              _c("p", [
-                                _vm._v(
-                                  "Prezzo: " +
-                                    _vm._s(_vm.formatCurrency(plate.price))
-                                ),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "quantity-wrapper flex gap-2 items-center",
-                                },
-                                [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "font-bold",
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.decreaseQuantity(plate)
-                                        },
-                                      },
-                                    },
-                                    [_vm._v("-")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "font-bold quantity-text" },
-                                    [_vm._v(_vm._s(plate.quantity))]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "font-bold",
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.increaseQuantity(plate)
-                                        },
-                                      },
-                                    },
-                                    [_vm._v("+")]
-                                  ),
-                                ]
-                              ),
-                            ]),
-                          ]
-                        ),
-                      ]
-                    ),
-                  ])
-                }),
-                _vm._v(" "),
-                _c("div", { staticClass: "totalPrice" }, [
+                            ]
+                          ),
+                        ]
+                      ),
+                    ]
+                  ),
+                ])
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "flex items-center justify-evenly" }, [
+                _c("div", { staticClass: "totalPrice font-bold" }, [
                   _c("p", [
                     _vm._v(
                       "Totale: " + _vm._s(_vm.formatCurrency(_vm.totalPrice))
@@ -34709,7 +34726,7 @@ var render = function () {
                   "button",
                   {
                     staticClass:
-                      "bg-sky-500/100 text-white rounded-lg px-[15px] pointer",
+                      "bg-viola text-white rounded-lg px-[15px] font-semibold",
                     on: {
                       click: function ($event) {
                         _vm.createOrderCart(_vm.restaurant_cart, _vm.slug),
@@ -34717,98 +34734,107 @@ var render = function () {
                       },
                     },
                   },
-                  [_vm._v("\n                Ordina Ora\n            ")]
-                ),
-              ],
-              2
-            ),
-          ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "flex item-center justify-center",
-          class: [_vm.modalShow ? "" : "hidden"],
-          attrs: { id: "modal" },
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass:
-                "max-h-[50%] bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent",
-              attrs: { id: "modal-info" },
-            },
-            [
-              _c("h3", { staticClass: "font-bold mb-3 text-xl" }, [
-                _vm._v("Sei sicuro di voler eliminare questo piatto ?"),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "font-bold mb-3" }, [
-                _vm._v(_vm._s(_vm.plateInModal.name)),
-              ]),
-              _vm._v(" "),
-              _c("figure", { staticClass: "max-w-[80px] rounded-sm mb-3" }, [
-                _c("img", {
-                  staticClass: "object-cover",
-                  attrs: { src: _vm.plateInModal.image },
-                }),
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mb-3" }, [
-                _vm._v("Quantità: " + _vm._s(_vm.plateInModal.quantity)),
-              ]),
-              _vm._v(" "),
-              _c("div", [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer",
-                    on: {
-                      click: function ($event) {
-                        return _vm.removeFromCart(_vm.plateInModal)
-                      },
-                    },
-                  },
-                  [_vm._v("\n                    Elimina\n                ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer",
-                    on: {
-                      click: function ($event) {
-                        _vm.modalShow = !_vm.modalShow
-                      },
-                    },
-                  },
-                  [_vm._v("\n                    Annulla\n                ")]
+                  [_vm._v("\n                    Ordina Ora\n                ")]
                 ),
               ]),
-            ]
+            ],
+            2
           ),
-        ]
-      ),
-    ]
-  )
+        ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "flex items-center justify-center",
+        class: [_vm.modalShow ? "" : "hidden"],
+        attrs: { id: "modal" },
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "max-h-[50%] bg-stone-100 p-4 rounded shadow-lg shadow-stone-600 plate-card border-2 border-transparent",
+            attrs: { id: "modal-info" },
+          },
+          [
+            _c("h3", { staticClass: "font-bold mb-3 text-xl" }, [
+              _vm._v("Sei sicuro di voler eliminare questo piatto ?"),
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "font-bold mb-3" }, [
+              _vm._v(_vm._s(_vm.plateInModal.name)),
+            ]),
+            _vm._v(" "),
+            _c("figure", { staticClass: "max-w-[80px] rounded-sm mb-3" }, [
+              _c("img", {
+                staticClass: "object-cover",
+                attrs: { src: _vm.plateInModal.image },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "mb-3" }, [
+              _vm._v("Quantità: " + _vm._s(_vm.plateInModal.quantity)),
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer",
+                  on: {
+                    click: function ($event) {
+                      return _vm.removeFromCart(_vm.plateInModal)
+                    },
+                  },
+                },
+                [_vm._v("\n                    Elimina\n                ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer",
+                  on: {
+                    click: function ($event) {
+                      _vm.modalShow = !_vm.modalShow
+                    },
+                  },
+                },
+                [_vm._v("\n                    Annulla\n                ")]
+              ),
+            ]),
+          ]
+        ),
+      ]
+    ),
+  ])
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v(
-        "\n            Non ci sono articoli nel tuo carrello per questo ristorante "
-      ),
-      _c("br"),
-      _vm._v(
-        "\n            Ricordati che puoi acquistare da un ristorante per volta.\n        "
-      ),
-    ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "rounded shadow-lg shadow-stone-700 p-5 bg-[#f5f5f5] min-h-[150px]",
+      },
+      [
+        _c("h1", { staticClass: "font-bold text-viola mb-3 uppercase" }, [
+          _vm._v("Il tuo carrello è vuoto"),
+        ]),
+        _vm._v(" "),
+        _c("h4", { staticClass: "font-semibold" }, [
+          _vm._v(
+            "\n                Ricordati che puoi acquistare da un ristorante per volta.\n            "
+          ),
+        ]),
+      ]
+    )
   },
 ]
 render._withStripped = true
@@ -34898,7 +34924,7 @@ var staticRenderFns = [
       _c(
         "section",
         {
-          staticClass: "grid grid-cols-2 mt-6",
+          staticClass: "grid grid-cols-2",
           attrs: { id: "banner-bottom-wrap" },
         },
         [
@@ -35387,7 +35413,9 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "px-2 mb-2" }, [
-            _c("h3", [_vm._v(_vm._s(_vm.restaurant.name))]),
+            _c("h3", { staticClass: "font-bold" }, [
+              _vm._v(_vm._s(_vm.restaurant.name)),
+            ]),
           ]),
           _vm._v(" "),
           _c(
@@ -35399,7 +35427,7 @@ var render = function () {
                 {
                   key: category.id,
                   staticClass:
-                    "rounded-full bg-deliveroo px-3 text-white font-bold",
+                    "rounded-full bg-deliveroo px-3 text-white font-bold text-sm",
                 },
                 [
                   _vm._v(
@@ -35515,23 +35543,45 @@ var render = function () {
       "section",
       { staticClass: "form-wrapper flex flex-col justify-center py-10 px-3" },
       [
-        _c("div", { staticClass: "order-summary px-4 py-5 container" }, [
-          _c("h1", { staticClass: "text-xl font-bold" }, [
-            _vm._v(" Stai Ordinando da "),
-            _c("span", { staticClass: "text-deliveroo" }, [
-              _vm._v(_vm._s(_vm.cartOnOrder.cartRestauratReference)),
+        _c(
+          "div",
+          { staticClass: "order-summary px-4 py-5 container" },
+          [
+            _c("h1", { staticClass: "text-xl font-bold" }, [
+              _vm._v(" Stai Ordinando da "),
+              _c("span", { staticClass: "text-deliveroo" }, [
+                _vm._v(_vm._s(_vm.cartOnOrder.cartRestauratReference)),
+              ]),
             ]),
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v("Il totale del tuo ordine sarà di: "),
-            _c("span", { staticClass: "font-bold text-deliveroo" }, [
-              _vm._v(
-                " " + _vm._s(_vm.formatCurrency(_vm.cartOnOrder.cartTotalPrice))
-              ),
+            _vm._v(" "),
+            _c("p", { staticClass: "mb-3" }, [
+              _vm._v("Il totale del tuo ordine sarà di: "),
+              _c("span", { staticClass: "font-bold text-deliveroo" }, [
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.formatCurrency(_vm.cartOnOrder.cartTotalPrice))
+                ),
+              ]),
             ]),
-          ]),
-        ]),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "font-bold py-1 px-3 mb-3 border-2 border-viola rounded text-deliveroo",
+                attrs: {
+                  tag: "button",
+                  to: {
+                    name: "restaurant.show",
+                    params: { slug: _vm.cartOnOrder.cartRestauratReference },
+                  },
+                },
+              },
+              [_vm._v("\n                Torna al carrello\n            ")]
+            ),
+          ],
+          1
+        ),
         _vm._v(" "),
         _c("ValidationObserver", {
           scopedSlots: _vm._u([
@@ -36411,12 +36461,10 @@ var render = function () {
           [_c("loader")],
           1
         )
-      : _c("section", { staticClass: "py-16 px-4 bkg-order-show" }, [
+      : _c("section", { staticClass: "py-16 px-4 bkg-order-show flex" }, [
           _c(
             "div",
-            {
-              staticClass: "container flex justify-center items-center h-full",
-            },
+            { staticClass: "container flex justify-center items-center" },
             [
               _c(
                 "div",
@@ -36731,7 +36779,7 @@ var render = function () {
             _c("banner"),
             _vm._v(" "),
             _c("section", { attrs: { id: "bkcg-home" } }, [
-              _c("div", { staticClass: "container px-5 py-3" }, [
+              _c("div", { staticClass: "container px-5 py-6" }, [
                 _c("div", { staticClass: "drop-down-menu mb-10" }, [
                   _c(
                     "button",
@@ -36891,7 +36939,7 @@ var render = function () {
             "div",
             {
               staticClass:
-                "cards-wrapper flex flex-col justify-between lg:flex-row ",
+                "cards-wrapper flex flex-col justify-between lg:flex-row gap-y-5 gap-x-10 px-5",
             },
             [
               _c("div", {}, [
@@ -36906,11 +36954,7 @@ var render = function () {
                           "text-stone-700 border border-deliveroo hover:text-white hover:bg-deliveroo px-2 py-1 rounded",
                         attrs: { to: { name: "restaurant.index" } },
                       },
-                      [
-                        _vm._v(
-                          "\n                        Ristoranti\n                    "
-                        ),
-                      ]
+                      [_vm._v("\n            Ristoranti\n          ")]
                     ),
                   ],
                   1
@@ -36949,9 +36993,9 @@ var render = function () {
                           },
                           [
                             _vm._v(
-                              "\n                                " +
+                              "\n                " +
                                 _vm._s(category.name) +
-                                "\n                            "
+                                "\n              "
                             ),
                           ]
                         )
@@ -36964,8 +37008,7 @@ var render = function () {
                       _vm._v(
                         _vm._s(_vm.restaurant.city) +
                           " - " +
-                          _vm._s(_vm.restaurant.address) +
-                          "\n                        "
+                          _vm._s(_vm.restaurant.address)
                       ),
                     ]),
                   ]),
@@ -36989,7 +37032,9 @@ var render = function () {
                         _c(
                           "p",
                           [
-                            _vm._v("Torna alla pagina "),
+                            _vm._v(
+                              "\n              Torna alla pagina\n              "
+                            ),
                             _c(
                               "router-link",
                               {
@@ -36998,7 +37043,9 @@ var render = function () {
                               },
                               [_vm._v("Home")]
                             ),
-                            _vm._v(" per sceglierne un'altro . . ."),
+                            _vm._v(
+                              "\n              per sceglierne un'altro . . .\n            "
+                            ),
                           ],
                           1
                         ),
@@ -37033,7 +37080,7 @@ var render = function () {
                                     "button",
                                     {
                                       staticClass:
-                                        "text-slate-50 bg-deliveroo rounded-lg px-[15px] pointer",
+                                        "text-slate-50 bg-viola rounded-lg px-[15px] pointer font-semibold",
                                       on: {
                                         click: function ($event) {
                                           return _vm.addToCart(plate)
@@ -37042,7 +37089,7 @@ var render = function () {
                                     },
                                     [
                                       _vm._v(
-                                        "\n                                        Add to Cart\n                                    "
+                                        "\n                    Add to Cart\n                  "
                                       ),
                                     ]
                                   ),
@@ -53818,7 +53865,7 @@ webpackContext.id = "./public/img sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/appstore.svg?0a6a96b9e3294e2e3b62f5bbd8f16f22";
+module.exports = "/images/appstore.svg?9beaa0db7ef2975ab326f0a2639bd0e1";
 
 /***/ }),
 
@@ -53884,7 +53931,7 @@ module.exports = "/images/image2vector.svg?8001b2e62f462f139fce3711709f96c2";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/playstore.svg?59c5fd948e8c762a5059cb2ad51acd16";
+module.exports = "/images/playstore.svg?0a18bd2b525981e78c0bf9e3fa37f803";
 
 /***/ }),
 
@@ -55825,7 +55872,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/michelangelo/Desktop/00_PROG/laravel-deliveboo/resources/js/guest.js */"./resources/js/guest.js");
+module.exports = __webpack_require__(/*! C:\Users\ANDREA\visual-studio\project\deliveboo\resources\js\guest.js */"./resources/js/guest.js");
 
 
 /***/ })

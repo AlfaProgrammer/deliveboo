@@ -11,6 +11,7 @@
                     Torna al carrello
                 </router-link>
             </div>
+            
             <ValidationObserver v-slot="{ handleSubmit }">
 
                 <form @submit.prevent="handleSubmit(onSubmit)" methods="post">

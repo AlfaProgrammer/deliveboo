@@ -38,8 +38,20 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 import vueBraintree from 'vue-braintree';
 Vue.use(vueBraintree);
 
-import { ValidationProvider } from 'vee-validate/dist/vee-validate.full.esm';
-import {ValidationObserver} from 'vee-validate';
+import { ValidationProvider } from 'vee-validate';
+import { ValidationObserver } from 'vee-validate';
+import { extend } from 'vee-validate';
+import * as rules from 'vee-validate/dist/rules'; //* importare regole validazioni *//
+import { messages } from 'vee-validate/dist/locale/it.json'; //* recupero msg ita *//
+
+//* assegnazione regole validazioni e relativi messaggi *//
+Object.keys(rules).forEach(rule => {
+  extend(rule, {
+    ...rules[rule], // copies rule configuration
+    message: messages[rule] // assegno messaggi importati sopra alle regole
+  });
+});
+
 Vue.component('ValidationProvider', ValidationProvider);
 Vue.component('ValidationObserver', ValidationObserver);
 

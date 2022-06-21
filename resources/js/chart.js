@@ -1,3 +1,4 @@
 import Chart from 'chart.js/auto';
 
-console.log('ciao grafici');
+// recupero tag canvas da html //
+const ctx = document.getElementById('myChart').getContext('2d');

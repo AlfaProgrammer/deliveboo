@@ -2,6 +2,7 @@
     height: calc(100vh - 125px);
     // flex-wrap: nowrap;
     flex-wrap: wrap;
+    overflow: hidden;
 }
 
 .plates-index {
@@ -71,7 +72,8 @@
 }
 
 .over-flow-cont {
-    overflow: auto;
+    overflow-y: scroll;
+    height: 100%;
 }
 
 .card-.over-flow-cont::-webkit-scrollbar {
@@ -109,16 +111,23 @@ a {
     background-image: url('/img/wave38.svg');
     background-size: cover;
     background-position: center;
-    background-repeat: no repeat;
-    min-height: calc(100vh - 130px);
-    padding-bottom: 20px;
-    margin-bottom: 12px;
-    overflow-y: scroll;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1520px) {
     .row .card-wrapper {
         flex: 0 0 100%;
         max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .bkg-wave {
+        overflow-y: scroll;
+    }
+
+    .over-flow-cont {
+        overflow-y: initial;
     }
 }

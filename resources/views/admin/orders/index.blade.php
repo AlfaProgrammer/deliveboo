@@ -4,8 +4,8 @@
 
 <div class="background-orders">
     
-        <div class="">
-            <h1>Ordini</h1>
+        <div class="orders-wrapper">
+            <h1 class="text-center text-uppercase">Ordini</h1>
 
             <div class="main-wrap container"> 
                 @foreach ($orders as $order)

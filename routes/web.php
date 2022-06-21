@@ -31,8 +31,10 @@ Route::middleware('auth')
             Route::resource('restaurants', 'RestaurantController')->only([
                 'create', 'store'
             ]);
-            Route::resource('orders', 'OrderController');/* ->name('orders'); */
-
+            Route::resource('orders', 'OrderController')
+                ->only('index');/* ->name('orders'); */
+            Route::resource('charts', 'ChartController')
+            ->only('index');
         });
 
 Route::fallback(function() {

@@ -31,6 +31,7 @@
     },
     "dependencies": {
         "braintree-web-drop-in": "^1.33.2",
+        "chart.js": "^3.8.0",
         "vee-validate": "^3.4.14",
         "vue-braintree": "^2.1.0"
     }

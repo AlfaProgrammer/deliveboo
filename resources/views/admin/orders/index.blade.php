@@ -5,7 +5,13 @@
 <div class="background-orders">
     
         <div class="orders-wrapper">
-            <h1 class="text-center text-uppercase">Ordini</h1>
+            <div class="orders-nav">
+                <h1 class="text-center text-uppercase">Ordini</h1>
+    
+                <button class="btn btn-warning">
+                    <a href="{{ route('admin.home') }}">Torna alla Dashboard</a>
+                </button>
+            </div>
 
             <div class="main-wrap container"> 
                 @foreach ($orders as $order)

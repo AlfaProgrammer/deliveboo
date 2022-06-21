@@ -1,3 +1,13 @@
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    color: currentColor;
+}
+
 .background-orders{
     background-image: url('/img/wave38.svg');
     background-size: cover;
@@ -16,8 +26,13 @@
     flex-basis: 1080px;
 }
 
+.orders-nav {
+    margin-bottom: 20px;
+    padding: 5px 40px;
+}
+
 h1 {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .main-wrap {

@@ -14,18 +14,18 @@ function createCharts(orders) {
                 label: 'Totale Ordini',
                 data: orders,
                 backgroundColor: [
-                    'rgba(0, 204, 188, 0.6)',
-                    'rgba(127, 22, 224, 0.6)',
-                    'rgba(0, 224, 206, 0.6)',
-                    'rgba(224, 88, 22, 0.6)',
-                    'rgba(217, 224, 11, 0.6)',
-                    'rgba(68, 0, 99, 0.6)',
-                    'rgba(224, 106, 22, 0.6)',
-                    'rgba(153, 0, 224, 0.6)',
-                    'rgba(175, 224, 22, 0.6)',
-                    'rgba(11, 207, 224, 0.6)',
-                    'rgba(206, 223, 242, 0.6)',
-                    'rgba(12, 247, 124, 0.6)'
+                    'rgba(0, 204, 188, 0.8)',
+                    'rgba(127, 22, 224, 0.8)',
+                    'rgba(0, 224, 206, 0.8)',
+                    'rgba(224, 88, 22, 0.8)',
+                    'rgba(217, 224, 11, 0.8)',
+                    'rgba(68, 0, 99, 0.8)',
+                    'rgba(224, 106, 22, 0.8)',
+                    'rgba(153, 0, 224, 0.8)',
+                    'rgba(175, 224, 22, 0.8)',
+                    'rgba(11, 207, 224, 0.8)',
+                    'rgba(206, 223, 242, 0.8)',
+                    'rgba(12, 247, 124, 0.8)'
                 ],
                 borderColor: [
                     'rgb(0, 204, 188)',
@@ -45,11 +45,24 @@ function createCharts(orders) {
                 borderRadius: 4,
             }]
         },
-        options: {}
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Totale ordini per mese',
+                    align: 'start',
+                    padding: 15,
+                    font: {
+                        size: 24,
+                    }
+                }
+            }
+        }
     });
 }
 
 const myChart = document.getElementById('myChart').getContext('2d');
+const main = document.getElementById('charts');
 
 const months = [
     'Gennaio', 
@@ -66,8 +79,22 @@ const months = [
     'Dicembre'
 ];
 
+const loader = `
+    <div class="container-loader">
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+`;
+
+
 axios.get('/admin/charts/create')
     .then(res => {
         const orders = res.data.totalOrdersForMonths;
         const chart = createCharts(orders);
     });
+
+
+
+
+
+
+

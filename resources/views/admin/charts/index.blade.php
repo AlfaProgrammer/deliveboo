@@ -72,12 +72,12 @@
             </div>
         </nav>
 
-        <main>
+        <main id="charts">
 
-            <div class="container" style="padding: 100px 15px">
-                <h1>Statische Ordini</h1>
+            <div class="container">
+                <h1 class="title text-center mb-5">Statische</h1>
 
-                <div>
+                <div class="position-relative">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>

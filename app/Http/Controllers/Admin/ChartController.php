@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ChartController extends Controller
 {
@@ -29,18 +30,31 @@ class ChartController extends Controller
     {
         $user = Auth::user();
 
+        $TotalOrderForMonths = [];
+
         $restaurant = $user->restaurant;
         $plates = $restaurant->plates;
-        //$plates->load('orders');
-        $orders = Order::with('plates')
-            ->whereHas('plates', function($q) use ($plates) {
-                $q->whereIn('order_plate.plate_id', $plates);
-            })->orderBy('created_at', 'desc')->get();
 
-        dd($orders);
+        for($i = 1; $i <= 12; $i++) {
+            
+            $orders = Order::with('plates')
+                ->whereMonth('created_at', $i)
+                ->whereHas('plates', function($q) use ($plates) {
+                    $q->whereIn('order_plate.plate_id', $plates);
+                })
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            $totalOrder = $orders->count();
+
+            array_push($TotalOrderForMonths, $totalOrder);
+
+        }
+
+        dd($TotalOrderForMonths);
         
         return response()->json([
-            'prova' => 'prova',
+            'prova' => $TotalOrderForMonths,
             'success' => true
         ]);
     }

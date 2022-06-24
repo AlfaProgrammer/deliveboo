@@ -6,26 +6,30 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 const myChart = document.getElementById('myChart').getContext('2d');
 
+const months = [
+    'Gennaio', 
+    'Febbraio', 
+    'Marzo', 
+    'Aprile',
+    'Maggio',
+    'Giugno',
+    'Luglio',
+    'Agosto',
+    'Settembre',
+    'Ottobre',
+    'Novembre',
+    'Dicembre'
+];
+
+const orders = [30, 27, 31, 30, 31, 30, 31,74,12,45,66,32];
+
 const graph = new Chart(myChart, {
     type: 'bar',
     data: {
-        labels: [
-            'Gennaio', 
-            'Febbraio', 
-            'Marzo', 
-            'Aprile',
-            'Maggio',
-            'Giugno',
-            'Luglio',
-            'Agosto',
-            'Settembre',
-            'Ottobre',
-            'Novembre',
-            'Dicembre'
-        ],
+        labels: months,
         datasets: [{
             label: 'Ordini',
-            data: [30, 27, 31, 30, 31, 30, 31,74,12,45,66,32],
+            data: orders,
             backgroundColor: [
                 'rgba(0, 204, 188, 0.6)',
                 'rgba(127, 22, 224, 0.6)',

@@ -1,6 +1,9 @@
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
+window.axios = require('axios');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 const myChart = document.getElementById('myChart').getContext('2d');
 
 const graph = new Chart(myChart, {
@@ -57,5 +60,14 @@ const graph = new Chart(myChart, {
     },
     options: {}
 });
+
+function prova() {
+    axios.get('/admin/charts/create')
+        .then(res => {
+            console.log(res.data);
+        });
+}
+
+prova();
 
 console.log(myChart);

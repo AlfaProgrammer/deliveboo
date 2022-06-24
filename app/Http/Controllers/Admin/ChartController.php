@@ -51,10 +51,10 @@ class ChartController extends Controller
 
         }
 
-        dd($TotalOrderForMonths);
+        //dd($TotalOrderForMonths);
         
         return response()->json([
-            'prova' => $TotalOrderForMonths,
+            'totalOrdersForMonths' => $TotalOrderForMonths,
             'success' => true
         ]);
     }

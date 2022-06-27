@@ -119,8 +119,10 @@ function createPieChart(total) {
     });
 }
 
+
+const loader = document.getElementById('loader-wrap');
+const chartsWrapper = document.getElementById('charts-wrapper');
 const myChart = document.getElementById('myChart').getContext('2d');
-const main = document.getElementById('charts');
 const pieChart = document.getElementById('pieChart').getContext('2d');
 
 const months = [
@@ -138,18 +140,15 @@ const months = [
     'Dicembre'
 ];
 
-const loader = `
-    <div class="container-loader">
-        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-    </div>
-`;
-
-
 axios.get('/admin/charts/create')
     .then(res => {
         const orders = res.data.totalOrdersForMonths;
         const total = res.data.totalSellForMonths;
+        
+        loader.classList.add('active');
+        chartsWrapper.classList.remove('active');
+
         const chart = createCharts(orders);
-        const pieChart = createPieChart(total);
+        const pie = createPieChart(total);
     });
 

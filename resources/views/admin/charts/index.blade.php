@@ -74,7 +74,13 @@
 
         <main id="charts">
 
-            <div class="container">
+            <div id="loader-wrap">
+                <div class="container-loader">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </div>
+            </div>
+
+            <div id="charts-wrapper" class="container active">
                 <h1 class="title text-center mb-5">Statische</h1>
 
                 <nav class="mb-4">

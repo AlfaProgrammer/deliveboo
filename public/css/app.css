@@ -10438,6 +10438,9 @@ h1 {
   background-repeat: no-repeat;
   overflow-y: scroll;
 }
+#charts .active {
+  display: none;
+}
 #charts .container {
   padding: 100px 10px;
 }

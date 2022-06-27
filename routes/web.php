@@ -26,13 +26,19 @@ Route::middleware('auth')
         ->name('admin.')
         ->group(function (){
             
-            Route::resource('plates', 'PlateController');
             Route::get('/home', 'HomeController@index')->name('home');
+
+            Route::resource('plates', 'PlateController');
+
             Route::resource('restaurants', 'RestaurantController')->only([
                 'create', 'store'
             ]);
-            Route::resource('orders', 'OrderController');/* ->name('orders'); */
 
+            Route::resource('orders', 'OrderController')
+                ->only('index');/* ->name('orders'); */
+
+            Route::resource('charts', 'ChartController')
+            ->only('index', 'create');
         });
 
 Route::fallback(function() {

@@ -2,5 +2,6 @@
     "/js/admin.js": "/js/admin.js",
     "/css/app.css": "/css/app.css",
     "/css/front.css": "/css/front.css",
+    "/js/chart.js": "/js/chart.js",
     "/js/guest.js": "/js/guest.js"
 }

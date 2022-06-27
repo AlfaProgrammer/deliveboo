@@ -1,23 +1,20 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/admin.js') }}" defer></script>
-
-    <!-- Fonts -->
+    {{-- fonts --}}
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    {{-- script --}}
+    <script src="{{ asset('js/admin.js') }}"></script>
+    <title></title>
 </head>
 <body>
     <div id="app">
@@ -75,10 +72,35 @@
             </div>
         </nav>
 
-        <main class="">
-            @yield('content')
-        </main>
-    </div>
+        <main id="charts">
 
+            <div id="loader-wrap">
+                <div class="container-loader">
+                    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                </div>
+            </div>
+
+            <div id="charts-wrapper" class="container active">
+                <h1 class="title text-center mb-5">Statische</h1>
+
+                <nav class="mb-4">
+                    <a href="{{ route('admin.home') }}"
+                    class="btn btn-warning">
+                        Torna alla Dashboard
+                    </a>
+                </nav>
+
+                <div class="position-relative mb-5">
+                    <canvas id="myChart"></canvas>
+                </div>
+
+                <div class="position-relative mb-5">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+
+        </main>
+
+    <script src="{{ asset('js/chart.js') }}"></script>
 </body>
 </html>

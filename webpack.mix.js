@@ -15,6 +15,8 @@ const tailwindcss = require('tailwindcss')
 mix.js('resources/js/admin.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
+mix.js('resources/js/chart.js', 'public/js')
+
 mix.js('resources/js/guest.js', 'public/js')
     .sass('resources/sass/front.scss', 'public/css')
     .options({

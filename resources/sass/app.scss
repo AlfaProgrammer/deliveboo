@@ -12,6 +12,7 @@
 @import './Plates/show.scss';
 @import './noRestaurant/index.scss';
 @import './orders/index.scss';
+@import './charts/charts.scss';
 
 // input validations 
 
@@ -97,7 +98,10 @@ input:invalid {
 }
 
 .container-loader {
-    height: calc(100vh - 86px);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar{

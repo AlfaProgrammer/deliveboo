@@ -19,7 +19,7 @@ class OrderSeeder extends Seeder
         $plates = Plate::all();
         $plate_ids = $plates->pluck('id')->all();
 
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 1000; $i++) { 
             
             $newOrder = new Order();
 
@@ -32,6 +32,7 @@ class OrderSeeder extends Seeder
             $newOrder->city = $faker->city;
             $newOrder->cap = $faker->randomNumber(5, true);
             $newOrder->total_price = $faker->randomFloat(2, 5, 150);
+            $newOrder->created_at = $faker->dateTimeBetween('-5 months', '+6 months');
 
             $randomPlate = $faker->randomElements($plate_ids, 2);
                         

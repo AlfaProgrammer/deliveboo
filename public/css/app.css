@@ -10429,6 +10429,33 @@ h1 {
   margin-bottom: 20px;
 }
 
+#charts {
+  height: 100vh;
+  max-width: 100%;
+  background-image: url("/img/wave38.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-y: scroll;
+}
+#charts .active {
+  display: none;
+}
+#charts .container {
+  padding: 100px 10px;
+}
+#charts .container .title {
+  font-size: 60px;
+  font-weight: 700;
+}
+#charts .container #myChart,
+#charts .container #pieChart {
+  padding: 0 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -10519,7 +10546,10 @@ input:invalid {
   }
 }
 .container-loader {
-  height: calc(100vh - 86px);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navbar {

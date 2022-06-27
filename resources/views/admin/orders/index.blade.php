@@ -11,6 +11,10 @@
                 <button class="btn btn-warning">
                     <a href="{{ route('admin.home') }}">Torna alla Dashboard</a>
                 </button>
+
+                <button class="btn btn-warning">
+                    <a href="{{ route('admin.charts.index') }}">Statistiche</a>
+                </button>
             </div>
 
             <div class="main-wrap container"> 

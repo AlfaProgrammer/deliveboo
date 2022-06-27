@@ -1,0 +1,30 @@
+#charts {
+    height: 100vh;
+    max-width: 100%;
+    background-image: url('/img/wave38.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow-y: scroll;
+
+    .active {
+        display: none;
+    }
+
+    .container {
+        padding: 100px 10px;
+
+        .title {
+            font-size: 60px;
+            font-weight: 700;
+        }
+
+        #myChart,
+        #pieChart {
+            padding: 0 10px;
+            background-color: rgba(255, 255, 255, .8);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+        }
+    }
+}

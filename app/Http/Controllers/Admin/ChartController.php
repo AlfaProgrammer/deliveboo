@@ -56,7 +56,7 @@ class ChartController extends Controller
             }
 
             array_push($TotalOrderForMonths, $totalOrder);
-            array_push($totalSellForMonths, number_format($sum, 2));
+            array_push($totalSellForMonths, number_format($sum, 2, '.', ''));
 
         }
 

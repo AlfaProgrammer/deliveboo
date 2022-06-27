@@ -31,6 +31,7 @@ class ChartController extends Controller
         $user = Auth::user();
 
         $TotalOrderForMonths = [];
+        $totalSellForMonths = [];
 
         $restaurant = $user->restaurant;
         $plates = $restaurant->plates;
@@ -47,7 +48,15 @@ class ChartController extends Controller
 
             $totalOrder = $orders->count();
 
+            $sum = 0;
+
+            foreach($orders as $order) {
+
+                $sum += $order->total_price;
+            }
+
             array_push($TotalOrderForMonths, $totalOrder);
+            array_push($totalSellForMonths, number_format($sum, 2));
 
         }
 
@@ -55,6 +64,7 @@ class ChartController extends Controller
         
         return response()->json([
             'totalOrdersForMonths' => $TotalOrderForMonths,
+            'totalSellForMonths' => $totalSellForMonths,
             'success' => true
         ]);
     }

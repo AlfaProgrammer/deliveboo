@@ -5,6 +5,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow-y: scroll;
 
     .container {
         padding: 100px 10px;
@@ -14,8 +15,11 @@
             font-weight: 700;
         }
 
-        #myChart {
+        #myChart,
+        #pieChart {
             background-color: rgba(255, 255, 255, .8);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
         }
     }
 }

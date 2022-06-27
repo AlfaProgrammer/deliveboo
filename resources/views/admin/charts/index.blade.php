@@ -77,8 +77,19 @@
             <div class="container">
                 <h1 class="title text-center mb-5">Statische</h1>
 
-                <div class="position-relative">
+                <nav class="mb-4">
+                    <a href="{{ route('admin.home') }}"
+                    class="btn btn-warning">
+                        Torna alla Dashboard
+                    </a>
+                </nav>
+
+                <div class="position-relative mb-5">
                     <canvas id="myChart"></canvas>
+                </div>
+
+                <div class="position-relative mb-5">
+                    <canvas id="pieChart"></canvas>
                 </div>
             </div>
 
